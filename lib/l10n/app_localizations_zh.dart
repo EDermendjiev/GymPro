@@ -1845,6 +1845,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get sourceCode => '开源代码';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => '推荐动作';
 
   @override

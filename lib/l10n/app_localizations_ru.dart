@@ -1977,6 +1977,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sourceCode => 'ИСХОДНЫЙ КОД';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'ПОДБОРКА';
 
   @override

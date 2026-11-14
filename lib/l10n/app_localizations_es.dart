@@ -1918,6 +1918,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sourceCode => 'CÓDIGO FUENTE';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'SUGERIDOS';
 
   @override

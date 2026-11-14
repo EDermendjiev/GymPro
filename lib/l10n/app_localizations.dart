@@ -3530,6 +3530,12 @@ abstract class AppLocalizations {
   /// **'SOURCE CODE'**
   String get sourceCode;
 
+  /// Attribution the licence requires on the About screen. It may be translated, but keep the names GymMane and InlitX as they are and never remove it.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on GymMane by InlitX'**
+  String get basedOnGymMane;
+
   /// No description provided for @suggested.
   ///
   /// In en, this message translates to:

@@ -1871,6 +1871,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get sourceCode => 'KODE SUMBER';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'DISARANKAN';
 
   @override

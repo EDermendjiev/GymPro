@@ -1927,6 +1927,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get sourceCode => 'CODE SOURCE';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'SUGGÉRÉ';
 
   @override

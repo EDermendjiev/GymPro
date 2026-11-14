@@ -1926,6 +1926,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get sourceCode => 'সোর্স কোড';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'প্রস্তাবিত';
 
   @override

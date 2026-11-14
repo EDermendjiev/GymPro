@@ -1919,6 +1919,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get sourceCode => 'ВИХІДНИЙ КОД';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'РЕКОМЕНДОВАНО';
 
   @override

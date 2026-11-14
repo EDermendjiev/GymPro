@@ -1906,6 +1906,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get sourceCode => 'سورس کوڈ';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'تجویز کردہ';
 
   @override

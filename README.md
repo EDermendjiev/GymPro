@@ -8,6 +8,8 @@
 
 # GymMane
 
+Based on GymMane by InlitX: [github.com/InlitX/GymMane](https://github.com/InlitX/GymMane)
+
 A free, offline gym log for Android.<br/>
 Tap the muscles you want to train, log your sets and watch your numbers go up.
 

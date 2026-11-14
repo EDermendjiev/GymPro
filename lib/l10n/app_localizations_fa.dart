@@ -1909,6 +1909,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get sourceCode => 'کد منبع';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'پیشنهادی';
 
   @override

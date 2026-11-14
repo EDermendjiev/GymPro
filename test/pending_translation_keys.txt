@@ -18,3 +18,4 @@ routineNotesAdded
 reportChooseCsv
 reportWeighIns
 reportSessionDetails
+basedOnGymMane

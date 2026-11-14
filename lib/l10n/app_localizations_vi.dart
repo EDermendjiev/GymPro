@@ -1871,6 +1871,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get sourceCode => 'MÃ NGUỒN';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'GỢI Ý';
 
   @override

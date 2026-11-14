@@ -1920,6 +1920,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get sourceCode => 'सोर्स कोड';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'सुझाए गए';
 
   @override

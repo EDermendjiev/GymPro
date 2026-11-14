@@ -1920,6 +1920,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sourceCode => 'KAYNAK KODU';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'ÖNERİLEN';
 
   @override

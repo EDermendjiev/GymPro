@@ -1919,6 +1919,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get sourceCode => 'KOD ŹRÓDŁOWY';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'SUGEROWANE';
 
   @override

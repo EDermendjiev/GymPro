@@ -659,6 +659,8 @@
   "skip2": "Skip",
   "madeWithLoveBy": "MADE WITH LOVE BY",
   "sourceCode": "SOURCE CODE",
+  "basedOnGymMane": "Based on GymMane by InlitX",
+  "@basedOnGymMane": {"description": "Attribution the licence requires on the About screen. It may be translated, but keep the names GymMane and InlitX as they are and never remove it."},
 
   "suggested": "SUGGESTED",
   "results": "RESULTS",

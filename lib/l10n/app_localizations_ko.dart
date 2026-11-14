@@ -1874,6 +1874,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get sourceCode => '소스 코드';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => '추천';
 
   @override

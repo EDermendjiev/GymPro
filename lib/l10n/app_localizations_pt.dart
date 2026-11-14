@@ -1922,6 +1922,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get sourceCode => 'CÓDIGO-FONTE';
 
   @override
+  String get basedOnGymMane => 'Based on GymMane by InlitX';
+
+  @override
   String get suggested => 'SUGERIDO';
 
   @override
