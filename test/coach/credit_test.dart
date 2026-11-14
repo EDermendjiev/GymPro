@@ -16,7 +16,7 @@ void main() {
 
   test('the README and licence files carry it', () {
     expect(File('README.md').readAsStringSync(), contains(credit));
-    expect(File('ADDITIONAL_TERMS.md').existsSync(), isTrue);
+    expect(File('ADDITIONAL_TERMS.md').readAsStringSync(), contains(credit));
     expect(File('LICENSE').readAsStringSync(), contains('GNU GENERAL PUBLIC LICENSE'));
   });
 }
