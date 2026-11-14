@@ -1,0 +1,68 @@
+# SPDX-License-Identifier: GPL-3.0-only
+name: Coach CI
+
+# Checks the coach branch: analyzer, app tests and package tests. It builds
+# nothing and uploads nothing. The other workflows in this folder come from
+# upstream and are left untouched so that upstream merges stay conflict-free.
+on:
+  push:
+    branches: [coach]
+  pull_request:
+    branches: [coach]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A newer run for the same branch or pull request replaces the older one.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Pinned Flutter version. Keep it equal to FLUTTER_VERSION in build-apk.yml.
+env:
+  FLUTTER_VERSION: '3.41.9'
+
+jobs:
+  test:
+    name: Analyze and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Show versions
+        run: flutter --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+
+      - name: Test
+        run: flutter test
+
+      - name: Sync package
+        run: cd packages/sync && dart pub get && dart test
+
+      # Each coach package is checked on its own. A package that does not exist
+      # yet is skipped, so this step passes until the first one is added. The
+      # explicit exit stops the loop at the first failing package even if the
+      # shell is not running with errexit.
+      - name: Coach packages
+        run: |
+          for p in coach_kernel coach_progression coach_training coach_recovery coach_nutrition; do
+            if [ -d "packages/$p" ]; then
+              (cd "packages/$p" && dart pub get && dart analyze --fatal-warnings && dart test) || exit 1
+            fi
+          done
