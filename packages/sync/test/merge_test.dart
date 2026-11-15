@@ -79,4 +79,50 @@ void main() {
     }, {'old.jpg': 'new.jpg'});
     expect(stringsIn(out), contains('new.jpg'));
   });
+
+  test('the coach data is taken whole from the newer side', () {
+    final phone = {
+      'coach': {
+        'v': 1,
+        'on': {'plan': true},
+        'block': {
+          'weeks': 6,
+          'sessions': [
+            {'id': 'a', 'sets': 3},
+            {'id': 'b', 'sets': 4},
+          ],
+        },
+        'proposals': [
+          {'id': 'p1', 'state': 'pending'},
+        ],
+      },
+    };
+    final web = {
+      'coach': {
+        'v': 1,
+        'on': {'plan': true, 'recovery': true},
+        'block': {
+          'weeks': 4,
+          'sessions': [
+            {'id': 'a', 'sets': 5},
+          ],
+        },
+      },
+    };
+    expect(mergeStates(phone, web, incomingNewer: true)['coach'], web['coach']);
+    expect(mergeStates(phone, web, incomingNewer: false)['coach'], phone['coach']);
+    expect(mergeStates(phone, web, incomingNewer: true)['coach'], isNot(contains('proposals')));
+  });
+
+  test('the coach data survives when only the older side has it', () {
+    final withCoach = {
+      'coach': {
+        'v': 1,
+        'on': {'progression': true},
+      },
+    };
+    expect(mergeStates(<String, dynamic>{}, withCoach, incomingNewer: false)['coach'], withCoach['coach']);
+    expect(mergeStates(withCoach, <String, dynamic>{}, incomingNewer: true)['coach'], withCoach['coach']);
+    expect(mergeStates(<String, dynamic>{}, <String, dynamic>{}, incomingNewer: true), isNot(contains('coach')));
+  });
 }

@@ -60,6 +60,10 @@ Map<String, dynamic> mergeStates(Map<String, dynamic> local, Map<String, dynamic
   final newer = incomingNewer ? incoming : local;
   final older = incomingNewer ? local : incoming;
   final out = _mergeMap(newer, older);
+  // coach-seam: the coach's data is one unit. Splicing two devices' plans together would leave a block
+  // that neither device generated, so the newer side wins whole.
+  final coach = newer['coach'] ?? older['coach'];
+  if (coach != null) out['coach'] = coach;
   for (final k in _localOnly) {
     if (local.containsKey(k)) {
       out[k] = local[k];
