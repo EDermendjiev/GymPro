@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: GPL-3.0-only
+include: package:lints/recommended.yaml
+
+formatter:
+  page_width: 110
+
+linter:
+  rules:
+    prefer_single_quotes: true

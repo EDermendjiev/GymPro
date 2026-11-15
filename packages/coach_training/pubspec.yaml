@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-3.0-only
+name: coach_training
+description: "Training block generation. Pure Dart."
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  coach_kernel:
+    path: ../coach_kernel
+  coach_progression:
+    path: ../coach_progression
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^6.0.0
+  coach_testkit:
+    path: ../coach_testkit
