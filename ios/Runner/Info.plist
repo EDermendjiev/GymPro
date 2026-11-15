@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>GymMane</string>
+	<string>GymPro</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -40,7 +40,7 @@
 		<string>ur</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>GymMane</string>
+	<string>GymPro</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -86,15 +86,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>GymMane reads your steps, sleep and heart data from Health to show them next to your training.</string>
+	<string>GymPro reads your steps, sleep and heart data from Health to show them next to your training.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>GymMane saves your finished workouts to Health.</string>
+	<string>GymPro saves your finished workouts to Health.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>GymMane uses the camera to take your progress photos.</string>
+	<string>GymPro uses the camera to take your progress photos.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>GymMane saves the cards you share to your photo library.</string>
+	<string>GymPro saves the cards you share to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>GymMane opens your photo library to pick progress photos, exercise media and backgrounds.</string>
+	<string>GymPro opens your photo library to pick progress photos, exercise media and backgrounds.</string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

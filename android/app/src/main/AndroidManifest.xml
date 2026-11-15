@@ -32,8 +32,9 @@
     <uses-feature android:name="android.hardware.type.watch" android:required="false"/>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 
+    <!-- coach-seam: fork name -->
     <application
-        android:label="GymMane"
+        android:label="GymPro"
         android:name=".GymManeApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"

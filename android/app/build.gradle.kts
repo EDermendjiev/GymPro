@@ -30,7 +30,9 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.gymmane.app"
+        // coach-seam: the fork installs beside upstream under its own id. The namespace above stays
+        // "com.gymmane.app" so the Kotlin sources keep matching upstream.
+        applicationId = "io.github.edermendjiev.gympro"
         minSdk = 24
         targetSdk = 36
         versionCode = flutter.versionCode
