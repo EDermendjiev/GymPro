@@ -1,0 +1,275 @@
+{
+ "fn": "e1rm",
+ "cases": [
+  {
+   "name": "100x5@1",
+   "input": {
+    "load": 100,
+    "reps": 5,
+    "rir": 1,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 116.12903225806451,
+    "rounded": 116.1,
+    "single8": 110,
+    "for10": 87.5
+   }
+  },
+  {
+   "name": "60x12@0",
+   "input": {
+    "load": 60,
+    "reps": 12,
+    "rir": 0,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 86.4,
+    "rounded": 86.4,
+    "single8": 82.5,
+    "for10": 65
+   }
+  },
+  {
+   "name": "140x1@null",
+   "input": {
+    "load": 140,
+    "reps": 1,
+    "rir": null,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 140,
+    "rounded": 140,
+    "single8": 132.5,
+    "for10": 105
+   }
+  },
+  {
+   "name": "80x13@2",
+   "input": {
+    "load": 80,
+    "reps": 13,
+    "rir": 2,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": null,
+    "rounded": null,
+    "single8": null,
+    "for10": null
+   }
+  },
+  {
+   "name": "nullx8@2",
+   "input": {
+    "load": null,
+    "reps": 8,
+    "rir": 2,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": null,
+    "rounded": null,
+    "single8": null,
+    "for10": null
+   }
+  },
+  {
+   "name": "no load on the bar",
+   "input": {
+    "load": 0,
+    "reps": 5,
+    "rir": 1,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": null,
+    "rounded": null,
+    "single8": null,
+    "for10": null
+   }
+  },
+  {
+   "name": "negative load",
+   "input": {
+    "load": -20,
+    "reps": 5,
+    "rir": 1,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": null,
+    "rounded": null,
+    "single8": null,
+    "for10": null
+   }
+  },
+  {
+   "name": "no reps",
+   "input": {
+    "load": 100,
+    "reps": 0,
+    "rir": 0,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": null,
+    "rounded": null,
+    "single8": null,
+    "for10": null
+   }
+  },
+  {
+   "name": "exactly 12 effective reps",
+   "input": {
+    "load": 100,
+    "reps": 10,
+    "rir": 2,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 144,
+    "rounded": 144,
+    "single8": 135,
+    "for10": 107.5
+   }
+  },
+  {
+   "name": "just over 12 effective reps",
+   "input": {
+    "load": 100,
+    "reps": 10,
+    "rir": 2.5,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": null,
+    "rounded": null,
+    "single8": null,
+    "for10": null
+   }
+  },
+  {
+   "name": "half a rep in reserve",
+   "input": {
+    "load": 102.5,
+    "reps": 3,
+    "rir": 0.5,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 10,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 110.14925373134328,
+    "rounded": 110.1,
+    "single8": 105,
+    "for10": 82.5
+   }
+  },
+  {
+   "name": "target above 12 reps is capped",
+   "input": {
+    "load": 100,
+    "reps": 5,
+    "rir": 1,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 15,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 116.12903225806451,
+    "rounded": 116.1,
+    "single8": 110,
+    "for10": 80
+   }
+  },
+  {
+   "name": "target below 1 rep is raised",
+   "input": {
+    "load": 100,
+    "reps": 5,
+    "rir": 1,
+    "singleReps": 1,
+    "singleRpe": 8,
+    "targetReps": 0,
+    "increment": 2.5
+   },
+   "output": {
+    "e1rm": 116.12903225806451,
+    "rounded": 116.1,
+    "single8": 110,
+    "for10": 115
+   }
+  },
+  {
+   "name": "triple at RPE 9.5, 1.25 kg steps",
+   "input": {
+    "load": 100,
+    "reps": 5,
+    "rir": 1,
+    "singleReps": 3,
+    "singleRpe": 9.5,
+    "targetReps": 6.5,
+    "increment": 1.25
+   },
+   "output": {
+    "e1rm": 116.12903225806451,
+    "rounded": 116.1,
+    "single8": 107.5,
+    "for10": 98.75
+   }
+  },
+  {
+   "name": "5 kg steps",
+   "input": {
+    "load": 87.5,
+    "reps": 8,
+    "rir": 3,
+    "singleReps": 1,
+    "singleRpe": 10,
+    "targetReps": 12,
+    "increment": 5
+   },
+   "output": {
+    "e1rm": 121.15384615384616,
+    "rounded": 121.2,
+    "single8": 120,
+    "for10": 85
+   }
+  }
+ ]
+}

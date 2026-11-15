@@ -2,6 +2,7 @@
 library;
 
 export 'src/constants.dart';
+export 'src/e1rm.dart';
 export 'src/explanations.dart';
 export 'src/model/enums.dart';
 export 'src/model/exercise.dart';

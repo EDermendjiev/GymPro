@@ -1,0 +1,713 @@
+{
+ "fn": "bestRecentE1rm",
+ "cases": [
+  {
+   "name": "default window of three exposures",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press"
+   },
+   "output": {
+    "best": 120
+   }
+  },
+  {
+   "name": "window of four reaches the old best",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press",
+    "n": 4
+   },
+   "output": {
+    "best": 127.05882352941177
+   }
+  },
+  {
+   "name": "window of one",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press",
+    "n": 1
+   },
+   "output": {
+    "best": 115.3125
+   }
+  },
+  {
+   "name": "window of zero takes every exposure",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press",
+    "n": 0
+   },
+   "output": {
+    "best": 127.05882352941177
+   }
+  },
+  {
+   "name": "negative window drops the oldest exposures",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press",
+    "n": -3
+   },
+   "output": {
+    "best": 115.3125
+   }
+  },
+  {
+   "name": "another exercise",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "back-squat"
+   },
+   "output": {
+    "best": 202.5
+   }
+  },
+  {
+   "name": "exercise never logged",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "deadlift"
+   },
+   "output": {
+    "best": null
+   }
+  },
+  {
+   "name": "no sets",
+   "input": {
+    "sets": [],
+    "exerciseId": "bench-press"
+   },
+   "output": {
+    "best": null
+   }
+  },
+  {
+   "name": "only sets without an estimate",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press"
+   },
+   "output": {
+    "best": null
+   }
+  },
+  {
+   "name": "dates given out of order",
+   "input": {
+    "sets": [
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 180,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 102.5,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 8,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-13",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 6,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-06",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-01",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "exerciseId": "bench-press",
+    "n": 2
+   },
+   "output": {
+    "best": 120
+   }
+  }
+ ]
+}
