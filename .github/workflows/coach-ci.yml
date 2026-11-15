@@ -55,13 +55,13 @@ jobs:
       - name: Sync package
         run: cd packages/sync && dart pub get && dart test
 
-      # Each coach package is checked on its own. A package that does not exist
-      # yet is skipped, so this step passes until the first one is added. The
-      # explicit exit stops the loop at the first failing package even if the
-      # shell is not running with errexit.
+      # Each coach package is checked on its own, the test helpers first because
+      # the others rely on them. A package that does not exist yet is skipped.
+      # The explicit exit stops the loop at the first failing package even if
+      # the shell is not running with errexit.
       - name: Coach packages
         run: |
-          for p in coach_kernel coach_progression coach_training coach_recovery coach_nutrition; do
+          for p in coach_testkit coach_kernel coach_progression coach_training coach_recovery coach_nutrition; do
             if [ -d "packages/$p" ]; then
               (cd "packages/$p" && dart pub get && dart analyze --fatal-warnings && dart test) || exit 1
             fi
