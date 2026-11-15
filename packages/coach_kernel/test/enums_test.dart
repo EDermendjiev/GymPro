@@ -40,6 +40,9 @@ final _enums = <String, (_Values, Enum Function(String))>{
   'WarningCode': ([for (final v in WarningCode.values) (v.name, v.wire)], WarningCode.fromWire),
   'ReviewKey': ([for (final v in ReviewKey.values) (v.name, v.wire)], ReviewKey.fromWire),
   'ProposalKind': ([for (final v in ProposalKind.values) (v.name, v.wire)], ProposalKind.fromWire),
+  'RuleBasis': ([for (final v in RuleBasis.values) (v.name, v.wire)], RuleBasis.fromWire),
+  'MuscleRegion': ([for (final v in MuscleRegion.values) (v.name, v.wire)], MuscleRegion.fromWire),
+  'BodySide': ([for (final v in BodySide.values) (v.name, v.wire)], BodySide.fromWire),
 };
 
 /// `lean_gain` and `TIME_TOO_SHORT` become `leanGain` and `timeTooShort`.
@@ -51,14 +54,10 @@ String _camel(String wire) {
 /// Wire strings that are reserved words in Dart, and the value name used instead.
 const _renamed = {'default': 'defaultStyle'};
 
-/// Unions that belong to tables ported later.
-const _later = {'RuleBasis', 'MuscleRegion', 'BodySide'};
-
 void main() {
   final cases = loadFixture('enums.json');
 
   for (final c in cases) {
-    if (_later.contains(c.name)) continue;
     test(c.name, () {
       final entry = _enums[c.name];
       if (entry == null) fail('No Dart enum registered for ${c.name}');
@@ -76,7 +75,7 @@ void main() {
   }
 
   test('every Dart enum is in the fixture', () {
-    expect({..._enums.keys, ..._later}, {for (final c in cases) c.name});
+    expect(_enums.keys.toSet(), {for (final c in cases) c.name});
   });
 
   test('tracked muscles come first and are the only ones accepted as tracked', () {

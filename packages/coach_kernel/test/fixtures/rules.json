@@ -1,0 +1,1512 @@
+{
+ "fn": "rules",
+ "cases": [
+  {
+   "name": "order",
+   "input": {},
+   "output": {
+    "ids": [
+     "T-STA-01",
+     "T-STA-02",
+     "T-STA-03",
+     "T-STA-04",
+     "T-PRI-01",
+     "T-VOL-01",
+     "T-VOL-02",
+     "T-VOL-03",
+     "T-VOL-04",
+     "T-VOL-05",
+     "T-VOL-06",
+     "T-VOL-07",
+     "T-VOL-08",
+     "T-FRQ-01",
+     "T-FRQ-02",
+     "T-FRQ-03",
+     "T-FRQ-04",
+     "T-SCH-01",
+     "T-SCH-02",
+     "T-SCH-03",
+     "T-SCH-04",
+     "T-SCH-05",
+     "T-SCH-06",
+     "T-SPL-01",
+     "T-SPL-02",
+     "T-SEL-01",
+     "T-SEL-02",
+     "T-SEL-03",
+     "T-SEL-04",
+     "T-SEL-05",
+     "T-SEL-06",
+     "T-SEL-07",
+     "T-SEL-08",
+     "T-INT-01",
+     "T-INT-02",
+     "T-INT-03",
+     "T-INT-04",
+     "T-INT-05",
+     "T-RIR-01",
+     "T-RST-01",
+     "T-RST-02",
+     "T-RST-03",
+     "T-TMP-01",
+     "T-WUP-01",
+     "T-PRG-01",
+     "T-PRG-02",
+     "T-PRG-03",
+     "T-PRG-04",
+     "T-PRG-05",
+     "T-PRG-06",
+     "T-STR-01",
+     "T-STR-02",
+     "T-STR-03",
+     "T-STR-04",
+     "T-EST-01",
+     "T-STR-05",
+     "T-FAT-01",
+     "T-FAT-02",
+     "T-FAT-03",
+     "T-FAT-04",
+     "T-FAT-05",
+     "T-FAT-06",
+     "T-FAT-07",
+     "T-FAT-08",
+     "S-01",
+     "S-02",
+     "S-03",
+     "S-04",
+     "S-05",
+     "S-06",
+     "N-PHS-01",
+     "N-PHS-02",
+     "N-PHS-03",
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-03",
+     "N-MNT-04",
+     "N-RAT-01",
+     "N-RAT-02",
+     "N-RAT-03",
+     "N-RAT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-PRO-02",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-WGT-01",
+     "N-WGT-02",
+     "N-WGT-03",
+     "N-WGT-04",
+     "N-ADJ-01",
+     "N-ADJ-02",
+     "N-ADJ-03",
+     "N-ADJ-04",
+     "N-ADJ-05",
+     "N-ADJ-06"
+    ],
+    "bases": [
+     "evidence",
+     "heuristic"
+    ]
+   }
+  },
+  {
+   "name": "T-STA-01",
+   "input": {
+    "id": "T-STA-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STA-01",
+     "basis": "evidence",
+     "summary": "Training status is judged by how fast you progress, not by years or strength: novices improve almost every session, intermediates week to week, advanced lifters month to month."
+    },
+    "why": "Training status is judged by how fast you progress, not by years or strength: novices improve almost every session, intermediates week to week, advanced lifters month to month."
+   }
+  },
+  {
+   "name": "T-STA-02",
+   "input": {
+    "id": "T-STA-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STA-02",
+     "basis": "heuristic",
+     "summary": "If you are unsure of your status: under a year of consistent training counts as novice; 5+ years with heavy lifts that barely move month to month counts as advanced; otherwise intermediate."
+    },
+    "why": "If you are unsure of your status: under a year of consistent training counts as novice; 5+ years with heavy lifts that barely move month to month counts as advanced; otherwise intermediate."
+   }
+  },
+  {
+   "name": "T-STA-03",
+   "input": {
+    "id": "T-STA-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STA-03",
+     "basis": "heuristic",
+     "summary": "After 8+ weeks of logs the app checks how often your anchor lifts improve and suggests a status change if your logs disagree with your setting twice in a row."
+    },
+    "why": "After 8+ weeks of logs the app checks how often your anchor lifts improve and suggests a status change if your logs disagree with your setting twice in a row."
+   }
+  },
+  {
+   "name": "T-STA-04",
+   "input": {
+    "id": "T-STA-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STA-04",
+     "basis": "evidence",
+     "summary": "Status can differ between body regions. The app stores one status for now."
+    },
+    "why": "Status can differ between body regions. The app stores one status for now."
+   }
+  },
+  {
+   "name": "T-PRI-01",
+   "input": {
+    "id": "T-PRI-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRI-01",
+     "basis": "evidence",
+     "summary": "When you lift and play a sport, one has to come first. If the sport comes first, lifting stays lower in volume, further from failure and avoids risky exercises and heavy soreness."
+    },
+    "why": "When you lift and play a sport, one has to come first. If the sport comes first, lifting stays lower in volume, further from failure and avoids risky exercises and heavy soreness."
+   }
+  },
+  {
+   "name": "T-VOL-01",
+   "input": {
+    "id": "T-VOL-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-01",
+     "basis": "evidence",
+     "summary": "About 4 hard sets per muscle per week is the minimum that reliably grows muscle. Targets never go below this."
+    },
+    "why": "Below about 4 hard sets a week a muscle barely grows, so no target goes lower."
+   }
+  },
+  {
+   "name": "T-VOL-02",
+   "input": {
+    "id": "T-VOL-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-02",
+     "basis": "evidence",
+     "summary": "For most people 10–20 hard sets per muscle per week is the practical range; more is reserved for specialisation phases."
+    },
+    "why": "Most people grow best somewhere between 10 and 20 hard sets per muscle each week."
+   }
+  },
+  {
+   "name": "T-VOL-03",
+   "input": {
+    "id": "T-VOL-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-03",
+     "basis": "evidence",
+     "summary": "Extra sets give smaller and smaller returns around 30 per week, so 30 is the hard ceiling for a specialised muscle."
+    },
+    "why": "Extra sets give smaller and smaller returns around 30 per week, so 30 is the hard ceiling for a specialised muscle."
+   }
+  },
+  {
+   "name": "T-VOL-04",
+   "input": {
+    "id": "T-VOL-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-04",
+     "basis": "evidence",
+     "summary": "More weekly sets cost more time: roughly 4–8 sets per muscle ≈ 1–2.5 h/week, up to 9+ h/week at 21–30 sets. Fewer sets give more growth per set."
+    },
+    "why": "More weekly sets cost more time: roughly 4–8 sets per muscle ≈ 1–2.5 h/week, up to 9+ h/week at 21–30 sets. Fewer sets give more growth per set."
+   }
+  },
+  {
+   "name": "T-VOL-05",
+   "input": {
+    "id": "T-VOL-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-05",
+     "basis": "evidence",
+     "summary": "Sets are counted fractionally: 1 set for each muscle an exercise mainly trains and half a set for each muscle it trains secondarily."
+    },
+    "why": "Compound lifts count fully for the main muscles and half for the helpers; that is how the body map adds up sets."
+   }
+  },
+  {
+   "name": "T-VOL-06",
+   "input": {
+    "id": "T-VOL-06"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-06",
+     "basis": "evidence",
+     "summary": "A set only counts toward muscle growth if it has at least 4 reps and ends within about 4 reps of failure. Warm-ups never count."
+    },
+    "why": "A set only counts toward muscle growth if it has at least 4 reps and ends within about 4 reps of failure. Warm-ups never count."
+   }
+  },
+  {
+   "name": "T-VOL-07",
+   "input": {
+    "id": "T-VOL-07"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-07",
+     "basis": "evidence",
+     "summary": "Start with the least volume that still drives progress and add sets only after a real plateau with good recovery."
+    },
+    "why": "You start with the least volume that should work; more is added only if you stall while recovering well."
+   }
+  },
+  {
+   "name": "T-VOL-08",
+   "input": {
+    "id": "T-VOL-08"
+   },
+   "output": {
+    "rule": {
+     "id": "T-VOL-08",
+     "basis": "evidence",
+     "summary": "Advanced lifters can specialise: raise 1–2 muscles by about half and cut the rest by a third to a half for 8–12 weeks, then return to a balanced phase."
+    },
+    "why": "Advanced lifters can specialise: raise 1–2 muscles by about half and cut the rest by a third to a half for 8–12 weeks, then return to a balanced phase."
+   }
+  },
+  {
+   "name": "T-FRQ-01",
+   "input": {
+    "id": "T-FRQ-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FRQ-01",
+     "basis": "evidence",
+     "summary": "Keep any single session at or below about 11 sets for one muscle; spread more volume over more sessions."
+    },
+    "why": "Past roughly 11 sets for one muscle in one session, extra sets are mostly junk, so volume is split across days."
+   }
+  },
+  {
+   "name": "T-FRQ-02",
+   "input": {
+    "id": "T-FRQ-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FRQ-02",
+     "basis": "evidence",
+     "summary": "Weekly sets set the frequency: 4–10 sets → 1–2 sessions per week, 11–20 → 2–3, 21–30 → 3 or more."
+    },
+    "why": "Weekly sets set the frequency: 4–10 sets → 1–2 sessions per week, 11–20 → 2–3, 21–30 → 3 or more."
+   }
+  },
+  {
+   "name": "T-FRQ-03",
+   "input": {
+    "id": "T-FRQ-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FRQ-03",
+     "basis": "evidence",
+     "summary": "For strength, train each main lift 2–6 times a week with 1–2 direct sets per session, spread over as many sessions as possible."
+    },
+    "why": "For strength, train each main lift 2–6 times a week with 1–2 direct sets per session, spread over as many sessions as possible."
+   }
+  },
+  {
+   "name": "T-FRQ-04",
+   "input": {
+    "id": "T-FRQ-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FRQ-04",
+     "basis": "evidence",
+     "summary": "Three to five lifting days with each muscle trained 2–4 times a week suits most lifters. Two days is the minimum and fine for maintenance."
+    },
+    "why": "Three to five lifting days with each muscle trained 2–4 times a week suits most lifters. Two days is the minimum and fine for maintenance."
+   }
+  },
+  {
+   "name": "T-SCH-01",
+   "input": {
+    "id": "T-SCH-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SCH-01",
+     "basis": "heuristic",
+     "summary": "The app picks the fewest lifting days that keep every session within your time limit and every muscle at a workable frequency."
+    },
+    "why": "The app chose the fewest lifting days that keep sessions within your time limit."
+   }
+  },
+  {
+   "name": "T-SCH-02",
+   "input": {
+    "id": "T-SCH-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SCH-02",
+     "basis": "evidence",
+     "summary": "Keep at least one full rest day per week with no lifting and no hard sport."
+    },
+    "why": "Keep at least one full rest day per week with no lifting and no hard sport."
+   }
+  },
+  {
+   "name": "T-SCH-03",
+   "input": {
+    "id": "T-SCH-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SCH-03",
+     "basis": "evidence",
+     "summary": "Cardio interferes least with lifting when done after lifting, at least 3 hours apart, or best of all on a different day."
+    },
+    "why": "Cardio interferes least with lifting when done after lifting, at least 3 hours apart, or best of all on a different day."
+   }
+  },
+  {
+   "name": "T-SCH-04",
+   "input": {
+    "id": "T-SCH-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SCH-04",
+     "basis": "evidence",
+     "summary": "Avoid hard leg sessions within about 24 hours before a leg-heavy match or hard session, and the day after a match."
+    },
+    "why": "Heavy legs right before a match or the day after one hurts both, so leg days were moved away from matches."
+   }
+  },
+  {
+   "name": "T-SCH-05",
+   "input": {
+    "id": "T-SCH-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SCH-05",
+     "basis": "evidence",
+     "summary": "Avoid lots of work for a muscle the day before a main lift that relies on it (for example heavy quad work the day before squats)."
+    },
+    "why": "Avoid lots of work for a muscle the day before a main lift that relies on it (for example heavy quad work the day before squats)."
+   }
+  },
+  {
+   "name": "T-SCH-06",
+   "input": {
+    "id": "T-SCH-06"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SCH-06",
+     "basis": "evidence",
+     "summary": "Back-to-back hard days happen; on the second day simply expect to use a bit less load."
+    },
+    "why": "Back-to-back hard days happen; on the second day simply expect to use a bit less load."
+   }
+  },
+  {
+   "name": "T-SPL-01",
+   "input": {
+    "id": "T-SPL-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SPL-01",
+     "basis": "evidence",
+     "summary": "Choose a split that keeps sessions practical and no muscle above about 11 sets per session; higher weekly volume needs more frequency."
+    },
+    "why": "Choose a split that keeps sessions practical and no muscle above about 11 sets per session; higher weekly volume needs more frequency."
+   }
+  },
+  {
+   "name": "T-SPL-02",
+   "input": {
+    "id": "T-SPL-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SPL-02",
+     "basis": "evidence",
+     "summary": "Lower-body sessions are the most draining, so when leg volume is high, spread it over more days."
+    },
+    "why": "Lower-body sessions are the most draining, so when leg volume is high, spread it over more days."
+   }
+  },
+  {
+   "name": "T-SEL-01",
+   "input": {
+    "id": "T-SEL-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-01",
+     "basis": "evidence",
+     "summary": "Use 1–3 exercises per main movement and cover the gaps: an incline press, a wide-elbow row and a lat-focused pull, plus isolation for quads, hamstrings, biceps, triceps, side delts and calves."
+    },
+    "why": "Use 1–3 exercises per main movement and cover the gaps: an incline press, a wide-elbow row and a lat-focused pull, plus isolation for quads, hamstrings, biceps, triceps, side delts and calves."
+   }
+  },
+  {
+   "name": "T-SEL-02",
+   "input": {
+    "id": "T-SEL-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-02",
+     "basis": "evidence",
+     "summary": "An exercise must actually train the muscle it is meant to grow."
+    },
+    "why": "An exercise must actually train the muscle it is meant to grow."
+   }
+  },
+  {
+   "name": "T-SEL-03",
+   "input": {
+    "id": "T-SEL-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-03",
+     "basis": "evidence",
+     "summary": "When options are otherwise equal, prefer exercises that load the muscle hard in its stretched position."
+    },
+    "why": "When options are otherwise equal, prefer exercises that load the muscle hard in its stretched position."
+   }
+  },
+  {
+   "name": "T-SEL-04",
+   "input": {
+    "id": "T-SEL-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-04",
+     "basis": "evidence",
+     "summary": "Exercises must be practical: available equipment, no injury conflict, something you do not hate, quick to set up."
+    },
+    "why": "Exercises must be practical: available equipment, no injury conflict, something you do not hate, quick to set up."
+   }
+  },
+  {
+   "name": "T-SEL-05",
+   "input": {
+    "id": "T-SEL-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-05",
+     "basis": "evidence",
+     "summary": "Order sessions with free-weight compounds first, machines next and isolation last, unless a lagging muscle needs priority."
+    },
+    "why": "Order sessions with free-weight compounds first, machines next and isolation last, unless a lagging muscle needs priority."
+   }
+  },
+  {
+   "name": "T-SEL-06",
+   "input": {
+    "id": "T-SEL-06"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-06",
+     "basis": "evidence",
+     "summary": "Keep the same exercises for a whole block so progress is measurable; change only one or two per session between blocks."
+    },
+    "why": "Keep the same exercises for a whole block so progress is measurable; change only one or two per session between blocks."
+   }
+  },
+  {
+   "name": "T-SEL-07",
+   "input": {
+    "id": "T-SEL-07"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-07",
+     "basis": "evidence",
+     "summary": "For strength, the main lifts provide their own volume; extra muscle work uses quicker, less fatiguing exercises."
+    },
+    "why": "For strength, the main lifts provide their own volume; extra muscle work uses quicker, less fatiguing exercises."
+   }
+  },
+  {
+   "name": "T-SEL-08",
+   "input": {
+    "id": "T-SEL-08"
+   },
+   "output": {
+    "rule": {
+     "id": "T-SEL-08",
+     "basis": "evidence",
+     "summary": "Work around pain: drop exercises that load a painful area heavily, favour machines and higher reps, and see a professional for persistent or red-flag pain."
+    },
+    "why": "Work around pain: drop exercises that load a painful area heavily, favour machines and higher reps, and see a professional for persistent or red-flag pain."
+   }
+  },
+  {
+   "name": "T-INT-01",
+   "input": {
+    "id": "T-INT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-INT-01",
+     "basis": "evidence",
+     "summary": "Muscle grows from roughly 4–30 rep loads when sets end close to failure; the lower the reps, the more reps you can leave in the tank. Strength needs heavy loads (1–8 reps)."
+    },
+    "why": "Muscle grows from roughly 4–30 rep loads when sets end close to failure; the lower the reps, the more reps you can leave in the tank. Strength needs heavy loads (1–8 reps)."
+   }
+  },
+  {
+   "name": "T-INT-02",
+   "input": {
+    "id": "T-INT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-INT-02",
+     "basis": "evidence",
+     "summary": "Hypertrophy sets need at least 4 reps. Avoid going to complete failure on free-weight squats, hinges and presses."
+    },
+    "why": "Hypertrophy sets need at least 4 reps. Avoid going to complete failure on free-weight squats, hinges and presses."
+   }
+  },
+  {
+   "name": "T-INT-03",
+   "input": {
+    "id": "T-INT-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-INT-03",
+     "basis": "evidence",
+     "summary": "Each exercise type has its own rep and effort range: heavy lower-body free weights 4–8 reps at 2–4 RIR, presses and leg machines 4–12, machines and rows 6–15, isolation 8–20 close to failure."
+    },
+    "why": "Big free-weight lifts stay a few reps short of failure; machines and isolation can go closer."
+   }
+  },
+  {
+   "name": "T-INT-04",
+   "input": {
+    "id": "T-INT-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-INT-04",
+     "basis": "evidence",
+     "summary": "Vary rep ranges (within a session, between sessions or between weeks), but do not spend more than about 3 weeks outside hypertrophy ranges."
+    },
+    "why": "Mixing heavier and lighter rep ranges covers more ground for growth than always doing the same reps."
+   }
+  },
+  {
+   "name": "T-INT-05",
+   "input": {
+    "id": "T-INT-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-INT-05",
+     "basis": "evidence",
+     "summary": "When your sport comes first, every lifting set stops one rep further from failure and the heaviest rep range on leg compounds is dropped."
+    },
+    "why": "When your sport comes first, every lifting set stops one rep further from failure and the heaviest rep range on leg compounds is dropped."
+   }
+  },
+  {
+   "name": "T-RIR-01",
+   "input": {
+    "id": "T-RIR-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-RIR-01",
+     "basis": "evidence",
+     "summary": "RPE 10 = 0 reps in reserve, 9 = 1, 8 = 2, 7 = 3. Most people underestimate how many reps they have left by about one, especially on high-rep sets."
+    },
+    "why": "Most people have about one more rep in them than they think, especially on high-rep sets."
+   }
+  },
+  {
+   "name": "T-RST-01",
+   "input": {
+    "id": "T-RST-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-RST-01",
+     "basis": "evidence",
+     "summary": "For strength main lifts rest until ready: at least 2 minutes, usually about 3."
+    },
+    "why": "For strength main lifts rest until ready: at least 2 minutes, usually about 3."
+   }
+  },
+  {
+   "name": "T-RST-02",
+   "input": {
+    "id": "T-RST-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-RST-02",
+     "basis": "evidence",
+     "summary": "For hypertrophy rest at least 90 seconds on average; longer for big lower-body lifts."
+    },
+    "why": "For hypertrophy rest at least 90 seconds on average; longer for big lower-body lifts."
+   }
+  },
+  {
+   "name": "T-RST-03",
+   "input": {
+    "id": "T-RST-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-RST-03",
+     "basis": "evidence",
+     "summary": "Supersets and drop sets save time; a four-drop drop set counts as about three normal sets."
+    },
+    "why": "Supersets and drop sets save time; a four-drop drop set counts as about three normal sets."
+   }
+  },
+  {
+   "name": "T-TMP-01",
+   "input": {
+    "id": "T-TMP-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-TMP-01",
+     "basis": "evidence",
+     "summary": "Lower the weight under control in about 1–4 seconds and lift with intent; any lifting speed works as long as the set gets close to failure."
+    },
+    "why": "Lower the weight under control in about 1–4 seconds and lift with intent; any lifting speed works as long as the set gets close to failure."
+   }
+  },
+  {
+   "name": "T-WUP-01",
+   "input": {
+    "id": "T-WUP-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-WUP-01",
+     "basis": "evidence",
+     "summary": "Warm up generally, then ramp up on the first compound. Dynamic stretching is fine; keep static stretching brief for muscles you are about to train."
+    },
+    "why": "Warm up generally, then ramp up on the first compound. Dynamic stretching is fine; keep static stretching brief for muscles you are about to train."
+   }
+  },
+  {
+   "name": "T-PRG-01",
+   "input": {
+    "id": "T-PRG-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRG-01",
+     "basis": "evidence",
+     "summary": "Pick a first-set load that lands in the rep range at the top of the RIR range and stop the set there."
+    },
+    "why": "Pick a first-set weight that lands in the range while leaving the top-of-range reps in reserve."
+   }
+  },
+  {
+   "name": "T-PRG-02",
+   "input": {
+    "id": "T-PRG-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRG-02",
+     "basis": "evidence",
+     "summary": "If the first set lands in range, keep the load for the remaining sets and aim for the same reps. Reps falling on later sets is fine."
+    },
+    "why": "Your first set landed in range: keep the weight and aim to match those reps."
+   }
+  },
+  {
+   "name": "T-PRG-03",
+   "input": {
+    "id": "T-PRG-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRG-03",
+     "basis": "evidence",
+     "summary": "If the first set misses the rep range, change the load by about 4% per rep you missed or exceeded and keep that load for the rest of the sets."
+    },
+    "why": "Your first set missed the range, so the weight moved about 4% for every rep you were off."
+   }
+  },
+  {
+   "name": "T-PRG-04",
+   "input": {
+    "id": "T-PRG-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRG-04",
+     "basis": "evidence",
+     "summary": "When the first set hits the top of the rep range at the top of the RIR range, add load next session."
+    },
+    "why": "You hit the top of the rep range with reps to spare: time to add weight."
+   }
+  },
+  {
+   "name": "T-PRG-05",
+   "input": {
+    "id": "T-PRG-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRG-05",
+     "basis": "evidence",
+     "summary": "Session-to-session swings are normal. On a strong day you can jump ahead; on a flat day drop a step and chase reps."
+    },
+    "why": "Session-to-session swings are normal. On a strong day you can jump ahead; on a flat day drop a step and chase reps."
+   }
+  },
+  {
+   "name": "T-PRG-06",
+   "input": {
+    "id": "T-PRG-06"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PRG-06",
+     "basis": "evidence",
+     "summary": "Typical pace: novices add load every 2–3 sessions, intermediates about every 5, advanced lifters about half as often."
+    },
+    "why": "Typical pace: novices add load every 2–3 sessions, intermediates about every 5, advanced lifters about half as often."
+   }
+  },
+  {
+   "name": "T-STR-01",
+   "input": {
+    "id": "T-STR-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STR-01",
+     "basis": "evidence",
+     "summary": "Strength training cycles a Volume phase and a Load phase (and a Peak phase before a test), with an easier intro week when coming back to volume."
+    },
+    "why": "Strength training cycles a Volume phase and a Load phase (and a Peak phase before a test), with an easier intro week when coming back to volume."
+   }
+  },
+  {
+   "name": "T-STR-02",
+   "input": {
+    "id": "T-STR-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STR-02",
+     "basis": "evidence",
+     "summary": "Volume phase: 1–3 top singles per lift per week getting harder (RPE 5 → 8), then normal working sets; 10–20 weekly sets for the supporting muscles."
+    },
+    "why": "Volume phase: 1–3 top singles per lift per week getting harder (RPE 5 → 8), then normal working sets; 10–20 weekly sets for the supporting muscles."
+   }
+  },
+  {
+   "name": "T-STR-03",
+   "input": {
+    "id": "T-STR-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STR-03",
+     "basis": "evidence",
+     "summary": "Load phase: 2–4 singles per lift per week (RPE 6 → 9), each followed by 2 back-off sets of 5 → 3 reps; supporting volume drops to 5–10 sets."
+    },
+    "why": "Load phase: 2–4 singles per lift per week (RPE 6 → 9), each followed by 2 back-off sets of 5 → 3 reps; supporting volume drops to 5–10 sets."
+   }
+  },
+  {
+   "name": "T-STR-04",
+   "input": {
+    "id": "T-STR-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STR-04",
+     "basis": "evidence",
+     "summary": "Peak phase (only before a test): heavy singles up to RPE 10, few back-off sets and very little extra volume for 2–4 weeks."
+    },
+    "why": "Peak phase (only before a test): heavy singles up to RPE 10, few back-off sets and very little extra volume for 2–4 weeks."
+   }
+  },
+  {
+   "name": "T-EST-01",
+   "input": {
+    "id": "T-EST-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-EST-01",
+     "basis": "evidence",
+     "summary": "Estimated 1-rep max (e1RM) uses a Brzycki-style formula on effective reps (reps + RIR): load × 36 ÷ (37 − effective reps). Sets above 12 effective reps are too far from a max to estimate, so they are left out."
+    },
+    "why": "Estimated 1-rep max (e1RM) uses a Brzycki-style formula on effective reps (reps + RIR): load × 36 ÷ (37 − effective reps). Sets above 12 effective reps are too far from a max to estimate, so they are left out."
+   }
+  },
+  {
+   "name": "T-STR-05",
+   "input": {
+    "id": "T-STR-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-STR-05",
+     "basis": "evidence",
+     "summary": "Train each main lift 2–4 times a week; a session that works the same muscles with another lift counts as half an exposure."
+    },
+    "why": "Train each main lift 2–4 times a week; a session that works the same muscles with another lift counts as half an exposure."
+   }
+  },
+  {
+   "name": "T-FAT-01",
+   "input": {
+    "id": "T-FAT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-01",
+     "basis": "evidence",
+     "summary": "Each week answer five quick recovery questions. Two or more “yes” answers means a deload next week."
+    },
+    "why": "Two or more “yes” answers in the weekly check means fatigue is building; a lighter week helps you bounce back."
+   }
+  },
+  {
+   "name": "T-FAT-02",
+   "input": {
+    "id": "T-FAT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-02",
+     "basis": "evidence",
+     "summary": "Deloads happen when you need them, not on a fixed calendar."
+    },
+    "why": "Deloads happen when you need them, not on a fixed calendar."
+   }
+  },
+  {
+   "name": "T-FAT-03",
+   "input": {
+    "id": "T-FAT-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-03",
+     "basis": "evidence",
+     "summary": "A standard deload cuts sets on every exercise by about 30–50% while keeping loads, effort and number of sessions."
+    },
+    "why": "A deload keeps the weights and effort but cuts sets, so you recover without losing strength."
+   }
+  },
+  {
+   "name": "T-FAT-04",
+   "input": {
+    "id": "T-FAT-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-04",
+     "basis": "evidence",
+     "summary": "If only one area is beaten up, deload just that area: drop or reduce the exercises that load it and train everything else normally."
+    },
+    "why": "If only one area is beaten up, deload just that area: drop or reduce the exercises that load it and train everything else normally."
+   }
+  },
+  {
+   "name": "T-FAT-05",
+   "input": {
+    "id": "T-FAT-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-05",
+     "basis": "evidence",
+     "summary": "If aches flare with heavy loads but not with high reps, use a week of higher reps on those exercises."
+    },
+    "why": "If aches flare with heavy loads but not with high reps, use a week of higher reps on those exercises."
+   }
+  },
+  {
+   "name": "T-FAT-06",
+   "input": {
+    "id": "T-FAT-06"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-06",
+     "basis": "evidence",
+     "summary": "After a big volume jump, time off, or moving from heavy work back to volume, run the first week at about 75% of the sets and one rep further from failure."
+    },
+    "why": "Jumping straight into a lot more volume makes you very sore; an easier first week avoids that."
+   }
+  },
+  {
+   "name": "T-FAT-07",
+   "input": {
+    "id": "T-FAT-07"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-07",
+     "basis": "evidence",
+     "summary": "Missed a session? Move it to the next free day, never stack two missed hard sessions on one day, and drop the least important one if the week runs out."
+    },
+    "why": "Missed a session? Move it to the next free day, never stack two missed hard sessions on one day, and drop the least important one if the week runs out."
+   }
+  },
+  {
+   "name": "T-FAT-08",
+   "input": {
+    "id": "T-FAT-08"
+   },
+   "output": {
+    "rule": {
+     "id": "T-FAT-08",
+     "basis": "evidence",
+     "summary": "Feeling drained? Swap today for the lightest session of the week."
+    },
+    "why": "Feeling drained? Swap today for the lightest session of the week."
+   }
+  },
+  {
+   "name": "S-01",
+   "input": {
+    "id": "S-01"
+   },
+   "output": {
+    "rule": {
+     "id": "S-01",
+     "basis": "heuristic",
+     "summary": "Every sport session at moderate effort or harder counts as one hard session in your weekly load."
+    },
+    "why": "Every sport session at moderate effort or harder counts as one hard session in your weekly load."
+   }
+  },
+  {
+   "name": "S-02",
+   "input": {
+    "id": "S-02"
+   },
+   "output": {
+    "rule": {
+     "id": "S-02",
+     "basis": "evidence",
+     "summary": "Each weekly sport session trims lifting volume for the muscles that sport works hardest: 0.5–1.5 sets per session, at most 4 per muscle, never below 4 sets."
+    },
+    "why": "Your sport already works these muscles, so lifting volume for them is trimmed to protect recovery."
+   }
+  },
+  {
+   "name": "S-03",
+   "input": {
+    "id": "S-03"
+   },
+   "output": {
+    "rule": {
+     "id": "S-03",
+     "basis": "evidence",
+     "summary": "Sport days are fixed; lifting days move around them using the scheduling rules."
+    },
+    "why": "Sport days are fixed; lifting days move around them using the scheduling rules."
+   }
+  },
+  {
+   "name": "S-04",
+   "input": {
+    "id": "S-04"
+   },
+   "output": {
+    "rule": {
+     "id": "S-04",
+     "basis": "evidence",
+     "summary": "Extra conditioning should be low-impact (bike, rower, swimming), short and hard or under an hour, after lifting or on other days."
+    },
+    "why": "Extra conditioning should be low-impact (bike, rower, swimming), short and hard or under an hour, after lifting or on other days."
+   }
+  },
+  {
+   "name": "S-05",
+   "input": {
+    "id": "S-05"
+   },
+   "output": {
+    "rule": {
+     "id": "S-05",
+     "basis": "evidence",
+     "summary": "When the sport comes first, leg muscles are capped at 8 sets, sets stop further from failure and high-risk lifts are avoided."
+    },
+    "why": "When the sport comes first, leg muscles are capped at 8 sets, sets stop further from failure and high-risk lifts are avoided."
+   }
+  },
+  {
+   "name": "S-06",
+   "input": {
+    "id": "S-06"
+   },
+   "output": {
+    "rule": {
+     "id": "S-06",
+     "basis": "evidence",
+     "summary": "Energy burned in sports is added to your calorie target."
+    },
+    "why": "Energy burned in sports is added to your calorie target."
+   }
+  },
+  {
+   "name": "N-PHS-01",
+   "input": {
+    "id": "N-PHS-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-PHS-01",
+     "basis": "heuristic",
+     "summary": "Your nutrition phase follows your goal (gain, maintain or lose) and you can override it."
+    },
+    "why": "Your nutrition phase follows your goal (gain, maintain or lose) and you can override it."
+   }
+  },
+  {
+   "name": "N-PHS-02",
+   "input": {
+    "id": "N-PHS-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-PHS-02",
+     "basis": "evidence",
+     "summary": "Spend at least four times as long gaining or maintaining as cutting."
+    },
+    "why": "Spend at least four times as long gaining or maintaining as cutting."
+   }
+  },
+  {
+   "name": "N-PHS-03",
+   "input": {
+    "id": "N-PHS-03"
+   },
+   "output": {
+    "rule": {
+     "id": "N-PHS-03",
+     "basis": "evidence",
+     "summary": "Muscle can be built at maintenance or in a small deficit, especially by newer lifters; higher body fat does not stop gains."
+    },
+    "why": "Muscle can be built at maintenance or in a small deficit, especially by newer lifters; higher body fat does not stop gains."
+   }
+  },
+  {
+   "name": "N-MNT-01",
+   "input": {
+    "id": "N-MNT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-MNT-01",
+     "basis": "evidence",
+     "summary": "Resting energy use is roughly 22 kcal per kg of bodyweight per day."
+    },
+    "why": "Resting energy use is roughly 22 kcal per kg of bodyweight per day."
+   }
+  },
+  {
+   "name": "N-MNT-02",
+   "input": {
+    "id": "N-MNT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-MNT-02",
+     "basis": "evidence",
+     "summary": "Multiply by an activity factor for lifters: sedentary 1.3–1.6, lightly active 1.5–1.8, active 1.7–2.0, very active 1.9–2.2."
+    },
+    "why": "Multiply by an activity factor for lifters: sedentary 1.3–1.6, lightly active 1.5–1.8, active 1.7–2.0, very active 1.9–2.2."
+   }
+  },
+  {
+   "name": "N-MNT-03",
+   "input": {
+    "id": "N-MNT-03"
+   },
+   "output": {
+    "rule": {
+     "id": "N-MNT-03",
+     "basis": "evidence",
+     "summary": "Any maintenance estimate is rough; adjusting from your weight trend is what makes it accurate."
+    },
+    "why": "Every calorie formula is a guess; your weight trend over the next weeks corrects it."
+   }
+  },
+  {
+   "name": "N-MNT-04",
+   "input": {
+    "id": "N-MNT-04"
+   },
+   "output": {
+    "rule": {
+     "id": "N-MNT-04",
+     "basis": "heuristic",
+     "summary": "Your lifestyle factor excludes sports; those are added separately so they are not counted twice."
+    },
+    "why": "Your lifestyle factor excludes sports; those are added separately so they are not counted twice."
+   }
+  },
+  {
+   "name": "N-RAT-01",
+   "input": {
+    "id": "N-RAT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-RAT-01",
+     "basis": "evidence",
+     "summary": "Lose 0.5–1% of bodyweight per week; leaner people should stay near 0.5%."
+    },
+    "why": "Lose 0.5–1% of bodyweight per week; leaner people should stay near 0.5%."
+   }
+  },
+  {
+   "name": "N-RAT-02",
+   "input": {
+    "id": "N-RAT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-RAT-02",
+     "basis": "evidence",
+     "summary": "Gain per month: novices 1–2% of bodyweight, intermediates 0.5–1.5%, advanced up to 0.5%."
+    },
+    "why": "Gain per month: novices 1–2% of bodyweight, intermediates 0.5–1.5%, advanced up to 0.5%."
+   }
+  },
+  {
+   "name": "N-RAT-03",
+   "input": {
+    "id": "N-RAT-03"
+   },
+   "output": {
+    "rule": {
+     "id": "N-RAT-03",
+     "basis": "evidence",
+     "summary": "About 7,700 kcal per kg of bodyweight change, so the daily calorie change ≈ weekly kg change × 1,100."
+    },
+    "why": "About 7,700 kcal per kg of bodyweight change, so the daily calorie change ≈ weekly kg change × 1,100."
+   }
+  },
+  {
+   "name": "N-RAT-04",
+   "input": {
+    "id": "N-RAT-04"
+   },
+   "output": {
+    "rule": {
+     "id": "N-RAT-04",
+     "basis": "evidence",
+     "summary": "Deficits much bigger than 500 kcal/day cost more muscle; the app warns above 750."
+    },
+    "why": "Deficits much bigger than 500 kcal/day cost more muscle; the app warns above 750."
+   }
+  },
+  {
+   "name": "N-SPT-01",
+   "input": {
+    "id": "N-SPT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-SPT-01",
+     "basis": "evidence",
+     "summary": "Extra energy per 10 minutes of activity: light ≈ 0.44 kcal/kg, moderate ≈ 0.99, vigorous ≈ 1.54. Watches usually overestimate."
+    },
+    "why": "Extra energy per 10 minutes of activity: light ≈ 0.44 kcal/kg, moderate ≈ 0.99, vigorous ≈ 1.54. Watches usually overestimate."
+   }
+  },
+  {
+   "name": "N-SPT-02",
+   "input": {
+    "id": "N-SPT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-SPT-02",
+     "basis": "heuristic",
+     "summary": "Sport intensity maps to cardio intensity: light → light, moderate → moderate, hard → vigorous, match → between moderate and vigorous."
+    },
+    "why": "Sport intensity maps to cardio intensity: light → light, moderate → moderate, hard → vigorous, match → between moderate and vigorous."
+   }
+  },
+  {
+   "name": "N-SPT-03",
+   "input": {
+    "id": "N-SPT-03"
+   },
+   "output": {
+    "rule": {
+     "id": "N-SPT-03",
+     "basis": "heuristic",
+     "summary": "Sport calories are averaged over the week and added to every day."
+    },
+    "why": "Sport calories are averaged over the week and added to every day."
+   }
+  },
+  {
+   "name": "N-PRO-01",
+   "input": {
+    "id": "N-PRO-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-PRO-01",
+     "basis": "evidence",
+     "summary": "Eat at least 1.6 g of protein per kg of bodyweight when gaining or maintaining."
+    },
+    "why": "Eat at least 1.6 g of protein per kg of bodyweight when gaining or maintaining."
+   }
+  },
+  {
+   "name": "N-PRO-02",
+   "input": {
+    "id": "N-PRO-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-PRO-02",
+     "basis": "evidence",
+     "summary": "In a deficit, lean people (or anyone with unknown body fat) should eat at least 2.0 g/kg."
+    },
+    "why": "In a deficit, lean people (or anyone with unknown body fat) should eat at least 2.0 g/kg."
+   }
+  },
+  {
+   "name": "N-FAT-01",
+   "input": {
+    "id": "N-FAT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-FAT-01",
+     "basis": "evidence",
+     "summary": "Eat at least 40–60 g of fat per day depending on size; around a quarter of maintenance calories is a good default."
+    },
+    "why": "Eat at least 40–60 g of fat per day depending on size; around a quarter of maintenance calories is a good default."
+   }
+  },
+  {
+   "name": "N-CHO-01",
+   "input": {
+    "id": "N-CHO-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-CHO-01",
+     "basis": "evidence",
+     "summary": "Eat at least 2 g/kg of carbohydrate when gaining or maintaining and at least 1 g/kg in a deficit."
+    },
+    "why": "Eat at least 2 g/kg of carbohydrate when gaining or maintaining and at least 1 g/kg in a deficit."
+   }
+  },
+  {
+   "name": "N-MAC-01",
+   "input": {
+    "id": "N-MAC-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-MAC-01",
+     "basis": "evidence",
+     "summary": "Set protein first, then fat, then fill the rest of your calories with carbohydrate."
+    },
+    "why": "Set protein first, then fat, then fill the rest of your calories with carbohydrate."
+   }
+  },
+  {
+   "name": "N-WGT-01",
+   "input": {
+    "id": "N-WGT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-WGT-01",
+     "basis": "evidence",
+     "summary": "Weigh in the morning after the bathroom and before eating. Daily swings of 1–2% are normal."
+    },
+    "why": "Weigh in the morning after the bathroom and before eating. Daily swings of 1–2% are normal."
+   }
+  },
+  {
+   "name": "N-WGT-02",
+   "input": {
+    "id": "N-WGT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-WGT-02",
+     "basis": "evidence",
+     "summary": "Use the weekly average. A week needs at least 3 weigh-ins including a weekend day to be trusted."
+    },
+    "why": "Single weigh-ins bounce around; a weekly average from 3+ days including a weekend day is what counts."
+   }
+  },
+  {
+   "name": "N-WGT-03",
+   "input": {
+    "id": "N-WGT-03"
+   },
+   "output": {
+    "rule": {
+     "id": "N-WGT-03",
+     "basis": "evidence",
+     "summary": "A 14–21-day running average shows the long-term trend."
+    },
+    "why": "A 14–21-day running average shows the long-term trend."
+   }
+  },
+  {
+   "name": "N-WGT-04",
+   "input": {
+    "id": "N-WGT-04"
+   },
+   "output": {
+    "rule": {
+     "id": "N-WGT-04",
+     "basis": "evidence",
+     "summary": "Ignore the first week of a new gain or loss phase for rate decisions: water and food volume shift."
+    },
+    "why": "Ignore the first week of a new gain or loss phase for rate decisions: water and food volume shift."
+   }
+  },
+  {
+   "name": "N-ADJ-01",
+   "input": {
+    "id": "N-ADJ-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ADJ-01",
+     "basis": "evidence",
+     "summary": "If weight did not move in the right direction in week one of a phase, adjust the activity factor by 0.2."
+    },
+    "why": "If weight did not move in the right direction in week one of a phase, adjust the activity factor by 0.2."
+   }
+  },
+  {
+   "name": "N-ADJ-02",
+   "input": {
+    "id": "N-ADJ-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ADJ-02",
+     "basis": "evidence",
+     "summary": "Judge rate over 2 weeks when losing (3 if light) and 3–4 weeks when gaining; adjust by 100–200 kcal if off target."
+    },
+    "why": "Judge rate over 2 weeks when losing (3 if light) and 3–4 weeks when gaining; adjust by 100–200 kcal if off target."
+   }
+  },
+  {
+   "name": "N-ADJ-03",
+   "input": {
+    "id": "N-ADJ-03"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ADJ-03",
+     "basis": "evidence",
+     "summary": "Wait at least 2 weeks after a calorie change before changing again."
+    },
+    "why": "After any calorie change the app waits two weeks before judging again, so water swings don’t fool it."
+   }
+  },
+  {
+   "name": "N-ADJ-04",
+   "input": {
+    "id": "N-ADJ-04"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ADJ-04",
+     "basis": "evidence",
+     "summary": "Calorie cuts come from carbs and fat; protein stays the same."
+    },
+    "why": "Calorie cuts come from carbs and fat; protein stays the same."
+   }
+  },
+  {
+   "name": "N-ADJ-05",
+   "input": {
+    "id": "N-ADJ-05"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ADJ-05",
+     "basis": "evidence",
+     "summary": "A stalled cut can also be fixed with about 2,500 more steps a day or a few short cardio sessions, kept apart from lifting."
+    },
+    "why": "A stalled cut can also be fixed with about 2,500 more steps a day or a few short cardio sessions, kept apart from lifting."
+   }
+  },
+  {
+   "name": "N-ADJ-06",
+   "input": {
+    "id": "N-ADJ-06"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ADJ-06",
+     "basis": "heuristic",
+     "summary": "At maintenance, if weight drifts more than 0.25% per week over 3 weeks, adjust by 100–150 kcal."
+    },
+    "why": "At maintenance, if weight drifts more than 0.25% per week over 3 weeks, adjust by 100–150 kcal."
+   }
+  },
+  {
+   "name": "X-NONE-00",
+   "input": {
+    "id": "X-NONE-00"
+   },
+   "output": {
+    "rule": null,
+    "why": "General guidance."
+   }
+  }
+ ]
+}
