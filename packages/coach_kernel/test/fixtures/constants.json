@@ -1,0 +1,625 @@
+{
+ "fn": "constants",
+ "cases": [
+  {
+   "name": "ENGINE_VERSION",
+   "input": {},
+   "output": "1.0.0"
+  },
+  {
+   "name": "VOLUME",
+   "input": {},
+   "output": {
+    "minEffective": 4,
+    "practical": [
+     10,
+     20
+    ],
+    "ceiling": 30,
+    "baseByStatus": {
+     "novice": 10,
+     "intermediate": 12,
+     "advanced": 14
+    },
+    "sportPriorityBase": 6,
+    "balancedSportPenalty": 2,
+    "balancedSportThreshold": 2,
+    "fatLossCap": 14,
+    "frontDeltFactor": 0.5,
+    "normalCap": 20,
+    "specialization": {
+     "up": 1.5,
+     "others": 0.6,
+     "weeks": [
+      8,
+      12
+     ]
+    },
+    "countingMinReps": 4,
+    "countingMaxRir": 4,
+    "fractional": {
+     "primary": 1,
+     "secondary": 0.5
+    },
+    "sportPriorityLowerCap": 8,
+    "plateauAddSets": 2
+   }
+  },
+  {
+   "name": "FREQUENCY",
+   "input": {},
+   "output": {
+    "maxSetsPerMusclePerSession": 11,
+    "byWeeklySets": [
+     {
+      "max": 10,
+      "freq": [
+       1,
+       2
+      ]
+     },
+     {
+      "max": 20,
+      "freq": [
+       2,
+       3
+      ]
+     },
+     {
+      "max": 30,
+      "freq": [
+       3,
+       6
+      ]
+     }
+    ],
+    "liftDays": {
+     "min": 2,
+     "typical": [
+      3,
+      5
+     ],
+     "max": 6
+    }
+   }
+  },
+  {
+   "name": "INTENSITY",
+   "input": {},
+   "output": {
+    "lower_free_compound": {
+     "reps": [
+      4,
+      8
+     ],
+     "rir": [
+      2,
+      4
+     ]
+    },
+    "lower_machine_compound": {
+     "reps": [
+      4,
+      12
+     ],
+     "rir": [
+      1,
+      4
+     ]
+    },
+    "upper_free_press": {
+     "reps": [
+      4,
+      12
+     ],
+     "rir": [
+      1,
+      4
+     ]
+    },
+    "upper_machine_press": {
+     "reps": [
+      6,
+      15
+     ],
+     "rir": [
+      0,
+      3
+     ]
+    },
+    "pulling_compound": {
+     "reps": [
+      6,
+      15
+     ],
+     "rir": [
+      0,
+      3
+     ]
+    },
+    "isolation": {
+     "reps": [
+      8,
+      20
+     ],
+     "rir": [
+      0,
+      2
+     ]
+    },
+    "sportPriorityRirBump": 1
+   }
+  },
+  {
+   "name": "SUB_RANGES",
+   "input": {},
+   "output": {
+    "lower_free_compound": {
+     "low": [
+      4,
+      6
+     ],
+     "mid": [
+      6,
+      8
+     ]
+    },
+    "lower_machine_compound": {
+     "low": [
+      5,
+      8
+     ],
+     "mid": [
+      8,
+      12
+     ]
+    },
+    "upper_free_press": {
+     "low": [
+      5,
+      8
+     ],
+     "mid": [
+      8,
+      12
+     ]
+    },
+    "upper_machine_press": {
+     "low": [
+      6,
+      10
+     ],
+     "mid": [
+      10,
+      15
+     ]
+    },
+    "pulling_compound": {
+     "low": [
+      6,
+      10
+     ],
+     "mid": [
+      10,
+      15
+     ]
+    },
+    "isolation": {
+     "low": [
+      10,
+      15
+     ],
+     "mid": [
+      10,
+      15
+     ],
+     "high": [
+      15,
+      20
+     ]
+    }
+   }
+  },
+  {
+   "name": "REST_SECONDS",
+   "input": {},
+   "output": {
+    "strengthMain": 180,
+    "lowerFreeCompound": 180,
+    "compound": 150,
+    "isolation": 90,
+    "minimumHypertrophy": 90
+   }
+  },
+  {
+   "name": "SESSION_TIME",
+   "input": {},
+   "output": {
+    "workSecondsCompound": 50,
+    "workSecondsIsolation": 40,
+    "warmupMinutes": 8,
+    "minSetsPerExercise": 2,
+    "maxSetsPerExercise": 5,
+    "startSetsCompound": 3,
+    "startSetsIsolation": 2,
+    "maxExercisesPerSession": 8
+   }
+  },
+  {
+   "name": "PROGRESSION",
+   "input": {},
+   "output": {
+    "loadAdjustPerRep": 0.04,
+    "heavyLowerJumpThresholdKg": 100,
+    "heavyLowerJumpKg": 5
+   }
+  },
+  {
+   "name": "DELOAD",
+   "input": {},
+   "output": {
+    "setCutDefault": 0.4,
+    "setCutRange": [
+     0.3,
+     0.5
+    ],
+    "yesThreshold": 2
+   }
+  },
+  {
+   "name": "TARGETED_DELOAD",
+   "input": {},
+   "output": {
+    "reduceSetsPct": 0.5
+   }
+  },
+  {
+   "name": "INTRO_WEEK",
+   "input": {},
+   "output": {
+    "setPct": 0.75,
+    "rirBump": 1,
+    "volumeJumpTrigger": 0.2,
+    "weeksOffTrigger": 2
+   }
+  },
+  {
+   "name": "HIGHER_REP_WEEK",
+   "input": {},
+   "output": {
+    "lower_free_compound": [
+     10,
+     15
+    ],
+    "lower_machine_compound": [
+     12,
+     20
+    ],
+    "upper_free_press": [
+     12,
+     15
+    ],
+    "upper_machine_press": [
+     12,
+     20
+    ],
+    "pulling_compound": [
+     12,
+     20
+    ],
+    "isolation": [
+     15,
+     25
+    ]
+   }
+  },
+  {
+   "name": "RIR_DRIFT",
+   "input": {},
+   "output": {
+    "minBelowFloor": 1,
+    "similarLoadPct": 0.025,
+    "consecutiveExposures": 2,
+    "exercises": 2
+   }
+  },
+  {
+   "name": "REVIEW_PLAN",
+   "input": {},
+   "output": {
+    "volumeCutSets": 2,
+    "volumeCutMinTarget": 10,
+    "painDaysForInjury": 2,
+    "painLookbackDays": 14
+   }
+  },
+  {
+   "name": "PLATEAU_WINDOW",
+   "input": {},
+   "output": {
+    "novice": {
+     "exposures": 3
+    },
+    "intermediate": {
+     "weeks": 4
+    },
+    "advanced": {
+     "weeks": 8
+    }
+   }
+  },
+  {
+   "name": "SPORT_TRIM_PER_SESSION",
+   "input": {},
+   "output": {
+    "0": 0,
+    "1": 0.5,
+    "2": 1,
+    "3": 1.5
+   }
+  },
+  {
+   "name": "SPORT_TRIM_MAX",
+   "input": {},
+   "output": 4
+  },
+  {
+   "name": "STRENGTH",
+   "input": {},
+   "output": {
+    "volume": {
+     "weeks": [
+      6,
+      12
+     ],
+     "defaultWeeks": 8,
+     "singlesPerWeek": [
+      1,
+      3
+     ],
+     "rpe": [
+      5,
+      8
+     ],
+     "secondarySets": [
+      10,
+      20
+     ]
+    },
+    "load": {
+     "weeks": [
+      4,
+      8
+     ],
+     "defaultWeeks": 6,
+     "singlesPerWeek": [
+      2,
+      4
+     ],
+     "rpe": [
+      6,
+      9
+     ],
+     "backoffSets": 2,
+     "backoffRpe": 7,
+     "backoffReps": [
+      5,
+      3
+     ],
+     "secondarySets": [
+      5,
+      10
+     ]
+    },
+    "peak": {
+     "singlesPerWeek": [
+      2,
+      5
+     ],
+     "rpe": [
+      7,
+      10
+     ],
+     "backoffSets": [
+      0,
+      3
+     ],
+     "backoffRpe": 7,
+     "reps": [
+      4,
+      2
+     ],
+     "secondarySets": [
+      0,
+      4
+     ]
+    },
+    "secondaryTargetVolume": 12,
+    "secondaryTargetLoad": 8,
+    "secondaryTargetPeak": 4
+   }
+  },
+  {
+   "name": "BLOCK_WEEKS",
+   "input": {},
+   "output": {
+    "hypertrophy": 6,
+    "sport_support": 6,
+    "strength_volume": 8,
+    "strength_load": 6
+   }
+  },
+  {
+   "name": "NUTRITION",
+   "input": {},
+   "output": {
+    "bmrPerKg": 22,
+    "multipliers": {
+     "sedentary": [
+      1.3,
+      1.6
+     ],
+     "lightly_active": [
+      1.5,
+      1.8
+     ],
+     "active": [
+      1.7,
+      2
+     ],
+     "very_active": [
+      1.9,
+      2.2
+     ]
+    },
+    "multiplierDefault": {
+     "sedentary": 1.45,
+     "lightly_active": 1.65,
+     "active": 1.85,
+     "very_active": 2.05
+    },
+    "kcalPerKgWeeklyChange": 1100,
+    "lossRatePctPerWeek": {
+     "min": 0.5,
+     "max": 1,
+     "default": 0.75,
+     "lean": 0.5,
+     "tolerance": 0.25
+    },
+    "lossRateOptions": [
+     0.5,
+     0.75,
+     1
+    ],
+    "leanBodyFat": {
+     "male": 15,
+     "female": 23,
+     "unspecified": 15
+    },
+    "gainRatePctPerMonth": {
+     "novice": [
+      1,
+      2
+     ],
+     "intermediate": [
+      0.5,
+      1.5
+     ],
+     "advanced": [
+      0,
+      0.5
+     ]
+    },
+    "gainDefault": {
+     "novice": 1.5,
+     "intermediate": 1,
+     "advanced": 0.5
+    },
+    "gainRateOptions": [
+     0.25,
+     0.5,
+     1,
+     1.5,
+     2
+    ],
+    "bigDeficitWarn": 750,
+    "cardioKcalPerKgPer10Min": {
+     "light": 0.44,
+     "moderate": 0.99,
+     "vigorous": 1.54
+    },
+    "sportCalibration": {
+     "minLoggedSessions": 3,
+     "lookbackDays": 28
+    },
+    "recomputeOnBodyweightKg": 0.5,
+    "protein": {
+     "base": 1.6,
+     "leanDeficit": 2,
+     "leanThresholdBf": {
+      "male": 19,
+      "female": 27,
+      "unspecified": 19
+     }
+    },
+    "fatMin": {
+     "lightKg": 60,
+     "heavyKg": 90,
+     "low": 40,
+     "high": 60
+    },
+    "fatShareOfMaintenance": 0.25,
+    "carbMin": {
+     "surplusOrMaint": 2,
+     "deficit": 1
+    },
+    "kcalBand": 100,
+    "adjust": {
+     "initialMultiplierStep": 0.2,
+     "under3000": [
+      100,
+      200
+     ],
+     "over3000": [
+      150,
+      200
+     ],
+     "defaultUnder": 150,
+     "defaultOver": 175,
+     "minDaysBetween": 14,
+     "maintainDriftPctPerWeek": 0.25,
+     "maintainStep": 125
+    },
+    "weighIns": {
+     "minPerWeek": 3,
+     "needsWeekendDay": true,
+     "runningAvgDays": [
+      14,
+      21
+     ]
+    },
+    "gainToCutRatio": 4,
+    "safety": {
+     "minKcalVsBmr": 1.1,
+     "maxLossPctPerWeek": 1
+    }
+   }
+  },
+  {
+   "name": "REVIEW",
+   "input": {},
+   "output": {
+    "energyDreadThreshold": 2,
+    "skippedDreadThreshold": 2,
+    "sleepDropHours": 0.5,
+    "sleepNoBaseline": 7,
+    "stressRise": 1,
+    "soreAboveAverage": 2,
+    "perfDropExercises": 2,
+    "e1rmDropPct": 0.03,
+    "proposalExpiryDays": 7,
+    "lowReadinessScore": 1
+   }
+  },
+  {
+   "name": "STATUS_INFERENCE",
+   "input": {},
+   "output": {
+    "minWeeks": 8,
+    "novice": 0.6,
+    "advanced": 0.15,
+    "consecutiveReviews": 2
+   }
+  },
+  {
+   "name": "DEFAULT_INCREMENTS",
+   "input": {},
+   "output": {
+    "barbell": 2.5,
+    "dumbbell": 2,
+    "machine": 5,
+    "cable": 2.5
+   }
+  }
+ ]
+}

@@ -63,8 +63,11 @@ List<T> stableSorted<T>(Iterable<T> xs, int Function(T a, T b) compare) {
 }
 
 // ---------- Dates ----------
-DateTime _toUtc(String iso) =>
-    DateTime.utc(int.parse(iso.substring(0, 4)), int.parse(iso.substring(5, 7)), int.parse(iso.substring(8, 10)));
+DateTime _toUtc(String iso) => DateTime.utc(
+  int.parse(iso.substring(0, 4)),
+  int.parse(iso.substring(5, 7)),
+  int.parse(iso.substring(8, 10)),
+);
 
 String _two(int n) => n.toString().padLeft(2, '0');
 String _fromUtc(DateTime d) => '${d.year.toString().padLeft(4, '0')}-${_two(d.month)}-${_two(d.day)}';
