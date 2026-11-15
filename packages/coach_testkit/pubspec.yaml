@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: GPL-3.0-only
+name: coach_testkit
+description: "Fixture loader and JSON diff for the coach packages' tests."
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.11.0
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^6.0.0
