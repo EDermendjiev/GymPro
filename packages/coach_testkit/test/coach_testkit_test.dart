@@ -67,15 +67,55 @@ void main() {
       expect(c.output, text);
     });
 
-    test('a case without an output key has a null output', () {
+    test('an explicit null output is allowed', () {
       write('void.json', {
         'fn': 'f',
         'cases': [
-          {'name': 'n', 'input': <String, Object?>{}},
+          {'name': 'n', 'input': <String, Object?>{}, 'output': null},
         ],
       });
 
       expect(loadFixture('void.json', root: dir.path).single.output, isNull);
+    });
+
+    test('names the file and the case when a case has no output key', () {
+      write('void.json', {
+        'fn': 'f',
+        'cases': [
+          {'name': 'first', 'input': <String, Object?>{}, 'output': 1},
+          {'name': 'second', 'input': <String, Object?>{}},
+        ],
+      });
+
+      expect(
+        () => loadFixture('void.json', root: dir.path),
+        throwsNaming<FormatException>('void.json', '"second" must have an "output" key'),
+      );
+    });
+
+    test('accepts the expected function name', () {
+      write('fn.json', {
+        'fn': 'add',
+        'cases': [
+          {'name': 'n', 'input': <String, Object?>{}, 'output': 1},
+        ],
+      });
+
+      expect(loadFixture('fn.json', root: dir.path, fn: 'add'), hasLength(1));
+    });
+
+    test('names the file and both functions when the file is for another function', () {
+      write('fn.json', {
+        'fn': 'add',
+        'cases': [
+          {'name': 'n', 'input': <String, Object?>{}, 'output': 1},
+        ],
+      });
+
+      expect(
+        () => loadFixture('fn.json', root: dir.path, fn: 'subtract'),
+        throwsNaming<FormatException>('fn.json', 'is for "add", not for "subtract"'),
+      );
     });
 
     test('looks in test/fixtures by default and names a missing file', () {
@@ -226,6 +266,43 @@ void main() {
       expect(jsonDiff(double.negativeInfinity, 0), isNotNull);
     });
 
+    test('the tolerance is 1e-9, absolute', () {
+      expect(jsonDiff(1, 1 + 9e-10), isNull);
+      expect(jsonDiff(1 + 9e-10, 1), isNull);
+      expect(jsonDiff(1, 1 + 1.2e-9), isNotNull);
+      expect(jsonDiff(1 + 1.2e-9, 1), isNotNull);
+    });
+
+    test('the tolerance swallows any value smaller than itself', () {
+      expect(jsonDiff(4e-10, 0), isNull);
+      expect(jsonDiff(4e-10, -4e-10), isNull);
+      expect(jsonDiff(4e-10, 8e-10), isNull);
+    });
+
+    test('the tolerance is below the spacing of doubles from 2^23 up, where the comparison is exact', () {
+      const next = 8388608.000000002; // The double that follows 2^23.
+      expect(next, isNot(8388608.0));
+      expect(jsonDiff(8388608.0, next), isNotNull);
+      expect(jsonDiff(next, 8388608.0), isNotNull);
+    });
+
+    test('two ints compare exactly, at the ends of the 64-bit range too', () {
+      const min = -9223372036854775808;
+      const max = 9223372036854775807;
+
+      expect(jsonDiff(min, 0), '\$: $min != 0');
+      expect(jsonDiff(0, min), '\$: 0 != $min');
+      expect(jsonDiff(min, max), isNotNull);
+      expect(jsonDiff(max, min), isNotNull);
+      expect(jsonDiff(max, max - 1), isNotNull);
+      expect(jsonDiff(min, min + 1), isNotNull);
+      // The difference of these two wraps around to the smallest int.
+      expect(jsonDiff(-4611686018427387904, 4611686018427387904), isNotNull);
+      expect(jsonDiff(4611686018427387904, -4611686018427387904), isNotNull);
+      expect(jsonDiff(min, min), isNull);
+      expect(jsonDiff(max, max), isNull);
+    });
+
     test('negative zero equals zero', () {
       expect(jsonDiff(-0.0, 0), isNull);
       expect(jsonDiff(0, -0.0), isNull);
@@ -268,6 +345,44 @@ void main() {
       expect(jsonDiff({'a': ''}, <String, Object?>{}), r'$.a: "" != null');
     });
 
+    test('a key that is not a plain identifier is quoted in the path', () {
+      expect(jsonDiff({'a.b': 1}, {'a.b': 2}), r'$["a.b"]: 1 != 2');
+      expect(
+        jsonDiff(
+          {
+            'a': {'b': 1},
+          },
+          {
+            'a': {'b': 2},
+          },
+        ),
+        r'$.a.b: 1 != 2',
+      );
+      expect(jsonDiff({'a[0]': 1}, {'a[0]': 2}), r'$["a[0]"]: 1 != 2');
+      expect(
+        jsonDiff(
+          {
+            'a': [1],
+          },
+          {
+            'a': [2],
+          },
+        ),
+        r'$.a[0]: 1 != 2',
+      );
+      expect(jsonDiff({'': 1}, {'': 2}), r'$[""]: 1 != 2');
+      expect(jsonDiff({'back-squat': 1}, {'back-squat': 2}), r'$["back-squat"]: 1 != 2');
+      expect(jsonDiff({'say "hi"': 1}, {'say "hi"': 2}), r'$["say \"hi\""]: 1 != 2');
+      expect(jsonDiff({'0': 1}, {'0': 2}), r'$["0"]: 1 != 2');
+      expect(jsonDiff({'main_lift2': 1}, {'main_lift2': 2}), r'$.main_lift2: 1 != 2');
+    });
+
+    test('a key that is not a string is a difference', () {
+      expect(jsonDiff({1: null}, <String, Object?>{}), r'$: key 1 (int) is not a string');
+      expect(jsonDiff({'a': 2, 1: 'x'}, {'a': 2}), r'$: key 1 (int) is not a string');
+      expect(jsonDiff({1: 'x'}, {'1': 'x'}), r'$["1"]: null != "x"');
+    });
+
     test('reports the first difference in the key order of expected, then the extra keys of actual', () {
       expect(jsonDiff({'z': 1, 'a': 1, 'extra': 9}, {'a': 2, 'z': 2}), r'$.a: 1 != 2');
       expect(jsonDiff({'extra': 9, 'a': 1, 'z': 1}, {'z': 2, 'a': 2}), r'$.z: 1 != 2');
@@ -281,10 +396,32 @@ void main() {
       expect(jsonDiff(<Object?>[], <Object?>[]), isNull);
     });
 
-    test('length is compared first', () {
-      expect(jsonDiff([9, 2], [1, 2, 3]), r'$: length 2 != 3');
-      expect(jsonDiff([1], <Object?>[]), r'$: length 1 != 0');
-      expect(jsonDiff([null], <Object?>[]), r'$: length 1 != 0');
+    test('length is compared first, and the message adds the first difference', () {
+      expect(jsonDiff([9, 2], [1, 2, 3]), r'$: length 2 != 3; first difference at $[0]: 9 != 1');
+      expect(jsonDiff([1, 2, 3, 5], [1, 2, 4]), r'$: length 4 != 3; first difference at $[2]: 3 != 4');
+      expect(
+        jsonDiff(
+          {
+            'a': [
+              {'b': 1},
+            ],
+          },
+          {
+            'a': [
+              {'b': 2},
+              {'b': 3},
+            ],
+          },
+        ),
+        r'$.a: length 1 != 2; first difference at $.a[0].b: 1 != 2',
+      );
+    });
+
+    test('when one list starts with the other, the first difference is the first extra element', () {
+      expect(jsonDiff([1, 2], [1, 2, 'x']), r'$: length 2 != 3; first difference at $[2]: nothing != "x"');
+      expect(jsonDiff([1, 2, 'x'], [1, 2]), r'$: length 3 != 2; first difference at $[2]: "x" != nothing');
+      expect(jsonDiff([1], <Object?>[]), r'$: length 1 != 0; first difference at $[0]: 1 != nothing');
+      expect(jsonDiff([null], <Object?>[]), r'$: length 1 != 0; first difference at $[0]: null != nothing');
     });
 
     test('order is significant', () {
@@ -293,7 +430,7 @@ void main() {
 
     test('duplicates are significant', () {
       expect(jsonDiff([1, 1, 2], [1, 2, 2]), r'$[1]: 1 != 2');
-      expect(jsonDiff([1, 1], [1]), r'$: length 2 != 1');
+      expect(jsonDiff([1, 1], [1]), startsWith(r'$: length 2 != 1;'));
     });
 
     test('the path leads to the first difference in a nested value', () {
@@ -343,6 +480,82 @@ void main() {
       expect(jsonDiff('a', 'A'), r'$: "a" != "A"');
       expect(jsonDiff('null', null), r'$: "null" != null');
       expect(jsonDiff(true, false), r'$: true != false');
+    });
+  });
+
+  group('jsonDiff values that are not JSON', () {
+    test('an enum value never equals its name', () {
+      expect(jsonDiff(_Lift.squat, 'squat'), r'$: _Lift.squat (_Lift) != "squat"');
+      expect(jsonDiff(_Lift.squat, '_Lift.squat'), isNotNull);
+      expect(jsonDiff(_Lift.squat, 0), isNotNull);
+      expect(jsonDiff(_Lift.squat, _Lift.squat), isNotNull);
+    });
+
+    test('a DateTime never equals its text', () {
+      final date = DateTime.utc(2026, 1, 2);
+
+      expect(
+        jsonDiff(date, '2026-01-02T00:00:00.000Z'),
+        r'$: 2026-01-02 00:00:00.000Z (DateTime) != "2026-01-02T00:00:00.000Z"',
+      );
+      expect(jsonDiff(date, date), isNotNull);
+      expect(jsonDiff(date, date.millisecondsSinceEpoch), isNotNull);
+    });
+
+    test('a Set never equals a list', () {
+      expect(jsonDiff({1, 2}, [1, 2]), allOf(startsWith(r'$: {1, 2} ('), endsWith('Set<int>) != [1, 2]')));
+      expect(jsonDiff(<Object?>{}, <Object?>[]), isNotNull);
+      expect(jsonDiff(<int>{}, <String, Object?>{}), isNotNull);
+      expect(jsonDiff({1, 2}, {1, 2}), isNotNull);
+    });
+
+    test('a value whose == accepts everything equals nothing', () {
+      expect(jsonDiff(_EqualsEverything(), 'x'), r'$: anything (_EqualsEverything) != "x"');
+      expect(jsonDiff(_EqualsEverything(), null), r'$: anything (_EqualsEverything) != null');
+      expect(jsonDiff(_EqualsEverything(), true), isNotNull);
+      expect(jsonDiff(_EqualsEverything(), 1), isNotNull);
+      expect(jsonDiff(_EqualsEverything(), <Object?>[]), isNotNull);
+      expect(jsonDiff(_EqualsEverything(), <String, Object?>{}), isNotNull);
+      expect(jsonDiff(_EqualsEverything(), _EqualsEverything()), isNotNull);
+      expect(jsonDiff({'a': _EqualsEverything()}, {'a': 'x'}), r'$.a: anything (_EqualsEverything) != "x"');
+      expect(jsonDiff([_EqualsEverything()], ['x']), r'$[0]: anything (_EqualsEverything) != "x"');
+    });
+
+    test('the type is not added to a JSON value', () {
+      expect(jsonDiff('x', _Lift.squat), r'$: "x" != _Lift.squat (_Lift)');
+      expect(jsonDiff(1.5, 'x'), r'$: 1.5 != "x"');
+    });
+  });
+
+  group('jsonDiff long values', () {
+    test('a printed value is cut after 120 characters', () {
+      final long = 'a' * 200;
+
+      expect(jsonDiff(long, null), '\$: "${'a' * 119}… != null');
+      expect(jsonDiff(null, long), '\$: null != "${'a' * 119}…');
+      expect(jsonDiff(List.filled(100, 1), null), '\$: [${'1, ' * 39}1,… != null');
+    });
+
+    test('a value of exactly 120 characters is printed whole', () {
+      final text = 'a' * 118; // 120 with its quotes.
+
+      expect(jsonDiff(text, null), '\$: "$text" != null');
+    });
+
+    test('two long strings that differ past the cut say where', () {
+      final actual = '${'a' * 150}x${'a' * 10}';
+      final expected = '${'a' * 150}y${'a' * 10}';
+
+      expect(
+        jsonDiff(actual, expected),
+        '\$: "${'a' * 119}… != "${'a' * 119}… (the strings differ from character 150)',
+      );
+      expect(jsonDiff('${'a' * 150}x', 'a' * 150), endsWith('(the strings differ from character 150)'));
+    });
+
+    test('short strings do not say where they differ', () {
+      expect(jsonDiff('abc', 'abd'), r'$: "abc" != "abd"');
+      expect(jsonDiff('abc…', 'abd…'), r'$: "abc…" != "abd…"');
     });
   });
 
@@ -424,4 +637,17 @@ void main() {
       expect(((out['plan'] as Map<String, dynamic>)['days'] as List)[0], isA<Map<String, dynamic>>());
     });
   });
+}
+
+enum _Lift { squat }
+
+class _EqualsEverything {
+  @override
+  bool operator ==(Object other) => true;
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  String toString() => 'anything';
 }
