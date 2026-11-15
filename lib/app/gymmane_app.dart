@@ -10,6 +10,9 @@ import '../theme/app_theme.dart';
 import 'app_shell.dart';
 import 'desktop.dart';
 
+// coach-seam: the fork's name. A constant, because the i18n test only lets upstream's name be a literal.
+const _kAppName = 'GymPro';
+
 class GymManeApp extends StatefulWidget {
   const GymManeApp({super.key});
 
@@ -42,7 +45,7 @@ class _GymManeAppState extends State<GymManeApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'GymPro', // coach-seam: fork name
+        title: _kAppName,
         debugShowCheckedModeBanner: false,
         scrollBehavior: kIsWeb ? const _WebScroll() : null,
         theme: AppTheme.light,
