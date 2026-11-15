@@ -1,0 +1,162 @@
+{
+ "fn": "ranges",
+ "cases": [
+  {
+   "name": "two months, pairs of four",
+   "input": {
+    "from": "2026-01-01",
+    "to": "2026-03-01",
+    "days": 3,
+    "items": [
+     "a",
+     "b",
+     "c",
+     "d"
+    ],
+    "k": 2
+   },
+   "output": {
+    "daysBetween": 59,
+    "weekend": false,
+    "range": [
+     "2026-01-01",
+     "2026-01-02",
+     "2026-01-03"
+    ],
+    "combinations": [
+     [
+      "a",
+      "b"
+     ],
+     [
+      "a",
+      "c"
+     ],
+     [
+      "a",
+      "d"
+     ],
+     [
+      "b",
+      "c"
+     ],
+     [
+      "b",
+      "d"
+     ],
+     [
+      "c",
+      "d"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "across a leap day, all three",
+   "input": {
+    "from": "2028-02-27",
+    "to": "2028-03-02",
+    "days": 5,
+    "items": [
+     "a",
+     "b",
+     "c"
+    ],
+    "k": 3
+   },
+   "output": {
+    "daysBetween": 4,
+    "weekend": true,
+    "range": [
+     "2028-02-27",
+     "2028-02-28",
+     "2028-02-29",
+     "2028-03-01",
+     "2028-03-02"
+    ],
+    "combinations": [
+     [
+      "a",
+      "b",
+      "c"
+     ]
+    ]
+   }
+  },
+  {
+   "name": "backwards from a Sunday, empty choice",
+   "input": {
+    "from": "2026-10-25",
+    "to": "2026-10-20",
+    "days": 0,
+    "items": [
+     "a",
+     "b"
+    ],
+    "k": 0
+   },
+   "output": {
+    "daysBetween": -5,
+    "weekend": true,
+    "range": [],
+    "combinations": [
+     []
+    ]
+   }
+  },
+  {
+   "name": "a year from a Saturday, too many to choose",
+   "input": {
+    "from": "2026-10-24",
+    "to": "2027-10-24",
+    "days": 1,
+    "items": [
+     "a",
+     "b"
+    ],
+    "k": 3
+   },
+   "output": {
+    "daysBetween": 365,
+    "weekend": true,
+    "range": [
+     "2026-10-24"
+    ],
+    "combinations": []
+   }
+  },
+  {
+   "name": "same day, singles",
+   "input": {
+    "from": "2026-12-31",
+    "to": "2026-12-31",
+    "days": 2,
+    "items": [
+     "a",
+     "b",
+     "c"
+    ],
+    "k": 1
+   },
+   "output": {
+    "daysBetween": 0,
+    "weekend": false,
+    "range": [
+     "2026-12-31",
+     "2027-01-01"
+    ],
+    "combinations": [
+     [
+      "a"
+     ],
+     [
+      "b"
+     ],
+     [
+      "c"
+     ]
+    ]
+   }
+  }
+ ]
+}
