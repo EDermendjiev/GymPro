@@ -145,6 +145,41 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
+  coach_kernel:
+    dependency: "direct main"
+    description:
+      path: "packages/coach_kernel"
+      relative: true
+    source: path
+    version: "1.0.0"
+  coach_nutrition:
+    dependency: "direct main"
+    description:
+      path: "packages/coach_nutrition"
+      relative: true
+    source: path
+    version: "1.0.0"
+  coach_progression:
+    dependency: "direct main"
+    description:
+      path: "packages/coach_progression"
+      relative: true
+    source: path
+    version: "1.0.0"
+  coach_recovery:
+    dependency: "direct main"
+    description:
+      path: "packages/coach_recovery"
+      relative: true
+    source: path
+    version: "1.0.0"
+  coach_training:
+    dependency: "direct main"
+    description:
+      path: "packages/coach_training"
+      relative: true
+    source: path
+    version: "1.0.0"
   code_assets:
     dependency: transitive
     description:

@@ -29,6 +29,17 @@ dependencies:
   archive: ^4.0.9
   sync:
     path: packages/sync
+  # coach-seam: the coach packages (pure Dart). Only lib/coach/ imports them.
+  coach_kernel:
+    path: packages/coach_kernel
+  coach_progression:
+    path: packages/coach_progression
+  coach_training:
+    path: packages/coach_training
+  coach_recovery:
+    path: packages/coach_recovery
+  coach_nutrition:
+    path: packages/coach_nutrition
   barcode: ^2.2.9
   zxing2: ^0.2.4
   app_settings: ^8.0.3
