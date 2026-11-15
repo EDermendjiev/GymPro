@@ -1,0 +1,1167 @@
+{
+ "fn": "counting",
+ "cases": [
+  {
+   "name": "setCounts/3 reps",
+   "input": {
+    "call": "setCounts",
+    "reps": 3,
+    "rir": 1,
+    "isWarmup": false
+   },
+   "output": false
+  },
+  {
+   "name": "setCounts/4 reps at 4 RIR, both on the limit",
+   "input": {
+    "call": "setCounts",
+    "reps": 4,
+    "rir": 4,
+    "isWarmup": false
+   },
+   "output": true
+  },
+  {
+   "name": "setCounts/4.5 RIR",
+   "input": {
+    "call": "setCounts",
+    "reps": 8,
+    "rir": 4.5,
+    "isWarmup": false
+   },
+   "output": false
+  },
+  {
+   "name": "setCounts/5 RIR",
+   "input": {
+    "call": "setCounts",
+    "reps": 8,
+    "rir": 5,
+    "isWarmup": false
+   },
+   "output": false
+  },
+  {
+   "name": "setCounts/warm-up",
+   "input": {
+    "call": "setCounts",
+    "reps": 8,
+    "rir": 2,
+    "isWarmup": true
+   },
+   "output": false
+  },
+  {
+   "name": "setCounts/no RIR logged",
+   "input": {
+    "call": "setCounts",
+    "reps": 8,
+    "rir": null,
+    "isWarmup": false
+   },
+   "output": true
+  },
+  {
+   "name": "setCounts/to failure",
+   "input": {
+    "call": "setCounts",
+    "reps": 20,
+    "rir": 0,
+    "isWarmup": false
+   },
+   "output": true
+  },
+  {
+   "name": "muscleWeight/primary",
+   "input": {
+    "call": "muscleWeight",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "primary"
+     },
+     {
+      "muscle": "front_delts",
+      "role": "primary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "secondary"
+     }
+    ],
+    "muscle": "chest"
+   },
+   "output": 1
+  },
+  {
+   "name": "muscleWeight/secondary",
+   "input": {
+    "call": "muscleWeight",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "primary"
+     },
+     {
+      "muscle": "front_delts",
+      "role": "primary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "secondary"
+     }
+    ],
+    "muscle": "triceps"
+   },
+   "output": 0.5
+  },
+  {
+   "name": "muscleWeight/not trained",
+   "input": {
+    "call": "muscleWeight",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "primary"
+     },
+     {
+      "muscle": "front_delts",
+      "role": "primary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "secondary"
+     }
+    ],
+    "muscle": "quads"
+   },
+   "output": 0
+  },
+  {
+   "name": "muscleWeight/listed twice, first entry wins",
+   "input": {
+    "call": "muscleWeight",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "secondary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "primary"
+     },
+     {
+      "muscle": "chest",
+      "role": "primary"
+     }
+    ],
+    "muscle": "chest"
+   },
+   "output": 0.5
+  },
+  {
+   "name": "fractionalSets/bench press, 3 sets",
+   "input": {
+    "call": "fractionalSets",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "primary"
+     },
+     {
+      "muscle": "front_delts",
+      "role": "primary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "secondary"
+     }
+    ],
+    "sets": 3
+   },
+   "output": {
+    "chest": 3,
+    "front_delts": 3,
+    "triceps": 1.5
+   }
+  },
+  {
+   "name": "fractionalSets/back squat, 4 sets",
+   "input": {
+    "call": "fractionalSets",
+    "muscles": [
+     {
+      "muscle": "quads",
+      "role": "primary"
+     },
+     {
+      "muscle": "glutes",
+      "role": "primary"
+     },
+     {
+      "muscle": "erectors",
+      "role": "secondary"
+     }
+    ],
+    "sets": 4
+   },
+   "output": {
+    "quads": 4,
+    "glutes": 4,
+    "erectors": 2
+   }
+  },
+  {
+   "name": "fractionalSets/no sets",
+   "input": {
+    "call": "fractionalSets",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "primary"
+     },
+     {
+      "muscle": "front_delts",
+      "role": "primary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "secondary"
+     }
+    ],
+    "sets": 0
+   },
+   "output": {
+    "chest": 0,
+    "front_delts": 0,
+    "triceps": 0
+   }
+  },
+  {
+   "name": "fractionalSets/half sets",
+   "input": {
+    "call": "fractionalSets",
+    "muscles": [
+     {
+      "muscle": "glutes",
+      "role": "primary"
+     },
+     {
+      "muscle": "hamstrings",
+      "role": "primary"
+     },
+     {
+      "muscle": "erectors",
+      "role": "primary"
+     },
+     {
+      "muscle": "back",
+      "role": "secondary"
+     }
+    ],
+    "sets": 2.5
+   },
+   "output": {
+    "glutes": 2.5,
+    "hamstrings": 2.5,
+    "erectors": 2.5,
+    "back": 1.25
+   }
+  },
+  {
+   "name": "fractionalSets/listed twice, both entries add up",
+   "input": {
+    "call": "fractionalSets",
+    "muscles": [
+     {
+      "muscle": "chest",
+      "role": "secondary"
+     },
+     {
+      "muscle": "triceps",
+      "role": "primary"
+     },
+     {
+      "muscle": "chest",
+      "role": "primary"
+     }
+    ],
+    "sets": 3
+   },
+   "output": {
+    "chest": 4.5,
+    "triceps": 3
+   }
+  },
+  {
+   "name": "fractionalSets/no muscles",
+   "input": {
+    "call": "fractionalSets",
+    "muscles": [],
+    "sets": 3
+   },
+   "output": {}
+  },
+  {
+   "name": "emptyMuscleMap",
+   "input": {
+    "call": "emptyMuscleMap"
+   },
+   "output": {
+    "chest": 0,
+    "back": 0,
+    "front_delts": 0,
+    "side_delts": 0,
+    "rear_delts": 0,
+    "biceps": 0,
+    "triceps": 0,
+    "quads": 0,
+    "hamstrings": 0,
+    "glutes": 0,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "loggedMuscleSets/default seven days",
+   "input": {
+    "call": "loggedMuscleSets",
+    "from": "2026-10-19",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-18",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-19",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 6,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "pull-up",
+      "performedOn": "2026-10-22",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 10,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "unknown",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "twice",
+      "performedOn": "2026-10-23",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ],
+    "exercises": "@seed",
+    "extraExercises": {
+     "twice": {
+      "muscles": [
+       {
+        "muscle": "chest",
+        "role": "secondary"
+       },
+       {
+        "muscle": "triceps",
+        "role": "primary"
+       },
+       {
+        "muscle": "chest",
+        "role": "primary"
+       }
+      ]
+     }
+    }
+   },
+   "output": {
+    "chest": 4,
+    "back": 1,
+    "front_delts": 3,
+    "side_delts": 0,
+    "rear_delts": 0.5,
+    "biceps": 0.5,
+    "triceps": 2.5,
+    "quads": 1,
+    "hamstrings": 0,
+    "glutes": 1,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0.5,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "loggedMuscleSets/three days",
+   "input": {
+    "call": "loggedMuscleSets",
+    "from": "2026-10-19",
+    "days": 3,
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-18",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-19",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 6,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "pull-up",
+      "performedOn": "2026-10-22",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 10,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "unknown",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "twice",
+      "performedOn": "2026-10-23",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ],
+    "exercises": "@seed",
+    "extraExercises": {
+     "twice": {
+      "muscles": [
+       {
+        "muscle": "chest",
+        "role": "secondary"
+       },
+       {
+        "muscle": "triceps",
+        "role": "primary"
+       },
+       {
+        "muscle": "chest",
+        "role": "primary"
+       }
+      ]
+     }
+    }
+   },
+   "output": {
+    "chest": 2,
+    "back": 0,
+    "front_delts": 2,
+    "side_delts": 0,
+    "rear_delts": 0,
+    "biceps": 0,
+    "triceps": 1,
+    "quads": 1,
+    "hamstrings": 0,
+    "glutes": 1,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0.5,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "loggedMuscleSets/one day",
+   "input": {
+    "call": "loggedMuscleSets",
+    "from": "2026-10-26",
+    "days": 1,
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-18",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-19",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 6,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "pull-up",
+      "performedOn": "2026-10-22",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 10,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "unknown",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "twice",
+      "performedOn": "2026-10-23",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ],
+    "exercises": "@seed",
+    "extraExercises": {
+     "twice": {
+      "muscles": [
+       {
+        "muscle": "chest",
+        "role": "secondary"
+       },
+       {
+        "muscle": "triceps",
+        "role": "primary"
+       },
+       {
+        "muscle": "chest",
+        "role": "primary"
+       }
+      ]
+     }
+    }
+   },
+   "output": {
+    "chest": 1,
+    "back": 0,
+    "front_delts": 1,
+    "side_delts": 0,
+    "rear_delts": 0,
+    "biceps": 0,
+    "triceps": 0.5,
+    "quads": 0,
+    "hamstrings": 0,
+    "glutes": 0,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "loggedMuscleSets/no days",
+   "input": {
+    "call": "loggedMuscleSets",
+    "from": "2026-10-19",
+    "days": 0,
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-18",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-19",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 6,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "pull-up",
+      "performedOn": "2026-10-22",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 10,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "unknown",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "twice",
+      "performedOn": "2026-10-23",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ],
+    "exercises": "@seed",
+    "extraExercises": {
+     "twice": {
+      "muscles": [
+       {
+        "muscle": "chest",
+        "role": "secondary"
+       },
+       {
+        "muscle": "triceps",
+        "role": "primary"
+       },
+       {
+        "muscle": "chest",
+        "role": "primary"
+       }
+      ]
+     }
+    }
+   },
+   "output": {
+    "chest": 0,
+    "back": 0,
+    "front_delts": 0,
+    "side_delts": 0,
+    "rear_delts": 0,
+    "biceps": 0,
+    "triceps": 0,
+    "quads": 0,
+    "hamstrings": 0,
+    "glutes": 0,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "loggedMuscleSets/across a month end",
+   "input": {
+    "call": "loggedMuscleSets",
+    "from": "2026-10-26",
+    "days": 14,
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-18",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-19",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 6,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 3,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "pull-up",
+      "performedOn": "2026-10-22",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 10,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "unknown",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "twice",
+      "performedOn": "2026-10-23",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "leg-press",
+      "performedOn": "2026-11-08",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 12,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "leg-press",
+      "performedOn": "2026-11-09",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 12,
+      "rir": 1,
+      "isWarmup": false
+     }
+    ],
+    "exercises": "@seed",
+    "extraExercises": {
+     "twice": {
+      "muscles": [
+       {
+        "muscle": "chest",
+        "role": "secondary"
+       },
+       {
+        "muscle": "triceps",
+        "role": "primary"
+       },
+       {
+        "muscle": "chest",
+        "role": "primary"
+       }
+      ]
+     }
+    }
+   },
+   "output": {
+    "chest": 1,
+    "back": 0,
+    "front_delts": 1,
+    "side_delts": 0,
+    "rear_delts": 0,
+    "biceps": 0,
+    "triceps": 0.5,
+    "quads": 1,
+    "hamstrings": 0,
+    "glutes": 1,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "loggedMuscleSets/nothing logged",
+   "input": {
+    "call": "loggedMuscleSets",
+    "from": "2026-10-19",
+    "sets": [],
+    "exercises": "@seed",
+    "extraExercises": {
+     "twice": {
+      "muscles": [
+       {
+        "muscle": "chest",
+        "role": "secondary"
+       },
+       {
+        "muscle": "triceps",
+        "role": "primary"
+       },
+       {
+        "muscle": "chest",
+        "role": "primary"
+       }
+      ]
+     }
+    }
+   },
+   "output": {
+    "chest": 0,
+    "back": 0,
+    "front_delts": 0,
+    "side_delts": 0,
+    "rear_delts": 0,
+    "biceps": 0,
+    "triceps": 0,
+    "quads": 0,
+    "hamstrings": 0,
+    "glutes": 0,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0,
+    "adductors": 0
+   }
+  }
+ ]
+}
