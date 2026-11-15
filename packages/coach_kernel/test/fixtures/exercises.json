@@ -1,0 +1,2729 @@
+{
+ "fn": "seed",
+ "cases": [
+  {
+   "name": "seed",
+   "input": {},
+   "output": [
+    {
+     "id": "back-squat",
+     "slug": "back-squat",
+     "name": "Back squat (high bar)",
+     "pattern": "squat",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": true,
+     "mainLiftKey": "squat",
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "safety-bar-squat",
+      "front-squat",
+      "hack-squat",
+      "leg-press"
+     ],
+     "slotTags": [
+      "squat_free"
+     ],
+     "popularity": 0
+    },
+    {
+     "id": "low-bar-squat",
+     "slug": "low-bar-squat",
+     "name": "Low-bar squat",
+     "pattern": "squat",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": true,
+     "mainLiftKey": "squat",
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "back-squat",
+      "safety-bar-squat",
+      "hack-squat"
+     ],
+     "slotTags": [
+      "squat_free"
+     ],
+     "popularity": 1
+    },
+    {
+     "id": "front-squat",
+     "slug": "front-squat",
+     "name": "Front squat",
+     "pattern": "squat",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "back-squat",
+      "hack-squat",
+      "goblet-squat"
+     ],
+     "slotTags": [
+      "squat_free"
+     ],
+     "popularity": 2
+    },
+    {
+     "id": "safety-bar-squat",
+     "slug": "safety-bar-squat",
+     "name": "Safety-bar squat",
+     "pattern": "squat",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "back-squat",
+      "hack-squat",
+      "leg-press"
+     ],
+     "slotTags": [
+      "squat_free"
+     ],
+     "popularity": 3
+    },
+    {
+     "id": "hack-squat",
+     "slug": "hack-squat",
+     "name": "Hack squat (machine)",
+     "pattern": "squat",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": 10,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "leg-press",
+      "back-squat",
+      "bulgarian-split-squat"
+     ],
+     "slotTags": [
+      "squat_machine"
+     ],
+     "popularity": 4
+    },
+    {
+     "id": "leg-press",
+     "slug": "leg-press",
+     "name": "Leg press",
+     "pattern": "squat",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": 10,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "hack-squat",
+      "goblet-squat",
+      "bulgarian-split-squat"
+     ],
+     "slotTags": [
+      "squat_machine"
+     ],
+     "popularity": 5
+    },
+    {
+     "id": "bulgarian-split-squat",
+     "slug": "bulgarian-split-squat",
+     "name": "Bulgarian split squat",
+     "pattern": "squat",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "dumbbell",
+      "bodyweight",
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": true,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "walking-lunge",
+      "leg-press",
+      "goblet-squat"
+     ],
+     "slotTags": [
+      "split_squat",
+      "squat_machine"
+     ],
+     "popularity": 6
+    },
+    {
+     "id": "walking-lunge",
+     "slug": "walking-lunge",
+     "name": "Walking lunge",
+     "pattern": "squat",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "dumbbell",
+      "bodyweight",
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": true,
+     "axialLoad": false,
+     "impactLowerBody": true,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "bulgarian-split-squat",
+      "leg-press",
+      "goblet-squat"
+     ],
+     "slotTags": [
+      "split_squat"
+     ],
+     "popularity": 7
+    },
+    {
+     "id": "goblet-squat",
+     "slug": "goblet-squat",
+     "name": "Goblet squat",
+     "pattern": "squat",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "bulgarian-split-squat",
+      "leg-press",
+      "front-squat"
+     ],
+     "slotTags": [
+      "squat_free",
+      "squat_machine"
+     ],
+     "popularity": 8
+    },
+    {
+     "id": "backwards-sled-drag",
+     "slug": "backwards-sled-drag",
+     "name": "Backwards sled drag",
+     "pattern": "carry",
+     "category": "isolation",
+     "equipment": [
+      "sled"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      },
+      {
+       "muscle": "calves",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "leg-extension",
+      "leg-press"
+     ],
+     "slotTags": [],
+     "popularity": 9
+    },
+    {
+     "id": "conventional-deadlift",
+     "slug": "conventional-deadlift",
+     "name": "Conventional deadlift",
+     "pattern": "hinge",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": true,
+     "mainLiftKey": "deadlift",
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "primary"
+      },
+      {
+       "muscle": "back",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "sumo-deadlift",
+      "romanian-deadlift",
+      "barbell-hip-thrust"
+     ],
+     "slotTags": [
+      "hinge_deadlift"
+     ],
+     "popularity": 10
+    },
+    {
+     "id": "sumo-deadlift",
+     "slug": "sumo-deadlift",
+     "name": "Sumo deadlift",
+     "pattern": "hinge",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": true,
+     "mainLiftKey": "deadlift",
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "primary"
+      },
+      {
+       "muscle": "back",
+       "role": "secondary"
+      },
+      {
+       "muscle": "adductors",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "conventional-deadlift",
+      "romanian-deadlift"
+     ],
+     "slotTags": [
+      "hinge_deadlift"
+     ],
+     "popularity": 11
+    },
+    {
+     "id": "romanian-deadlift",
+     "slug": "romanian-deadlift",
+     "name": "Romanian deadlift",
+     "pattern": "hinge",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": 5,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "primary"
+      },
+      {
+       "muscle": "back",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "dumbbell-romanian-deadlift",
+      "single-leg-rdl",
+      "back-extension-45",
+      "seated-leg-curl"
+     ],
+     "slotTags": [
+      "hinge_rdl"
+     ],
+     "popularity": 12
+    },
+    {
+     "id": "dumbbell-romanian-deadlift",
+     "slug": "dumbbell-romanian-deadlift",
+     "name": "Dumbbell Romanian deadlift",
+     "pattern": "hinge",
+     "category": "lower_free_compound",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "primary"
+      },
+      {
+       "muscle": "back",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "romanian-deadlift",
+      "single-leg-rdl",
+      "back-extension-45"
+     ],
+     "slotTags": [
+      "hinge_rdl"
+     ],
+     "popularity": 13
+    },
+    {
+     "id": "single-leg-rdl",
+     "slug": "single-leg-rdl",
+     "name": "Single-leg Romanian deadlift",
+     "pattern": "hinge",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "dumbbell",
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": true,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "dumbbell-romanian-deadlift",
+      "back-extension-45",
+      "seated-leg-curl"
+     ],
+     "slotTags": [
+      "hinge_rdl"
+     ],
+     "popularity": 14
+    },
+    {
+     "id": "good-morning",
+     "slug": "good-morning",
+     "name": "Good morning",
+     "pattern": "hinge",
+     "category": "lower_free_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "romanian-deadlift",
+      "back-extension-45"
+     ],
+     "slotTags": [
+      "hinge_rdl"
+     ],
+     "popularity": 15
+    },
+    {
+     "id": "back-extension-45",
+     "slug": "back-extension-45",
+     "name": "45° back extension",
+     "pattern": "hinge",
+     "category": "isolation",
+     "equipment": [
+      "machine",
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      },
+      {
+       "muscle": "erectors",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "romanian-deadlift",
+      "barbell-hip-thrust",
+      "seated-leg-curl"
+     ],
+     "slotTags": [
+      "hinge_rdl"
+     ],
+     "popularity": 16
+    },
+    {
+     "id": "barbell-hip-thrust",
+     "slug": "barbell-hip-thrust",
+     "name": "Barbell hip thrust",
+     "pattern": "hip_extension",
+     "category": "lower_machine_compound",
+     "equipment": [
+      "barbell",
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": 5,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "glute-bridge-machine",
+      "back-extension-45",
+      "bulgarian-split-squat"
+     ],
+     "slotTags": [
+      "hip_ext"
+     ],
+     "popularity": 17
+    },
+    {
+     "id": "glute-bridge-machine",
+     "slug": "glute-bridge-machine",
+     "name": "Glute bridge (machine)",
+     "pattern": "hip_extension",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "glutes",
+       "role": "primary"
+      },
+      {
+       "muscle": "hamstrings",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "barbell-hip-thrust",
+      "back-extension-45"
+     ],
+     "slotTags": [
+      "hip_ext"
+     ],
+     "popularity": 18
+    },
+    {
+     "id": "seated-leg-curl",
+     "slug": "seated-leg-curl",
+     "name": "Seated leg curl",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "lying-leg-curl",
+      "nordic-curl",
+      "single-leg-rdl"
+     ],
+     "slotTags": [
+      "leg_curl_seated",
+      "leg_curl"
+     ],
+     "popularity": 19
+    },
+    {
+     "id": "lying-leg-curl",
+     "slug": "lying-leg-curl",
+     "name": "Lying leg curl",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "seated-leg-curl",
+      "nordic-curl"
+     ],
+     "slotTags": [
+      "leg_curl"
+     ],
+     "popularity": 20
+    },
+    {
+     "id": "nordic-curl",
+     "slug": "nordic-curl",
+     "name": "Nordic curl (assisted)",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "bodyweight",
+      "band"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "hamstrings",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "seated-leg-curl",
+      "lying-leg-curl"
+     ],
+     "slotTags": [
+      "leg_curl"
+     ],
+     "popularity": 21
+    },
+    {
+     "id": "leg-extension",
+     "slug": "leg-extension",
+     "name": "Leg extension",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "quads",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "backwards-sled-drag",
+      "goblet-squat",
+      "leg-press"
+     ],
+     "slotTags": [
+      "leg_ext"
+     ],
+     "popularity": 22
+    },
+    {
+     "id": "standing-calf-raise",
+     "slug": "standing-calf-raise",
+     "name": "Standing calf raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "calves",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "leg-press-calf-raise",
+      "single-leg-dumbbell-calf-raise",
+      "seated-calf-raise"
+     ],
+     "slotTags": [
+      "calf"
+     ],
+     "popularity": 23
+    },
+    {
+     "id": "seated-calf-raise",
+     "slug": "seated-calf-raise",
+     "name": "Seated calf raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "calves",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "standing-calf-raise",
+      "leg-press-calf-raise"
+     ],
+     "slotTags": [
+      "calf"
+     ],
+     "popularity": 24
+    },
+    {
+     "id": "leg-press-calf-raise",
+     "slug": "leg-press-calf-raise",
+     "name": "Leg-press calf raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "calves",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "standing-calf-raise",
+      "single-leg-dumbbell-calf-raise"
+     ],
+     "slotTags": [
+      "calf"
+     ],
+     "popularity": 25
+    },
+    {
+     "id": "single-leg-dumbbell-calf-raise",
+     "slug": "single-leg-dumbbell-calf-raise",
+     "name": "Single-leg dumbbell calf raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell",
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": true,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "calves",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "standing-calf-raise",
+      "leg-press-calf-raise"
+     ],
+     "slotTags": [
+      "calf"
+     ],
+     "popularity": 26
+    },
+    {
+     "id": "tibialis-raise",
+     "slug": "tibialis-raise",
+     "name": "Tibialis raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [],
+     "substitutions": [],
+     "slotTags": [],
+     "popularity": 27
+    },
+    {
+     "id": "bench-press",
+     "slug": "bench-press",
+     "name": "Bench press",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": true,
+     "mainLiftKey": "bench",
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "flat-dumbbell-press",
+      "machine-chest-press",
+      "close-grip-bench-press"
+     ],
+     "slotTags": [
+      "press_flat"
+     ],
+     "popularity": 28
+    },
+    {
+     "id": "close-grip-bench-press",
+     "slug": "close-grip-bench-press",
+     "name": "Close-grip bench press",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "bench-press",
+      "dip"
+     ],
+     "slotTags": [
+      "press_flat"
+     ],
+     "popularity": 29
+    },
+    {
+     "id": "incline-barbell-press",
+     "slug": "incline-barbell-press",
+     "name": "Incline barbell press",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "incline-dumbbell-press",
+      "incline-machine-press"
+     ],
+     "slotTags": [
+      "press_incline"
+     ],
+     "popularity": 30
+    },
+    {
+     "id": "incline-dumbbell-press",
+     "slug": "incline-dumbbell-press",
+     "name": "Incline dumbbell press",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "incline-barbell-press",
+      "incline-machine-press",
+      "push-up"
+     ],
+     "slotTags": [
+      "press_incline"
+     ],
+     "popularity": 31
+    },
+    {
+     "id": "flat-dumbbell-press",
+     "slug": "flat-dumbbell-press",
+     "name": "Flat dumbbell press",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "bench-press",
+      "machine-chest-press",
+      "push-up"
+     ],
+     "slotTags": [
+      "press_flat"
+     ],
+     "popularity": 32
+    },
+    {
+     "id": "machine-chest-press",
+     "slug": "machine-chest-press",
+     "name": "Machine chest press",
+     "pattern": "horizontal_push",
+     "category": "upper_machine_press",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "flat-dumbbell-press",
+      "bench-press",
+      "push-up"
+     ],
+     "slotTags": [
+      "press_machine",
+      "press_flat"
+     ],
+     "popularity": 33
+    },
+    {
+     "id": "incline-machine-press",
+     "slug": "incline-machine-press",
+     "name": "Incline machine press",
+     "pattern": "horizontal_push",
+     "category": "upper_machine_press",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "incline-dumbbell-press",
+      "incline-barbell-press"
+     ],
+     "slotTags": [
+      "press_incline",
+      "press_machine"
+     ],
+     "popularity": 34
+    },
+    {
+     "id": "dip",
+     "slug": "dip",
+     "name": "Dip",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "flat-dumbbell-press",
+      "close-grip-bench-press",
+      "push-up"
+     ],
+     "slotTags": [
+      "press_flat"
+     ],
+     "popularity": 35
+    },
+    {
+     "id": "push-up",
+     "slug": "push-up",
+     "name": "Push-up",
+     "pattern": "horizontal_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "flat-dumbbell-press",
+      "machine-chest-press"
+     ],
+     "slotTags": [
+      "press_flat",
+      "press_incline"
+     ],
+     "popularity": 36
+    },
+    {
+     "id": "cable-fly",
+     "slug": "cable-fly",
+     "name": "Cable fly",
+     "pattern": "fly",
+     "category": "isolation",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "pec-deck",
+      "dumbbell-fly"
+     ],
+     "slotTags": [
+      "chest_iso"
+     ],
+     "popularity": 37
+    },
+    {
+     "id": "pec-deck",
+     "slug": "pec-deck",
+     "name": "Pec deck",
+     "pattern": "fly",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-fly",
+      "dumbbell-fly"
+     ],
+     "slotTags": [
+      "chest_iso"
+     ],
+     "popularity": 38
+    },
+    {
+     "id": "dumbbell-fly",
+     "slug": "dumbbell-fly",
+     "name": "Dumbbell fly",
+     "pattern": "fly",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "chest",
+       "role": "primary"
+      },
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-fly",
+      "pec-deck"
+     ],
+     "slotTags": [
+      "chest_iso"
+     ],
+     "popularity": 39
+    },
+    {
+     "id": "overhead-press",
+     "slug": "overhead-press",
+     "name": "Overhead press (barbell)",
+     "pattern": "vertical_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": true,
+     "mainLiftKey": "ohp",
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "seated-dumbbell-shoulder-press",
+      "machine-shoulder-press"
+     ],
+     "slotTags": [
+      "press_vertical"
+     ],
+     "popularity": 40
+    },
+    {
+     "id": "seated-dumbbell-shoulder-press",
+     "slug": "seated-dumbbell-shoulder-press",
+     "name": "Seated dumbbell shoulder press",
+     "pattern": "vertical_push",
+     "category": "upper_free_press",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "overhead-press",
+      "machine-shoulder-press"
+     ],
+     "slotTags": [
+      "press_vertical"
+     ],
+     "popularity": 41
+    },
+    {
+     "id": "machine-shoulder-press",
+     "slug": "machine-shoulder-press",
+     "name": "Machine shoulder press",
+     "pattern": "vertical_push",
+     "category": "upper_machine_press",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "front_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "seated-dumbbell-shoulder-press",
+      "overhead-press"
+     ],
+     "slotTags": [
+      "press_vertical"
+     ],
+     "popularity": 42
+    },
+    {
+     "id": "pull-up",
+     "slug": "pull-up",
+     "name": "Pull-up / weighted pull-up",
+     "pattern": "vertical_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "lat-pulldown",
+      "chin-up",
+      "single-arm-cable-pulldown"
+     ],
+     "slotTags": [
+      "pull_vertical"
+     ],
+     "popularity": 43
+    },
+    {
+     "id": "chin-up",
+     "slug": "chin-up",
+     "name": "Chin-up",
+     "pattern": "vertical_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "pull-up",
+      "lat-pulldown"
+     ],
+     "slotTags": [
+      "pull_vertical"
+     ],
+     "popularity": 44
+    },
+    {
+     "id": "lat-pulldown",
+     "slug": "lat-pulldown",
+     "name": "Lat pulldown",
+     "pattern": "vertical_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "cable",
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "pull-up",
+      "single-arm-cable-pulldown",
+      "cable-pullover"
+     ],
+     "slotTags": [
+      "pull_vertical"
+     ],
+     "popularity": 45
+    },
+    {
+     "id": "single-arm-cable-pulldown",
+     "slug": "single-arm-cable-pulldown",
+     "name": "Single-arm cable pulldown",
+     "pattern": "vertical_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": true,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "lat-pulldown",
+      "pull-up"
+     ],
+     "slotTags": [
+      "pull_vertical"
+     ],
+     "popularity": 46
+    },
+    {
+     "id": "barbell-row",
+     "slug": "barbell-row",
+     "name": "Barbell bent-over row (elbow-flared)",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": true,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "chest-supported-t-bar-row",
+      "machine-row",
+      "single-arm-dumbbell-row"
+     ],
+     "slotTags": [
+      "row_flared"
+     ],
+     "popularity": 47
+    },
+    {
+     "id": "chest-supported-t-bar-row",
+     "slug": "chest-supported-t-bar-row",
+     "name": "Chest-supported T-bar row (elbow-flared)",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "machine",
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "machine-row",
+      "barbell-row"
+     ],
+     "slotTags": [
+      "row_flared"
+     ],
+     "popularity": 48
+    },
+    {
+     "id": "seated-cable-row",
+     "slug": "seated-cable-row",
+     "name": "Seated cable row (elbows in)",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "single-arm-dumbbell-row",
+      "machine-row"
+     ],
+     "slotTags": [
+      "row_extension"
+     ],
+     "popularity": 49
+    },
+    {
+     "id": "single-arm-dumbbell-row",
+     "slug": "single-arm-dumbbell-row",
+     "name": "Single-arm dumbbell row",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": true,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "seated-cable-row",
+      "machine-row",
+      "inverted-row"
+     ],
+     "slotTags": [
+      "row_extension",
+      "row_flared"
+     ],
+     "popularity": 50
+    },
+    {
+     "id": "machine-row",
+     "slug": "machine-row",
+     "name": "Machine row",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "chest-supported-t-bar-row",
+      "seated-cable-row"
+     ],
+     "slotTags": [
+      "row_flared",
+      "row_extension"
+     ],
+     "popularity": 51
+    },
+    {
+     "id": "inverted-row",
+     "slug": "inverted-row",
+     "name": "Inverted row",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "single-arm-dumbbell-row",
+      "machine-row"
+     ],
+     "slotTags": [
+      "row_flared"
+     ],
+     "popularity": 52
+    },
+    {
+     "id": "face-pull",
+     "slug": "face-pull",
+     "name": "Face pull",
+     "pattern": "horizontal_pull",
+     "category": "pulling_compound",
+     "equipment": [
+      "cable",
+      "band"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "reverse-pec-deck",
+      "cable-rear-delt-fly"
+     ],
+     "slotTags": [],
+     "popularity": 53
+    },
+    {
+     "id": "cable-pullover",
+     "slug": "cable-pullover",
+     "name": "Cable / DB pullover",
+     "pattern": "pullover",
+     "category": "isolation",
+     "equipment": [
+      "cable",
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "back",
+       "role": "primary"
+      },
+      {
+       "muscle": "chest",
+       "role": "secondary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "triceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "lat-pulldown",
+      "single-arm-cable-pulldown"
+     ],
+     "slotTags": [
+      "pullover"
+     ],
+     "popularity": 54
+    },
+    {
+     "id": "cable-lateral-raise",
+     "slug": "cable-lateral-raise",
+     "name": "Cable lateral raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "side_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "dumbbell-lateral-raise",
+      "machine-lateral-raise"
+     ],
+     "slotTags": [
+      "lat_raise"
+     ],
+     "popularity": 55
+    },
+    {
+     "id": "dumbbell-lateral-raise",
+     "slug": "dumbbell-lateral-raise",
+     "name": "Dumbbell lateral raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "side_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-lateral-raise",
+      "machine-lateral-raise"
+     ],
+     "slotTags": [
+      "lat_raise"
+     ],
+     "popularity": 56
+    },
+    {
+     "id": "machine-lateral-raise",
+     "slug": "machine-lateral-raise",
+     "name": "Machine lateral raise",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "side_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-lateral-raise",
+      "dumbbell-lateral-raise"
+     ],
+     "slotTags": [
+      "lat_raise"
+     ],
+     "popularity": 57
+    },
+    {
+     "id": "cable-upright-row",
+     "slug": "cable-upright-row",
+     "name": "Cable upright row",
+     "pattern": "upright_row",
+     "category": "pulling_compound",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "traps",
+       "role": "primary"
+      },
+      {
+       "muscle": "side_delts",
+       "role": "primary"
+      },
+      {
+       "muscle": "rear_delts",
+       "role": "secondary"
+      },
+      {
+       "muscle": "biceps",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "cable-lateral-raise",
+      "shrug"
+     ],
+     "slotTags": [
+      "lat_raise",
+      "traps"
+     ],
+     "popularity": 58
+    },
+    {
+     "id": "reverse-pec-deck",
+     "slug": "reverse-pec-deck",
+     "name": "Reverse pec deck",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "rear_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-rear-delt-fly",
+      "dumbbell-rear-delt-fly",
+      "face-pull"
+     ],
+     "slotTags": [
+      "rear_delt"
+     ],
+     "popularity": 59
+    },
+    {
+     "id": "cable-rear-delt-fly",
+     "slug": "cable-rear-delt-fly",
+     "name": "Cable rear-delt fly",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "rear_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "reverse-pec-deck",
+      "dumbbell-rear-delt-fly"
+     ],
+     "slotTags": [
+      "rear_delt"
+     ],
+     "popularity": 60
+    },
+    {
+     "id": "dumbbell-rear-delt-fly",
+     "slug": "dumbbell-rear-delt-fly",
+     "name": "Dumbbell rear-delt fly",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "rear_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "reverse-pec-deck",
+      "cable-rear-delt-fly"
+     ],
+     "slotTags": [
+      "rear_delt"
+     ],
+     "popularity": 61
+    },
+    {
+     "id": "band-pull-apart",
+     "slug": "band-pull-apart",
+     "name": "Band pull-apart",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "band"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "rear_delts",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "dumbbell-rear-delt-fly",
+      "face-pull"
+     ],
+     "slotTags": [
+      "rear_delt"
+     ],
+     "popularity": 62
+    },
+    {
+     "id": "incline-dumbbell-curl",
+     "slug": "incline-dumbbell-curl",
+     "name": "Incline dumbbell curl",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "biceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "preacher-curl",
+      "barbell-curl",
+      "hammer-curl"
+     ],
+     "slotTags": [
+      "biceps_iso"
+     ],
+     "popularity": 63
+    },
+    {
+     "id": "barbell-curl",
+     "slug": "barbell-curl",
+     "name": "Barbell / EZ curl",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "barbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "biceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "incline-dumbbell-curl",
+      "preacher-curl"
+     ],
+     "slotTags": [
+      "biceps_iso"
+     ],
+     "popularity": 64
+    },
+    {
+     "id": "hammer-curl",
+     "slug": "hammer-curl",
+     "name": "Hammer curl",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell",
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "biceps",
+       "role": "primary"
+      },
+      {
+       "muscle": "forearms",
+       "role": "secondary"
+      }
+     ],
+     "substitutions": [
+      "barbell-curl",
+      "incline-dumbbell-curl"
+     ],
+     "slotTags": [
+      "biceps_iso"
+     ],
+     "popularity": 65
+    },
+    {
+     "id": "preacher-curl",
+     "slug": "preacher-curl",
+     "name": "Preacher curl",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "machine",
+      "barbell",
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "biceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "incline-dumbbell-curl",
+      "barbell-curl"
+     ],
+     "slotTags": [
+      "biceps_iso"
+     ],
+     "popularity": 66
+    },
+    {
+     "id": "overhead-cable-triceps-extension",
+     "slug": "overhead-cable-triceps-extension",
+     "name": "Overhead cable triceps extension",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "triceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "dumbbell-overhead-triceps-extension",
+      "skull-crusher",
+      "triceps-pushdown"
+     ],
+     "slotTags": [
+      "triceps_iso"
+     ],
+     "popularity": 67
+    },
+    {
+     "id": "dumbbell-overhead-triceps-extension",
+     "slug": "dumbbell-overhead-triceps-extension",
+     "name": "Dumbbell overhead triceps extension",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "triceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "overhead-cable-triceps-extension",
+      "skull-crusher"
+     ],
+     "slotTags": [
+      "triceps_iso"
+     ],
+     "popularity": 68
+    },
+    {
+     "id": "triceps-pushdown",
+     "slug": "triceps-pushdown",
+     "name": "Triceps pushdown",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "triceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "overhead-cable-triceps-extension",
+      "skull-crusher",
+      "dip"
+     ],
+     "slotTags": [
+      "triceps_iso"
+     ],
+     "popularity": 69
+    },
+    {
+     "id": "skull-crusher",
+     "slug": "skull-crusher",
+     "name": "Skull crusher",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "barbell",
+      "dumbbell"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": true,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "triceps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "overhead-cable-triceps-extension",
+      "triceps-pushdown"
+     ],
+     "slotTags": [
+      "triceps_iso"
+     ],
+     "popularity": 70
+    },
+    {
+     "id": "shrug",
+     "slug": "shrug",
+     "name": "Shrug",
+     "pattern": "isolation",
+     "category": "isolation",
+     "equipment": [
+      "dumbbell",
+      "barbell",
+      "machine"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "traps",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-upright-row"
+     ],
+     "slotTags": [
+      "traps"
+     ],
+     "popularity": 71
+    },
+    {
+     "id": "cable-crunch",
+     "slug": "cable-crunch",
+     "name": "Cable crunch",
+     "pattern": "core",
+     "category": "isolation",
+     "equipment": [
+      "cable"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "abs",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "hanging-leg-raise"
+     ],
+     "slotTags": [
+      "abs"
+     ],
+     "popularity": 72
+    },
+    {
+     "id": "hanging-leg-raise",
+     "slug": "hanging-leg-raise",
+     "name": "Hanging leg raise",
+     "pattern": "core",
+     "category": "isolation",
+     "equipment": [
+      "bodyweight"
+     ],
+     "isMainLift": false,
+     "mainLiftKey": null,
+     "longLengthBias": false,
+     "unilateral": false,
+     "axialLoad": false,
+     "impactLowerBody": false,
+     "defaultIncrementKg": null,
+     "muscles": [
+      {
+       "muscle": "abs",
+       "role": "primary"
+      }
+     ],
+     "substitutions": [
+      "cable-crunch"
+     ],
+     "slotTags": [
+      "abs"
+     ],
+     "popularity": 73
+    }
+   ]
+  }
+ ]
+}

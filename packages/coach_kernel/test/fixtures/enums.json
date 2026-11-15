@@ -1,0 +1,350 @@
+{
+ "fn": "wire",
+ "cases": [
+  {
+   "name": "MuscleId",
+   "input": {},
+   "output": [
+    "chest",
+    "back",
+    "front_delts",
+    "side_delts",
+    "rear_delts",
+    "biceps",
+    "triceps",
+    "quads",
+    "hamstrings",
+    "glutes",
+    "calves",
+    "abs",
+    "forearms",
+    "traps",
+    "erectors",
+    "adductors"
+   ]
+  },
+  {
+   "name": "Goal",
+   "input": {},
+   "output": [
+    "lean_gain",
+    "recomp",
+    "strength",
+    "fat_loss",
+    "sport_support"
+   ]
+  },
+  {
+   "name": "Priority",
+   "input": {},
+   "output": [
+    "lifting",
+    "balanced",
+    "sport"
+   ]
+  },
+  {
+   "name": "Status",
+   "input": {},
+   "output": [
+    "novice",
+    "intermediate",
+    "advanced"
+   ]
+  },
+  {
+   "name": "Category",
+   "input": {},
+   "output": [
+    "lower_free_compound",
+    "lower_machine_compound",
+    "upper_free_press",
+    "upper_machine_press",
+    "pulling_compound",
+    "isolation"
+   ]
+  },
+  {
+   "name": "MovementPattern",
+   "input": {},
+   "output": [
+    "squat",
+    "hinge",
+    "vertical_pull",
+    "vertical_push",
+    "horizontal_pull",
+    "horizontal_push",
+    "hip_extension",
+    "pullover",
+    "upright_row",
+    "fly",
+    "isolation",
+    "carry",
+    "core"
+   ]
+  },
+  {
+   "name": "Equipment",
+   "input": {},
+   "output": [
+    "barbell",
+    "dumbbell",
+    "machine",
+    "cable",
+    "bodyweight",
+    "band",
+    "sled"
+   ]
+  },
+  {
+   "name": "MainLift",
+   "input": {},
+   "output": [
+    "squat",
+    "bench",
+    "deadlift",
+    "ohp"
+   ]
+  },
+  {
+   "name": "RepVariation",
+   "input": {},
+   "output": [
+    "within_session",
+    "between_session",
+    "alternating_week"
+   ]
+  },
+  {
+   "name": "SplitStyle",
+   "input": {},
+   "output": [
+    "default",
+    "alternative"
+   ]
+  },
+  {
+   "name": "SportIntensity",
+   "input": {},
+   "output": [
+    "light",
+    "moderate",
+    "hard",
+    "match"
+   ]
+  },
+  {
+   "name": "TimeOfDay",
+   "input": {},
+   "output": [
+    "morning",
+    "midday",
+    "evening"
+   ]
+  },
+  {
+   "name": "BlockKind",
+   "input": {},
+   "output": [
+    "hypertrophy",
+    "strength_volume",
+    "strength_load",
+    "strength_peak",
+    "sport_support"
+   ]
+  },
+  {
+   "name": "Lifestyle",
+   "input": {},
+   "output": [
+    "sedentary",
+    "lightly_active",
+    "active",
+    "very_active"
+   ]
+  },
+  {
+   "name": "Sex",
+   "input": {},
+   "output": [
+    "male",
+    "female",
+    "unspecified"
+   ]
+  },
+  {
+   "name": "NutritionPhase",
+   "input": {},
+   "output": [
+    "gain",
+    "maintain",
+    "loss"
+   ]
+  },
+  {
+   "name": "SorenessLevel",
+   "input": {},
+   "output": [
+    "sore",
+    "pain"
+   ]
+  },
+  {
+   "name": "SlotTag",
+   "input": {},
+   "output": [
+    "squat_free",
+    "squat_machine",
+    "split_squat",
+    "hinge_rdl",
+    "hinge_deadlift",
+    "hip_ext",
+    "leg_curl",
+    "leg_curl_seated",
+    "leg_ext",
+    "calf",
+    "press_incline",
+    "press_flat",
+    "press_machine",
+    "press_vertical",
+    "chest_iso",
+    "pull_vertical",
+    "row_flared",
+    "row_extension",
+    "pullover",
+    "lat_raise",
+    "rear_delt",
+    "biceps_iso",
+    "triceps_iso",
+    "abs",
+    "traps",
+    "front_raise",
+    "forearms",
+    "erectors",
+    "adductors",
+    "carry"
+   ]
+  },
+  {
+   "name": "MuscleRole",
+   "input": {},
+   "output": [
+    "primary",
+    "secondary"
+   ]
+  },
+  {
+   "name": "InjurySeverity",
+   "input": {},
+   "output": [
+    "niggle",
+    "pain",
+    "injury"
+   ]
+  },
+  {
+   "name": "InjuryStatus",
+   "input": {},
+   "output": [
+    "active",
+    "rehab",
+    "resolved"
+   ]
+  },
+  {
+   "name": "SessionKind",
+   "input": {},
+   "output": [
+    "lift",
+    "deload",
+    "intro",
+    "generated"
+   ]
+  },
+  {
+   "name": "PlannedSessionStatus",
+   "input": {},
+   "output": [
+    "planned",
+    "skipped"
+   ]
+  },
+  {
+   "name": "SessionStateStatus",
+   "input": {},
+   "output": [
+    "planned",
+    "in_progress",
+    "done",
+    "skipped",
+    "moved"
+   ]
+  },
+  {
+   "name": "WarningCode",
+   "input": {},
+   "output": [
+    "TIME_TOO_SHORT",
+    "NO_REST_DAY",
+    "SCHEDULE_CONFLICT",
+    "INJURY_RED_FLAG",
+    "NO_EXERCISE_FOR_SLOT",
+    "LOW_FREQUENCY"
+   ]
+  },
+  {
+   "name": "ReviewKey",
+   "input": {},
+   "output": [
+    "dreading_gym",
+    "sleep_worse",
+    "performance_down",
+    "stress_worse",
+    "aches_worse"
+   ]
+  },
+  {
+   "name": "ProposalKind",
+   "input": {},
+   "output": [
+    "standard_deload",
+    "targeted_deload",
+    "intro_week",
+    "volume_change",
+    "exercise_swap",
+    "block_transition",
+    "plan_regenerate",
+    "calorie_adjust",
+    "multiplier_adjust",
+    "status_change",
+    "plateau_action",
+    "injury_adjust"
+   ]
+  },
+  {
+   "name": "RuleBasis",
+   "input": {},
+   "output": [
+    "evidence",
+    "heuristic"
+   ]
+  },
+  {
+   "name": "MuscleRegion",
+   "input": {},
+   "output": [
+    "upper",
+    "lower",
+    "core"
+   ]
+  },
+  {
+   "name": "BodySide",
+   "input": {},
+   "output": [
+    "front",
+    "back"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3447 @@
+{
+ "fn": "roundTrip",
+ "cases": [
+  {
+   "name": "BlockInput/every optional field",
+   "input": {
+    "type": "BlockInput"
+   },
+   "output": {
+    "today": "2026-10-26",
+    "goal": "lean_gain",
+    "priority": "balanced",
+    "status": "intermediate",
+    "availableDays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "sessionMinutes": 60,
+    "maxLiftDays": 4,
+    "equipment": [
+     "barbell",
+     "dumbbell",
+     "machine",
+     "cable",
+     "bodyweight",
+     "band",
+     "sled"
+    ],
+    "increments": {
+     "barbell": 2.5,
+     "dumbbell": 1,
+     "machine": 5,
+     "cable": 1.25
+    },
+    "sports": [
+     {
+      "sportId": "football",
+      "name": "Football (soccer)",
+      "lowerBodyLoad": 3,
+      "upperBodyLoad": 0,
+      "eccentricImpact": 3,
+      "conditioning": 3,
+      "musclesStressed": [
+       "quads",
+       "hamstrings",
+       "glutes",
+       "calves",
+       "adductors"
+      ],
+      "weekdays": [
+       2,
+       6
+      ],
+      "intensity": "match",
+      "minutes": 90,
+      "timeOfDay": "evening"
+     },
+     {
+      "sportId": "cycling",
+      "name": "Cycling",
+      "lowerBodyLoad": 2,
+      "upperBodyLoad": 0,
+      "eccentricImpact": 0,
+      "conditioning": 3,
+      "musclesStressed": [
+       "quads",
+       "glutes",
+       "calves"
+      ],
+      "weekdays": [
+       4
+      ],
+      "intensity": "light",
+      "minutes": 60,
+      "timeOfDay": null
+     }
+    ],
+    "injuries": [
+     {
+      "id": "inj-1",
+      "muscleId": "hamstrings",
+      "label": "Hamstring",
+      "severity": "pain",
+      "status": "active",
+      "avoidExerciseIds": [
+       "romanian-deadlift"
+      ]
+     },
+     {
+      "id": "inj-2",
+      "muscleId": null,
+      "label": "Lower back",
+      "severity": "niggle",
+      "status": "rehab",
+      "avoidExerciseIds": []
+     },
+     {
+      "id": "inj-3",
+      "muscleId": "front_delts",
+      "label": "Shoulder",
+      "severity": "injury",
+      "status": "resolved",
+      "avoidExerciseIds": []
+     }
+    ],
+    "exercises": "@seed",
+    "history": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-20",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": null,
+       "isWarmup": true,
+       "sessionId": null,
+       "plannedRirMin": null,
+       "loggedAt": null
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-20",
+       "setIndex": 1,
+       "loadKg": 112.5,
+       "reps": 6,
+       "rir": 2.5,
+       "isWarmup": false,
+       "sessionId": "session-1",
+       "plannedRirMin": 1.5,
+       "loggedAt": "2026-10-20T17:05:00Z"
+      },
+      {
+       "exerciseId": "chin-up",
+       "performedOn": "2026-10-21",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 12,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "previousBlock": {
+      "kind": "strength_load",
+      "medianTargetBeforeTrims": 12.5,
+      "endedOn": "2026-10-25",
+      "selections": {
+       "upper_a": {
+        "incline_press": "incline-barbell-press"
+       },
+       "lower_a": {
+        "squat": "leg-press",
+        "calf": "seated-calf-raise"
+       }
+      },
+      "targetAdjustments": {
+       "chest": 2,
+       "back": -1.5
+      }
+     },
+     "recentAvgWeeklySets": 11.5,
+     "weeksOff": 3,
+     "e1rmSeeds": {
+      "squat": 122.5,
+      "ohp": 60
+     }
+    },
+    "repVariation": "alternating_week",
+    "specialization": [
+     "side_delts",
+     "chest"
+    ],
+    "testDate": "2026-12-12",
+    "splitStyle": "alternative",
+    "blockKind": "strength_volume",
+    "startsOn": "2026-11-02",
+    "dislikedExerciseIds": [
+     "pull-up"
+    ],
+    "strengthLifts": [
+     "squat",
+     "ohp"
+    ],
+    "targetAdjustments": {
+     "quads": 2,
+     "calves": -1
+    },
+    "fromHeavyPhase": true,
+    "liftingTime": "morning",
+    "materialiseFrom": "2026-10-26"
+   }
+  },
+  {
+   "name": "BlockInput/only the required fields",
+   "input": {
+    "type": "BlockInput"
+   },
+   "output": {
+    "today": "2026-10-26",
+    "goal": "lean_gain",
+    "priority": "balanced",
+    "status": "intermediate",
+    "availableDays": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "sessionMinutes": 60,
+    "equipment": [
+     "barbell",
+     "dumbbell",
+     "machine",
+     "cable",
+     "bodyweight",
+     "band",
+     "sled"
+    ],
+    "increments": {
+     "barbell": 2.5,
+     "dumbbell": 2,
+     "machine": 5,
+     "cable": 2.5
+    },
+    "sports": [],
+    "injuries": [],
+    "exercises": "@seed",
+    "history": {
+     "sets": []
+    },
+    "repVariation": "within_session",
+    "specialization": []
+   }
+  },
+  {
+   "name": "History/every optional field",
+   "input": {
+    "type": "History"
+   },
+   "output": {
+    "sets": [
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": true,
+      "sessionId": null,
+      "plannedRirMin": null,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-20",
+      "setIndex": 1,
+      "loadKg": 112.5,
+      "reps": 6,
+      "rir": 2.5,
+      "isWarmup": false,
+      "sessionId": "session-1",
+      "plannedRirMin": 1.5,
+      "loggedAt": "2026-10-20T17:05:00Z"
+     },
+     {
+      "exerciseId": "chin-up",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 12,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ],
+    "previousBlock": {
+     "kind": "strength_load",
+     "medianTargetBeforeTrims": 12.5,
+     "endedOn": "2026-10-25",
+     "selections": {
+      "upper_a": {
+       "incline_press": "incline-barbell-press"
+      },
+      "lower_a": {
+       "squat": "leg-press",
+       "calf": "seated-calf-raise"
+      }
+     },
+     "targetAdjustments": {
+      "chest": 2,
+      "back": -1.5
+     }
+    },
+    "recentAvgWeeklySets": 11.5,
+    "weeksOff": 3,
+    "e1rmSeeds": {
+     "squat": 122.5,
+     "ohp": 60
+    }
+   }
+  },
+  {
+   "name": "History/sets only",
+   "input": {
+    "type": "History"
+   },
+   "output": {
+    "sets": []
+   }
+  },
+  {
+   "name": "PreviousBlockSummary/with target adjustments",
+   "input": {
+    "type": "PreviousBlockSummary"
+   },
+   "output": {
+    "kind": "strength_load",
+    "medianTargetBeforeTrims": 12.5,
+    "endedOn": "2026-10-25",
+    "selections": {
+     "upper_a": {
+      "incline_press": "incline-barbell-press"
+     },
+     "lower_a": {
+      "squat": "leg-press",
+      "calf": "seated-calf-raise"
+     }
+    },
+    "targetAdjustments": {
+     "chest": 2,
+     "back": -1.5
+    }
+   }
+  },
+  {
+   "name": "LoggedSet/back-squat set 0",
+   "input": {
+    "type": "LoggedSet"
+   },
+   "output": {
+    "exerciseId": "back-squat",
+    "performedOn": "2026-10-20",
+    "setIndex": 0,
+    "loadKg": 60,
+    "reps": 5,
+    "rir": null,
+    "isWarmup": true,
+    "sessionId": null,
+    "plannedRirMin": null,
+    "loggedAt": null
+   }
+  },
+  {
+   "name": "LoggedSet/back-squat set 1",
+   "input": {
+    "type": "LoggedSet"
+   },
+   "output": {
+    "exerciseId": "back-squat",
+    "performedOn": "2026-10-20",
+    "setIndex": 1,
+    "loadKg": 112.5,
+    "reps": 6,
+    "rir": 2.5,
+    "isWarmup": false,
+    "sessionId": "session-1",
+    "plannedRirMin": 1.5,
+    "loggedAt": "2026-10-20T17:05:00Z"
+   }
+  },
+  {
+   "name": "LoggedSet/chin-up set 0",
+   "input": {
+    "type": "LoggedSet"
+   },
+   "output": {
+    "exerciseId": "chin-up",
+    "performedOn": "2026-10-21",
+    "setIndex": 0,
+    "loadKg": null,
+    "reps": 12,
+    "rir": 2,
+    "isWarmup": false
+   }
+  },
+  {
+   "name": "Injury/inj-1",
+   "input": {
+    "type": "Injury"
+   },
+   "output": {
+    "id": "inj-1",
+    "muscleId": "hamstrings",
+    "label": "Hamstring",
+    "severity": "pain",
+    "status": "active",
+    "avoidExerciseIds": [
+     "romanian-deadlift"
+    ]
+   }
+  },
+  {
+   "name": "Injury/inj-2",
+   "input": {
+    "type": "Injury"
+   },
+   "output": {
+    "id": "inj-2",
+    "muscleId": null,
+    "label": "Lower back",
+    "severity": "niggle",
+    "status": "rehab",
+    "avoidExerciseIds": []
+   }
+  },
+  {
+   "name": "Injury/inj-3",
+   "input": {
+    "type": "Injury"
+   },
+   "output": {
+    "id": "inj-3",
+    "muscleId": "front_delts",
+    "label": "Shoulder",
+    "severity": "injury",
+    "status": "resolved",
+    "avoidExerciseIds": []
+   }
+  },
+  {
+   "name": "UserSport/football",
+   "input": {
+    "type": "UserSport"
+   },
+   "output": {
+    "sportId": "football",
+    "name": "Football (soccer)",
+    "lowerBodyLoad": 3,
+    "upperBodyLoad": 0,
+    "eccentricImpact": 3,
+    "conditioning": 3,
+    "musclesStressed": [
+     "quads",
+     "hamstrings",
+     "glutes",
+     "calves",
+     "adductors"
+    ],
+    "weekdays": [
+     2,
+     6
+    ],
+    "intensity": "match",
+    "minutes": 90,
+    "timeOfDay": "evening"
+   }
+  },
+  {
+   "name": "UserSport/cycling",
+   "input": {
+    "type": "UserSport"
+   },
+   "output": {
+    "sportId": "cycling",
+    "name": "Cycling",
+    "lowerBodyLoad": 2,
+    "upperBodyLoad": 0,
+    "eccentricImpact": 0,
+    "conditioning": 3,
+    "musclesStressed": [
+     "quads",
+     "glutes",
+     "calves"
+    ],
+    "weekdays": [
+     4
+    ],
+    "intensity": "light",
+    "minutes": 60,
+    "timeOfDay": null
+   }
+  },
+  {
+   "name": "UserSport/time of day left out",
+   "input": {
+    "type": "UserSport"
+   },
+   "output": {
+    "sportId": "boxing",
+    "name": "Boxing",
+    "lowerBodyLoad": 1,
+    "upperBodyLoad": 2,
+    "eccentricImpact": 1,
+    "conditioning": 3,
+    "musclesStressed": [
+     "front_delts",
+     "side_delts",
+     "triceps",
+     "calves"
+    ],
+    "weekdays": [
+     1
+    ],
+    "intensity": "hard",
+    "minutes": 60
+   }
+  },
+  {
+   "name": "ExerciseDef/custom",
+   "input": {
+    "type": "ExerciseDef"
+   },
+   "output": {
+    "id": "custom-lateral-raise",
+    "slug": "custom-lateral-raise",
+    "name": "Plate-loaded lateral raise",
+    "pattern": "isolation",
+    "category": "isolation",
+    "equipment": [
+     "machine"
+    ],
+    "isMainLift": false,
+    "mainLiftKey": null,
+    "longLengthBias": false,
+    "unilateral": false,
+    "axialLoad": false,
+    "impactLowerBody": false,
+    "defaultIncrementKg": 1.25,
+    "muscles": [
+     {
+      "muscle": "side_delts",
+      "role": "primary"
+     }
+    ],
+    "substitutions": [],
+    "slotTags": [
+     "lat_raise"
+    ],
+    "popularity": 80,
+    "custom": true
+   }
+  },
+  {
+   "name": "ExerciseDef/optional fields left out",
+   "input": {
+    "type": "ExerciseDef"
+   },
+   "output": {
+    "id": "custom-lateral-raise",
+    "slug": "custom-lateral-raise",
+    "name": "Plate-loaded lateral raise",
+    "pattern": "isolation",
+    "category": "isolation",
+    "equipment": [
+     "machine"
+    ],
+    "isMainLift": false,
+    "longLengthBias": false,
+    "unilateral": false,
+    "axialLoad": false,
+    "impactLowerBody": false,
+    "muscles": [
+     {
+      "muscle": "side_delts",
+      "role": "primary"
+     }
+    ],
+    "substitutions": [],
+    "slotTags": [
+     "lat_raise"
+    ],
+    "popularity": 80
+   }
+  },
+  {
+   "name": "ExerciseMuscle/secondary",
+   "input": {
+    "type": "ExerciseMuscle"
+   },
+   "output": {
+    "muscle": "erectors",
+    "role": "secondary"
+   }
+  },
+  {
+   "name": "PlannedSession/as generated",
+   "input": {
+    "type": "PlannedSession"
+   },
+   "output": {
+    "date": "2026-10-26",
+    "weekIndex": 0,
+    "templateKey": "full_a",
+    "title": "Full Body A",
+    "kind": "lift",
+    "orderInWeek": 0,
+    "estMinutes": 85,
+    "exercises": [
+     {
+      "exerciseId": "back-squat",
+      "slotKey": "main_squat",
+      "position": 0,
+      "sets": 1,
+      "repMin": 1,
+      "repMax": 1,
+      "rirMin": 5,
+      "rirMax": 5,
+      "restSeconds": 180,
+      "isMainLiftSingle": true,
+      "note": "Top single @ RPE 5",
+      "suggestedLoadKg": 102.5,
+      "ruleIds": [
+       "T-STR-02",
+       "T-STR-03",
+       "T-RST-01",
+       "T-FRQ-03"
+      ]
+     },
+     {
+      "exerciseId": "back-squat",
+      "slotKey": "main_squat_work",
+      "position": 1,
+      "sets": 4,
+      "repMin": 4,
+      "repMax": 6,
+      "rirMin": 2,
+      "rirMax": 4,
+      "restSeconds": 180,
+      "note": null,
+      "suggestedLoadKg": 92.5,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "incline_press",
+      "position": 2,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "vertical_pull",
+      "position": 3,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "leg_curl",
+      "position": 4,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "lat_raise",
+      "position": 5,
+      "sets": 5,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "standing-calf-raise",
+      "slotKey": "calf",
+      "position": 6,
+      "sets": 5,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "dumbbell-lateral-raise",
+      "slotKey": "extra_side_delts",
+      "position": 7,
+      "sets": 3,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "planKey": "2026-10-26|full_a|0"
+   }
+  },
+  {
+   "name": "PlannedSession/moved and skipped",
+   "input": {
+    "type": "PlannedSession"
+   },
+   "output": {
+    "date": "2026-10-27",
+    "weekIndex": 0,
+    "templateKey": "full_a",
+    "title": "Full Body A",
+    "kind": "lift",
+    "orderInWeek": 0,
+    "estMinutes": 85,
+    "exercises": [
+     {
+      "exerciseId": "back-squat",
+      "slotKey": "main_squat",
+      "position": 0,
+      "sets": 1,
+      "repMin": 1,
+      "repMax": 1,
+      "rirMin": 5,
+      "rirMax": 5,
+      "restSeconds": 180,
+      "isMainLiftSingle": true,
+      "note": "Swapped for today.",
+      "suggestedLoadKg": 102.5,
+      "ruleIds": [
+       "T-STR-02",
+       "T-STR-03",
+       "T-RST-01",
+       "T-FRQ-03"
+      ],
+      "originalExerciseId": "back-squat"
+     },
+     {
+      "exerciseId": "back-squat",
+      "slotKey": "main_squat_work",
+      "position": 1,
+      "sets": 4,
+      "repMin": 4,
+      "repMax": 6,
+      "rirMin": 2,
+      "rirMax": 4,
+      "restSeconds": 180,
+      "note": null,
+      "suggestedLoadKg": 92.5,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "incline_press",
+      "position": 2,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "vertical_pull",
+      "position": 3,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "leg_curl",
+      "position": 4,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "lat_raise",
+      "position": 5,
+      "sets": 5,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "standing-calf-raise",
+      "slotKey": "calf",
+      "position": 6,
+      "sets": 5,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "dumbbell-lateral-raise",
+      "slotKey": "extra_side_delts",
+      "position": 7,
+      "sets": 3,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "note": null,
+      "suggestedLoadKg": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "planKey": "2026-10-26|full_a|0",
+    "plannedOn": "2026-10-26",
+    "status": "skipped"
+   }
+  },
+  {
+   "name": "PlannedExercise/main lift single",
+   "input": {
+    "type": "PlannedExercise"
+   },
+   "output": {
+    "exerciseId": "back-squat",
+    "slotKey": "main_squat",
+    "position": 0,
+    "sets": 1,
+    "repMin": 1,
+    "repMax": 1,
+    "rirMin": 5,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "isMainLiftSingle": true,
+    "note": "Top single @ RPE 5",
+    "suggestedLoadKg": 102.5,
+    "ruleIds": [
+     "T-STR-02",
+     "T-STR-03",
+     "T-RST-01",
+     "T-FRQ-03"
+    ]
+   }
+  },
+  {
+   "name": "PlannedExercise/swapped, no load yet",
+   "input": {
+    "type": "PlannedExercise"
+   },
+   "output": {
+    "exerciseId": "back-squat",
+    "slotKey": "main_squat_work",
+    "position": 1,
+    "sets": 4,
+    "repMin": 4,
+    "repMax": 6,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "note": null,
+    "suggestedLoadKg": null,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-PRG-01",
+     "T-PRG-01"
+    ],
+    "originalExerciseId": "leg-press"
+   }
+  },
+  {
+   "name": "Prescription/main lift single",
+   "input": {
+    "type": "Prescription"
+   },
+   "output": {
+    "sets": 1,
+    "repMin": 1,
+    "repMax": 1,
+    "rirMin": 5,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "isMainLiftSingle": true,
+    "note": "Top single @ RPE 5",
+    "suggestedLoadKg": 102.5,
+    "ruleIds": [
+     "T-STR-02",
+     "T-STR-03",
+     "T-RST-01",
+     "T-FRQ-03"
+    ]
+   }
+  },
+  {
+   "name": "Prescription/only the required fields",
+   "input": {
+    "type": "Prescription"
+   },
+   "output": {
+    "sets": 3,
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 0.5,
+    "rirMax": 2.5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03"
+    ]
+   }
+  },
+  {
+   "name": "MuscleTarget/with a sport trim",
+   "input": {
+    "type": "MuscleTarget"
+   },
+   "output": {
+    "muscle": "quads",
+    "base": 12,
+    "sportTrim": 1.5,
+    "target": 10.5,
+    "trimBySport": [
+     {
+      "sport": "Football (soccer)",
+      "sets": 1.5
+     }
+    ],
+    "ruleIds": [
+     "T-VOL-01",
+     "T-VOL-02",
+     "S-02"
+    ]
+   }
+  },
+  {
+   "name": "MuscleTarget/no sport trim",
+   "input": {
+    "type": "MuscleTarget"
+   },
+   "output": {
+    "muscle": "chest",
+    "base": 12,
+    "sportTrim": 0,
+    "target": 12,
+    "trimBySport": [],
+    "ruleIds": [
+     "T-VOL-01",
+     "T-VOL-02"
+    ]
+   }
+  },
+  {
+   "name": "ScheduleResult/with penalties",
+   "input": {
+    "type": "ScheduleResult"
+   },
+   "output": {
+    "placements": [
+     {
+      "weekday": 1,
+      "templateKey": "full_a"
+     },
+     {
+      "weekday": 3,
+      "templateKey": "full_b"
+     },
+     {
+      "weekday": 6,
+      "templateKey": "full_c"
+     }
+    ],
+    "score": 5.111,
+    "penalties": [
+     {
+      "rule": "T-SCH-04",
+      "points": 1,
+      "detail": "Leg session on the same day as Football (soccer)"
+     },
+     {
+      "rule": "T-SCH-03",
+      "points": 4,
+      "detail": "Lifting on the same day as hard Football (soccer)"
+     },
+     {
+      "rule": "SPACING",
+      "points": 0.11111111111111112,
+      "detail": "Uneven spacing between lifting days"
+     }
+    ]
+   }
+  },
+  {
+   "name": "DayPlacement/first",
+   "input": {
+    "type": "DayPlacement"
+   },
+   "output": {
+    "weekday": 1,
+    "templateKey": "full_a"
+   }
+  },
+  {
+   "name": "Warning/low frequency",
+   "input": {
+    "type": "Warning"
+   },
+   "output": {
+    "code": "LOW_FREQUENCY",
+    "message": "With one lifting day per week, progress beyond maintenance is hard. Add a second day if you can.",
+    "ruleIds": [
+     "T-FRQ-04"
+    ]
+   }
+  },
+  {
+   "name": "SetContext/0",
+   "input": {
+    "type": "SetContext"
+   },
+   "output": {
+    "rx": {
+     "repMin": 8,
+     "repMax": 12,
+     "rirMin": 1,
+     "rirMax": 3.5
+    },
+    "setIndex": 0,
+    "load": 50,
+    "reps": 6,
+    "increment": 2.5
+   }
+  },
+  {
+   "name": "SetSuggestion/0",
+   "input": {
+    "type": "SetSuggestion"
+   },
+   "output": {
+    "load": 45,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "SetContext/1",
+   "input": {
+    "type": "SetContext"
+   },
+   "output": {
+    "rx": {
+     "repMin": 8,
+     "repMax": 12,
+     "rirMin": 1,
+     "rirMax": 3.5
+    },
+    "setIndex": 1,
+    "load": 52.5,
+    "reps": 10,
+    "increment": 1.25,
+    "previousReps": 11
+   }
+  },
+  {
+   "name": "SetSuggestion/1",
+   "input": {
+    "type": "SetSuggestion"
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 10,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "SetContext/2",
+   "input": {
+    "type": "SetContext"
+   },
+   "output": {
+    "rx": {
+     "repMin": 8,
+     "repMax": 12,
+     "rirMin": 1,
+     "rirMax": 3.5
+    },
+    "setIndex": 0,
+    "load": null,
+    "reps": 14,
+    "increment": 2.5
+   }
+  },
+  {
+   "name": "SetSuggestion/2",
+   "input": {
+    "type": "SetSuggestion"
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "ExerciseHistory/0",
+   "input": {
+    "type": "ExerciseHistory"
+   },
+   "output": {
+    "exposures": [],
+    "increment": 2.5
+   }
+  },
+  {
+   "name": "SessionSuggestion/0",
+   "input": {
+    "type": "SessionSuggestion"
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank."
+   }
+  },
+  {
+   "name": "ExerciseHistory/1",
+   "input": {
+    "type": "ExerciseHistory"
+   },
+   "output": {
+    "exposures": [],
+    "increment": 2.5,
+    "e1rm": 100,
+    "heavyLowerBarbell": false
+   }
+  },
+  {
+   "name": "SessionSuggestion/1",
+   "input": {
+    "type": "SessionSuggestion"
+   },
+   "output": {
+    "load": 72.5,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "ExerciseHistory/2",
+   "input": {
+    "type": "ExerciseHistory"
+   },
+   "output": {
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 100,
+        "reps": 8,
+        "rir": 4
+       },
+       {
+        "load": 100,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 100,
+        "reps": 8,
+        "rir": 4
+       },
+       {
+        "load": 100,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     }
+    ],
+    "increment": 2.5,
+    "e1rm": null,
+    "heavyLowerBarbell": true,
+    "status": "advanced"
+   }
+  },
+  {
+   "name": "SessionSuggestion/2",
+   "input": {
+    "type": "SessionSuggestion"
+   },
+   "output": {
+    "load": 105,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "ExerciseHistory/3",
+   "input": {
+    "type": "ExerciseHistory"
+   },
+   "output": {
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 50,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 50,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 50,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 50,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 50,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     }
+    ],
+    "increment": 2.5,
+    "status": "novice"
+   }
+  },
+  {
+   "name": "SessionSuggestion/3",
+   "input": {
+    "type": "SessionSuggestion"
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-02",
+     "T-PRG-06"
+    ],
+    "hint": "5 sessions at this load. Novice lifters usually add load about every 2.5 sessions: make sure set 1 really reaches 8 reps at 4 RIR."
+   }
+  },
+  {
+   "name": "ExerciseHistory/4",
+   "input": {
+    "type": "ExerciseHistory"
+   },
+   "output": {
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": null,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": null,
+        "reps": 7,
+        "rir": null
+       }
+      ]
+     }
+    ],
+    "increment": 1
+   }
+  },
+  {
+   "name": "SessionSuggestion/4",
+   "input": {
+    "type": "SessionSuggestion"
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank."
+   }
+  },
+  {
+   "name": "ExposureSet/no load, no RIR",
+   "input": {
+    "type": "ExposureSet"
+   },
+   "output": {
+    "load": null,
+    "reps": 12,
+    "rir": null
+   }
+  },
+  {
+   "name": "WeeklyState/only the required fields",
+   "input": {
+    "type": "WeeklyState"
+   },
+   "output": {
+    "today": "2026-10-25",
+    "weekStart": "2026-10-19",
+    "checkins": [],
+    "sessionsThisWeek": [],
+    "nextWeekSessions": [],
+    "sets": [],
+    "exercises": "@seed",
+    "mainLiftExerciseIds": [],
+    "status": "intermediate",
+    "goal": "lean_gain"
+   }
+  },
+  {
+   "name": "ReviewAutofill/only the required fields",
+   "input": {
+    "type": "ReviewAutofill"
+   },
+   "output": {
+    "answers": {
+     "dreading_gym": false,
+     "sleep_worse": false,
+     "performance_down": false,
+     "stress_worse": false,
+     "aches_worse": false
+    },
+    "evidence": {
+     "dreading_gym": "Energy avg -/5 · 0 sessions skipped",
+     "sleep_worse": "No sleep logged",
+     "performance_down": "No drops in first-set reps at the same load",
+     "stress_worse": "No stress logged",
+     "aches_worse": "0 sore tags vs ~0 per week normally"
+    }
+   }
+  },
+  {
+   "name": "StatusInference/only the required fields",
+   "input": {
+    "type": "StatusInference"
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "No training logged yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "WeeklyState/every optional field",
+   "input": {
+    "type": "WeeklyState"
+   },
+   "output": {
+    "today": "2026-10-25",
+    "weekStart": "2026-10-19",
+    "checkins": [
+     {
+      "day": "2026-09-21",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-22",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-23",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-24",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-25",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-26",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-27",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-28",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-29",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-30",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-01",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-02",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-03",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-04",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-05",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-06",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-07",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-08",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-09",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-10",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-11",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-12",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-13",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-14",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-15",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-16",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-17",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-18",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-19",
+      "sleepHours": null,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-20",
+      "sleepHours": 6,
+      "energy": null,
+      "stress": 4,
+      "soreness": {
+       "quads": "pain",
+       "back": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-21",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": null,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-22",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "pain",
+       "back": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-23",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-24",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "pain",
+       "back": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-25",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     }
+    ],
+    "sessionsThisWeek": [
+     {
+      "id": "t1",
+      "date": "2026-10-19",
+      "status": "done",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "t1-0",
+        "exerciseId": "bench-press",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "t1-1",
+        "exerciseId": "lat-pulldown",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "lift"
+     },
+     {
+      "id": "t2",
+      "date": "2026-10-21",
+      "status": "skipped",
+      "templateKey": "lower_a",
+      "exercises": [
+       {
+        "id": "t2-0",
+        "exerciseId": "back-squat",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "t2-1",
+        "exerciseId": "leg-extension",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "deload"
+     },
+     {
+      "id": "t3",
+      "date": "2026-10-22",
+      "status": "moved",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "t3-0",
+        "exerciseId": "bench-press",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "intro"
+     },
+     {
+      "id": "t4",
+      "date": "2026-10-23",
+      "status": "in_progress",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "t4-0",
+        "exerciseId": "pull-up",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "generated"
+     }
+    ],
+    "nextWeekSessions": [
+     {
+      "id": "n1",
+      "date": "2026-10-28",
+      "status": "planned",
+      "templateKey": "lower_a",
+      "exercises": [
+       {
+        "id": "n1-0",
+        "exerciseId": "back-squat",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "n1-1",
+        "exerciseId": "leg-extension",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "n1-2",
+        "exerciseId": "romanian-deadlift",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ]
+     },
+     {
+      "id": "n2",
+      "date": "2026-10-30",
+      "status": "planned",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "n2-0",
+        "exerciseId": "bench-press",
+        "sets": 4,
+        "rirMin": 0.5,
+        "rirMax": 2.5
+       }
+      ]
+     }
+    ],
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-10",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-17",
+      "setIndex": 0,
+      "loadKg": 82.5,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-24",
+      "setIndex": 0,
+      "loadKg": 85,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-31",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-07",
+      "setIndex": 0,
+      "loadKg": 90,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-14",
+      "setIndex": 0,
+      "loadKg": 92.5,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-28",
+      "setIndex": 0,
+      "loadKg": 97.5,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-05",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-12",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-14",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 10,
+      "rir": 1,
+      "isWarmup": false,
+      "plannedRirMin": 3
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 61,
+      "reps": 10,
+      "rir": 1,
+      "isWarmup": false,
+      "plannedRirMin": 3
+     }
+    ],
+    "exercises": "@seed",
+    "mainLiftExerciseIds": [
+     "bench-press"
+    ],
+    "overrides": {
+     "dreading_gym": true,
+     "aches_worse": false
+    },
+    "block": {
+     "id": "b1",
+     "kind": "strength_peak",
+     "startsOn": "2026-10-05",
+     "weeks": 3,
+     "testDate": "2026-10-31"
+    },
+    "status": "novice",
+    "statusHistory": [
+     "novice",
+     "intermediate"
+    ],
+    "goal": "strength",
+    "nutritionPhase": "maintain",
+    "injuries": [
+     {
+      "id": "inj-1",
+      "muscleId": "hamstrings",
+      "label": "Hamstring",
+      "severity": "pain",
+      "status": "active",
+      "avoidExerciseIds": [
+       "romanian-deadlift"
+      ]
+     },
+     {
+      "id": "inj-2",
+      "muscleId": null,
+      "label": "Lower back",
+      "severity": "niggle",
+      "status": "rehab",
+      "avoidExerciseIds": []
+     },
+     {
+      "id": "inj-3",
+      "muscleId": "front_delts",
+      "label": "Shoulder",
+      "severity": "injury",
+      "status": "resolved",
+      "avoidExerciseIds": []
+     }
+    ],
+    "targets": {
+     "chest": 12,
+     "quads": 10.5
+    },
+    "specialization": [
+     "chest"
+    ],
+    "previousYesCount": 2,
+    "dislikedExerciseIds": [
+     "pull-up"
+    ],
+    "equipment": [
+     "barbell",
+     "dumbbell",
+     "machine",
+     "cable"
+    ],
+    "availableDays": [
+     1,
+     3,
+     5
+    ]
+   }
+  },
+  {
+   "name": "ReviewAutofill/every optional field",
+   "input": {
+    "type": "ReviewAutofill"
+   },
+   "output": {
+    "answers": {
+     "dreading_gym": true,
+     "sleep_worse": true,
+     "performance_down": false,
+     "stress_worse": true,
+     "aches_worse": true
+    },
+    "evidence": {
+     "dreading_gym": "Energy avg 2/5 · 1 session skipped",
+     "sleep_worse": "Sleep avg 6 h vs 8 h normal",
+     "performance_down": "No drops in first-set reps at the same load",
+     "stress_worse": "Stress avg 4/5 vs 2 normal",
+     "aches_worse": "Pain tagged this week"
+    }
+   }
+  },
+  {
+   "name": "StatusInference/every optional field",
+   "input": {
+    "type": "StatusInference"
+   },
+   "output": {
+    "status": "novice",
+    "share": 0.6666666666666666,
+    "evidence": "Your anchor lifts improved in 67% of sessions over 10 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "WeeklyState/block without a test date, no previous review",
+   "input": {
+    "type": "WeeklyState"
+   },
+   "output": {
+    "today": "2026-10-25",
+    "weekStart": "2026-10-19",
+    "checkins": [
+     {
+      "day": "2026-09-21",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-22",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-23",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-24",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-25",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-26",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-27",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-28",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-29",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-09-30",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-01",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-02",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-03",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-04",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-05",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-06",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-07",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-08",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-09",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-10",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-11",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-12",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-13",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-14",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-15",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-16",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-17",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-18",
+      "sleepHours": 8,
+      "energy": 4,
+      "stress": 2,
+      "soreness": {},
+      "bodyweightKg": 72.4
+     },
+     {
+      "day": "2026-10-19",
+      "sleepHours": null,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-20",
+      "sleepHours": 6,
+      "energy": null,
+      "stress": 4,
+      "soreness": {
+       "quads": "pain",
+       "back": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-21",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": null,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-22",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "pain",
+       "back": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-23",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-24",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "pain",
+       "back": "sore"
+      },
+      "bodyweightKg": null
+     },
+     {
+      "day": "2026-10-25",
+      "sleepHours": 6,
+      "energy": 2,
+      "stress": 4,
+      "soreness": {
+       "quads": "sore"
+      },
+      "bodyweightKg": null
+     }
+    ],
+    "sessionsThisWeek": [
+     {
+      "id": "t1",
+      "date": "2026-10-19",
+      "status": "done",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "t1-0",
+        "exerciseId": "bench-press",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "t1-1",
+        "exerciseId": "lat-pulldown",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "lift"
+     },
+     {
+      "id": "t2",
+      "date": "2026-10-21",
+      "status": "skipped",
+      "templateKey": "lower_a",
+      "exercises": [
+       {
+        "id": "t2-0",
+        "exerciseId": "back-squat",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "t2-1",
+        "exerciseId": "leg-extension",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "deload"
+     },
+     {
+      "id": "t3",
+      "date": "2026-10-22",
+      "status": "moved",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "t3-0",
+        "exerciseId": "bench-press",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "intro"
+     },
+     {
+      "id": "t4",
+      "date": "2026-10-23",
+      "status": "in_progress",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "t4-0",
+        "exerciseId": "pull-up",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ],
+      "kind": "generated"
+     }
+    ],
+    "nextWeekSessions": [
+     {
+      "id": "n1",
+      "date": "2026-10-28",
+      "status": "planned",
+      "templateKey": "lower_a",
+      "exercises": [
+       {
+        "id": "n1-0",
+        "exerciseId": "back-squat",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "n1-1",
+        "exerciseId": "leg-extension",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       },
+       {
+        "id": "n1-2",
+        "exerciseId": "romanian-deadlift",
+        "sets": 3,
+        "rirMin": 1,
+        "rirMax": 3,
+        "repMin": 6,
+        "repMax": 10
+       }
+      ]
+     },
+     {
+      "id": "n2",
+      "date": "2026-10-30",
+      "status": "planned",
+      "templateKey": "upper_a",
+      "exercises": [
+       {
+        "id": "n2-0",
+        "exerciseId": "bench-press",
+        "sets": 4,
+        "rirMin": 0.5,
+        "rirMax": 2.5
+       }
+      ]
+     }
+    ],
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-10",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-17",
+      "setIndex": 0,
+      "loadKg": 82.5,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-24",
+      "setIndex": 0,
+      "loadKg": 85,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-08-31",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-07",
+      "setIndex": 0,
+      "loadKg": 90,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-14",
+      "setIndex": 0,
+      "loadKg": 92.5,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-21",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-09-28",
+      "setIndex": 0,
+      "loadKg": 97.5,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-05",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-12",
+      "setIndex": 0,
+      "loadKg": 80,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "plannedRirMin": 2
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-14",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 10,
+      "rir": 1,
+      "isWarmup": false,
+      "plannedRirMin": 3
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-21",
+      "setIndex": 0,
+      "loadKg": 61,
+      "reps": 10,
+      "rir": 1,
+      "isWarmup": false,
+      "plannedRirMin": 3
+     }
+    ],
+    "exercises": "@seed",
+    "mainLiftExerciseIds": [
+     "bench-press"
+    ],
+    "block": {
+     "id": "b2",
+     "kind": "hypertrophy",
+     "startsOn": "2026-10-05",
+     "weeks": 6
+    },
+    "status": "novice",
+    "statusHistory": [
+     "novice",
+     "intermediate"
+    ],
+    "goal": "strength",
+    "nutritionPhase": "maintain",
+    "injuries": [
+     {
+      "id": "inj-1",
+      "muscleId": "hamstrings",
+      "label": "Hamstring",
+      "severity": "pain",
+      "status": "active",
+      "avoidExerciseIds": [
+       "romanian-deadlift"
+      ]
+     },
+     {
+      "id": "inj-2",
+      "muscleId": null,
+      "label": "Lower back",
+      "severity": "niggle",
+      "status": "rehab",
+      "avoidExerciseIds": []
+     },
+     {
+      "id": "inj-3",
+      "muscleId": "front_delts",
+      "label": "Shoulder",
+      "severity": "injury",
+      "status": "resolved",
+      "avoidExerciseIds": []
+     }
+    ],
+    "targets": {
+     "chest": 12,
+     "quads": 10.5
+    },
+    "specialization": [
+     "chest"
+    ],
+    "previousYesCount": null,
+    "dislikedExerciseIds": [
+     "pull-up"
+    ],
+    "equipment": [
+     "barbell",
+     "dumbbell",
+     "machine",
+     "cable"
+    ],
+    "availableDays": [
+     1,
+     3,
+     5
+    ]
+   }
+  },
+  {
+   "name": "ReviewAutofill/block without a test date, no previous review",
+   "input": {
+    "type": "ReviewAutofill"
+   },
+   "output": {
+    "answers": {
+     "dreading_gym": true,
+     "sleep_worse": true,
+     "performance_down": false,
+     "stress_worse": true,
+     "aches_worse": true
+    },
+    "evidence": {
+     "dreading_gym": "Energy avg 2/5 · 1 session skipped",
+     "sleep_worse": "Sleep avg 6 h vs 8 h normal",
+     "performance_down": "No drops in first-set reps at the same load",
+     "stress_worse": "Stress avg 4/5 vs 2 normal",
+     "aches_worse": "Pain tagged this week"
+    }
+   }
+  },
+  {
+   "name": "StatusInference/block without a test date, no previous review",
+   "input": {
+    "type": "StatusInference"
+   },
+   "output": {
+    "status": "novice",
+    "share": 0.6666666666666666,
+    "evidence": "Your anchor lifts improved in 67% of sessions over 10 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "StatusInference/too few weeks of logs",
+   "input": {
+    "type": "StatusInference"
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Only 3 weeks of logs (need 8).",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "CheckinDay/nothing answered",
+   "input": {
+    "type": "CheckinDay"
+   },
+   "output": {
+    "day": "2026-10-19",
+    "sleepHours": null,
+    "energy": null,
+    "stress": null,
+    "soreness": {},
+    "bodyweightKg": null
+   }
+  },
+  {
+   "name": "CheckinDay/everything answered",
+   "input": {
+    "type": "CheckinDay"
+   },
+   "output": {
+    "day": "2026-10-20",
+    "sleepHours": 6.5,
+    "energy": 2,
+    "stress": 5,
+    "soreness": {
+     "quads": "pain",
+     "erectors": "sore"
+    },
+    "bodyweightKg": 72.35
+   }
+  },
+  {
+   "name": "PlannedSessionState/t1",
+   "input": {
+    "type": "PlannedSessionState"
+   },
+   "output": {
+    "id": "t1",
+    "date": "2026-10-19",
+    "status": "done",
+    "templateKey": "upper_a",
+    "exercises": [
+     {
+      "id": "t1-0",
+      "exerciseId": "bench-press",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     },
+     {
+      "id": "t1-1",
+      "exerciseId": "lat-pulldown",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     }
+    ],
+    "kind": "lift"
+   }
+  },
+  {
+   "name": "PlannedSessionState/t2",
+   "input": {
+    "type": "PlannedSessionState"
+   },
+   "output": {
+    "id": "t2",
+    "date": "2026-10-21",
+    "status": "skipped",
+    "templateKey": "lower_a",
+    "exercises": [
+     {
+      "id": "t2-0",
+      "exerciseId": "back-squat",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     },
+     {
+      "id": "t2-1",
+      "exerciseId": "leg-extension",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     }
+    ],
+    "kind": "deload"
+   }
+  },
+  {
+   "name": "PlannedSessionState/t3",
+   "input": {
+    "type": "PlannedSessionState"
+   },
+   "output": {
+    "id": "t3",
+    "date": "2026-10-22",
+    "status": "moved",
+    "templateKey": "upper_a",
+    "exercises": [
+     {
+      "id": "t3-0",
+      "exerciseId": "bench-press",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     }
+    ],
+    "kind": "intro"
+   }
+  },
+  {
+   "name": "PlannedSessionState/t4",
+   "input": {
+    "type": "PlannedSessionState"
+   },
+   "output": {
+    "id": "t4",
+    "date": "2026-10-23",
+    "status": "in_progress",
+    "templateKey": "upper_a",
+    "exercises": [
+     {
+      "id": "t4-0",
+      "exerciseId": "pull-up",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     }
+    ],
+    "kind": "generated"
+   }
+  },
+  {
+   "name": "PlannedSessionState/n1",
+   "input": {
+    "type": "PlannedSessionState"
+   },
+   "output": {
+    "id": "n1",
+    "date": "2026-10-28",
+    "status": "planned",
+    "templateKey": "lower_a",
+    "exercises": [
+     {
+      "id": "n1-0",
+      "exerciseId": "back-squat",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     },
+     {
+      "id": "n1-1",
+      "exerciseId": "leg-extension",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     },
+     {
+      "id": "n1-2",
+      "exerciseId": "romanian-deadlift",
+      "sets": 3,
+      "rirMin": 1,
+      "rirMax": 3,
+      "repMin": 6,
+      "repMax": 10
+     }
+    ]
+   }
+  },
+  {
+   "name": "PlannedSessionState/n2",
+   "input": {
+    "type": "PlannedSessionState"
+   },
+   "output": {
+    "id": "n2",
+    "date": "2026-10-30",
+    "status": "planned",
+    "templateKey": "upper_a",
+    "exercises": [
+     {
+      "id": "n2-0",
+      "exerciseId": "bench-press",
+      "sets": 4,
+      "rirMin": 0.5,
+      "rirMax": 2.5
+     }
+    ]
+   }
+  },
+  {
+   "name": "Proposal/0 standard_deload",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "standard_deload",
+    "title": "Deload next week (3 of 5 recovery flags)",
+    "rationale": "You answered “yes” to 3 recovery questions. Next week every exercise drops about 40% of its sets while loads, effort and the number of sessions stay the same.",
+    "ruleIds": [
+     "T-FAT-01",
+     "T-FAT-02",
+     "T-FAT-03"
+    ],
+    "payload": {
+     "weekStart": "2026-10-26",
+     "setCutPct": 0.4,
+     "mode": "sets"
+    },
+    "appliesFrom": "2026-10-26",
+    "expiresOn": "2026-11-01"
+   }
+  },
+  {
+   "name": "Proposal/1 block_transition",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "block_transition",
+    "title": "Start a new strength Volume block",
+    "rationale": "Heavy phase done. The next Volume phase starts with an intro week (75% sets, +1 RIR).",
+    "ruleIds": [
+     "T-STR-01",
+     "T-SEL-06",
+     "T-FAT-06"
+    ],
+    "payload": {
+     "fromKind": "strength_peak",
+     "toKind": "strength_volume",
+     "startsOn": "2026-10-26"
+    },
+    "appliesFrom": "2026-10-26",
+    "expiresOn": "2026-11-01"
+   }
+  },
+  {
+   "name": "Proposal/2 standard_deload",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "standard_deload",
+    "title": "Deload next week (4 of 5 recovery flags)",
+    "rationale": "You answered “yes” to 4 recovery questions. Next week every exercise drops about 40% of its sets while loads, effort and the number of sessions stay the same.",
+    "ruleIds": [
+     "T-FAT-01",
+     "T-FAT-02",
+     "T-FAT-03"
+    ],
+    "payload": {
+     "weekStart": "2026-10-26",
+     "setCutPct": 0.4,
+     "mode": "sets"
+    },
+    "appliesFrom": "2026-10-26",
+    "expiresOn": "2026-11-01"
+   }
+  },
+  {
+   "name": "Proposal/3 targeted_deload",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "targeted_deload",
+    "title": "Ease off back, quads next week",
+    "rationale": "back, quads have been sore or painful. Remove Back squat (high bar) for a week; other exercises for the area drop half their sets and everything else trains normally.",
+    "ruleIds": [
+     "T-FAT-04"
+    ],
+    "payload": {
+     "weekStart": "2026-10-26",
+     "muscles": [
+      "back",
+      "quads"
+     ],
+     "removeExerciseIds": [
+      "back-squat"
+     ],
+     "reduceSetsPct": 0.5,
+     "mode": "deload"
+    },
+    "appliesFrom": "2026-10-26",
+    "expiresOn": "2026-11-01"
+   }
+  },
+  {
+   "name": "Proposal/4 targeted_deload",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "targeted_deload",
+    "title": "Or: a higher-rep week for back, quads",
+    "rationale": "If back, quads ache with heavy loads but not with high reps, keep every exercise and set next week but switch the ones that work the area to higher reps with lighter loads. Pick this or the targeted deload, not both.",
+    "ruleIds": [
+     "T-FAT-05",
+     "T-FAT-04"
+    ],
+    "payload": {
+     "weekStart": "2026-10-26",
+     "muscles": [
+      "back",
+      "quads"
+     ],
+     "removeExerciseIds": [],
+     "reduceSetsPct": 0,
+     "mode": "higher_reps"
+    },
+    "appliesFrom": "2026-10-26",
+    "expiresOn": "2026-11-01"
+   }
+  },
+  {
+   "name": "Proposal/5 standard_deload",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "standard_deload",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "weekStart": "2026-11-02",
+     "setCutPct": 0.4,
+     "mode": "fewer_sessions"
+    },
+    "appliesFrom": "2026-11-02",
+    "expiresOn": "2026-11-01"
+   }
+  },
+  {
+   "name": "Proposal/6 targeted_deload",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "targeted_deload",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "weekStart": "2026-11-02",
+     "muscles": [
+      "quads"
+     ],
+     "removeExerciseIds": [
+      "back-squat"
+     ],
+     "reduceSetsPct": 0.5
+    },
+    "appliesFrom": null,
+    "expiresOn": null
+   }
+  },
+  {
+   "name": "Proposal/7 intro_week",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "intro_week",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "blockId": "b",
+     "setPct": 0.75,
+     "rirBump": 1
+    }
+   }
+  },
+  {
+   "name": "Proposal/8 volume_change",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "volume_change",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "changes": [
+      {
+       "muscle": "chest",
+       "from": 10,
+       "to": 12
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "Proposal/9 exercise_swap",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "exercise_swap",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "plannedExerciseIds": [],
+     "fromExerciseId": "bench-press",
+     "toExerciseId": "flat-dumbbell-press",
+     "reason": "x"
+    }
+   }
+  },
+  {
+   "name": "Proposal/10 block_transition",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "block_transition",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "fromKind": "strength_load",
+     "toKind": "strength_volume",
+     "startsOn": "2026-11-02"
+    }
+   }
+  },
+  {
+   "name": "Proposal/11 plan_regenerate",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "plan_regenerate",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "reason": "x"
+    }
+   }
+  },
+  {
+   "name": "Proposal/12 injury_adjust",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "injury_adjust",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "injuryId": "i",
+     "removeExerciseIds": [],
+     "addExerciseIds": []
+    }
+   }
+  },
+  {
+   "name": "Proposal/13 status_change",
+   "input": {
+    "type": "Proposal"
+   },
+   "output": {
+    "kind": "status_change",
+    "title": "t",
+    "rationale": "r",
+    "ruleIds": [
+     "X"
+    ],
+    "payload": {
+     "from": "novice",
+     "to": "intermediate",
+     "evidence": "x"
+    }
+   }
+  }
+ ]
+}
