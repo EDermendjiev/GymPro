@@ -1,0 +1,6980 @@
+{
+ "fn": "planReview",
+ "cases": [
+  {
+   "name": "injuryProposals avoided and axial exercises still planned",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": [
+        "leg-extension"
+       ]
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Back squat (high bar), Leg extension, which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "back-squat",
+       "leg-extension"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals resolved injury",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "resolved",
+       "avoidExerciseIds": [
+        "leg-extension"
+       ]
+      }
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "injuryProposals rehab injury",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "rehab",
+       "avoidExerciseIds": [
+        "leg-extension"
+       ]
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Back squat (high bar), Leg extension, which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "back-squat",
+       "leg-extension"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals niggle: only the avoid list counts",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "niggle",
+       "status": "active",
+       "avoidExerciseIds": [
+        "leg-extension"
+       ]
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Leg extension, which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "leg-extension"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals niggle with nothing to avoid",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "niggle",
+       "status": "active",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "injuryProposals injury severity on the lower back",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "romanian-deadlift",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "back-extension-45",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-2",
+         "exerciseId": "leg-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-3",
+         "exerciseId": "walking-lunge",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "erectors",
+       "label": "Lower back",
+       "severity": "injury",
+       "status": "active",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Lower back",
+     "rationale": "Your plan still includes Romanian deadlift, which your Lower back injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "romanian-deadlift"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals impact work on a painful area",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "walking-lunge",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-2",
+         "exerciseId": "hack-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Walking lunge, which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "walking-lunge"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals no muscle, avoid list only",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj2",
+       "muscleId": null,
+       "label": "Wrist",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": [
+        "bench-press",
+        "not-in-plan"
+       ]
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Wrist",
+     "rationale": "Your plan still includes Bench press, which your Wrist injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj2",
+      "removeExerciseIds": [
+       "bench-press"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals several injuries",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": [
+        "leg-extension"
+       ]
+      },
+      {
+       "id": "inj2",
+       "muscleId": "chest",
+       "label": "Pec",
+       "severity": "injury",
+       "status": "active",
+       "avoidExerciseIds": [
+        "lat-pulldown"
+       ]
+      },
+      {
+       "id": "inj3",
+       "muscleId": "biceps",
+       "label": "Elbow",
+       "severity": "pain",
+       "status": "resolved",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Back squat (high bar), Leg extension, which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "back-squat",
+       "leg-extension"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Pec",
+     "rationale": "Your plan still includes Lat pulldown, which your Pec injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj2",
+      "removeExerciseIds": [
+       "lat-pulldown"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals only upcoming planned sessions count",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [
+      {
+       "id": "t1",
+       "date": "2026-10-26",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "t1-0",
+         "exerciseId": "cable-fly",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "t2",
+       "date": "2026-10-27",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "t2-0",
+         "exerciseId": "pull-up",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "t2-1",
+         "exerciseId": "unknown-exercise",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "t3",
+       "date": "2026-10-29",
+       "status": "done",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "t3-0",
+         "exerciseId": "hack-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "skipped",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": [
+        "leg-extension",
+        "cable-fly",
+        "pull-up",
+        "hack-squat"
+       ]
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Pull-up / weighted pull-up, which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "pull-up"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals recurring check-in pain, nothing logged",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your quads: pain on 2 days",
+     "rationale": "You tagged quads as painful on 2 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Back squat (high bar); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "quads",
+      "severity": "pain",
+      "label": "Quads pain (from check-ins)",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals recurring check-in pain raises a niggle",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "niggle",
+       "status": "active",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Treat your quads niggle as pain",
+     "rationale": "You tagged quads as painful on 2 of the last 14 days. Raise \"Knee\" to pain and rebuild the plan without Back squat (high bar); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "muscle": "quads",
+      "severity": "pain",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals recurring check-in pain already logged as pain",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "rehab",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Knee",
+     "rationale": "Your plan still includes Back squat (high bar), which your Knee injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj1",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals recurring pain logged as a resolved injury",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "quads",
+       "label": "Knee",
+       "severity": "pain",
+       "status": "resolved",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your quads: pain on 2 days",
+     "rationale": "You tagged quads as painful on 2 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Back squat (high bar); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "quads",
+      "severity": "pain",
+      "label": "Quads pain (from check-ins)",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals one pain day",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "injuryProposals plan does not load the area",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "injuryProposals pain outside the lookback window",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-11",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-12",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-26",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "injuryProposals sore is not pain",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-19",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "sore"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-20",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "sore"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "sore"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "injuryProposals lower back and chest pain, three days each",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-13",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "erectors": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-14",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "erectors": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "erectors": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-16",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "chest": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-17",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "chest": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-24",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "chest": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "romanian-deadlift",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-2",
+         "exerciseId": "machine-chest-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "barbell-row",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "incline-dumbbell-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your chest: pain on 3 days",
+     "rationale": "You tagged chest as painful on 3 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Bench press, Incline dumbbell press; machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "chest",
+      "severity": "pain",
+      "label": "Chest pain (from check-ins)",
+      "removeExerciseIds": [
+       "bench-press",
+       "incline-dumbbell-press"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your lower back: pain on 3 days",
+     "rationale": "You tagged lower back as painful on 3 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Romanian deadlift, Barbell bent-over row (elbow-flared); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "erectors",
+      "severity": "pain",
+      "label": "Lower back pain (from check-ins)",
+      "removeExerciseIds": [
+       "barbell-row",
+       "romanian-deadlift"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals avoid list and recurring pain together",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-19",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "front_delts": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-20",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "front_delts": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj2",
+       "muscleId": "chest",
+       "label": "Pec",
+       "severity": "niggle",
+       "status": "active",
+       "avoidExerciseIds": [
+        "bench-press"
+       ]
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Pec",
+     "rationale": "Your plan still includes Bench press, which your Pec injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj2",
+      "removeExerciseIds": [
+       "bench-press"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your front delts: pain on 2 days",
+     "rationale": "You tagged front delts as painful on 2 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Bench press; machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "front_delts",
+      "severity": "pain",
+      "label": "Front delts pain (from check-ins)",
+      "removeExerciseIds": [
+       "bench-press"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your quads: pain on 2 days",
+     "rationale": "You tagged quads as painful on 2 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Back squat (high bar); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "quads",
+      "severity": "pain",
+      "label": "Quads pain (from check-ins)",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "injuryProposals no injuries field",
+   "input": {
+    "call": "injuryProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "volumeProposals two bad reviews in a row",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "targets": {
+      "chest": 12,
+      "biceps": 8,
+      "quads": 10
+     },
+     "previousYesCount": 3
+    },
+    "yesCount": 2
+   },
+   "output": [
+    {
+     "kind": "volume_change",
+     "title": "Trim weekly volume by 2 sets",
+     "rationale": "Two weekly reviews in a row flagged poor recovery (3 then 2 of 5), so one deload is not enough. Train with 2 fewer weekly sets on your higher-volume muscles until recovery holds; add sets back only after a real plateau. This rebuilds the plan from today, so if you also want this week's deload, accept this first.",
+     "ruleIds": [
+      "T-FAT-02",
+      "T-FAT-03",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 12,
+        "to": 10
+       },
+       {
+        "muscle": "quads",
+        "from": 10,
+        "to": 8
+       }
+      ]
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "volumeProposals previous review was fine",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "targets": {
+      "chest": 12,
+      "biceps": 8,
+      "quads": 10
+     },
+     "previousYesCount": 1
+    },
+    "yesCount": 3
+   },
+   "output": []
+  },
+  {
+   "name": "volumeProposals this review is fine",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "targets": {
+      "chest": 12,
+      "biceps": 8,
+      "quads": 10
+     },
+     "previousYesCount": 3
+    },
+    "yesCount": 1
+   },
+   "output": []
+  },
+  {
+   "name": "volumeProposals no previous review",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "targets": {
+      "chest": 12
+     },
+     "previousYesCount": null
+    },
+    "yesCount": 4
+   },
+   "output": []
+  },
+  {
+   "name": "volumeProposals no targets",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "previousYesCount": 2
+    },
+    "yesCount": 2
+   },
+   "output": []
+  },
+  {
+   "name": "volumeProposals every target below the floor",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "targets": {
+      "chest": 9.5,
+      "biceps": 8
+     },
+     "previousYesCount": 2
+    },
+    "yesCount": 5
+   },
+   "output": []
+  },
+  {
+   "name": "volumeProposals fractional targets and every tracked muscle",
+   "input": {
+    "call": "volumeProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "targets": {
+      "calves": 10.5,
+      "chest": 20,
+      "back": 18,
+      "front_delts": 6,
+      "side_delts": 14,
+      "rear_delts": 10,
+      "biceps": 11,
+      "triceps": 12.5,
+      "quads": 16,
+      "hamstrings": 10,
+      "glutes": 24
+     },
+     "previousYesCount": 2
+    },
+    "yesCount": 2
+   },
+   "output": [
+    {
+     "kind": "volume_change",
+     "title": "Trim weekly volume by 2 sets",
+     "rationale": "Two weekly reviews in a row flagged poor recovery (2 then 2 of 5), so one deload is not enough. Train with 2 fewer weekly sets on your higher-volume muscles until recovery holds; add sets back only after a real plateau. This rebuilds the plan from today, so if you also want this week's deload, accept this first.",
+     "ruleIds": [
+      "T-FAT-02",
+      "T-FAT-03",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 20,
+        "to": 18
+       },
+       {
+        "muscle": "back",
+        "from": 18,
+        "to": 16
+       },
+       {
+        "muscle": "side_delts",
+        "from": 14,
+        "to": 12
+       },
+       {
+        "muscle": "rear_delts",
+        "from": 10,
+        "to": 8
+       },
+       {
+        "muscle": "biceps",
+        "from": 11,
+        "to": 9
+       },
+       {
+        "muscle": "triceps",
+        "from": 12.5,
+        "to": 10.5
+       },
+       {
+        "muscle": "quads",
+        "from": 16,
+        "to": 14
+       },
+       {
+        "muscle": "hamstrings",
+        "from": 10,
+        "to": 8
+       },
+       {
+        "muscle": "glutes",
+        "from": 24,
+        "to": 22
+       },
+       {
+        "muscle": "calves",
+        "from": 10.5,
+        "to": 8.5
+       }
+      ]
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "dislikeSwapProposals a disliked exercise still in the plan",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [
+      "lat-pulldown"
+     ],
+     "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Lat pulldown for Pull-up / weighted pull-up",
+     "rationale": "You marked Lat pulldown as an exercise you don't want, but it is still in your plan. Pull-up / weighted pull-up trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "lat-pulldown",
+      "toExerciseId": "pull-up",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "dislikeSwapProposals no equipment info",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [
+      "lat-pulldown"
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "dislikeSwapProposals nothing disliked",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [],
+     "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "dislikeSwapProposals disliked but not planned",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [
+      "cable-fly"
+     ],
+     "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "dislikeSwapProposals no feasible substitute",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [
+      "bench-press"
+     ],
+     "equipment": [
+      "band"
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "dislikeSwapProposals several disliked, in plan order",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [
+      "lat-pulldown",
+      "back-squat",
+      "bench-press"
+     ],
+     "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ],
+     "injuries": [
+      {
+       "id": "inj1",
+       "muscleId": "chest",
+       "label": "Pec",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": []
+      }
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Back squat (high bar) for Safety-bar squat",
+     "rationale": "You marked Back squat (high bar) as an exercise you don't want, but it is still in your plan. Safety-bar squat trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "back-squat",
+      "toExerciseId": "safety-bar-squat",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Bench press for Flat dumbbell press",
+     "rationale": "You marked Bench press as an exercise you don't want, but it is still in your plan. Flat dumbbell press trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "bench-press",
+      "toExerciseId": "flat-dumbbell-press",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Lat pulldown for Pull-up / weighted pull-up",
+     "rationale": "You marked Lat pulldown as an exercise you don't want, but it is still in your plan. Pull-up / weighted pull-up trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "lat-pulldown",
+      "toExerciseId": "pull-up",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "dislikeSwapProposals disliked substitutes are skipped",
+   "input": {
+    "call": "dislikeSwapProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "dislikedExerciseIds": [
+      "leg-extension",
+      "leg-press",
+      "hack-squat",
+      "back-squat"
+     ],
+     "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Back squat (high bar) for Safety-bar squat",
+     "rationale": "You marked Back squat (high bar) as an exercise you don't want, but it is still in your plan. Safety-bar squat trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "back-squat",
+      "toExerciseId": "safety-bar-squat",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Leg extension for Goblet squat",
+     "rationale": "You marked Leg extension as an exercise you don't want, but it is still in your plan. Goblet squat trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "leg-extension",
+      "toExerciseId": "goblet-squat",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "stalePlanProposals two sessions on unavailable days",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "availableDays": [
+      1,
+      2
+     ],
+     "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable"
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "plan_regenerate",
+     "title": "Rebuild your plan to match your settings",
+     "rationale": "Your plan is out of date: 2 sessions next week fall on days you are not available. Rebuilding from today keeps your logged history and uses your current days, equipment and preferences.",
+     "ruleIds": [
+      "T-SCH-01",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "reason": "2 sessions next week fall on days you are not available"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "stalePlanProposals equipment no longer available",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "equipment": [
+      "dumbbell"
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "plan_regenerate",
+     "title": "Rebuild your plan to match your settings",
+     "rationale": "Your plan is out of date: Back squat (high bar), Leg extension, Bench press, Lat pulldown need equipment you no longer have. Rebuilding from today keeps your logged history and uses your current days, equipment and preferences.",
+     "ruleIds": [
+      "T-SCH-01",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "reason": "Back squat (high bar), Leg extension, Bench press, Lat pulldown need equipment you no longer have"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "stalePlanProposals one exercise needs missing equipment",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "equipment": [
+      "barbell",
+      "cable"
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "plan_regenerate",
+     "title": "Rebuild your plan to match your settings",
+     "rationale": "Your plan is out of date: Leg extension needs equipment you no longer have. Rebuilding from today keeps your logged history and uses your current days, equipment and preferences.",
+     "ruleIds": [
+      "T-SCH-01",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "reason": "Leg extension needs equipment you no longer have"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "stalePlanProposals plan matches the settings",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "availableDays": [
+      3,
+      5
+     ],
+     "equipment": [
+      "barbell",
+      "machine",
+      "cable"
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "stalePlanProposals only one session off",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "availableDays": [
+      3
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "stalePlanProposals empty available days are ignored",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "availableDays": []
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "stalePlanProposals skipped sessions on unavailable days do not count",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n3",
+       "date": "2026-11-01",
+       "status": "skipped",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n3-0",
+         "exerciseId": "leg-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "availableDays": [
+      3
+     ]
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "stalePlanProposals both reasons",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "availableDays": [
+      6,
+      7
+     ],
+     "equipment": [
+      "bodyweight"
+     ]
+    }
+   },
+   "output": [
+    {
+     "kind": "plan_regenerate",
+     "title": "Rebuild your plan to match your settings",
+     "rationale": "Your plan is out of date: 2 sessions next week fall on days you are not available; Back squat (high bar), Leg extension, Bench press, Lat pulldown need equipment you no longer have. Rebuilding from today keeps your logged history and uses your current days, equipment and preferences.",
+     "ruleIds": [
+      "T-SCH-01",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "reason": "2 sessions next week fall on days you are not available; Back squat (high bar), Leg extension, Bench press, Lat pulldown need equipment you no longer have"
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "stalePlanProposals no settings",
+   "input": {
+    "call": "stalePlanProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals three weeks since the last set",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Your last logged set was 22 days ago. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "introWeekProposals trained last week",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-20",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals already an intro week",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ],
+       "kind": "intro"
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals already a deload week",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ],
+       "kind": "deload"
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals nothing logged, block older than the break",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Nothing has been logged for 22 days. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "introWeekProposals nothing logged, brand-new block",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-26",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals nothing logged, block started exactly two weeks ago",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-13",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Nothing has been logged for 14 days. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "introWeekProposals nothing logged, block started thirteen days ago",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-14",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals last set exactly fourteen days ago",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-13",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Your last logged set was 14 days ago. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "introWeekProposals last set thirteen days ago",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-14",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals warm-ups and today's sets do not count",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-25",
+       "setIndex": 0,
+       "loadKg": 40,
+       "reps": 8,
+       "rir": 5,
+       "isWarmup": true,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-27",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Your last logged set was 22 days ago. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "introWeekProposals no block",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": null
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals no upcoming sessions",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "done",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-20",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "introWeekProposals an earlier intro this week that is already past",
+   "input": {
+    "call": "introWeekProposals",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [
+      {
+       "id": "t1",
+       "date": "2026-10-26",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "t1-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ],
+       "kind": "intro"
+      }
+     ],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Your last logged set was 22 days ago. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "planReview every plan proposal",
+   "input": {
+    "call": "planReview",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj2",
+       "muscleId": "chest",
+       "label": "Pec",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": [
+        "bench-press"
+       ]
+      }
+     ],
+     "targets": {
+      "chest": 12,
+      "quads": 10,
+      "back": 14
+     },
+     "previousYesCount": 2,
+     "dislikedExerciseIds": [
+      "lat-pulldown"
+     ],
+     "equipment": [
+      "barbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ],
+     "availableDays": [
+      5
+     ]
+    },
+    "yesCount": 3
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Pec",
+     "rationale": "Your plan still includes Bench press, which your Pec injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj2",
+      "removeExerciseIds": [
+       "bench-press"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your quads: pain on 2 days",
+     "rationale": "You tagged quads as painful on 2 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Back squat (high bar); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "quads",
+      "severity": "pain",
+      "label": "Quads pain (from check-ins)",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "volume_change",
+     "title": "Trim weekly volume by 2 sets",
+     "rationale": "Two weekly reviews in a row flagged poor recovery (2 then 3 of 5), so one deload is not enough. Train with 2 fewer weekly sets on your higher-volume muscles until recovery holds; add sets back only after a real plateau. This rebuilds the plan from today, so if you also want this week's deload, accept this first.",
+     "ruleIds": [
+      "T-FAT-02",
+      "T-FAT-03",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 12,
+        "to": 10
+       },
+       {
+        "muscle": "back",
+        "from": 14,
+        "to": 12
+       },
+       {
+        "muscle": "quads",
+        "from": 10,
+        "to": 8
+       }
+      ]
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Lat pulldown for Pull-up / weighted pull-up",
+     "rationale": "You marked Lat pulldown as an exercise you don't want, but it is still in your plan. Pull-up / weighted pull-up trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "lat-pulldown",
+      "toExerciseId": "pull-up",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Your last logged set was 22 days ago. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "planReview every plan proposal but volume",
+   "input": {
+    "call": "planReview",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7,
+       "energy": 3,
+       "stress": 3,
+       "soreness": {
+        "quads": "pain"
+       },
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     },
+     "injuries": [
+      {
+       "id": "inj2",
+       "muscleId": "chest",
+       "label": "Pec",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": [
+        "bench-press"
+       ]
+      }
+     ],
+     "targets": {
+      "chest": 12,
+      "quads": 10,
+      "back": 14
+     },
+     "previousYesCount": 2,
+     "dislikedExerciseIds": [
+      "lat-pulldown"
+     ],
+     "equipment": [
+      "barbell",
+      "machine",
+      "cable",
+      "bodyweight"
+     ],
+     "availableDays": [
+      5
+     ]
+    },
+    "yesCount": 1
+   },
+   "output": [
+    {
+     "kind": "injury_adjust",
+     "title": "Update your plan for Pec",
+     "rationale": "Your plan still includes Bench press, which your Pec injury rules out. Rebuilding the plan from today swaps them for exercises that leave the area alone.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-SEL-04"
+     ],
+     "payload": {
+      "injuryId": "inj2",
+      "removeExerciseIds": [
+       "bench-press"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "injury_adjust",
+     "title": "Protect your quads: pain on 2 days",
+     "rationale": "You tagged quads as painful on 2 of the last 14 days. Log it as an injury (pain) and rebuild the plan without Back squat (high bar); machines, isolation work and higher reps take their place. If the pain is sharp or keeps coming back, see a physio.",
+     "ruleIds": [
+      "T-SEL-08",
+      "T-FAT-04"
+     ],
+     "payload": {
+      "injuryId": null,
+      "muscle": "quads",
+      "severity": "pain",
+      "label": "Quads pain (from check-ins)",
+      "removeExerciseIds": [
+       "back-squat"
+      ],
+      "addExerciseIds": []
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "exercise_swap",
+     "title": "Swap Lat pulldown for Pull-up / weighted pull-up",
+     "rationale": "You marked Lat pulldown as an exercise you don't want, but it is still in your plan. Pull-up / weighted pull-up trains the same muscles with your equipment.",
+     "ruleIds": [
+      "T-SEL-04"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "lat-pulldown",
+      "toExerciseId": "pull-up",
+      "reason": "disliked"
+     },
+     "expiresOn": "2026-11-03"
+    },
+    {
+     "kind": "intro_week",
+     "title": "Ease back in with an intro week",
+     "rationale": "Your last logged set was 22 days ago. After time off, run the first week back at about 75% of the sets and one rep further from failure, then return to the full plan.",
+     "ruleIds": [
+      "T-FAT-06"
+     ],
+     "payload": {
+      "blockId": "b1",
+      "setPct": 0.75,
+      "rirBump": 1
+     },
+     "expiresOn": "2026-11-03"
+    }
+   ]
+  },
+  {
+   "name": "planReview nothing to propose",
+   "input": {
+    "call": "planReview",
+    "state": {
+     "today": "2026-10-27",
+     "weekStart": "2026-10-19",
+     "checkins": [],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "n1",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n1-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n1-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "n2",
+       "date": "2026-10-30",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "n2-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "n2-1",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-20",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "block": {
+      "id": "b1",
+      "kind": "hypertrophy",
+      "startsOn": "2026-10-05",
+      "weeks": 6
+     }
+    },
+    "yesCount": 0
+   },
+   "output": []
+  },
+  {
+   "name": "planReview the golden review state",
+   "input": {
+    "call": "planReview",
+    "state": {
+     "today": "2026-10-25",
+     "weekStart": "2026-10-19",
+     "checkins": [
+      {
+       "day": "2026-09-21",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-22",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-23",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-24",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-25",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-26",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-27",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-28",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-29",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-09-30",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-01",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-02",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-03",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-04",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-05",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-06",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-07",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-08",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-09",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-10",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-11",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-12",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-13",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-14",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-15",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-16",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-17",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-18",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-19",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-20",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-21",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-22",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-23",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-24",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      },
+      {
+       "day": "2026-10-25",
+       "sleepHours": 7.5,
+       "energy": 4,
+       "stress": 2,
+       "soreness": {},
+       "bodyweightKg": null
+      }
+     ],
+     "sessionsThisWeek": [],
+     "nextWeekSessions": [
+      {
+       "id": "s0",
+       "date": "2026-10-26",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "s0e0",
+         "exerciseId": "incline-dumbbell-press",
+         "sets": 4,
+         "rirMin": 1,
+         "rirMax": 4
+        },
+        {
+         "id": "s0e1",
+         "exerciseId": "pull-up",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 3
+        },
+        {
+         "id": "s0e2",
+         "exerciseId": "single-arm-dumbbell-row",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 3
+        },
+        {
+         "id": "s0e3",
+         "exerciseId": "cable-lateral-raise",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s0e4",
+         "exerciseId": "overhead-cable-triceps-extension",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s0e5",
+         "exerciseId": "incline-dumbbell-curl",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 2
+        }
+       ]
+      },
+      {
+       "id": "s1",
+       "date": "2026-10-27",
+       "status": "planned",
+       "templateKey": "lower_a",
+       "exercises": [
+        {
+         "id": "s1e0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 2,
+         "rirMax": 4
+        },
+        {
+         "id": "s1e1",
+         "exerciseId": "romanian-deadlift",
+         "sets": 3,
+         "rirMin": 2,
+         "rirMax": 4
+        },
+        {
+         "id": "s1e2",
+         "exerciseId": "leg-extension",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s1e3",
+         "exerciseId": "seated-leg-curl",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s1e4",
+         "exerciseId": "standing-calf-raise",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        }
+       ]
+      },
+      {
+       "id": "s2",
+       "date": "2026-10-28",
+       "status": "planned",
+       "templateKey": "upper_b",
+       "exercises": [
+        {
+         "id": "s2e0",
+         "exerciseId": "flat-dumbbell-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 4
+        },
+        {
+         "id": "s2e1",
+         "exerciseId": "chin-up",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 3
+        },
+        {
+         "id": "s2e2",
+         "exerciseId": "seated-cable-row",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 3
+        },
+        {
+         "id": "s2e3",
+         "exerciseId": "cable-fly",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s2e4",
+         "exerciseId": "reverse-pec-deck",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s2e5",
+         "exerciseId": "preacher-curl",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s2e6",
+         "exerciseId": "dumbbell-overhead-triceps-extension",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s2e7",
+         "exerciseId": "cable-lateral-raise",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 2
+        }
+       ]
+      },
+      {
+       "id": "s3",
+       "date": "2026-10-29",
+       "status": "planned",
+       "templateKey": "lower_b",
+       "exercises": [
+        {
+         "id": "s3e0",
+         "exerciseId": "hack-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 4
+        },
+        {
+         "id": "s3e1",
+         "exerciseId": "barbell-hip-thrust",
+         "sets": 2,
+         "rirMin": 1,
+         "rirMax": 4
+        },
+        {
+         "id": "s3e2",
+         "exerciseId": "seated-leg-curl",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s3e3",
+         "exerciseId": "leg-extension",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s3e4",
+         "exerciseId": "leg-press-calf-raise",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        }
+       ]
+      },
+      {
+       "id": "s4",
+       "date": "2026-10-31",
+       "status": "planned",
+       "templateKey": "full_c",
+       "exercises": [
+        {
+         "id": "s4e0",
+         "exerciseId": "bulgarian-split-squat",
+         "sets": 2,
+         "rirMin": 1,
+         "rirMax": 4
+        },
+        {
+         "id": "s4e1",
+         "exerciseId": "machine-chest-press",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 3
+        },
+        {
+         "id": "s4e2",
+         "exerciseId": "machine-row",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 3
+        },
+        {
+         "id": "s4e3",
+         "exerciseId": "glute-bridge-machine",
+         "sets": 2,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s4e4",
+         "exerciseId": "cable-rear-delt-fly",
+         "sets": 3,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s4e5",
+         "exerciseId": "single-leg-dumbbell-calf-raise",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        },
+        {
+         "id": "s4e6",
+         "exerciseId": "cable-lateral-raise",
+         "sets": 4,
+         "rirMin": 0,
+         "rirMax": 2
+        }
+       ]
+      }
+     ],
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-22",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "mainLiftExerciseIds": [],
+     "status": "intermediate",
+     "goal": "lean_gain"
+    },
+    "yesCount": 2
+   },
+   "output": []
+  }
+ ]
+}

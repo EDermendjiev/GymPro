@@ -2,5 +2,6 @@
 library;
 
 export 'src/fatigue.dart';
+export 'src/plan_review.dart';
 export 'src/plateau.dart';
 export 'src/progress.dart';
