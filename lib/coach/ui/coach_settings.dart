@@ -23,6 +23,7 @@ const IconData coachSettingsIcon = PhosphorIconsRegular.clipboardText;
 List<(String, IconData)> coachSettingsSearchRows() => [
       (t.coachBuildPlan, PhosphorIconsRegular.magicWand),
       for (final m in CoachModule.values) (_label(m), _icon(m)),
+      (t.coachAskFirst, PhosphorIconsRegular.handPalm),
     ];
 
 /// The four module switches. A switch whose prerequisite is off is shown dimmed and does nothing when tapped;
@@ -63,6 +64,14 @@ class CoachSettings extends StatelessWidget {
               opacity: fit.coach.canSwitchOn(m) ? 1 : 0.4,
               child: build(_icon(m), _label(m), TinySwitch(on: fit.coach.isOn(m)), _hint(m)),
             ),
+          ),
+        if (fit.coach.isOn(CoachModule.recovery))
+          GestureDetector(
+            key: const ValueKey('coach-ask-first'),
+            behavior: HitTestBehavior.opaque,
+            onTap: () => fit.setCoachAskFirst(!fit.coachAskFirst),
+            child: build(PhosphorIconsRegular.handPalm, t.coachAskFirst, TinySwitch(on: fit.coachAskFirst),
+                t.coachAskFirstHint),
           ),
         if (fit.coach.isOn(CoachModule.recovery))
           _open(context, build, 'coach-soreness', PhosphorIconsRegular.bandaids, t.coachSorenessTitle,

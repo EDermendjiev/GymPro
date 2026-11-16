@@ -55,6 +55,7 @@ class HomeScreen extends StatelessWidget {
               ScrollAway(radius: 26, child: _hero(context, gc)),
               const SizedBox(height: 14),
             ],
+            const CoachHomeSlot(), // coach-seam
             if (fit.photoDue) ...[
               const SizedBox(height: 14),
               _away(_photoNudge(gc)),

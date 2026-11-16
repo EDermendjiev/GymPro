@@ -581,8 +581,10 @@ abstract final class CoachFacade {
   ///
   /// Without a picked phase the phase follows the coaching goal, and without a coaching profile it is maintain;
   /// without a profile the status is novice. The activity band follows from [activity] by rank among the app's
-  /// choices (`coachLifestyleFor`). Everything else the calculation can take (body fat, target rate, logged sport
-  /// efforts, calorie override) is left at the coach's defaults.
+  /// choices (`coachLifestyleFor`). Accepted weigh-in proposals (Task 6.2) are read from `nutrition.multiplier`
+  /// (the activity factor) and `nutrition.kcalOffset` (calories added to or taken from the coach's own target).
+  /// Everything else the calculation can take (body fat, target rate, logged sport efforts) is left at the coach's
+  /// defaults.
   static CoachNutritionTargets nutritionTargets({
     required double bodyweightKg,
     required String sex,
@@ -596,14 +598,22 @@ abstract final class CoachFacade {
         : profile != null
             ? cn.phaseForGoal(profile.goal)
             : ck.NutritionPhase.maintain;
-    final t = cn.nutritionTargets(cn.NutritionInput(
-      bodyweightKg: bodyweightKg,
-      sex: coachSexFor(sex),
-      status: profile?.status ?? ck.Status.novice,
-      phase: phase,
-      lifestyle: coachLifestyleFor(activity),
-      sports: [for (final s in coach.sports) cn.SportForKcal.fromUserSport(s)],
-    ));
+    final multiplier = coach.nutrition['multiplier'];
+    final offset = coach.nutrition['kcalOffset'];
+    cn.NutritionInput input({int? kcal}) => cn.NutritionInput(
+          bodyweightKg: bodyweightKg,
+          sex: coachSexFor(sex),
+          status: profile?.status ?? ck.Status.novice,
+          phase: phase,
+          lifestyle: coachLifestyleFor(activity),
+          multiplier: multiplier is num ? multiplier.toDouble() : null,
+          sports: [for (final s in coach.sports) cn.SportForKcal.fromUserSport(s)],
+          kcalOverride: kcal,
+        );
+    var t = cn.nutritionTargets(input());
+    // An accepted calorie change is kept as an offset from the coach's own target, so the target still follows
+    // the bodyweight; the package takes the result as its calorie override.
+    if (offset is num && offset != 0) t = cn.nutritionTargets(input(kcal: t.kcal + offset.round()));
     return CoachNutritionTargets(
       kcal: t.kcal,
       proteinG: t.proteinG.round(),

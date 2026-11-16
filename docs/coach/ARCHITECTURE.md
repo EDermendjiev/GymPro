@@ -167,7 +167,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
-| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`) | done (plan); the proposal card is planned (recovery) |
+| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card, in the phone layout | done |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
 | `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
@@ -448,6 +448,35 @@ proposal's cut, 0.4 by default), rounded half up, at least one. A coach routine 
 session already opens with the cut sets (applying the deload wrote them into the block), so it is not cut again.
 In the week of an applied targeted deload, a coach routine's workout leaves out the exercises the proposal removes
 (`coachShapeSession`); the block holds the reduced sets of the others.
+
+### Proposals: apply, undo, the Home card
+
+Every proposal kind has a tier (`coachTierFor` in `lib/coach/policy/autonomy.dart`, the table under
+[Autonomy tiers](#autonomy-tiers)). A proposal of the "applied with Undo" tier is applied by the tick as soon as
+it is made; an "ask first" proposal waits. "Ask me before any change" in Settings › Coach (kept under
+`coach.review.askFirst`) moves every proposal to ask first.
+
+Applying (`CoachState.applyCoachProposal`) first checks the payload with the recovery package's
+`ProposalPayload.parse`; an invalid one is put aside, never applied. Then it takes the undo snapshot and applies
+the package's `PlanDiff` (`applyProposal` over the block's sessions):
+
+| Diff part | What changes |
+|---|---|
+| `settings.trainingStatus` | the coaching profile's status |
+| `injury` | an injury of `coach.injuries` updated, or a new active one recorded |
+| `nutrition` | `coach.nutrition`: `kcalOffset` (calories off the coach's own target), `multiplier`, `lastAdjustOn`, `initialAdjustDone` (the package's `nextAdjustState`) |
+| `exerciseUpdates`, `exerciseDeletes`, `sessionUpdates` | the block's sessions; a swapped exercise is also swapped in its coach routine and set to Auto |
+| `regenerate` | the plan is generated again as in "Edits survive" (`targetAdjustments` add up under `coach.review.targetAdjustments` and reach every later block; a block transition generates a new block of the proposal's kind from its start day) |
+
+The record then becomes `applied`, with `appliedOn`, the diff's `summary`, the deload week it sets up (`deload`)
+and the undo snapshot (`undo`): the coach's data without its proposals, the coach routines with their places in
+the list, every progression rule, the weekly plan, its extras and the rotation, and the record as it was. Undo
+(`undoCoachProposal`) puts all of it back exactly, so the proposal is pending again; routines the regeneration
+created go. The snapshot is dropped seven days after applying. The user's saved plans are not in it.
+"Not now" (`dismissCoachProposal`) puts a pending proposal aside.
+
+The Home card (`lib/coach/ui/proposal_card.dart`) lists the pending proposals with Apply and Not now and the ones
+applied in the last seven days with Undo, newest first; titles and reasons are the packages' English.
 
 ## Nutrition module
 

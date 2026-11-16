@@ -925,12 +925,13 @@ mixin CoachState
     final ids = coach.routineIds.values.toSet();
     final routineJson = <Map<String, dynamic>>[];
     for (final (i, r) in routines.indexed) {
-      if (ids.contains(r.id)) routineJson.add({'index': i, 'routine': r.toJson()});
+      // A deep copy: a routine's JSON shares its lists with the routine.
+      if (ids.contains(r.id)) routineJson.add({'index': i, 'routine': jsonDecode(jsonEncode(r.toJson()))});
     }
     return {
       'coach': data,
       'routines': routineJson,
-      'rules': {for (final e in progressRules.entries) e.key: e.value.toJson()},
+      'rules': jsonDecode(jsonEncode({for (final e in progressRules.entries) e.key: e.value.toJson()})),
       'weeklyPlan': {for (final e in weeklyPlan.entries) '${e.key}': e.value},
       'planExtras': {for (final e in planExtras.entries) '${e.key}': [...e.value]},
       'rotation': rotation,
