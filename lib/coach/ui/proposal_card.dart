@@ -29,7 +29,7 @@ class CoachHomeSlot extends StatelessWidget {
     final proposals = fit.coachCardProposals;
     final hint = fit.coachShowsHomeHint;
     final note = fit.coachNutritionNote;
-    if (proposals.isEmpty && !recovery && !hint && note == null) return const SizedBox.shrink();
+    if (!fit.coachShowsHomeSlot) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [

@@ -167,7 +167,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
-| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card, in the phone layout | done |
+| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card in the phone layout, and as a card of the desktop layout's flow after the day's card while it has something to show (`coachShowsHomeSlot`) | done |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
 | `lib/state/stats_state.dart` | `muscleSetsThisWeek` asks `coachMuscleSetsThisWeek` first; `muscleHeatThisWeek` asks `coachWeeklySetTarget` per muscle before the app's single target (upstream's `muscleTargetFor` takes a day count, not a muscle, so the seam sits where a muscle is known) | done |
@@ -497,7 +497,9 @@ The record then becomes `applied`, with `appliedOn`, the diff's `summary`, the d
 and the undo snapshot (`undo`): the coach's data without its proposals, the coach routines with their places in
 the list, every progression rule, the weekly plan, its extras and the rotation, and the record as it was. Undo
 (`undoCoachProposal`) puts all of it back exactly, so the proposal is pending again; routines the regeneration
-created go. The snapshot is dropped seven days after applying. The user's saved plans are not in it.
+created go. The snapshot is dropped seven days after applying. The user's saved plans are not in it, by design:
+no proposal edits a saved plan; the only way one is touched is when a regeneration first saves a weekly plan that
+holds routines of the user's own as a plan of its own, and that copy left behind after an undo is harmless.
 "Not now" (`dismissCoachProposal`) puts a pending proposal aside.
 
 The Home card (`lib/coach/ui/proposal_card.dart`) lists the pending proposals with Apply and Not now and the ones

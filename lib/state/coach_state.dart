@@ -905,6 +905,14 @@ mixin CoachState
     ];
   }
 
+  /// Whether the coach's Home slot has anything to show: proposals, the weigh-in note, the sports and injuries
+  /// hint, or (while the recovery module is on) the soreness row.
+  bool get coachShowsHomeSlot =>
+      coach.isOn(CoachModule.recovery) ||
+      coachCardProposals.isNotEmpty ||
+      coachShowsHomeHint ||
+      coachNutritionNote != null;
+
   /// The tier of [p] under the current "Ask me before any change" setting.
   CoachAutonomyTier coachTierOf(CoachProposal p) => coachTierFor(p.kind, askFirst: coachAskFirst);
 

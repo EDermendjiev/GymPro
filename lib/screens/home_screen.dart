@@ -87,6 +87,7 @@ class HomeScreen extends StatelessWidget {
       wraps.add(wrap);
     }
     if (hero) add(_hero(context, gc), (c) => FlowSlot(column: fixed ? 0 : null, child: c));
+    if (fit.coachShowsHomeSlot) add(const CoachHomeSlot(), (c) => FlowSlot(column: fixed ? 0 : null, child: c)); // coach-seam
     if (fit.photoDue) add(_photoNudge(gc), (c) => FlowSlot(column: fixed ? 0 : null, child: c));
     final ids = fixed
         ? [
