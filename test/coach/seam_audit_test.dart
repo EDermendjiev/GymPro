@@ -30,7 +30,7 @@ const _expected = <String, int>{
   'lib/screens/onboarding_screen.dart': 4, // import of the barrel, page count, the coach's pages, finish
   'lib/screens/home_screen.dart': 3, // import of the barrel, block and week in the subtitle, "Why this plan"
   'lib/screens/train_screen.dart': 2, // import of the barrel, quick-workout length chips
-  'lib/screens/session_screen.dart': 3, // import of the barrel, the coach's requests taken in build, target line
+  'lib/screens/session_screen.dart': 4, // import of the barrel, the coach's requests taken in build, target line, soreness row
   'lib/state/nutrition_state.dart': 1, // suggestedGoals asks first
   'lib/screens/nutrition_screen.dart': 1, // import of the barrel, for its part nutrition/settings.dart
   'lib/screens/nutrition/settings.dart': 1, // the coach's card in the goals sheet

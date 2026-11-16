@@ -14035,6 +14035,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Workout length'**
   String get coachQuickLength;
+
+  /// No description provided for @coachSorenessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sore or painful?'**
+  String get coachSorenessTitle;
+
+  /// No description provided for @coachSorenessHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark what is sore or hurts today. The coach eases off those areas and keeps each report for four weeks.'**
+  String get coachSorenessHint;
+
+  /// No description provided for @coachSorenessSore.
+  ///
+  /// In en, this message translates to:
+  /// **'Sore'**
+  String get coachSorenessSore;
+
+  /// No description provided for @coachSorenessPain.
+  ///
+  /// In en, this message translates to:
+  /// **'Pain'**
+  String get coachSorenessPain;
+
+  /// No description provided for @coachSorenessRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Anything sore or painful?'**
+  String get coachSorenessRow;
+
+  /// No description provided for @coachSorenessRowHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell the coach and it eases off those areas'**
+  String get coachSorenessRowHint;
+
+  /// No description provided for @coachAreaFrontDelts.
+  ///
+  /// In en, this message translates to:
+  /// **'Front delts'**
+  String get coachAreaFrontDelts;
+
+  /// No description provided for @coachAreaSideDelts.
+  ///
+  /// In en, this message translates to:
+  /// **'Side delts'**
+  String get coachAreaSideDelts;
+
+  /// No description provided for @coachAreaRearDelts.
+  ///
+  /// In en, this message translates to:
+  /// **'Rear delts'**
+  String get coachAreaRearDelts;
+
+  /// No description provided for @coachProposalApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get coachProposalApply;
+
+  /// No description provided for @coachProposalNotNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get coachProposalNotNow;
+
+  /// No description provided for @coachProposalApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Changed by the coach'**
+  String get coachProposalApplied;
+
+  /// No description provided for @coachProposalSuggests.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach suggests'**
+  String get coachProposalSuggests;
+
+  /// No description provided for @coachProposalInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach could not read this suggestion and put it aside'**
+  String get coachProposalInvalid;
+
+  /// No description provided for @coachAskFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask me before any change'**
+  String get coachAskFirst;
+
+  /// No description provided for @coachAskFirstHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Deloads, swaps and new blocks wait for your OK instead of being applied'**
+  String get coachAskFirstHint;
+
+  /// No description provided for @coachSports.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get coachSports;
+
+  /// No description provided for @coachSportsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What you play besides lifting, so the plan works around it'**
+  String get coachSportsHint;
+
+  /// No description provided for @coachSportsNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No sports yet'**
+  String get coachSportsNone;
+
+  /// No description provided for @coachSportAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a sport'**
+  String get coachSportAdd;
+
+  /// No description provided for @coachSportDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days'**
+  String get coachSportDays;
+
+  /// No description provided for @coachSportIntensity.
+  ///
+  /// In en, this message translates to:
+  /// **'How hard'**
+  String get coachSportIntensity;
+
+  /// No description provided for @coachSportLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Length'**
+  String get coachSportLength;
+
+  /// No description provided for @coachIntensityLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get coachIntensityLight;
+
+  /// No description provided for @coachIntensityModerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderate'**
+  String get coachIntensityModerate;
+
+  /// No description provided for @coachIntensityHard.
+  ///
+  /// In en, this message translates to:
+  /// **'Hard'**
+  String get coachIntensityHard;
+
+  /// No description provided for @coachIntensityMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Match'**
+  String get coachIntensityMatch;
+
+  /// No description provided for @coachInjuries.
+  ///
+  /// In en, this message translates to:
+  /// **'Injuries'**
+  String get coachInjuries;
+
+  /// No description provided for @coachInjuriesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Areas to protect: the plan leaves out exercises that load them'**
+  String get coachInjuriesHint;
+
+  /// No description provided for @coachInjuriesNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No injuries'**
+  String get coachInjuriesNone;
+
+  /// No description provided for @coachInjuryAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an injury'**
+  String get coachInjuryAdd;
+
+  /// No description provided for @coachInjuryArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Where'**
+  String get coachInjuryArea;
+
+  /// No description provided for @coachInjurySeverity.
+  ///
+  /// In en, this message translates to:
+  /// **'How bad'**
+  String get coachInjurySeverity;
+
+  /// No description provided for @coachSeverityNiggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Niggle'**
+  String get coachSeverityNiggle;
+
+  /// No description provided for @coachSeverityPain.
+  ///
+  /// In en, this message translates to:
+  /// **'Pain'**
+  String get coachSeverityPain;
+
+  /// No description provided for @coachSeverityInjury.
+  ///
+  /// In en, this message translates to:
+  /// **'Injury'**
+  String get coachSeverityInjury;
+
+  /// No description provided for @coachInjuryHealed.
+  ///
+  /// In en, this message translates to:
+  /// **'Healed'**
+  String get coachInjuryHealed;
+
+  /// No description provided for @coachRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get coachRemove;
+
+  /// No description provided for @coachHomeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Play a sport or nursing an injury? Tell the coach and the plan works around it.'**
+  String get coachHomeHint;
+
+  /// No description provided for @coachHomeHintDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get coachHomeHintDismiss;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

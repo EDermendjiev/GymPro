@@ -2176,6 +2176,7 @@ class SessionScreen extends StatelessWidget {
               const SizedBox(height: 10),
               Rise(index: 3, child: CheckInCard(fit.filedSession!)),
             ],
+            if (fit.filedSession != null) const Rise(index: 3, child: CoachSorenessRow()), // coach-seam
             if (fit.tuneTargets.isNotEmpty) ...[
               const SizedBox(height: 10),
               Rise(index: 3, child: _TuneCard(fit.tuneTargets)),

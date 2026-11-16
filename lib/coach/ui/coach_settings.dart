@@ -10,6 +10,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/ui_kit.dart';
 import '../model/coach_data.dart';
 import 'onboarding_pages.dart';
+import 'soreness_sheet.dart';
 
 /// Builds one settings row: icon, label, the switch, and a one-line hint. The settings screen passes its own, so
 /// the coach rows look and behave like their neighbours.
@@ -63,10 +64,23 @@ class CoachSettings extends StatelessWidget {
               child: build(_icon(m), _label(m), TinySwitch(on: fit.coach.isOn(m)), _hint(m)),
             ),
           ),
+        if (fit.coach.isOn(CoachModule.recovery))
+          _open(context, build, 'coach-soreness', PhosphorIconsRegular.bandaids, t.coachSorenessTitle,
+              t.coachSorenessRowHint, () => showCoachSorenessSheet(context)),
       ]),
     );
   }
 }
+
+/// A row that opens a sheet.
+Widget _open(BuildContext context, CoachSettingsRow build, String key, IconData icon, String label, String hint,
+        VoidCallback onTap) =>
+    GestureDetector(
+      key: ValueKey('$key-row'),
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: build(icon, label, Icon(PhosphorIconsBold.caretRight, size: 13, color: context.gc.textTertiary), hint),
+    );
 
 String _label(CoachModule m) => switch (m) {
       CoachModule.progression => t.coachProgression,

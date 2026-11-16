@@ -535,6 +535,54 @@ mixin CoachState
     );
   }
 
+  /// How long a soreness report is kept.
+  static const int coachSorenessDays = 28;
+
+  /// The ISO day of [d].
+  String _coachDay(DateTime d) =>
+      '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+  /// The areas reported sore or painful on [day] (today when null).
+  Map<CoachArea, CoachSoreness> coachSorenessOn([DateTime? day]) {
+    final v = coach.soreness[_coachDay(day ?? coachClock())];
+    if (v is! Map) return const {};
+    return {
+      for (final e in v.entries)
+        if (CoachArea.fromWire(e.key) case final a?) a: ?CoachSoreness.fromWire(e.value),
+    };
+  }
+
+  /// Reports [area] as [level] on [day] (today when null), or clears the report when [level] is null. Reports older
+  /// than [coachSorenessDays] days are dropped.
+  void setCoachSoreness(CoachArea area, CoachSoreness? level, {DateTime? day}) {
+    final key = _coachDay(day ?? coachClock());
+    final all = {
+      for (final e in coach.soreness.entries) e.key: e.value is Map ? {...(e.value as Map).cast<String, dynamic>()} : e.value,
+    };
+    final today = {...?(all[key] as Map<String, dynamic>?)};
+    if (level == null) {
+      today.remove(area.wire);
+    } else {
+      today[area.wire] = level.name;
+    }
+    if (today.isEmpty) {
+      all.remove(key);
+    } else {
+      all[key] = today;
+    }
+    _coachStoreSoreness(all);
+  }
+
+  /// Stores [all] as `coach.soreness`, without the reports older than [coachSorenessDays] days.
+  void _coachStoreSoreness(Map<String, dynamic> all) {
+    final now = coachClock();
+    final oldest = _coachDay(DateTime(now.year, now.month, now.day - (coachSorenessDays - 1)));
+    all.removeWhere((day, _) => day.compareTo(oldest) < 0);
+    coach = coach.copyWith(soreness: all);
+    _persist();
+    notifyListeners();
+  }
+
   // ---------- Nutrition (Phase 6) ----------
 
   /// The coach's calorie and macro targets, or null while the nutrition module is off. Worked out for the latest

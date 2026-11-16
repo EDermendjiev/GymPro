@@ -165,7 +165,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
 | `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first | done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
-| `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow` | done |
+| `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
 | `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`) | done (plan); the proposal card is planned (recovery) |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
@@ -398,6 +398,14 @@ from data the app already has; no daily form is added:
 
 A source with nothing for a day is empty, never zero, and a day with no signal at all has no check-in. The sleep
 rating after a workout is a 1–5 quality score, not hours, so the coach does not read it.
+
+### Soreness and pain
+
+The soreness sheet (`lib/coach/ui/soreness_sheet.dart`) lists the coach's muscles the app can show (the shoulder
+as front, side and rear delts) with "Sore" and "Pain" for today. A report is stored under `coach.soreness` by day
+and by the coach's muscle name, and reports older than 28 days are dropped at the next change. The sheet opens
+from a row on the workout summary, from Settings › Coach and from the Home card (both while the module is on).
+The app's body map is drawn for the app's 14 muscles and cannot tell the delts apart, so the sheet uses a list.
 
 ## Nutrition module
 

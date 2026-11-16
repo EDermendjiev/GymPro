@@ -7997,4 +7997,126 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get coachQuickLength => 'Workout length';
+
+  @override
+  String get coachSorenessTitle => 'Sore or painful?';
+
+  @override
+  String get coachSorenessHint =>
+      'Mark what is sore or hurts today. The coach eases off those areas and keeps each report for four weeks.';
+
+  @override
+  String get coachSorenessSore => 'Sore';
+
+  @override
+  String get coachSorenessPain => 'Pain';
+
+  @override
+  String get coachSorenessRow => 'Anything sore or painful?';
+
+  @override
+  String get coachSorenessRowHint => 'Tell the coach and it eases off those areas';
+
+  @override
+  String get coachAreaFrontDelts => 'Front delts';
+
+  @override
+  String get coachAreaSideDelts => 'Side delts';
+
+  @override
+  String get coachAreaRearDelts => 'Rear delts';
+
+  @override
+  String get coachProposalApply => 'Apply';
+
+  @override
+  String get coachProposalNotNow => 'Not now';
+
+  @override
+  String get coachProposalApplied => 'Changed by the coach';
+
+  @override
+  String get coachProposalSuggests => 'The coach suggests';
+
+  @override
+  String get coachProposalInvalid => 'The coach could not read this suggestion and put it aside';
+
+  @override
+  String get coachAskFirst => 'Ask me before any change';
+
+  @override
+  String get coachAskFirstHint => 'Deloads, swaps and new blocks wait for your OK instead of being applied';
+
+  @override
+  String get coachSports => 'Sports';
+
+  @override
+  String get coachSportsHint => 'What you play besides lifting, so the plan works around it';
+
+  @override
+  String get coachSportsNone => 'No sports yet';
+
+  @override
+  String get coachSportAdd => 'Add a sport';
+
+  @override
+  String get coachSportDays => 'Days';
+
+  @override
+  String get coachSportIntensity => 'How hard';
+
+  @override
+  String get coachSportLength => 'Length';
+
+  @override
+  String get coachIntensityLight => 'Light';
+
+  @override
+  String get coachIntensityModerate => 'Moderate';
+
+  @override
+  String get coachIntensityHard => 'Hard';
+
+  @override
+  String get coachIntensityMatch => 'Match';
+
+  @override
+  String get coachInjuries => 'Injuries';
+
+  @override
+  String get coachInjuriesHint => 'Areas to protect: the plan leaves out exercises that load them';
+
+  @override
+  String get coachInjuriesNone => 'No injuries';
+
+  @override
+  String get coachInjuryAdd => 'Add an injury';
+
+  @override
+  String get coachInjuryArea => 'Where';
+
+  @override
+  String get coachInjurySeverity => 'How bad';
+
+  @override
+  String get coachSeverityNiggle => 'Niggle';
+
+  @override
+  String get coachSeverityPain => 'Pain';
+
+  @override
+  String get coachSeverityInjury => 'Injury';
+
+  @override
+  String get coachInjuryHealed => 'Healed';
+
+  @override
+  String get coachRemove => 'Remove';
+
+  @override
+  String get coachHomeHint =>
+      'Play a sport or nursing an injury? Tell the coach and the plan works around it.';
+
+  @override
+  String get coachHomeHintDismiss => 'Dismiss';
 }
