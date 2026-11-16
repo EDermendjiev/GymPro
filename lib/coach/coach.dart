@@ -10,4 +10,6 @@ library;
 
 export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_profile.dart' show CoachProfile;
+export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarget, CoachWarmupSet;
+export 'facade.dart' show CoachFacade;
 export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSettingsIcon, coachSettingsSearchRows;

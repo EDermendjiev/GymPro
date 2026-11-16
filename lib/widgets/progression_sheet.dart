@@ -16,6 +16,7 @@ String progressKindName(ProgressKind k) => switch (k) {
       ProgressKind.double => t.progDouble,
       ProgressKind.volume => t.progVolume,
       ProgressKind.amrap => t.progAmrap,
+      ProgressKind.auto => t.coachAuto, // coach-seam
     };
 
 String progressKindHint(ProgressKind k) => switch (k) {
@@ -24,6 +25,7 @@ String progressKindHint(ProgressKind k) => switch (k) {
       ProgressKind.double => t.progDoubleHint,
       ProgressKind.volume => t.progVolumeHint,
       ProgressKind.amrap => t.progAmrapHint,
+      ProgressKind.auto => t.coachAutoHint, // coach-seam
     };
 
 void showProgressionSheet(BuildContext context, String id) {
@@ -134,12 +136,12 @@ void showProgressionSheet(BuildContext context, String id) {
                   SheetTitle(t.progression),
                   const SizedBox(height: 14),
                   OptionGroup([
-                    for (final k in ProgressKind.values)
+                    for (final k in fit.coachProgressKinds(rule.kind)) // coach-seam
                       OptionItem(
                         progressKindName(k),
                         detail: k == rule.kind ? progressKindHint(k) : null,
                         selected: k == rule.kind,
-                        onTap: () => set(rule.copyWith(kind: k)),
+                        onTap: () => set(k == ProgressKind.auto ? fit.coachAutoRule(id, rule) : rule.copyWith(kind: k)), // coach-seam
                       ),
                   ]),
                   AnimatedSize(

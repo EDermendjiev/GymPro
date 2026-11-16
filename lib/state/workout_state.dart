@@ -477,6 +477,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
         return (sets: shaped((_) => reps, (w) => w), weightKg: load, reps: reps, move: NextMove.hold);
       case ProgressKind.manual:
       case ProgressKind.linear:
+      case ProgressKind.auto: // coach-seam: without the progression module, Auto steps up like Linear
         final hit = last.every((l) => l.reps >= reps);
         if (!hit && needsDeload(id)) return deload(reps);
         if (hit) return (sets: shaped((l) => l.reps, heavier), weightKg: heavier(load), reps: reps, move: NextMove.up);

@@ -28,3 +28,5 @@ coachRecovery
 coachRecoveryHint
 coachNutrition
 coachNutritionHint
+coachAuto
+coachAutoHint

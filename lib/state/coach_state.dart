@@ -18,4 +18,22 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     _persist();
     notifyListeners();
   }
+
+  // ---------- Progression (Phase 3) ----------
+
+  /// The progression kinds the progression sheet offers for an exercise whose kind is [current]: Auto only while
+  /// the progression module is on, or when it is already the exercise's kind.
+  List<ProgressKind> coachProgressKinds(ProgressKind current) => [
+        for (final k in ProgressKind.values)
+          if (k != ProgressKind.auto || k == current || coach.isOn(CoachModule.progression)) k,
+      ];
+
+  /// The rule to store when the user picks Auto for [exerciseId]: [from] with the kind set to Auto and the rep
+  /// range the coach prescribes for the exercise.
+  ProgressRule coachAutoRule(String exerciseId, ProgressRule from) {
+    final ex = exerciseById(exerciseId);
+    if (ex == null) return from.copyWith(kind: ProgressKind.auto);
+    final rx = CoachFacade.rxFor(ex);
+    return from.copyWith(kind: ProgressKind.auto, low: rx.repMin, high: rx.repMax);
+  }
 }

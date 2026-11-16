@@ -2702,5 +2702,7 @@
   "coachRecovery": "Recovery",
   "coachRecoveryHint": "Weekly review, deloads and swaps. Needs Training plan",
   "coachNutrition": "Nutrition targets",
-  "coachNutritionHint": "Calorie and macro goals from your weigh-ins"
+  "coachNutritionHint": "Calorie and macro goals from your weigh-ins",
+  "coachAuto": "Auto (coach)",
+  "coachAutoHint": "The coach sets the weight and reps from how your last session went, and adjusts after your first set."
 }

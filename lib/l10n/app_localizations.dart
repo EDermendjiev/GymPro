@@ -13645,6 +13645,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calorie and macro goals from your weigh-ins'**
   String get coachNutritionHint;
+
+  /// No description provided for @coachAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto (coach)'**
+  String get coachAuto;
+
+  /// No description provided for @coachAutoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach sets the weight and reps from how your last session went, and adjusts after your first set.'**
+  String get coachAutoHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

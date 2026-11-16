@@ -1,4 +1,4 @@
-enum ProgressKind { manual, linear, double, volume, amrap }
+enum ProgressKind { manual, linear, double, volume, amrap, auto } // coach-seam: Auto is appended, as kinds are stored by index
 
 class ProgressRule {
   const ProgressRule({

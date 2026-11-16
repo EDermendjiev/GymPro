@@ -22,6 +22,9 @@ const _expected = <String, int>{
   'pubspec.yaml': 1, // coach package dependencies
   'android/app/src/main/res/xml/shortcuts.xml': 1, // app identity
   'ios/Runner/Info.plist': 1, // app identity
+  'lib/models/progression.dart': 1, // ProgressKind.auto appended
+  'lib/widgets/progression_sheet.dart': 4, // Auto: its name, its hint, offered while the module is on, its rule
+  'lib/state/workout_state.dart': 1, // _nextPlan: Auto falls back to Linear
 };
 
 /// Seams in files that cannot carry a comment. They are not counted; each must exist.

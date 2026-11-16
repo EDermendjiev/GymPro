@@ -7831,4 +7831,11 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get coachNutritionHint => 'Calorie and macro goals from your weigh-ins';
+
+  @override
+  String get coachAuto => 'Auto (coach)';
+
+  @override
+  String get coachAutoHint =>
+      'The coach sets the weight and reps from how your last session went, and adjusts after your first set.';
 }
