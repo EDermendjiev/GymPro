@@ -102,4 +102,90 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
       move: move,
     );
   }
+
+  /// The workout in progress. WorkoutState, which comes after this mixin, holds it.
+  WorkoutSession? get session;
+
+  /// Requests for the workout screen, oldest first. The screen takes them with [takeCoachPrompts].
+  final List<CoachPrompt> _coachPrompts = [];
+
+  /// The session exercises whose first working set the coach has already looked at, so it looks once only.
+  final Set<SessionExercise> _coachSeen = Set.identity();
+  WorkoutSession? _coachSeenIn;
+
+  /// The sets the last first-set correction rewrote, with what they held before.
+  List<(SessionSet, double, int, int?)> _coachUndo = const [];
+
+  /// Whether a request for the workout screen is waiting. Requests belong to the workout they were made in.
+  bool get hasCoachPrompts => _coachPrompts.isNotEmpty && identical(_coachSeenIn, session);
+
+  /// Hands over the waiting requests for the workout screen, oldest first, and forgets them.
+  List<CoachPrompt> takeCoachPrompts() {
+    final out = hasCoachPrompts ? List<CoachPrompt>.of(_coachPrompts) : const <CoachPrompt>[];
+    _coachPrompts.clear();
+    return out;
+  }
+
+  /// Called when set [setIdx] of exercise [exIdx] is ticked, before the change is saved. On the first working set
+  /// of an Auto exercise, and only once per exercise of the session, the coach checks the reps against the range:
+  /// a miss moves the load of the remaining sets (about 4 % per rep), and the workout screen is asked to say so
+  /// with an Undo.
+  @override
+  void coachSetLogged(int exIdx, int setIdx) {
+    final s = session;
+    if (s == null || s.manual || exIdx < 0 || exIdx >= s.exercises.length) return;
+    final ex = s.exercises[exIdx];
+    final rx = _coachRx(ex.id);
+    if (rx == null) return;
+    final sets = ex.sets;
+    if (setIdx < 0 || setIdx >= sets.length || setIdx != sets.indexWhere((x) => x.counts)) return;
+    if (!identical(_coachSeenIn, s)) {
+      _coachSeen.clear();
+      _coachPrompts.clear();
+      _coachUndo = const [];
+      _coachSeenIn = s;
+    }
+    if (!_coachSeen.add(ex)) return;
+    final st = sets[setIdx];
+    final target = CoachFacade.nextSet(
+      rx: rx,
+      loadKg: st.weight,
+      reps: st.weakReps,
+      incrementKg: _coachIncrement(ex.id),
+    );
+    final load = target.loadKg;
+    if (load == null || (load - st.weight).abs() < 0.001) return;
+    final kg = _coachSnap(ex.id, load, dir: load < st.weight ? -1 : 1);
+    if ((kg - st.weight).abs() < 0.001) return;
+    final rest = [
+      for (final x in sets.skip(setIdx + 1))
+        if (!x.done && (x.kind == SetKind.normal || x.kind == SetKind.failure)) x,
+    ];
+    if (rest.isEmpty) return;
+    _coachUndo = [for (final x in rest) (x, x.weight, x.reps, x.repsR)];
+    for (final x in rest) {
+      x.weight = kg;
+      x.reps = target.reps;
+      if (x.repsR != null) x.repsR = target.reps;
+    }
+    _coachPrompts.add(CoachCorrectionPrompt(
+      title: kg < st.weight ? t.coachSetLighter(weightLabel(kg)) : t.coachSetHeavier(weightLabel(kg)),
+      subtitle: t.coachSetAim(target.reps),
+      exerciseIndex: exIdx,
+    ));
+  }
+
+  /// Puts back the sets the last first-set correction rewrote. Sets ticked since then are left as they are.
+  void undoCoachCorrection() {
+    if (_coachUndo.isEmpty || !identical(_coachSeenIn, session)) return;
+    for (final (x, weight, reps, repsR) in _coachUndo) {
+      if (x.done) continue;
+      x.weight = weight;
+      x.reps = reps;
+      x.repsR = repsR;
+    }
+    _coachUndo = const [];
+    _persist();
+    notifyListeners();
+  }
 }

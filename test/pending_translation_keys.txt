@@ -30,3 +30,6 @@ coachNutrition
 coachNutritionHint
 coachAuto
 coachAutoHint
+coachSetLighter
+coachSetHeavier
+coachSetAim

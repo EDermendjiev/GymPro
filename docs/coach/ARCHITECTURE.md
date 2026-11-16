@@ -160,9 +160,9 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
-| `lib/state/workout_state.dart` | `_nextPlan`, `_openingSetsRaw`, `toggleSet`, `nextWhy` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off | in progress: `_nextPlan` done |
+| `lib/state/workout_state.dart` | `_nextPlan`, `_openingSetsRaw`, `toggleSet`, `nextWhy` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off | in progress: `_nextPlan`, `toggleSet` done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
-| `lib/screens/session_screen.dart` | target label in `_nextRow` | planned |
+| `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; target label in `_nextRow` | in progress: import and requests done |
 | `lib/screens/onboarding_screen.dart` | two pages inserted in the `PageView` list | planned |
 | `lib/screens/home_screen.dart` | coach card slot | planned |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | planned |

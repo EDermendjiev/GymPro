@@ -60,6 +60,21 @@ abstract final class CoachFacade {
     return CoachSessionTarget(loadKg: s.load, reps: s.repsTarget, ruleIds: s.ruleIds, hint: s.hint);
   }
 
+  /// What the sets after the first working set should look like, now that it was done with [reps] reps at
+  /// [loadKg]: missing the rep range moves the load by about 4 % per rep, onto the [incrementKg] grid.
+  static CoachSetTarget nextSet({
+    required CoachRx rx,
+    required double? loadKg,
+    required int reps,
+    required double incrementKg,
+    int setIndex = 0,
+  }) {
+    final s = cp.suggestNextSet(
+      ck.SetContext(rx: _setRx(rx), setIndex: setIndex, load: loadKg, reps: reps, increment: incrementKg),
+    );
+    return CoachSetTarget(loadKg: s.load, reps: s.repsTarget, ruleIds: s.ruleIds);
+  }
+
   static ck.SetRx _setRx(CoachRx rx) =>
       ck.SetRx(repMin: rx.repMin, repMax: rx.repMax, rirMin: rx.rirMin, rirMax: rx.rirMax);
 }

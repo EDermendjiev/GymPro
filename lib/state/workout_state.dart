@@ -802,6 +802,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     }
     st.half = false;
     st.done = !st.done;
+    if (st.done) coachSetLogged(exIdx, setIdx); // coach-seam
     _persist();
     notifyListeners();
     if (!st.done) return;

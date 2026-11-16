@@ -3,6 +3,8 @@ import '../widgets/body_map.dart';
 import 'package:flutter/services.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
+import '../coach/coach.dart'; // coach-seam
+
 import '../l10n/l10n.dart';
 import '../models/exercise.dart';
 import '../models/live_session.dart';
@@ -39,6 +41,7 @@ class SessionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gc = context.gc;
+    coachSessionPrompts(context, _editEffort); // coach-seam
     if (fit.listLayout && !fit.isSessionComplete && fit.session != null) return _listScreen(context, gc);
     return SafeArea(
       bottom: false,

@@ -13657,6 +13657,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The coach sets the weight and reps from how your last session went, and adjusts after your first set.'**
   String get coachAutoHint;
+
+  /// No description provided for @coachSetLighter.
+  ///
+  /// In en, this message translates to:
+  /// **'Set 1 missed the range: the rest drop to {weight}'**
+  String coachSetLighter(String weight);
+
+  /// No description provided for @coachSetHeavier.
+  ///
+  /// In en, this message translates to:
+  /// **'Set 1 beat the range: the rest go up to {weight}'**
+  String coachSetHeavier(String weight);
+
+  /// No description provided for @coachSetAim.
+  ///
+  /// In en, this message translates to:
+  /// **'{n, plural, =1{Aim for 1 rep} other{Aim for {n} reps}}'**
+  String coachSetAim(int n);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

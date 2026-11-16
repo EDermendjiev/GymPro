@@ -2704,5 +2704,11 @@
   "coachNutrition": "Nutrition targets",
   "coachNutritionHint": "Calorie and macro goals from your weigh-ins",
   "coachAuto": "Auto (coach)",
-  "coachAutoHint": "The coach sets the weight and reps from how your last session went, and adjusts after your first set."
+  "coachAutoHint": "The coach sets the weight and reps from how your last session went, and adjusts after your first set.",
+  "coachSetLighter": "Set 1 missed the range: the rest drop to {weight}",
+  "@coachSetLighter": {"placeholders": {"weight": {"type": "String"}}},
+  "coachSetHeavier": "Set 1 beat the range: the rest go up to {weight}",
+  "@coachSetHeavier": {"placeholders": {"weight": {"type": "String"}}},
+  "coachSetAim": "{n, plural, =1{Aim for 1 rep} other{Aim for {n} reps}}",
+  "@coachSetAim": {"placeholders": {"n": {"type": "int"}}}
 }

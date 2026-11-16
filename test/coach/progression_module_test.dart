@@ -54,7 +54,7 @@ const _profile = {
 void _start(String id) {
   final r = fit.createRoutine('Coach');
   fit.toggleRoutineExercise(r, id);
-  fit.startRoutine(fit.routines.single);
+  fit.startRoutine(fit.routines.firstWhere((x) => x.id == r));
 }
 
 List<SessionSet> _working(int exIdx) =>
@@ -232,6 +232,96 @@ void main() {
         _log(id, '2026-09-01', [LoggedSet(8, kg, sec: sec)]);
         expect(fit.coachNextPlan(id), isNull, reason: name);
       }
+    });
+  });
+
+  group('3.3 first-set correction', () {
+    // Starts a session of Bench Press on Auto with [range], three working sets of [kg], and ticks the first one
+    // after [reps] reps.
+    void firstSet(double kg, int reps, {(int, int) range = (8, 12), double step = 2.5}) {
+      final id = _auto('Barbell Bench Press', low: range.$1, high: range.$2, step: step);
+      _start(id);
+      final s = fit.session!;
+      expect(_working(0).length, 3);
+      final first = s.exercises[0].sets.indexWhere((x) => x.kind != SetKind.warmup);
+      for (var j = first; j < s.exercises[0].sets.length; j++) {
+        fit.setSessionWeight(0, j, kg);
+        fit.setSessionReps(0, j, 10);
+      }
+      fit.setSessionReps(0, first, reps);
+      fit.toggleSet(0, first);
+    }
+
+    List<double> rest() => [for (final x in _working(0).skip(1)) x.weight];
+
+    test('fixture: 50 kg × 6 in an 8–12 range drops the rest to 45 kg, and undo puts them back', () {
+      firstSet(50, 6);
+      expect(rest(), [45, 45]);
+      expect([for (final x in _working(0).skip(1)) x.reps], [8, 8]);
+      final prompts = fit.takeCoachPrompts().whereType<CoachCorrectionPrompt>().toList();
+      expect(prompts.length, 1);
+      expect(prompts.single.title, contains('45'));
+      fit.undoCoachCorrection();
+      expect(rest(), [50, 50]);
+      expect([for (final x in _working(0).skip(1)) x.reps], [6, 6]); // as typed: the reps of set 1 carried down
+      fit.saveAndExit();
+    });
+
+    // Every first-set case of the fixture with a load and some reps, replayed through the workout.
+    for (final c in _fixture('progression.json', 'suggestNextSet')) {
+      final ctx = c['input']['ctx'] as Map;
+      if (ctx['setIndex'] != 0 || ctx['load'] == null || ctx['reps'] == 0) continue;
+      test('fixture: ${c['name']}', () {
+        final rx = ctx['rx'] as Map;
+        final kg = (ctx['load'] as num).toDouble();
+        firstSet(kg, ctx['reps'] as int,
+            range: (rx['repMin'] as int, rx['repMax'] as int), step: (ctx['increment'] as num).toDouble());
+        final want = ((c['output'] as Map)['load'] as num).toDouble();
+        expect(rest(), [want, want]);
+        expect(fit.takeCoachPrompts().whereType<CoachCorrectionPrompt>().length, want == kg ? 0 : 1);
+        fit.saveAndExit();
+      });
+    }
+
+    test('it happens once: ticking the first set again changes nothing', () {
+      firstSet(50, 6);
+      fit.undoCoachCorrection();
+      fit.toggleSet(0, 0);
+      fit.toggleSet(0, 0);
+      expect(rest(), [50, 50]);
+      fit.saveAndExit();
+    });
+
+    test('later sets and sets already done are left alone', () {
+      final id = _auto('Barbell Bench Press');
+      _start(id);
+      for (var j = 0; j < 3; j++) {
+        fit.setSessionWeight(0, j, 50);
+      }
+      fit.setSessionReps(0, 1, 5);
+      fit.toggleSet(0, 1); // a later set first: no correction
+      expect(fit.hasCoachPrompts, isFalse);
+      fit.setSessionReps(0, 0, 6);
+      fit.toggleSet(0, 0);
+      expect([for (final x in _working(0)) x.weight], [50, 50, 45]);
+      fit.saveAndExit();
+    });
+
+    test('nothing happens with the module off or on another kind', () {
+      firstSet(50, 6);
+      fit.saveAndExit();
+      fit.setCoachModule(CoachModule.progression, false);
+      final id = _id('Barbell Bench Press');
+      _start(id);
+      for (var j = 0; j < 3; j++) {
+        fit.setSessionWeight(0, j, 50);
+      }
+      fit.setSessionReps(0, 0, 6);
+      fit.takeCoachPrompts();
+      fit.toggleSet(0, 0);
+      expect(rest(), [50, 50]);
+      expect(fit.hasCoachPrompts, isFalse);
+      fit.saveAndExit();
     });
   });
 }

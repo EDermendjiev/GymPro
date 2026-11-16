@@ -8002,4 +8002,25 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get coachAutoHint =>
       'The coach sets the weight and reps from how your last session went, and adjusts after your first set.';
+
+  @override
+  String coachSetLighter(String weight) {
+    return 'Set 1 missed the range: the rest drop to $weight';
+  }
+
+  @override
+  String coachSetHeavier(String weight) {
+    return 'Set 1 beat the range: the rest go up to $weight';
+  }
+
+  @override
+  String coachSetAim(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Aim for $n reps',
+      one: 'Aim for 1 rep',
+    );
+    return '$_temp0';
+  }
 }
