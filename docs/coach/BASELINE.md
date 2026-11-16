@@ -83,6 +83,11 @@ the fixture generator is frozen at commit
 `1e559398316f14db0a994edd6154d114fe80f60d` and its engine is not changed again.
 Any later behaviour change is a separate commit with its own test.
 
+The fixture generator stays frozen at that commit for as long as anyone may
+need to regenerate a fixture to check a parity question. It is retired (archived
+read-only, never changed again) once the first GymPro release has shipped; from
+then on the Dart packages and their committed fixtures are the only reference.
+
 | Package | Tests | Line coverage |
 | --- | --- | --- |
 | `coach_kernel` | 649 | 99.0% (1076/1087) |
