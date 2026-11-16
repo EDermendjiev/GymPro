@@ -5,8 +5,6 @@ import 'dart:math' as math;
 
 import 'package:coach_kernel/coach_kernel.dart';
 
-import 'prescription.dart' show jsNum;
-
 /// Called after each logged set: what should the next set look like?
 SetSuggestion suggestNextSet(SetContext ctx) {
   final SetContext(:rx, :setIndex, :load, :reps, :increment) = ctx;
@@ -51,7 +49,7 @@ SessionSuggestion suggestNextSession(ExerciseHistory history, SetRx rx) {
       repsTarget: repMid,
       ruleIds: ['T-PRG-01'],
       hint:
-          'Pick a weight you could lift about ${jsNum(repMid + rx.rirMax)} times, stopping with ${jsNum(rx.rirMax)} reps in the tank.',
+          'Pick a weight you could lift about ${jsNumber(repMid + rx.rirMax)} times, stopping with ${jsNumber(rx.rirMax)} reps in the tank.',
     );
   }
   final rir = first.rir ?? rx.rirMax;
@@ -86,7 +84,7 @@ SessionSuggestion suggestNextSession(ExerciseHistory history, SetRx rx) {
       repsTarget: keep.repsTarget,
       ruleIds: [...keep.ruleIds, 'T-PRG-06'],
       hint:
-          '${pace.sessions} sessions at this load. ${_STATUS_LABEL[status]} lifters usually add load about every ${jsNum(pace.expected)} sessions: make sure set 1 really reaches ${rx.repMax} reps at ${jsNum(rx.rirMax)} RIR.',
+          '${pace.sessions} sessions at this load. ${_STATUS_LABEL[status]} lifters usually add load about every ${jsNumber(pace.expected)} sessions: make sure set 1 really reaches ${rx.repMax} reps at ${jsNumber(rx.rirMax)} RIR.',
     );
   }
   return keep;

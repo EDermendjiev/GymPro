@@ -39,11 +39,6 @@ enum SessionVariant {
       _byWire[wire] ?? (throw FormatException('Unknown SessionVariant: "$wire"'));
 }
 
-/// A number as the reference prints it in a template string: whole values without a decimal point (2, not 2.0).
-String jsNum(num x) => x is double && x.isFinite && x == x.truncateToDouble() && x.abs() < 1e21
-    ? x.toInt().toString()
-    : x.toString();
-
 bool isCompound(Category c) => c != Category.isolation;
 
 /// The reference takes `Pick<ExerciseDef, 'category'>`; callers pass `ex.category`.
@@ -206,7 +201,7 @@ String formatRx({
   required num rirMax,
 }) {
   final reps = repMin == repMax ? '$repMin' : '$repMin–$repMax';
-  final rir = rirMin == rirMax ? jsNum(rirMin) : '${jsNum(rirMax)}–${jsNum(rirMin)}';
+  final rir = rirMin == rirMax ? jsNumber(rirMin) : '${jsNumber(rirMax)}–${jsNumber(rirMin)}';
   return '$sets × $reps @ $rir RIR';
 }
 
