@@ -312,7 +312,7 @@ user's own. The card then says so and offers "Use coach's goals", noting that
 this replaces all of the user's own goals, water and sodium included. That
 action (`CoachState.useCoachGoals`) puts the goals back as a fresh install has
 them and clears the "set by hand" flag, so the coach's goals are in force
-again; rest-day goals are kept. It writes the existing fields from
+again, rest days included (rest-day goals are dropped too). It writes the existing fields from
 `CoachState`, so it needs no seam.
 
 ## Muscle and equipment mapping

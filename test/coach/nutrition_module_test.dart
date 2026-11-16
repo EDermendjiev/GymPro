@@ -276,9 +276,13 @@ void main() {
       fit.setNutritionGoals(const NutritionGoals(kcal: 2000, protein: 150, waterMl: 4000, sodium: 1500));
       expect(fit.coachCanRestoreGoals, isTrue);
       expect(fit.activeGoals.kcal, 2000);
+      fit.splitRestGoals(true);
+      expect(fit.restGoals, isNotNull);
 
       fit.useCoachGoals();
       expect(fit.nutritionGoalsSet, isFalse);
+      expect(fit.restGoals, isNull, reason: 'rest-day goals are the user\'s own too');
+      expect(fit.goalsFor(DateTime(2026, 11, 3)).toJson(), coachGoals, reason: 'rest days included');
       expect(fit.nutritionGoals.toJson(), const NutritionGoals().toJson(), reason: 'as on a fresh install');
       expect(fit.activeGoals.toJson(), coachGoals);
       expect(fit.coachSetsGoals, isTrue);
