@@ -8,9 +8,8 @@ of inside it, so that each module can be switched off, the coaching logic can
 be tested without the app, and changes from upstream GymMane keep merging
 cleanly.
 
-This document describes the **target architecture**. It is written in the
-present tense, but most of what it describes is not built yet. The
-[status table](#status) at the end says what exists so far. How to merge
+This document describes the architecture as built. The
+[status table](#status) at the end says what exists. How to merge
 upstream changes is covered in [UPSTREAM.md](UPSTREAM.md).
 
 ## Principles
@@ -691,20 +690,42 @@ change decides which. `lib/coach/policy/autonomy.dart` holds this policy.
 The setting "Ask me before any change" in Settings › Coach moves the middle
 tier to "ask first".
 
+## Translations
+
+GymPro launches in English only. Every string the coach adds (the keys starting
+with `coach`, plus `sectionCoach` and `basedOnGymMane`) is in
+`lib/l10n/app_en.arb` and nowhere else, and each is listed in
+`test/pending_translation_keys.txt`. The generated localisations give every
+other language the English text for those keys, so the coach's screens work in
+all of the app's languages, with the coach's own words in English beside the
+translated app. Rule summaries, proposal titles and reasons and "why" texts
+come from the packages in English.
+
+Translators pick the coach's strings up through the pending-keys file, as they
+do upstream's: a key translated into every language leaves the file.
+`test/i18n_test.dart` fails on a key that is missing from a language and not
+pending. `test/coach/translations_test.dart` checks that every coach key is
+pending, scans `lib/coach/ui` for hard-coded English with the same rule
+`test/i18n_test.dart` applies to the app's screens, and renders Settings ›
+Coach, the coach's onboarding pages, the proposal card and the nutrition card in
+German and Japanese.
+
 ## Status
 
 | Part | Location | Status |
 |---|---|---|
-| `coach_kernel` | `packages/coach_kernel` | not started |
-| `coach_progression` | `packages/coach_progression` | not started |
-| `coach_training` | `packages/coach_training` | not started |
-| `coach_recovery` | `packages/coach_recovery` | not started |
-| `coach_nutrition` | `packages/coach_nutrition` | not started |
-| `coach_testkit` | `packages/coach_testkit` | not started |
-| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
+| `coach_kernel` | `packages/coach_kernel` | done, parity-proven (`coach-parity-v1`) |
+| `coach_progression` | `packages/coach_progression` | done, parity-proven (`coach-parity-v1`) |
+| `coach_training` | `packages/coach_training` | done, parity-proven (`coach-parity-v1`) |
+| `coach_recovery` | `packages/coach_recovery` | done, parity-proven (`coach-parity-v1`) |
+| `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
+| `coach_testkit` | `packages/coach_testkit` | done (dev only) |
+| Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
-What exists today is groundwork: the attribution credit in the About screen
-and README, the CI workflow for the `coach` branch, the upstream baseline in
+| Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
+
+Besides the modules there are the attribution credit in the About screen and
+README, the CI workflow for the `coach` branch, the upstream baseline in
 [BASELINE.md](BASELINE.md), and these documents. The Status column of the
 [seams table](#seams) tracks the seams one by one.
