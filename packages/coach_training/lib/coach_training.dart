@@ -11,3 +11,4 @@ export 'src/volume.dart';
 export 'src/schedule.dart';
 export 'src/distribute.dart';
 export 'src/session.dart';
+export 'src/carryover.dart';
