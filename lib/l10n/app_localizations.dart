@@ -13675,6 +13675,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{n, plural, =1{Aim for 1 rep} other{Aim for {n} reps}}'**
   String coachSetAim(int n);
+
+  /// No description provided for @coachTargetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{reps} reps · {rir} in reserve'**
+  String coachTargetLabel(String reps, String rir);
+
+  /// No description provided for @coachWhyUp.
+  ///
+  /// In en, this message translates to:
+  /// **'coach: top of the range with reps to spare, so heavier'**
+  String get coachWhyUp;
+
+  /// No description provided for @coachWhyReps.
+  ///
+  /// In en, this message translates to:
+  /// **'coach: same weight, one more rep on set 1'**
+  String get coachWhyReps;
+
+  /// No description provided for @coachWhyHold.
+  ///
+  /// In en, this message translates to:
+  /// **'coach: same weight until set 1 tops the range with reps to spare'**
+  String get coachWhyHold;
+
+  /// No description provided for @coachWhyStalled.
+  ///
+  /// In en, this message translates to:
+  /// **'coach: this weight has stood still for a while'**
+  String get coachWhyStalled;
+
+  /// No description provided for @coachWhyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why these numbers'**
+  String get coachWhyTitle;
+
+  /// No description provided for @coachWhyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach\'s reasoning, in its own words'**
+  String get coachWhyNote;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -75,6 +75,13 @@ abstract final class CoachFacade {
     return CoachSetTarget(loadKg: s.load, reps: s.repsTarget, ruleIds: s.ruleIds);
   }
 
+  /// The plain-words summary of each known rule in [ruleIds], in order, each once. English: the rule texts live in
+  /// the coach packages.
+  static List<String> ruleSummaries(Iterable<String> ruleIds) => [
+        for (final id in {...ruleIds})
+          if (ck.RULES[id] case final rule?) rule.summary,
+      ];
+
   static ck.SetRx _setRx(CoachRx rx) =>
       ck.SetRx(repMin: rx.repMin, repMax: rx.repMax, rirMin: rx.rirMin, rirMax: rx.rirMax);
 }

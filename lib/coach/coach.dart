@@ -14,4 +14,5 @@ export 'model/coach_prompt.dart' show CoachCorrectionPrompt, CoachEffortPrompt, 
 export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarget, CoachWarmupSet;
 export 'facade.dart' show CoachFacade;
 export 'ui/session_prompts.dart' show CoachAskEffort, coachSessionPrompts;
+export 'ui/why_sheet.dart' show CoachTargetLine;
 export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSettingsIcon, coachSettingsSearchRows;

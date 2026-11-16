@@ -919,6 +919,7 @@ class SessionScreen extends StatelessWidget {
             ]),
           ),
           if (fit.nextTargetLabel(ex.id) != null) _nextRow(gc, ex.id),
+          if (fit.coachTargetLabel(ex.id) != null) CoachTargetLine(exerciseId: ex.id), // coach-seam
         ],
       ],
     );

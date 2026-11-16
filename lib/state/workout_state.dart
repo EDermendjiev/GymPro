@@ -502,6 +502,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
   }
 
   String? nextWhy(String id) {
+    if (coachWhy(id) case final c?) return c; // coach-seam
     final target = nextTarget(id);
     if (target == null) return null;
     final amrap = progressRule(id).kind == ProgressKind.amrap && !isRepsOnly(id);

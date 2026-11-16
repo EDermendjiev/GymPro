@@ -103,6 +103,44 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     );
   }
 
+  /// The coach's rep and effort range for an Auto exercise, for example "8–12 reps · 1–4 in reserve". Null when
+  /// the coach does not drive [exerciseId].
+  @override
+  String? coachTargetLabel(String exerciseId) {
+    final rx = _coachRx(exerciseId);
+    if (rx == null) return null;
+    String range(num a, num b) => a == b ? fmt(a) : '${fmt(a)}–${fmt(b)}';
+    return t.coachTargetLabel(range(rx.repMin, rx.repMax), range(rx.rirMin, rx.rirMax));
+  }
+
+  /// The reason line for the coach's next target, in place of the stock one.
+  @override
+  String? coachWhy(String exerciseId) {
+    final plan = coachNextPlan(exerciseId);
+    if (plan == null) return null;
+    final target = _coachNextSession(exerciseId, _coachRx(exerciseId)!);
+    if (target.ruleIds.contains('T-PRG-06')) return t.coachWhyStalled;
+    return switch (plan.move) {
+      NextMove.up => t.coachWhyUp,
+      NextMove.reps => t.coachWhyReps,
+      _ => t.coachWhyHold,
+    };
+  }
+
+  /// Everything behind the coach's numbers for [exerciseId], for the why-sheet: the coach's own remark first, when
+  /// it has one, then the summary of every rule behind the prescription and the next target. Empty when the coach
+  /// does not drive the exercise. The texts are in English.
+  List<String> coachWhyDetails(String exerciseId) {
+    final rx = _coachRx(exerciseId);
+    if (rx == null) return const [];
+    final hasHistory = lastSetsFor(exerciseId).any((l) => l.counts);
+    final target = hasHistory ? _coachNextSession(exerciseId, rx) : null;
+    return [
+      ?target?.hint,
+      ...CoachFacade.ruleSummaries([...?target?.ruleIds, if (hasHistory) 'T-PRG-03', ...rx.ruleIds]),
+    ];
+  }
+
   /// The workout in progress. WorkoutState, which comes after this mixin, holds it.
   WorkoutSession? get session;
 

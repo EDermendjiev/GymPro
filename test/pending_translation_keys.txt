@@ -33,3 +33,10 @@ coachAutoHint
 coachSetLighter
 coachSetHeavier
 coachSetAim
+coachTargetLabel
+coachWhyUp
+coachWhyReps
+coachWhyHold
+coachWhyStalled
+coachWhyTitle
+coachWhyNote

@@ -7852,4 +7852,27 @@ class AppLocalizationsEs extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String coachTargetLabel(String reps, String rir) {
+    return '$reps reps · $rir in reserve';
+  }
+
+  @override
+  String get coachWhyUp => 'coach: top of the range with reps to spare, so heavier';
+
+  @override
+  String get coachWhyReps => 'coach: same weight, one more rep on set 1';
+
+  @override
+  String get coachWhyHold => 'coach: same weight until set 1 tops the range with reps to spare';
+
+  @override
+  String get coachWhyStalled => 'coach: this weight has stood still for a while';
+
+  @override
+  String get coachWhyTitle => 'Why these numbers';
+
+  @override
+  String get coachWhyNote => 'The coach\'s reasoning, in its own words';
 }

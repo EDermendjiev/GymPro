@@ -2710,5 +2710,13 @@
   "coachSetHeavier": "Set 1 beat the range: the rest go up to {weight}",
   "@coachSetHeavier": {"placeholders": {"weight": {"type": "String"}}},
   "coachSetAim": "{n, plural, =1{Aim for 1 rep} other{Aim for {n} reps}}",
-  "@coachSetAim": {"placeholders": {"n": {"type": "int"}}}
+  "@coachSetAim": {"placeholders": {"n": {"type": "int"}}},
+  "coachTargetLabel": "{reps} reps · {rir} in reserve",
+  "@coachTargetLabel": {"placeholders": {"reps": {"type": "String"}, "rir": {"type": "String"}}},
+  "coachWhyUp": "coach: top of the range with reps to spare, so heavier",
+  "coachWhyReps": "coach: same weight, one more rep on set 1",
+  "coachWhyHold": "coach: same weight until set 1 tops the range with reps to spare",
+  "coachWhyStalled": "coach: this weight has stood still for a while",
+  "coachWhyTitle": "Why these numbers",
+  "coachWhyNote": "The coach's reasoning, in its own words"
 }
