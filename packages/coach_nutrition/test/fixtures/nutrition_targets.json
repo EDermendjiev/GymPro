@@ -1,0 +1,6925 @@
+{
+ "fn": "nutritionTargets",
+ "cases": [
+  {
+   "name": "G1: 72 kg, lightly active, intermediate, lean gain, football twice a week",
+   "input": {
+    "bodyweightKg": 72,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "gain",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1584,
+    "multiplier": 1.65,
+    "maintenanceExSport": 2614,
+    "sportKcalPerDay": 285,
+    "maintenance": 2899,
+    "ratePct": 1,
+    "delta": 198,
+    "kcal": 3100,
+    "kcalLow": 3000,
+    "kcalHigh": 3200,
+    "proteinG": 115,
+    "fatMinG": 50,
+    "fatG": 75,
+    "carbsMinG": 145,
+    "carbsG": 490,
+    "flexibleKcal": 1610,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "G12: 79.4 kg cut with a calorie override",
+   "input": {
+    "bodyweightKg": 79.4,
+    "sex": "male",
+    "bodyFatPct": 22,
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "sedentary",
+    "sports": [],
+    "kcalOverride": 2200
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1746.8000000000002,
+    "multiplier": 1.45,
+    "maintenanceExSport": 2533,
+    "sportKcalPerDay": 0,
+    "maintenance": 2533,
+    "ratePct": 0.75,
+    "delta": -655,
+    "kcal": 2200,
+    "kcalLow": 2100,
+    "kcalHigh": 2300,
+    "proteinG": 125,
+    "fatMinG": 55,
+    "fatG": 70,
+    "carbsMinG": 80,
+    "carbsG": 270,
+    "flexibleKcal": 885,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/novice/male",
+   "input": {
+    "bodyweightKg": 52,
+    "sex": "male",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "sedentary",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1144,
+    "multiplier": 1.45,
+    "maintenanceExSport": 1659,
+    "sportKcalPerDay": 0,
+    "maintenance": 1659,
+    "ratePct": 1.5,
+    "delta": 215,
+    "kcal": 1870,
+    "kcalLow": 1770,
+    "kcalHigh": 1970,
+    "proteinG": 85,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 105,
+    "carbsG": 280,
+    "flexibleKcal": 750,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/novice/female",
+   "input": {
+    "bodyweightKg": 59.4,
+    "sex": "female",
+    "bodyFatPct": null,
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1306.8,
+    "multiplier": 1.65,
+    "maintenanceExSport": 2156,
+    "sportKcalPerDay": 235,
+    "maintenance": 2391,
+    "ratePct": 1.5,
+    "delta": 245,
+    "kcal": 2640,
+    "kcalLow": 2540,
+    "kcalHigh": 2740,
+    "proteinG": 95,
+    "fatMinG": 40,
+    "fatG": 60,
+    "carbsMinG": 120,
+    "carbsG": 430,
+    "flexibleKcal": 1420,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/novice/unspecified",
+   "input": {
+    "bodyweightKg": 66,
+    "sex": "unspecified",
+    "bodyFatPct": 12,
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1452,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2686,
+    "sportKcalPerDay": 227,
+    "maintenance": 2913,
+    "ratePct": 1.5,
+    "delta": 272,
+    "kcal": 3190,
+    "kcalLow": 3090,
+    "kcalHigh": 3290,
+    "proteinG": 105,
+    "fatMinG": 45,
+    "fatG": 75,
+    "carbsMinG": 130,
+    "carbsG": 525,
+    "flexibleKcal": 1845,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/novice/no sex",
+   "input": {
+    "bodyweightKg": 73.4,
+    "sex": null,
+    "bodyFatPct": 19,
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1614.8000000000002,
+    "multiplier": 2.05,
+    "maintenanceExSport": 3310,
+    "sportKcalPerDay": 0,
+    "maintenance": 3310,
+    "ratePct": 1.5,
+    "delta": 303,
+    "kcal": 3610,
+    "kcalLow": 3510,
+    "kcalHigh": 3710,
+    "proteinG": 115,
+    "fatMinG": 50,
+    "fatG": 90,
+    "carbsMinG": 145,
+    "carbsG": 585,
+    "flexibleKcal": 2120,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/intermediate/male",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "bodyFatPct": 22,
+    "status": "intermediate",
+    "phase": "gain",
+    "lifestyle": "sedentary",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1760,
+    "multiplier": 1.45,
+    "maintenanceExSport": 2552,
+    "sportKcalPerDay": 317,
+    "maintenance": 2869,
+    "ratePct": 1,
+    "delta": 220,
+    "kcal": 3090,
+    "kcalLow": 2990,
+    "kcalHigh": 3190,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 70,
+    "carbsMinG": 160,
+    "carbsG": 485,
+    "flexibleKcal": 1435,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/intermediate/female",
+   "input": {
+    "bodyweightKg": 87.4,
+    "sex": "female",
+    "bodyFatPct": 30,
+    "status": "intermediate",
+    "phase": "gain",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1922.8000000000002,
+    "multiplier": 1.65,
+    "maintenanceExSport": 3173,
+    "sportKcalPerDay": 301,
+    "maintenance": 3474,
+    "ratePct": 1,
+    "delta": 240,
+    "kcal": 3710,
+    "kcalLow": 3610,
+    "kcalHigh": 3810,
+    "proteinG": 140,
+    "fatMinG": 60,
+    "fatG": 90,
+    "carbsMinG": 175,
+    "carbsG": 585,
+    "flexibleKcal": 1910,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/intermediate/unspecified",
+   "input": {
+    "bodyweightKg": 94,
+    "sex": "unspecified",
+    "status": "intermediate",
+    "phase": "gain",
+    "lifestyle": "active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 2068,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3826,
+    "sportKcalPerDay": 0,
+    "maintenance": 3826,
+    "ratePct": 1,
+    "delta": 259,
+    "kcal": 4080,
+    "kcalLow": 3980,
+    "kcalHigh": 4180,
+    "proteinG": 150,
+    "fatMinG": 60,
+    "fatG": 105,
+    "carbsMinG": 190,
+    "carbsG": 635,
+    "flexibleKcal": 2180,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/intermediate/no sex",
+   "input": {
+    "bodyweightKg": 101.4,
+    "sex": null,
+    "bodyFatPct": null,
+    "status": "intermediate",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 2230.8,
+    "multiplier": 2.05,
+    "maintenanceExSport": 4573,
+    "sportKcalPerDay": 402,
+    "maintenance": 4975,
+    "ratePct": 1,
+    "delta": 279,
+    "kcal": 5250,
+    "kcalLow": 5150,
+    "kcalHigh": 5350,
+    "proteinG": 160,
+    "fatMinG": 60,
+    "fatG": 125,
+    "carbsMinG": 205,
+    "carbsG": 870,
+    "flexibleKcal": 3250,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/advanced/male",
+   "input": {
+    "bodyweightKg": 108,
+    "sex": "male",
+    "bodyFatPct": 12,
+    "status": "advanced",
+    "phase": "gain",
+    "lifestyle": "sedentary",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 2376,
+    "multiplier": 1.45,
+    "maintenanceExSport": 3445,
+    "sportKcalPerDay": 372,
+    "maintenance": 3817,
+    "ratePct": 0.5,
+    "delta": 149,
+    "kcal": 3970,
+    "kcalLow": 3870,
+    "kcalHigh": 4070,
+    "proteinG": 175,
+    "fatMinG": 60,
+    "fatG": 95,
+    "carbsMinG": 215,
+    "carbsG": 605,
+    "flexibleKcal": 1870,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/advanced/female",
+   "input": {
+    "bodyweightKg": 52.4,
+    "sex": "female",
+    "bodyFatPct": 19,
+    "status": "advanced",
+    "phase": "gain",
+    "lifestyle": "lightly_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1152.8,
+    "multiplier": 1.65,
+    "maintenanceExSport": 1902,
+    "sportKcalPerDay": 0,
+    "maintenance": 1902,
+    "ratePct": 0.5,
+    "delta": 72,
+    "kcal": 1970,
+    "kcalLow": 1870,
+    "kcalHigh": 2070,
+    "proteinG": 85,
+    "fatMinG": 40,
+    "fatG": 55,
+    "carbsMinG": 105,
+    "carbsG": 285,
+    "flexibleKcal": 850,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/advanced/unspecified",
+   "input": {
+    "bodyweightKg": 59,
+    "sex": "unspecified",
+    "bodyFatPct": 22,
+    "status": "advanced",
+    "phase": "gain",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1298,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2401,
+    "sportKcalPerDay": 234,
+    "maintenance": 2635,
+    "ratePct": 0.5,
+    "delta": 81,
+    "kcal": 2720,
+    "kcalLow": 2620,
+    "kcalHigh": 2820,
+    "proteinG": 95,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 120,
+    "carbsG": 440,
+    "flexibleKcal": 1500,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/gain/advanced/no sex",
+   "input": {
+    "bodyweightKg": 66.4,
+    "sex": null,
+    "bodyFatPct": 30,
+    "status": "advanced",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1460.8000000000002,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2995,
+    "sportKcalPerDay": 229,
+    "maintenance": 3224,
+    "ratePct": 0.5,
+    "delta": 91,
+    "kcal": 3320,
+    "kcalLow": 3220,
+    "kcalHigh": 3420,
+    "proteinG": 105,
+    "fatMinG": 45,
+    "fatG": 85,
+    "carbsMinG": 135,
+    "carbsG": 535,
+    "flexibleKcal": 1955,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/novice/male",
+   "input": {
+    "bodyweightKg": 73,
+    "sex": "male",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "sedentary",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1606,
+    "multiplier": 1.45,
+    "maintenanceExSport": 2329,
+    "sportKcalPerDay": 0,
+    "maintenance": 2329,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2330,
+    "kcalLow": 2230,
+    "kcalHigh": 2430,
+    "proteinG": 115,
+    "fatMinG": 50,
+    "fatG": 65,
+    "carbsMinG": 145,
+    "carbsG": 320,
+    "flexibleKcal": 840,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/novice/female",
+   "input": {
+    "bodyweightKg": 80.4,
+    "sex": "female",
+    "bodyFatPct": null,
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1768.8000000000002,
+    "multiplier": 1.65,
+    "maintenanceExSport": 2919,
+    "sportKcalPerDay": 318,
+    "maintenance": 3237,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3240,
+    "kcalLow": 3140,
+    "kcalHigh": 3340,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 80,
+    "carbsMinG": 160,
+    "carbsG": 500,
+    "flexibleKcal": 1585,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/novice/unspecified",
+   "input": {
+    "bodyweightKg": 87,
+    "sex": "unspecified",
+    "bodyFatPct": 12,
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1914,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3541,
+    "sportKcalPerDay": 299,
+    "maintenance": 3840,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3840,
+    "kcalLow": 3740,
+    "kcalHigh": 3940,
+    "proteinG": 140,
+    "fatMinG": 60,
+    "fatG": 100,
+    "carbsMinG": 175,
+    "carbsG": 595,
+    "flexibleKcal": 2040,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/novice/no sex",
+   "input": {
+    "bodyweightKg": 94.4,
+    "sex": null,
+    "bodyFatPct": 19,
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 2076.8,
+    "multiplier": 2.05,
+    "maintenanceExSport": 4257,
+    "sportKcalPerDay": 0,
+    "maintenance": 4257,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 4260,
+    "kcalLow": 4160,
+    "kcalHigh": 4360,
+    "proteinG": 150,
+    "fatMinG": 60,
+    "fatG": 120,
+    "carbsMinG": 190,
+    "carbsG": 645,
+    "flexibleKcal": 2360,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/intermediate/male",
+   "input": {
+    "bodyweightKg": 101,
+    "sex": "male",
+    "bodyFatPct": 22,
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "sedentary",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 2222,
+    "multiplier": 1.45,
+    "maintenanceExSport": 3222,
+    "sportKcalPerDay": 400,
+    "maintenance": 3622,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3620,
+    "kcalLow": 3520,
+    "kcalHigh": 3720,
+    "proteinG": 160,
+    "fatMinG": 60,
+    "fatG": 90,
+    "carbsMinG": 200,
+    "carbsG": 545,
+    "flexibleKcal": 1640,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/intermediate/female",
+   "input": {
+    "bodyweightKg": 108.4,
+    "sex": "female",
+    "bodyFatPct": 30,
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 2384.8,
+    "multiplier": 1.65,
+    "maintenanceExSport": 3935,
+    "sportKcalPerDay": 373,
+    "maintenance": 4308,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 4310,
+    "kcalLow": 4210,
+    "kcalHigh": 4410,
+    "proteinG": 175,
+    "fatMinG": 60,
+    "fatG": 110,
+    "carbsMinG": 215,
+    "carbsG": 655,
+    "flexibleKcal": 2210,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/intermediate/unspecified",
+   "input": {
+    "bodyweightKg": 52,
+    "sex": "unspecified",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1144,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2116,
+    "sportKcalPerDay": 0,
+    "maintenance": 2116,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2120,
+    "kcalLow": 2020,
+    "kcalHigh": 2220,
+    "proteinG": 85,
+    "fatMinG": 40,
+    "fatG": 60,
+    "carbsMinG": 105,
+    "carbsG": 310,
+    "flexibleKcal": 1000,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/intermediate/no sex",
+   "input": {
+    "bodyweightKg": 59.4,
+    "sex": null,
+    "bodyFatPct": null,
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1306.8,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2679,
+    "sportKcalPerDay": 235,
+    "maintenance": 2914,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2910,
+    "kcalLow": 2810,
+    "kcalHigh": 3010,
+    "proteinG": 95,
+    "fatMinG": 40,
+    "fatG": 75,
+    "carbsMinG": 120,
+    "carbsG": 465,
+    "flexibleKcal": 1690,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/advanced/male",
+   "input": {
+    "bodyweightKg": 66,
+    "sex": "male",
+    "bodyFatPct": 12,
+    "status": "advanced",
+    "phase": "maintain",
+    "lifestyle": "sedentary",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1452,
+    "multiplier": 1.45,
+    "maintenanceExSport": 2105,
+    "sportKcalPerDay": 227,
+    "maintenance": 2332,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2330,
+    "kcalLow": 2230,
+    "kcalHigh": 2430,
+    "proteinG": 105,
+    "fatMinG": 45,
+    "fatG": 60,
+    "carbsMinG": 130,
+    "carbsG": 345,
+    "flexibleKcal": 985,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/advanced/female",
+   "input": {
+    "bodyweightKg": 73.4,
+    "sex": "female",
+    "bodyFatPct": 19,
+    "status": "advanced",
+    "phase": "maintain",
+    "lifestyle": "lightly_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1614.8000000000002,
+    "multiplier": 1.65,
+    "maintenanceExSport": 2664,
+    "sportKcalPerDay": 0,
+    "maintenance": 2664,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2660,
+    "kcalLow": 2560,
+    "kcalHigh": 2760,
+    "proteinG": 115,
+    "fatMinG": 50,
+    "fatG": 75,
+    "carbsMinG": 145,
+    "carbsG": 380,
+    "flexibleKcal": 1170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/advanced/unspecified",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "unspecified",
+    "bodyFatPct": 22,
+    "status": "advanced",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 317,
+    "maintenance": 3573,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3570,
+    "kcalLow": 3470,
+    "kcalHigh": 3670,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 160,
+    "carbsG": 560,
+    "flexibleKcal": 1915,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/maintain/advanced/no sex",
+   "input": {
+    "bodyweightKg": 87.4,
+    "sex": null,
+    "bodyFatPct": 30,
+    "status": "advanced",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1922.8000000000002,
+    "multiplier": 2.05,
+    "maintenanceExSport": 3942,
+    "sportKcalPerDay": 301,
+    "maintenance": 4243,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 4240,
+    "kcalLow": 4140,
+    "kcalHigh": 4340,
+    "proteinG": 140,
+    "fatMinG": 60,
+    "fatG": 110,
+    "carbsMinG": 175,
+    "carbsG": 675,
+    "flexibleKcal": 2440,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/novice/male",
+   "input": {
+    "bodyweightKg": 94,
+    "sex": "male",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "sedentary",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2068,
+    "multiplier": 1.45,
+    "maintenanceExSport": 2999,
+    "sportKcalPerDay": 0,
+    "maintenance": 2999,
+    "ratePct": 0.75,
+    "delta": -775,
+    "kcal": 2280,
+    "kcalLow": 2180,
+    "kcalHigh": 2380,
+    "proteinG": 190,
+    "fatMinG": 60,
+    "fatG": 85,
+    "carbsMinG": 95,
+    "carbsG": 190,
+    "flexibleKcal": 600,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 776 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     },
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 2280 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/novice/female",
+   "input": {
+    "bodyweightKg": 101.4,
+    "sex": "female",
+    "bodyFatPct": null,
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2230.8,
+    "multiplier": 1.65,
+    "maintenanceExSport": 3681,
+    "sportKcalPerDay": 402,
+    "maintenance": 4083,
+    "ratePct": 0.75,
+    "delta": -837,
+    "kcal": 3250,
+    "kcalLow": 3150,
+    "kcalHigh": 3350,
+    "proteinG": 205,
+    "fatMinG": 60,
+    "fatG": 100,
+    "carbsMinG": 100,
+    "carbsG": 385,
+    "flexibleKcal": 1490,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 837 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/novice/unspecified",
+   "input": {
+    "bodyweightKg": 108,
+    "sex": "unspecified",
+    "bodyFatPct": 12,
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2376,
+    "multiplier": 1.85,
+    "maintenanceExSport": 4396,
+    "sportKcalPerDay": 372,
+    "maintenance": 4768,
+    "ratePct": 0.5,
+    "delta": -594,
+    "kcal": 4170,
+    "kcalLow": 4070,
+    "kcalHigh": 4270,
+    "proteinG": 215,
+    "fatMinG": 60,
+    "fatG": 120,
+    "carbsMinG": 110,
+    "carbsG": 560,
+    "flexibleKcal": 2330,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/novice/no sex",
+   "input": {
+    "bodyweightKg": 52.4,
+    "sex": null,
+    "bodyFatPct": 19,
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1152.8,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2363,
+    "sportKcalPerDay": 0,
+    "maintenance": 2363,
+    "ratePct": 0.75,
+    "delta": -432,
+    "kcal": 1930,
+    "kcalLow": 1830,
+    "kcalHigh": 2030,
+    "proteinG": 105,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 50,
+    "carbsG": 230,
+    "flexibleKcal": 950,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/intermediate/male",
+   "input": {
+    "bodyweightKg": 59,
+    "sex": "male",
+    "bodyFatPct": 22,
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "sedentary",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1298,
+    "multiplier": 1.45,
+    "maintenanceExSport": 1882,
+    "sportKcalPerDay": 234,
+    "maintenance": 2116,
+    "ratePct": 0.75,
+    "delta": -487,
+    "kcal": 1630,
+    "kcalLow": 1530,
+    "kcalHigh": 1730,
+    "proteinG": 95,
+    "fatMinG": 40,
+    "fatG": 50,
+    "carbsMinG": 60,
+    "carbsG": 200,
+    "flexibleKcal": 650,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/intermediate/female",
+   "input": {
+    "bodyweightKg": 66.4,
+    "sex": "female",
+    "bodyFatPct": 30,
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "lightly_active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1460.8000000000002,
+    "multiplier": 1.65,
+    "maintenanceExSport": 2410,
+    "sportKcalPerDay": 229,
+    "maintenance": 2639,
+    "ratePct": 0.75,
+    "delta": -548,
+    "kcal": 2090,
+    "kcalLow": 1990,
+    "kcalHigh": 2190,
+    "proteinG": 105,
+    "fatMinG": 45,
+    "fatG": 65,
+    "carbsMinG": 65,
+    "carbsG": 270,
+    "flexibleKcal": 1005,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/intermediate/unspecified",
+   "input": {
+    "bodyweightKg": 73,
+    "sex": "unspecified",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1606,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2971,
+    "sportKcalPerDay": 0,
+    "maintenance": 2971,
+    "ratePct": 0.75,
+    "delta": -602,
+    "kcal": 2370,
+    "kcalLow": 2270,
+    "kcalHigh": 2470,
+    "proteinG": 145,
+    "fatMinG": 50,
+    "fatG": 85,
+    "carbsMinG": 75,
+    "carbsG": 255,
+    "flexibleKcal": 1040,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/intermediate/no sex",
+   "input": {
+    "bodyweightKg": 80.4,
+    "sex": null,
+    "bodyFatPct": null,
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1768.8000000000002,
+    "multiplier": 2.05,
+    "maintenanceExSport": 3626,
+    "sportKcalPerDay": 318,
+    "maintenance": 3944,
+    "ratePct": 0.75,
+    "delta": -663,
+    "kcal": 3280,
+    "kcalLow": 3180,
+    "kcalHigh": 3380,
+    "proteinG": 160,
+    "fatMinG": 55,
+    "fatG": 100,
+    "carbsMinG": 80,
+    "carbsG": 435,
+    "flexibleKcal": 1825,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/advanced/male",
+   "input": {
+    "bodyweightKg": 87,
+    "sex": "male",
+    "bodyFatPct": 12,
+    "status": "advanced",
+    "phase": "loss",
+    "lifestyle": "sedentary",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1914,
+    "multiplier": 1.45,
+    "maintenanceExSport": 2775,
+    "sportKcalPerDay": 299,
+    "maintenance": 3074,
+    "ratePct": 0.5,
+    "delta": -478,
+    "kcal": 2600,
+    "kcalLow": 2500,
+    "kcalHigh": 2700,
+    "proteinG": 175,
+    "fatMinG": 60,
+    "fatG": 75,
+    "carbsMinG": 85,
+    "carbsG": 305,
+    "flexibleKcal": 1020,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/advanced/female",
+   "input": {
+    "bodyweightKg": 94.4,
+    "sex": "female",
+    "bodyFatPct": 19,
+    "status": "advanced",
+    "phase": "loss",
+    "lifestyle": "lightly_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2076.8,
+    "multiplier": 1.65,
+    "maintenanceExSport": 3427,
+    "sportKcalPerDay": 0,
+    "maintenance": 3427,
+    "ratePct": 0.5,
+    "delta": -519,
+    "kcal": 2910,
+    "kcalLow": 2810,
+    "kcalHigh": 3010,
+    "proteinG": 190,
+    "fatMinG": 60,
+    "fatG": 95,
+    "carbsMinG": 95,
+    "carbsG": 325,
+    "flexibleKcal": 1230,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/advanced/unspecified",
+   "input": {
+    "bodyweightKg": 101,
+    "sex": "unspecified",
+    "bodyFatPct": 22,
+    "status": "advanced",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2222,
+    "multiplier": 1.85,
+    "maintenanceExSport": 4111,
+    "sportKcalPerDay": 400,
+    "maintenance": 4511,
+    "ratePct": 0.75,
+    "delta": -833,
+    "kcal": 3680,
+    "kcalLow": 3580,
+    "kcalHigh": 3780,
+    "proteinG": 160,
+    "fatMinG": 60,
+    "fatG": 115,
+    "carbsMinG": 100,
+    "carbsG": 500,
+    "flexibleKcal": 2100,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 833 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "matrix/loss/advanced/no sex",
+   "input": {
+    "bodyweightKg": 108.4,
+    "sex": null,
+    "bodyFatPct": 30,
+    "status": "advanced",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       4
+      ],
+      "minutes": 45,
+      "intensity": "moderate"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ]
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2384.8,
+    "multiplier": 2.05,
+    "maintenanceExSport": 4889,
+    "sportKcalPerDay": 373,
+    "maintenance": 5262,
+    "ratePct": 0.75,
+    "delta": -894,
+    "kcal": 4370,
+    "kcalLow": 4270,
+    "kcalHigh": 4470,
+    "proteinG": 175,
+    "fatMinG": 60,
+    "fatG": 135,
+    "carbsMinG": 110,
+    "carbsG": 615,
+    "flexibleKcal": 2690,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 894 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "a set multiplier",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "multiplier": 1.72
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1760,
+    "multiplier": 1.72,
+    "maintenanceExSport": 3027,
+    "sportKcalPerDay": 0,
+    "maintenance": 3027,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3030,
+    "kcalLow": 2930,
+    "kcalHigh": 3130,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 85,
+    "carbsMinG": 160,
+    "carbsG": 435,
+    "flexibleKcal": 1375,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "a null multiplier uses the lifestyle default",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "multiplier": null
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3260,
+    "kcalLow": 3160,
+    "kcalHigh": 3360,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 160,
+    "carbsG": 485,
+    "flexibleKcal": 1605,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "calibrated sport calories",
+   "input": {
+    "bodyweightKg": 70,
+    "sex": "male",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "sportLogs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": 6
+     }
+    ]
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1540,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2849,
+    "sportKcalPerDay": 224,
+    "maintenance": 3073,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3070,
+    "kcalLow": 2970,
+    "kcalHigh": 3170,
+    "proteinG": 110,
+    "fatMinG": 45,
+    "fatG": 80,
+    "carbsMinG": 140,
+    "carbsG": 480,
+    "flexibleKcal": 1665,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "loss at a set rate",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 0.5
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0.5,
+    "delta": -440,
+    "kcal": 2820,
+    "kcalLow": 2720,
+    "kcalHigh": 2920,
+    "proteinG": 160,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 80,
+    "carbsG": 345,
+    "flexibleKcal": 1365,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "loss at the maximum rate",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 1
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 1,
+    "delta": -880,
+    "kcal": 2380,
+    "kcalLow": 2280,
+    "kcalHigh": 2480,
+    "proteinG": 160,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 80,
+    "carbsG": 235,
+    "flexibleKcal": 925,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 880 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "loss faster than allowed",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 1.5
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 1,
+    "delta": -880,
+    "kcal": 2380,
+    "kcalLow": 2280,
+    "kcalHigh": 2480,
+    "proteinG": 160,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 80,
+    "carbsG": 235,
+    "flexibleKcal": 925,
+    "warnings": [
+     {
+      "code": "RATE_TOO_FAST",
+      "message": "Losing more than 1% of bodyweight per week is blocked; the rate was set to 1%.",
+      "ruleIds": [
+       "N-RAT-01"
+      ]
+     },
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 880 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "loss rate null uses the default",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": null,
+    "bodyFatPct": 12
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0.5,
+    "delta": -440,
+    "kcal": 2820,
+    "kcalLow": 2720,
+    "kcalHigh": 2920,
+    "proteinG": 160,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 80,
+    "carbsG": 345,
+    "flexibleKcal": 1365,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "a deficit just under the warning",
+   "input": {
+    "bodyweightKg": 68,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 1
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1496,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2768,
+    "sportKcalPerDay": 0,
+    "maintenance": 2768,
+    "ratePct": 1,
+    "delta": -748,
+    "kcal": 2020,
+    "kcalLow": 1920,
+    "kcalHigh": 2120,
+    "proteinG": 135,
+    "fatMinG": 45,
+    "fatG": 75,
+    "carbsMinG": 70,
+    "carbsG": 200,
+    "flexibleKcal": 795,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "a deficit just over the warning",
+   "input": {
+    "bodyweightKg": 69,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 1
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1518,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2808,
+    "sportKcalPerDay": 0,
+    "maintenance": 2808,
+    "ratePct": 1,
+    "delta": -759,
+    "kcal": 2050,
+    "kcalLow": 1950,
+    "kcalHigh": 2150,
+    "proteinG": 140,
+    "fatMinG": 45,
+    "fatG": 80,
+    "carbsMinG": 70,
+    "carbsG": 195,
+    "flexibleKcal": 805,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 759 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "a big deficit for a heavy lifter",
+   "input": {
+    "bodyweightKg": 130,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "targetRatePct": 0.75
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2860,
+    "multiplier": 2.05,
+    "maintenanceExSport": 5863,
+    "sportKcalPerDay": 0,
+    "maintenance": 5863,
+    "ratePct": 0.75,
+    "delta": -1072,
+    "kcal": 4790,
+    "kcalLow": 4690,
+    "kcalHigh": 4890,
+    "proteinG": 260,
+    "fatMinG": 60,
+    "fatG": 165,
+    "carbsMinG": 130,
+    "carbsG": 565,
+    "flexibleKcal": 2690,
+    "warnings": [
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 1073 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "a too-fast rate and a big deficit",
+   "input": {
+    "bodyweightKg": 110,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 2
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 2420,
+    "multiplier": 1.85,
+    "maintenanceExSport": 4477,
+    "sportKcalPerDay": 0,
+    "maintenance": 4477,
+    "ratePct": 1,
+    "delta": -1210,
+    "kcal": 3270,
+    "kcalLow": 3170,
+    "kcalHigh": 3370,
+    "proteinG": 220,
+    "fatMinG": 60,
+    "fatG": 125,
+    "carbsMinG": 110,
+    "carbsG": 315,
+    "flexibleKcal": 1410,
+    "warnings": [
+     {
+      "code": "RATE_TOO_FAST",
+      "message": "Losing more than 1% of bodyweight per week is blocked; the rate was set to 1%.",
+      "ruleIds": [
+       "N-RAT-01"
+      ]
+     },
+     {
+      "code": "BIG_DEFICIT",
+      "message": "A 1210 kcal/day deficit risks losing muscle. Consider a slower rate.",
+      "ruleIds": [
+       "N-RAT-04"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "loss above the fat threshold keeps base protein",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "bodyFatPct": 25
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0.75,
+    "delta": -660,
+    "kcal": 2600,
+    "kcalLow": 2500,
+    "kcalHigh": 2700,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 80,
+    "carbsG": 320,
+    "flexibleKcal": 1265,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "loss for a lean woman",
+   "input": {
+    "bodyweightKg": 58,
+    "sex": "female",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "active",
+    "sports": [],
+    "bodyFatPct": 20
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1276,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2361,
+    "sportKcalPerDay": 0,
+    "maintenance": 2361,
+    "ratePct": 0.5,
+    "delta": -319,
+    "kcal": 2040,
+    "kcalLow": 1940,
+    "kcalHigh": 2140,
+    "proteinG": 115,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 60,
+    "carbsG": 250,
+    "flexibleKcal": 980,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "gain at a set rate",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 2
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 2,
+    "delta": 440,
+    "kcal": 3700,
+    "kcalLow": 3600,
+    "kcalHigh": 3800,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 160,
+    "carbsG": 595,
+    "flexibleKcal": 2045,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "gain at zero",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "advanced",
+    "phase": "gain",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 0
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3260,
+    "kcalLow": 3160,
+    "kcalHigh": 3360,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 160,
+    "carbsG": 485,
+    "flexibleKcal": 1605,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "maintain ignores a rate",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "targetRatePct": 1
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 1,
+    "delta": 0,
+    "kcal": 3260,
+    "kcalLow": 3160,
+    "kcalHigh": 3360,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 160,
+    "carbsG": 485,
+    "flexibleKcal": 1605,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "an override below the floor",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "kcalOverride": 1000
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1940,
+    "kcalLow": 1840,
+    "kcalHigh": 2040,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 87,
+    "carbsMinG": 160,
+    "carbsG": 160,
+    "flexibleKcal": 285,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1940 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "an override at the floor",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "kcalOverride": 1210
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2035,
+    "sportKcalPerDay": 0,
+    "maintenance": 2035,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1210,
+    "kcalLow": 1110,
+    "kcalHigh": 1310,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 55,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 130,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "an override of zero",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "kcalOverride": 0
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1940,
+    "kcalLow": 1840,
+    "kcalHigh": 2040,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 87,
+    "carbsMinG": 160,
+    "carbsG": 160,
+    "flexibleKcal": 285,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1940 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "a null override",
+   "input": {
+    "bodyweightKg": 80,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "gain",
+    "lifestyle": "active",
+    "sports": [],
+    "kcalOverride": null
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1760,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3256,
+    "sportKcalPerDay": 0,
+    "maintenance": 3256,
+    "ratePct": 1,
+    "delta": 220,
+    "kcal": 3480,
+    "kcalLow": 3380,
+    "kcalHigh": 3580,
+    "proteinG": 130,
+    "fatMinG": 55,
+    "fatG": 90,
+    "carbsMinG": 160,
+    "carbsG": 540,
+    "flexibleKcal": 1825,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "the lightest fat minimum",
+   "input": {
+    "bodyweightKg": 60,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1320,
+    "multiplier": 1.85,
+    "maintenanceExSport": 2442,
+    "sportKcalPerDay": 0,
+    "maintenance": 2442,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2440,
+    "kcalLow": 2340,
+    "kcalHigh": 2540,
+    "proteinG": 95,
+    "fatMinG": 40,
+    "fatG": 70,
+    "carbsMinG": 120,
+    "carbsG": 360,
+    "flexibleKcal": 1220,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "the heaviest fat minimum",
+   "input": {
+    "bodyweightKg": 90,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1980,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3663,
+    "sportKcalPerDay": 0,
+    "maintenance": 3663,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3660,
+    "kcalLow": 3560,
+    "kcalHigh": 3760,
+    "proteinG": 145,
+    "fatMinG": 60,
+    "fatG": 100,
+    "carbsMinG": 180,
+    "carbsG": 545,
+    "flexibleKcal": 1820,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "between the fat minimum weights",
+   "input": {
+    "bodyweightKg": 75.5,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1661,
+    "multiplier": 1.85,
+    "maintenanceExSport": 3073,
+    "sportKcalPerDay": 0,
+    "maintenance": 3073,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 3070,
+    "kcalLow": 2970,
+    "kcalHigh": 3170,
+    "proteinG": 120,
+    "fatMinG": 50,
+    "fatG": 85,
+    "carbsMinG": 150,
+    "carbsG": 455,
+    "flexibleKcal": 1540,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "above the heaviest fat minimum weight",
+   "input": {
+    "bodyweightKg": 140,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "sedentary",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 3080,
+    "multiplier": 1.45,
+    "maintenanceExSport": 4466,
+    "sportKcalPerDay": 0,
+    "maintenance": 4466,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 4470,
+    "kcalLow": 4370,
+    "kcalHigh": 4570,
+    "proteinG": 225,
+    "fatMinG": 60,
+    "fatG": 125,
+    "carbsMinG": 280,
+    "carbsG": 610,
+    "flexibleKcal": 1910,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "an override that pushes carbs down",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 58,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "an override that hits every minimum",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "active",
+    "sports": [],
+    "multiplier": 2.5,
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 800,
+    "kcalLow": 700,
+    "kcalHigh": 900,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 60,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "a very light lifter",
+   "input": {
+    "bodyweightKg": 10,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "maintain",
+    "lifestyle": "sedentary",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 220,
+    "multiplier": 1.45,
+    "maintenanceExSport": 319,
+    "sportKcalPerDay": 0,
+    "maintenance": 319,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 500,
+    "kcalLow": 400,
+    "kcalHigh": 600,
+    "proteinG": 15,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 20,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "a very light lifter cutting",
+   "input": {
+    "bodyweightKg": 10,
+    "sex": "male",
+    "status": "intermediate",
+    "phase": "loss",
+    "lifestyle": "sedentary",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 220,
+    "multiplier": 1.45,
+    "maintenanceExSport": 319,
+    "sportKcalPerDay": 0,
+    "maintenance": 319,
+    "ratePct": 0.75,
+    "delta": -82,
+    "kcal": 480,
+    "kcalLow": 380,
+    "kcalHigh": 580,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 10,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 240 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     },
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "a fractional weight",
+   "input": {
+    "bodyweightKg": 77.77,
+    "sex": "male",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "lightly_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1710.9399999999998,
+    "multiplier": 1.65,
+    "maintenanceExSport": 2823,
+    "sportKcalPerDay": 0,
+    "maintenance": 2823,
+    "ratePct": 1.5,
+    "delta": 321,
+    "kcal": 3140,
+    "kcalLow": 3040,
+    "kcalHigh": 3240,
+    "proteinG": 125,
+    "fatMinG": 50,
+    "fatG": 80,
+    "carbsMinG": 155,
+    "carbsG": 480,
+    "flexibleKcal": 1570,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/gain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 1.5,
+    "delta": 50,
+    "kcal": 590,
+    "kcalLow": 490,
+    "kcalHigh": 690,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 40,
+    "flexibleKcal": 50,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/gain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 1.5,
+    "delta": 50,
+    "kcal": 710,
+    "kcalLow": 610,
+    "kcalHigh": 810,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 70,
+    "flexibleKcal": 170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/gain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 1.5,
+    "delta": 50,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 75,
+    "flexibleKcal": 190,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/gain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 1.5,
+    "delta": 50,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 75,
+    "flexibleKcal": 190,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/gain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 1.5,
+    "delta": 50,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 205,
+    "flexibleKcal": 710,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/gain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 1.5,
+    "delta": 50,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 205,
+    "flexibleKcal": 710,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/maintain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 540,
+    "kcalLow": 440,
+    "kcalHigh": 640,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 25,
+    "flexibleKcal": 0,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/maintain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 660,
+    "kcalLow": 560,
+    "kcalHigh": 760,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 55,
+    "flexibleKcal": 120,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/maintain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 75,
+    "flexibleKcal": 190,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/maintain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 75,
+    "flexibleKcal": 190,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/maintain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 205,
+    "flexibleKcal": 710,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/maintain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 20,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 25,
+    "carbsG": 205,
+    "flexibleKcal": 710,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/loss/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 0.75,
+    "delta": -99,
+    "kcal": 500,
+    "kcalLow": 400,
+    "kcalHigh": 600,
+    "proteinG": 25,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 10,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/loss/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 0.75,
+    "delta": -99,
+    "kcal": 560,
+    "kcalLow": 460,
+    "kcalHigh": 660,
+    "proteinG": 25,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 25,
+    "flexibleKcal": 60,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/loss/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 0.75,
+    "delta": -99,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 25,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 70,
+    "flexibleKcal": 230,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/loss/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 0.75,
+    "delta": -99,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 25,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 70,
+    "flexibleKcal": 230,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/loss/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 264,
+    "multiplier": 2.05,
+    "maintenanceExSport": 541,
+    "sportKcalPerDay": 0,
+    "maintenance": 541,
+    "ratePct": 0.75,
+    "delta": -99,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 25,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 200,
+    "flexibleKcal": 750,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/12 kg/loss/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 12,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 264,
+    "multiplier": 2.5,
+    "maintenanceExSport": 660,
+    "sportKcalPerDay": 0,
+    "maintenance": 660,
+    "ratePct": 0.75,
+    "delta": -99,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 25,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 10,
+    "carbsG": 200,
+    "flexibleKcal": 750,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/gain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 1.5,
+    "delta": 83,
+    "kcal": 980,
+    "kcalLow": 880,
+    "kcalHigh": 1080,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 125,
+    "flexibleKcal": 340,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/gain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 1.5,
+    "delta": 83,
+    "kcal": 1180,
+    "kcalLow": 1080,
+    "kcalHigh": 1280,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 175,
+    "flexibleKcal": 540,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/gain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 1.5,
+    "delta": 83,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 65,
+    "flexibleKcal": 90,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/gain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 1.5,
+    "delta": 83,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 65,
+    "flexibleKcal": 90,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/gain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 1.5,
+    "delta": 83,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 195,
+    "flexibleKcal": 610,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/gain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 1.5,
+    "delta": 83,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 195,
+    "flexibleKcal": 610,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/maintain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 900,
+    "kcalLow": 800,
+    "kcalHigh": 1000,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 105,
+    "flexibleKcal": 260,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/maintain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1100,
+    "kcalLow": 1000,
+    "kcalHigh": 1200,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 155,
+    "flexibleKcal": 460,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/maintain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 65,
+    "flexibleKcal": 90,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/maintain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 65,
+    "flexibleKcal": 90,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/maintain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 195,
+    "flexibleKcal": 610,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/maintain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 30,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 40,
+    "carbsG": 195,
+    "flexibleKcal": 610,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/loss/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 0.75,
+    "delta": -165,
+    "kcal": 740,
+    "kcalLow": 640,
+    "kcalHigh": 840,
+    "proteinG": 40,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 55,
+    "flexibleKcal": 140,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/loss/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 0.75,
+    "delta": -165,
+    "kcal": 940,
+    "kcalLow": 840,
+    "kcalHigh": 1040,
+    "proteinG": 40,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 105,
+    "flexibleKcal": 340,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/loss/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 0.75,
+    "delta": -165,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 40,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 55,
+    "flexibleKcal": 130,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/loss/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 0.75,
+    "delta": -165,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 40,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 55,
+    "flexibleKcal": 130,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/loss/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 440,
+    "multiplier": 2.05,
+    "maintenanceExSport": 902,
+    "sportKcalPerDay": 0,
+    "maintenance": 902,
+    "ratePct": 0.75,
+    "delta": -165,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 40,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 185,
+    "flexibleKcal": 650,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/20 kg/loss/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 20,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 440,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1100,
+    "sportKcalPerDay": 0,
+    "maintenance": 1100,
+    "ratePct": 0.75,
+    "delta": -165,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 40,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 20,
+    "carbsG": 185,
+    "flexibleKcal": 650,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/gain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 1.5,
+    "delta": 124,
+    "kcal": 1480,
+    "kcalLow": 1380,
+    "kcalHigh": 1580,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 230,
+    "flexibleKcal": 680,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/gain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 1.5,
+    "delta": 124,
+    "kcal": 1770,
+    "kcalLow": 1670,
+    "kcalHigh": 1870,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 60,
+    "carbsG": 290,
+    "flexibleKcal": 970,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/gain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 1.5,
+    "delta": 124,
+    "kcal": 800,
+    "kcalLow": 700,
+    "kcalHigh": 900,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 60,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/gain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 1.5,
+    "delta": 124,
+    "kcal": 800,
+    "kcalLow": 700,
+    "kcalHigh": 900,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 60,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/gain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 1.5,
+    "delta": 124,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 175,
+    "flexibleKcal": 450,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/gain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 1.5,
+    "delta": 124,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 60,
+    "carbsG": 160,
+    "flexibleKcal": 450,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/maintain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1350,
+    "kcalLow": 1250,
+    "kcalHigh": 1450,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 200,
+    "flexibleKcal": 550,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/maintain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1650,
+    "kcalLow": 1550,
+    "kcalHigh": 1750,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 60,
+    "carbsG": 260,
+    "flexibleKcal": 850,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/maintain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 800,
+    "kcalLow": 700,
+    "kcalHigh": 900,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 60,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/maintain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 800,
+    "kcalLow": 700,
+    "kcalHigh": 900,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 60,
+    "flexibleKcal": 0,
+    "warnings": [
+     {
+      "code": "TARGET_BELOW_MINIMUMS",
+      "message": "Your calorie target is below the protein, fat and carb minimums. Try a slower rate.",
+      "ruleIds": [
+       "N-MAC-01",
+       "N-CHO-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/maintain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 60,
+    "carbsG": 175,
+    "flexibleKcal": 450,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/maintain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 50,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 60,
+    "carbsG": 160,
+    "flexibleKcal": 450,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/loss/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 0.75,
+    "delta": -247,
+    "kcal": 1110,
+    "kcalLow": 1010,
+    "kcalHigh": 1210,
+    "proteinG": 60,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 30,
+    "carbsG": 130,
+    "flexibleKcal": 390,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/loss/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0.75,
+    "delta": -247,
+    "kcal": 1400,
+    "kcalLow": 1300,
+    "kcalHigh": 1500,
+    "proteinG": 60,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 30,
+    "carbsG": 190,
+    "flexibleKcal": 680,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/loss/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 0.75,
+    "delta": -247,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 60,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 30,
+    "carbsG": 35,
+    "flexibleKcal": 10,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/loss/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0.75,
+    "delta": -247,
+    "kcal": 730,
+    "kcalLow": 630,
+    "kcalHigh": 830,
+    "proteinG": 60,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 30,
+    "carbsG": 35,
+    "flexibleKcal": 10,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/loss/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 660,
+    "multiplier": 2.05,
+    "maintenanceExSport": 1353,
+    "sportKcalPerDay": 0,
+    "maintenance": 1353,
+    "ratePct": 0.75,
+    "delta": -247,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 60,
+    "fatMinG": 40,
+    "fatG": 40,
+    "carbsMinG": 30,
+    "carbsG": 165,
+    "flexibleKcal": 530,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/30 kg/loss/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 30,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 660,
+    "multiplier": 2.5,
+    "maintenanceExSport": 1650,
+    "sportKcalPerDay": 0,
+    "maintenance": 1650,
+    "ratePct": 0.75,
+    "delta": -247,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 60,
+    "fatMinG": 40,
+    "fatG": 45,
+    "carbsMinG": 30,
+    "carbsG": 150,
+    "flexibleKcal": 530,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/gain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 1.5,
+    "delta": 206,
+    "kcal": 2460,
+    "kcalLow": 2360,
+    "kcalHigh": 2560,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 100,
+    "carbsG": 390,
+    "flexibleKcal": 1380,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/gain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 1.5,
+    "delta": 206,
+    "kcal": 2960,
+    "kcalLow": 2860,
+    "kcalHigh": 3060,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 75,
+    "carbsMinG": 100,
+    "carbsG": 490,
+    "flexibleKcal": 1880,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/gain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 1.5,
+    "delta": 206,
+    "kcal": 1220,
+    "kcalLow": 1120,
+    "kcalHigh": 1320,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 56,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 140,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1210 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/gain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 1.5,
+    "delta": 206,
+    "kcal": 1220,
+    "kcalLow": 1120,
+    "kcalHigh": 1320,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 55,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 140,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1210 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/gain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 1.5,
+    "delta": 206,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 58,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/gain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "gain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "gain",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 1.5,
+    "delta": 206,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 59,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-02",
+     "N-RAT-03"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/maintain/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2260,
+    "kcalLow": 2160,
+    "kcalHigh": 2360,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 100,
+    "carbsG": 340,
+    "flexibleKcal": 1180,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/maintain/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 2750,
+    "kcalLow": 2650,
+    "kcalHigh": 2850,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 75,
+    "carbsMinG": 100,
+    "carbsG": 440,
+    "flexibleKcal": 1670,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/maintain/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1220,
+    "kcalLow": 1120,
+    "kcalHigh": 1320,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 56,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 140,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1210 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/maintain/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1220,
+    "kcalLow": 1120,
+    "kcalHigh": 1320,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 55,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 140,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1210 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/maintain/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 58,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/maintain/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "maintain",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "maintain",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 0,
+    "delta": 0,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 80,
+    "fatMinG": 40,
+    "fatG": 59,
+    "carbsMinG": 100,
+    "carbsG": 100,
+    "flexibleKcal": 170,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/loss/override none/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0.75,
+    "delta": -412,
+    "kcal": 1840,
+    "kcalLow": 1740,
+    "kcalHigh": 1940,
+    "proteinG": 100,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 50,
+    "carbsG": 215,
+    "flexibleKcal": 880,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/loss/override none/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": []
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 0.75,
+    "delta": -412,
+    "kcal": 2340,
+    "kcalLow": 2240,
+    "kcalHigh": 2440,
+    "proteinG": 100,
+    "fatMinG": 40,
+    "fatG": 75,
+    "carbsMinG": 50,
+    "carbsG": 315,
+    "flexibleKcal": 1380,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/loss/override 730/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0.75,
+    "delta": -412,
+    "kcal": 1220,
+    "kcalLow": 1120,
+    "kcalHigh": 1320,
+    "proteinG": 100,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 50,
+    "carbsG": 60,
+    "flexibleKcal": 260,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1210 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/loss/override 730/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 730
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 0.75,
+    "delta": -412,
+    "kcal": 1220,
+    "kcalLow": 1120,
+    "kcalHigh": 1320,
+    "proteinG": 100,
+    "fatMinG": 40,
+    "fatG": 68,
+    "carbsMinG": 50,
+    "carbsG": 50,
+    "flexibleKcal": 260,
+    "warnings": [
+     {
+      "code": "KCAL_TOO_LOW",
+      "message": "Targets below 1210 kcal (resting needs × 1.1) are blocked.",
+      "ruleIds": [
+       "N-MNT-01"
+      ]
+     }
+    ],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/loss/override 1250/multiplier default",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1100,
+    "multiplier": 2.05,
+    "maintenanceExSport": 2255,
+    "sportKcalPerDay": 0,
+    "maintenance": 2255,
+    "ratePct": 0.75,
+    "delta": -412,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 100,
+    "fatMinG": 40,
+    "fatG": 65,
+    "carbsMinG": 50,
+    "carbsG": 65,
+    "flexibleKcal": 290,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  },
+  {
+   "name": "minimums/50 kg/loss/override 1250/multiplier 2.5",
+   "input": {
+    "bodyweightKg": 50,
+    "sex": "female",
+    "status": "novice",
+    "phase": "loss",
+    "lifestyle": "very_active",
+    "multiplier": 2.5,
+    "sports": [],
+    "kcalOverride": 1250
+   },
+   "output": {
+    "phase": "loss",
+    "bmr": 1100,
+    "multiplier": 2.5,
+    "maintenanceExSport": 2750,
+    "sportKcalPerDay": 0,
+    "maintenance": 2750,
+    "ratePct": 0.75,
+    "delta": -412,
+    "kcal": 1250,
+    "kcalLow": 1150,
+    "kcalHigh": 1350,
+    "proteinG": 100,
+    "fatMinG": 40,
+    "fatG": 72,
+    "carbsMinG": 50,
+    "carbsG": 50,
+    "flexibleKcal": 290,
+    "warnings": [],
+    "ruleIds": [
+     "N-MNT-01",
+     "N-MNT-02",
+     "N-MNT-04",
+     "N-SPT-01",
+     "N-SPT-02",
+     "N-SPT-03",
+     "N-PRO-01",
+     "N-FAT-01",
+     "N-CHO-01",
+     "N-MAC-01",
+     "N-RAT-01",
+     "N-RAT-03",
+     "N-PRO-02"
+    ]
+   }
+  }
+ ]
+}

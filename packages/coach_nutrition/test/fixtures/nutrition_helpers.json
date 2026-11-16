@@ -1,0 +1,2173 @@
+{
+ "fn": "nutrition",
+ "cases": [
+  {
+   "name": "phaseForGoal/lean_gain",
+   "input": {
+    "call": "phaseForGoal",
+    "goal": "lean_gain"
+   },
+   "output": "gain"
+  },
+  {
+   "name": "phaseForGoal/recomp",
+   "input": {
+    "call": "phaseForGoal",
+    "goal": "recomp"
+   },
+   "output": "maintain"
+  },
+  {
+   "name": "phaseForGoal/strength",
+   "input": {
+    "call": "phaseForGoal",
+    "goal": "strength"
+   },
+   "output": "maintain"
+  },
+  {
+   "name": "phaseForGoal/fat_loss",
+   "input": {
+    "call": "phaseForGoal",
+    "goal": "fat_loss"
+   },
+   "output": "loss"
+  },
+  {
+   "name": "phaseForGoal/sport_support",
+   "input": {
+    "call": "phaseForGoal",
+    "goal": "sport_support"
+   },
+   "output": "maintain"
+  },
+  {
+   "name": "defaultMultiplier/sedentary",
+   "input": {
+    "call": "defaultMultiplier",
+    "lifestyle": "sedentary"
+   },
+   "output": 1.45
+  },
+  {
+   "name": "defaultMultiplier/lightly_active",
+   "input": {
+    "call": "defaultMultiplier",
+    "lifestyle": "lightly_active"
+   },
+   "output": 1.65
+  },
+  {
+   "name": "defaultMultiplier/active",
+   "input": {
+    "call": "defaultMultiplier",
+    "lifestyle": "active"
+   },
+   "output": 1.85
+  },
+  {
+   "name": "defaultMultiplier/very_active",
+   "input": {
+    "call": "defaultMultiplier",
+    "lifestyle": "very_active"
+   },
+   "output": 2.05
+  },
+  {
+   "name": "sportFactor/light",
+   "input": {
+    "call": "sportFactor",
+    "intensity": "light"
+   },
+   "output": 0.44
+  },
+  {
+   "name": "sportFactor/moderate",
+   "input": {
+    "call": "sportFactor",
+    "intensity": "moderate"
+   },
+   "output": 0.99
+  },
+  {
+   "name": "sportFactor/hard",
+   "input": {
+    "call": "sportFactor",
+    "intensity": "hard"
+   },
+   "output": 1.54
+  },
+  {
+   "name": "sportFactor/match",
+   "input": {
+    "call": "sportFactor",
+    "intensity": "match"
+   },
+   "output": 1.2650000000000001
+  },
+  {
+   "name": "sessionKcalFromRpe/rpe 1",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 60,
+    "rpe": 1,
+    "kg": 70
+   },
+   "output": 185
+  },
+  {
+   "name": "sessionKcalFromRpe/rpe 4 is light",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 45,
+    "rpe": 4,
+    "kg": 80
+   },
+   "output": 158
+  },
+  {
+   "name": "sessionKcalFromRpe/rpe 4.5 is moderate",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 45,
+    "rpe": 4.5,
+    "kg": 80
+   },
+   "output": 356
+  },
+  {
+   "name": "sessionKcalFromRpe/rpe 7 is moderate",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 90,
+    "rpe": 7,
+    "kg": 72
+   },
+   "output": 642
+  },
+  {
+   "name": "sessionKcalFromRpe/rpe 7.5 is vigorous",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 90,
+    "rpe": 7.5,
+    "kg": 72
+   },
+   "output": 998
+  },
+  {
+   "name": "sessionKcalFromRpe/rpe 10",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 30,
+    "rpe": 10,
+    "kg": 95.5
+   },
+   "output": 441
+  },
+  {
+   "name": "sessionKcalFromRpe/zero minutes",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 0,
+    "rpe": 8,
+    "kg": 70
+   },
+   "output": 0
+  },
+  {
+   "name": "sessionKcalFromRpe/a result on a rounding tie",
+   "input": {
+    "call": "sessionKcalFromRpe",
+    "minutes": 25,
+    "rpe": 2,
+    "kg": 50
+   },
+   "output": 55
+  },
+  {
+   "name": "sportKcalPerDay/no sports",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [],
+    "kg": 70
+   },
+   "output": 0
+  },
+  {
+   "name": "sportKcalPerDay/no sports with logs",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": 6
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": null
+     },
+     {
+      "sportId": "tennis",
+      "minutes": 60,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 0
+  },
+  {
+   "name": "sportKcalPerDay/one sport, logs left out",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 70
+   },
+   "output": 53
+  },
+  {
+   "name": "sportKcalPerDay/two rated logs use the declared intensity",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 53
+  },
+  {
+   "name": "sportKcalPerDay/three rated logs replace the declared intensity",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": 6
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": null
+     },
+     {
+      "sportId": "tennis",
+      "minutes": 60,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 224
+  },
+  {
+   "name": "sportKcalPerDay/logs without an RPE do not count",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": null
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": null
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 53
+  },
+  {
+   "name": "sportKcalPerDay/logs of zero minutes do not count",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 0,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 3
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 5
+     },
+     {
+      "sportId": "football",
+      "minutes": 0,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 53
+  },
+  {
+   "name": "sportKcalPerDay/logs of another sport do not count",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "tennis",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "tennis",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "tennis",
+      "minutes": 90,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 53
+  },
+  {
+   "name": "sportKcalPerDay/logs with RPE 4, 7 and 8",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     }
+    ],
+    "kg": 81.3,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 50,
+      "rpe": 4
+     },
+     {
+      "sportId": "football",
+      "minutes": 70,
+      "rpe": 7
+     },
+     {
+      "sportId": "football",
+      "minutes": 40,
+      "rpe": 8
+     }
+    ]
+   },
+   "output": 118
+  },
+  {
+   "name": "sportKcalPerDay/sports without an id never calibrate",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "weekdays": [
+       1
+      ],
+      "minutes": 60,
+      "intensity": "hard"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "x",
+      "minutes": 10,
+      "rpe": 1
+     },
+     {
+      "sportId": "x",
+      "minutes": 10,
+      "rpe": 1
+     },
+     {
+      "sportId": "x",
+      "minutes": 10,
+      "rpe": 1
+     }
+    ]
+   },
+   "output": 92
+  },
+  {
+   "name": "sportKcalPerDay/every intensity, one calibrated",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [
+       2,
+       6
+      ],
+      "minutes": 60,
+      "intensity": "light"
+     },
+     {
+      "sportId": "run",
+      "weekdays": [
+       1,
+       3,
+       5
+      ],
+      "minutes": 40,
+      "intensity": "moderate"
+     },
+     {
+      "sportId": "judo",
+      "weekdays": [
+       4
+      ],
+      "minutes": 90,
+      "intensity": "hard"
+     },
+     {
+      "weekdays": [
+       7
+      ],
+      "minutes": 120,
+      "intensity": "match"
+     }
+    ],
+    "kg": 64.5,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": 6
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": null
+     },
+     {
+      "sportId": "tennis",
+      "minutes": 60,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 584
+  },
+  {
+   "name": "sportKcalPerDay/a sport with no weekdays",
+   "input": {
+    "call": "sportKcalPerDay",
+    "sports": [
+     {
+      "sportId": "football",
+      "weekdays": [],
+      "minutes": 60,
+      "intensity": "hard"
+     }
+    ],
+    "kg": 70,
+    "logs": [
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 90,
+      "rpe": 9
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": 6
+     },
+     {
+      "sportId": "football",
+      "minutes": 60,
+      "rpe": null
+     },
+     {
+      "sportId": "tennis",
+      "minutes": 60,
+      "rpe": 9
+     }
+    ]
+   },
+   "output": 0
+  },
+  {
+   "name": "defaultRatePct/loss, body fat unknown",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "novice",
+    "sex": "male"
+   },
+   "output": 0.75
+  },
+  {
+   "name": "defaultRatePct/loss, body fat null",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "novice",
+    "sex": "male",
+    "bf": null
+   },
+   "output": 0.75
+  },
+  {
+   "name": "defaultRatePct/loss, lean man",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "intermediate",
+    "sex": "male",
+    "bf": 12
+   },
+   "output": 0.5
+  },
+  {
+   "name": "defaultRatePct/loss, man at the lean line",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "intermediate",
+    "sex": "male",
+    "bf": 15
+   },
+   "output": 0.5
+  },
+  {
+   "name": "defaultRatePct/loss, man above the lean line",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "intermediate",
+    "sex": "male",
+    "bf": 15.5
+   },
+   "output": 0.75
+  },
+  {
+   "name": "defaultRatePct/loss, woman at the lean line",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "advanced",
+    "sex": "female",
+    "bf": 23
+   },
+   "output": 0.5
+  },
+  {
+   "name": "defaultRatePct/loss, woman above the lean line",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "advanced",
+    "sex": "female",
+    "bf": 24
+   },
+   "output": 0.75
+  },
+  {
+   "name": "defaultRatePct/loss, unspecified sex, lean",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "novice",
+    "sex": "unspecified",
+    "bf": 14
+   },
+   "output": 0.5
+  },
+  {
+   "name": "defaultRatePct/loss, no sex, lean",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "novice",
+    "sex": null,
+    "bf": 15
+   },
+   "output": 0.5
+  },
+  {
+   "name": "defaultRatePct/loss, no sex, not lean",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "loss",
+    "status": "novice",
+    "sex": null,
+    "bf": 16
+   },
+   "output": 0.75
+  },
+  {
+   "name": "defaultRatePct/gain, novice",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "gain",
+    "status": "novice",
+    "sex": "male",
+    "bf": 12
+   },
+   "output": 1.5
+  },
+  {
+   "name": "defaultRatePct/gain, intermediate",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "gain",
+    "status": "intermediate",
+    "sex": null
+   },
+   "output": 1
+  },
+  {
+   "name": "defaultRatePct/gain, advanced",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "gain",
+    "status": "advanced",
+    "sex": "female",
+    "bf": 30
+   },
+   "output": 0.5
+  },
+  {
+   "name": "defaultRatePct/maintain",
+   "input": {
+    "call": "defaultRatePct",
+    "phase": "maintain",
+    "status": "advanced",
+    "sex": "male",
+    "bf": 12
+   },
+   "output": 0
+  },
+  {
+   "name": "isAboveFatThreshold/body fat unknown",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "male"
+   },
+   "output": false
+  },
+  {
+   "name": "isAboveFatThreshold/body fat null",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "female",
+    "bf": null
+   },
+   "output": false
+  },
+  {
+   "name": "isAboveFatThreshold/man below the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "male",
+    "bf": 18
+   },
+   "output": false
+  },
+  {
+   "name": "isAboveFatThreshold/man at the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "male",
+    "bf": 19
+   },
+   "output": false
+  },
+  {
+   "name": "isAboveFatThreshold/man above the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "male",
+    "bf": 19.1
+   },
+   "output": true
+  },
+  {
+   "name": "isAboveFatThreshold/woman at the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "female",
+    "bf": 27
+   },
+   "output": false
+  },
+  {
+   "name": "isAboveFatThreshold/woman above the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "female",
+    "bf": 28
+   },
+   "output": true
+  },
+  {
+   "name": "isAboveFatThreshold/unspecified sex above the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": "unspecified",
+    "bf": 20
+   },
+   "output": true
+  },
+  {
+   "name": "isAboveFatThreshold/no sex at the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": null,
+    "bf": 19
+   },
+   "output": false
+  },
+  {
+   "name": "isAboveFatThreshold/no sex above the line",
+   "input": {
+    "call": "isAboveFatThreshold",
+    "sex": null,
+    "bf": 25
+   },
+   "output": true
+  },
+  {
+   "name": "applyKcalChange/the G12 cut of 150 kcal",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "phase": "loss",
+     "bmr": 1746.8000000000002,
+     "multiplier": 1.45,
+     "maintenanceExSport": 2533,
+     "sportKcalPerDay": 0,
+     "maintenance": 2533,
+     "ratePct": 0.75,
+     "delta": -655,
+     "kcal": 2200,
+     "kcalLow": 2100,
+     "kcalHigh": 2300,
+     "proteinG": 125,
+     "fatMinG": 55,
+     "fatG": 70,
+     "carbsMinG": 80,
+     "carbsG": 270,
+     "flexibleKcal": 885,
+     "warnings": [],
+     "ruleIds": [
+      "N-MNT-01",
+      "N-MNT-02",
+      "N-MNT-04",
+      "N-SPT-01",
+      "N-SPT-02",
+      "N-SPT-03",
+      "N-PRO-01",
+      "N-FAT-01",
+      "N-CHO-01",
+      "N-MAC-01",
+      "N-RAT-01",
+      "N-RAT-03"
+     ]
+    },
+    "newKcal": 2050
+   },
+   "output": {
+    "kcal": 2050,
+    "proteinG": 125,
+    "fatG": 65,
+    "carbsG": 240
+   }
+  },
+  {
+   "name": "applyKcalChange/a cut taken from fat and carbs in proportion",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2600,
+     "proteinG": 130,
+     "fatG": 80,
+     "fatMinG": 50,
+     "carbsG": 300,
+     "carbsMinG": 160
+    },
+    "newKcal": 2450
+   },
+   "output": {
+    "kcal": 2450,
+    "proteinG": 130,
+    "fatG": 75,
+    "carbsG": 315
+   }
+  },
+  {
+   "name": "applyKcalChange/a cut with fat at its minimum",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2600,
+     "proteinG": 130,
+     "fatG": 50,
+     "fatMinG": 50,
+     "carbsG": 367,
+     "carbsMinG": 160
+    },
+    "newKcal": 2400
+   },
+   "output": {
+    "kcal": 2400,
+    "proteinG": 130,
+    "fatG": 50,
+    "carbsG": 360
+   }
+  },
+  {
+   "name": "applyKcalChange/a cut with carbs at their minimum",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2200,
+     "proteinG": 130,
+     "fatG": 90,
+     "fatMinG": 50,
+     "carbsG": 160,
+     "carbsMinG": 160
+    },
+    "newKcal": 2000
+   },
+   "output": {
+    "kcal": 2000,
+    "proteinG": 130,
+    "fatG": 70,
+    "carbsG": 215
+   }
+  },
+  {
+   "name": "applyKcalChange/a cut with nothing above the minimums",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2000,
+     "proteinG": 130,
+     "fatG": 50,
+     "fatMinG": 50,
+     "carbsG": 255,
+     "carbsMinG": 255
+    },
+    "newKcal": 1850
+   },
+   "output": {
+    "kcal": 1850,
+    "proteinG": 130,
+    "fatG": 50,
+    "carbsG": 255
+   }
+  },
+  {
+   "name": "applyKcalChange/a cut below the carb minimum",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2000,
+     "proteinG": 150,
+     "fatG": 60,
+     "fatMinG": 50,
+     "carbsG": 230,
+     "carbsMinG": 220
+    },
+    "newKcal": 1700
+   },
+   "output": {
+    "kcal": 1700,
+    "proteinG": 150,
+    "fatG": 50,
+    "carbsG": 220
+   }
+  },
+  {
+   "name": "applyKcalChange/a cut below every minimum",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 1800,
+     "proteinG": 150,
+     "fatG": 50,
+     "fatMinG": 50,
+     "carbsG": 187,
+     "carbsMinG": 180
+    },
+    "newKcal": 1200
+   },
+   "output": {
+    "kcal": 1200,
+    "proteinG": 150,
+    "fatG": 50,
+    "carbsG": 180
+   }
+  },
+  {
+   "name": "applyKcalChange/a rise",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2600,
+     "proteinG": 130,
+     "fatG": 80,
+     "fatMinG": 50,
+     "carbsG": 300,
+     "carbsMinG": 160
+    },
+    "newKcal": 2775
+   },
+   "output": {
+    "kcal": 2775,
+    "proteinG": 130,
+    "fatG": 85,
+    "carbsG": 375
+   }
+  },
+  {
+   "name": "applyKcalChange/a rise of one kcal",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2600,
+     "proteinG": 130,
+     "fatG": 80,
+     "fatMinG": 50,
+     "carbsG": 300,
+     "carbsMinG": 160
+    },
+    "newKcal": 2601
+   },
+   "output": {
+    "kcal": 2601,
+    "proteinG": 130,
+    "fatG": 80,
+    "carbsG": 340
+   }
+  },
+  {
+   "name": "applyKcalChange/no change",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 2600,
+     "proteinG": 130,
+     "fatG": 80,
+     "fatMinG": 50,
+     "carbsG": 300,
+     "carbsMinG": 160
+    },
+    "newKcal": 2600
+   },
+   "output": {
+    "kcal": 2600,
+    "proteinG": 130,
+    "fatG": 80,
+    "carbsG": 340
+   }
+  },
+  {
+   "name": "applyKcalChange/a rise from below the minimums",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 1500,
+     "proteinG": 150,
+     "fatG": 50,
+     "fatMinG": 50,
+     "carbsG": 100,
+     "carbsMinG": 180
+    },
+    "newKcal": 1600
+   },
+   "output": {
+    "kcal": 1600,
+    "proteinG": 150,
+    "fatG": 50,
+    "carbsG": 180
+   }
+  },
+  {
+   "name": "applyKcalChange/fat and carbs below their minimums",
+   "input": {
+    "call": "applyKcalChange",
+    "t": {
+     "kcal": 1500,
+     "proteinG": 150,
+     "fatG": 40,
+     "fatMinG": 50,
+     "carbsG": 100,
+     "carbsMinG": 180
+    },
+    "newKcal": 1400
+   },
+   "output": {
+    "kcal": 1400,
+    "proteinG": 150,
+    "fatG": 50,
+    "carbsG": 180
+   }
+  },
+  {
+   "name": "allowedRatePcts/gain/novice",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "gain",
+    "status": "novice"
+   },
+   "output": [
+    1,
+    1.5,
+    2
+   ]
+  },
+  {
+   "name": "allowedRatePcts/gain/intermediate",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "gain",
+    "status": "intermediate"
+   },
+   "output": [
+    0.5,
+    1,
+    1.5
+   ]
+  },
+  {
+   "name": "allowedRatePcts/gain/advanced",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "gain",
+    "status": "advanced"
+   },
+   "output": [
+    0.25,
+    0.5
+   ]
+  },
+  {
+   "name": "allowedRatePcts/maintain/novice",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "maintain",
+    "status": "novice"
+   },
+   "output": []
+  },
+  {
+   "name": "allowedRatePcts/maintain/intermediate",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "maintain",
+    "status": "intermediate"
+   },
+   "output": []
+  },
+  {
+   "name": "allowedRatePcts/maintain/advanced",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "maintain",
+    "status": "advanced"
+   },
+   "output": []
+  },
+  {
+   "name": "allowedRatePcts/loss/novice",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "loss",
+    "status": "novice"
+   },
+   "output": [
+    0.5,
+    0.75,
+    1
+   ]
+  },
+  {
+   "name": "allowedRatePcts/loss/intermediate",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "loss",
+    "status": "intermediate"
+   },
+   "output": [
+    0.5,
+    0.75,
+    1
+   ]
+  },
+  {
+   "name": "allowedRatePcts/loss/advanced",
+   "input": {
+    "call": "allowedRatePcts",
+    "phase": "loss",
+    "status": "advanced"
+   },
+   "output": [
+    0.5,
+    0.75,
+    1
+   ]
+  },
+  {
+   "name": "rateError/maintain ignores the rate",
+   "input": {
+    "call": "rateError",
+    "phase": "maintain",
+    "status": "novice",
+    "ratePct": 0
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/maintain with a big rate",
+   "input": {
+    "call": "rateError",
+    "phase": "maintain",
+    "status": "advanced",
+    "ratePct": 5
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/loss with no rate",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "novice"
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/gain with no rate",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "novice"
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/loss too fast",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "novice",
+    "ratePct": 1.5
+   },
+   "output": "Losing more than 1% of bodyweight per week is blocked (N-RAT-01)."
+  },
+  {
+   "name": "rateError/loss just over the maximum",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "novice",
+    "ratePct": 1.01
+   },
+   "output": "Losing more than 1% of bodyweight per week is blocked (N-RAT-01)."
+  },
+  {
+   "name": "rateError/loss at the maximum",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "intermediate",
+    "ratePct": 1
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/loss at the minimum",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "intermediate",
+    "ratePct": 0.5
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/loss inside the range off the options",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "advanced",
+    "ratePct": 0.6
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/loss too slow",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "novice",
+    "ratePct": 0.25
+   },
+   "output": "Pick a loss rate between 0.5 and 1% per week (N-RAT-01)."
+  },
+  {
+   "name": "rateError/loss of zero",
+   "input": {
+    "call": "rateError",
+    "phase": "loss",
+    "status": "novice",
+    "ratePct": 0
+   },
+   "output": "Pick a loss rate between 0.5 and 1% per week (N-RAT-01)."
+  },
+  {
+   "name": "rateError/gain above the advanced range",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "advanced",
+    "ratePct": 1
+   },
+   "output": "For a advanced lifter the gain rate is 0–0.5% per month (N-RAT-02)."
+  },
+  {
+   "name": "rateError/gain of zero for an advanced lifter",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "advanced",
+    "ratePct": 0
+   },
+   "output": "For a advanced lifter the gain rate is 0–0.5% per month (N-RAT-02)."
+  },
+  {
+   "name": "rateError/gain at the advanced minimum option",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "advanced",
+    "ratePct": 0.25
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/gain at the advanced maximum",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "advanced",
+    "ratePct": 0.5
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/gain above the novice range",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "novice",
+    "ratePct": 3
+   },
+   "output": "For a novice lifter the gain rate is 1–2% per month (N-RAT-02)."
+  },
+  {
+   "name": "rateError/gain below the novice range",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "novice",
+    "ratePct": 0.5
+   },
+   "output": "For a novice lifter the gain rate is 1–2% per month (N-RAT-02)."
+  },
+  {
+   "name": "rateError/gain at the novice minimum",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "novice",
+    "ratePct": 1
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/gain at the intermediate maximum",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "intermediate",
+    "ratePct": 1.5
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/gain just over the intermediate maximum",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "intermediate",
+    "ratePct": 1.51
+   },
+   "output": "For a intermediate lifter the gain rate is 0.5–1.5% per month (N-RAT-02)."
+  },
+  {
+   "name": "rateError/gain inside the intermediate range off the options",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "intermediate",
+    "ratePct": 0.75
+   },
+   "output": null
+  },
+  {
+   "name": "rateError/gain below the intermediate range",
+   "input": {
+    "call": "rateError",
+    "phase": "gain",
+    "status": "intermediate",
+    "ratePct": 0.4
+   },
+   "output": "For a intermediate lifter the gain rate is 0.5–1.5% per month (N-RAT-02)."
+  },
+  {
+   "name": "buildCutDays/no history",
+   "input": {
+    "call": "buildCutDays",
+    "history": [],
+    "today": "2026-04-27"
+   },
+   "output": {
+    "buildDays": 0,
+    "cutDays": 0
+   }
+  },
+  {
+   "name": "cutRatioWarning/no history",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [],
+    "today": "2026-04-27"
+   },
+   "output": "So far: 0 weeks building or maintaining, 0 cutting. The 4:1 guideline suggests about 4 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/build, cut, then an open gain",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2026-01-05",
+      "to": "2026-03-02"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-03-02",
+      "to": "2026-03-30"
+     },
+     {
+      "phase": "gain",
+      "from": "2026-03-30",
+      "to": null
+     }
+    ],
+    "today": "2026-04-27"
+   },
+   "output": {
+    "buildDays": 84,
+    "cutDays": 28
+   }
+  },
+  {
+   "name": "cutRatioWarning/build, cut, then an open gain",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2026-01-05",
+      "to": "2026-03-02"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-03-02",
+      "to": "2026-03-30"
+     },
+     {
+      "phase": "gain",
+      "from": "2026-03-30",
+      "to": null
+     }
+    ],
+    "today": "2026-04-27"
+   },
+   "output": "So far: 12 weeks building or maintaining, 4 cutting. The 4:1 guideline suggests about 8 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/far in the future",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2026-01-05",
+      "to": "2026-03-02"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-03-02",
+      "to": "2026-03-30"
+     },
+     {
+      "phase": "gain",
+      "from": "2026-03-30",
+      "to": null
+     }
+    ],
+    "today": "2026-12-28"
+   },
+   "output": {
+    "buildDays": 329,
+    "cutDays": 28
+   }
+  },
+  {
+   "name": "cutRatioWarning/far in the future",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2026-01-05",
+      "to": "2026-03-02"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-03-02",
+      "to": "2026-03-30"
+     },
+     {
+      "phase": "gain",
+      "from": "2026-03-30",
+      "to": null
+     }
+    ],
+    "today": "2026-12-28"
+   },
+   "output": null
+  },
+  {
+   "name": "buildCutDays/an open cut",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-01-05",
+      "to": "2026-06-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-06-01",
+      "to": null
+     }
+    ],
+    "today": "2026-07-01"
+   },
+   "output": {
+    "buildDays": 147,
+    "cutDays": 30
+   }
+  },
+  {
+   "name": "cutRatioWarning/an open cut",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-01-05",
+      "to": "2026-06-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-06-01",
+      "to": null
+     }
+    ],
+    "today": "2026-07-01"
+   },
+   "output": "So far: 21 weeks building or maintaining, 4 cutting. The 4:1 guideline suggests about 1 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/a span that ends before it starts",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-03-01",
+      "to": "2026-02-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-03-01",
+      "to": "2026-03-15"
+     }
+    ],
+    "today": "2026-04-01"
+   },
+   "output": {
+    "buildDays": 0,
+    "cutDays": 14
+   }
+  },
+  {
+   "name": "cutRatioWarning/a span that ends before it starts",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-03-01",
+      "to": "2026-02-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-03-01",
+      "to": "2026-03-15"
+     }
+    ],
+    "today": "2026-04-01"
+   },
+   "output": "So far: 0 weeks building or maintaining, 2 cutting. The 4:1 guideline suggests about 12 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/an open span starting after today",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2026-05-01",
+      "to": null
+     }
+    ],
+    "today": "2026-04-01"
+   },
+   "output": {
+    "buildDays": 0,
+    "cutDays": 0
+   }
+  },
+  {
+   "name": "cutRatioWarning/an open span starting after today",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2026-05-01",
+      "to": null
+     }
+    ],
+    "today": "2026-04-01"
+   },
+   "output": "So far: 0 weeks building or maintaining, 0 cutting. The 4:1 guideline suggests about 4 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/two cuts and unknown phase names",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "loss",
+      "from": "2026-01-01",
+      "to": "2026-01-29"
+     },
+     {
+      "phase": "bulk",
+      "from": "2026-01-29",
+      "to": "2026-06-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-06-01",
+      "to": "2026-06-15"
+     }
+    ],
+    "today": "2026-07-01"
+   },
+   "output": {
+    "buildDays": 123,
+    "cutDays": 42
+   }
+  },
+  {
+   "name": "cutRatioWarning/two cuts and unknown phase names",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "loss",
+      "from": "2026-01-01",
+      "to": "2026-01-29"
+     },
+     {
+      "phase": "bulk",
+      "from": "2026-01-29",
+      "to": "2026-06-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2026-06-01",
+      "to": "2026-06-15"
+     }
+    ],
+    "today": "2026-07-01"
+   },
+   "output": "So far: 18 weeks building or maintaining, 6 cutting. The 4:1 guideline suggests about 11 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/exactly 4:1 with the new week",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-02-02",
+      "to": "2026-03-02"
+     }
+    ],
+    "today": "2026-03-02"
+   },
+   "output": {
+    "buildDays": 28,
+    "cutDays": 0
+   }
+  },
+  {
+   "name": "cutRatioWarning/exactly 4:1 with the new week",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-02-02",
+      "to": "2026-03-02"
+     }
+    ],
+    "today": "2026-03-02"
+   },
+   "output": null
+  },
+  {
+   "name": "buildCutDays/one day short of 4:1",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-02-03",
+      "to": "2026-03-02"
+     }
+    ],
+    "today": "2026-03-02"
+   },
+   "output": {
+    "buildDays": 27,
+    "cutDays": 0
+   }
+  },
+  {
+   "name": "cutRatioWarning/one day short of 4:1",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "gain",
+      "from": "2026-02-03",
+      "to": "2026-03-02"
+     }
+    ],
+    "today": "2026-03-02"
+   },
+   "output": "So far: 4 weeks building or maintaining, 0 cutting. The 4:1 guideline suggests about 1 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "buildCutDays/a long build and a long cut",
+   "input": {
+    "call": "buildCutDays",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2025-01-06",
+      "to": "2025-09-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2025-09-01",
+      "to": "2025-12-01"
+     }
+    ],
+    "today": "2026-01-12"
+   },
+   "output": {
+    "buildDays": 238,
+    "cutDays": 91
+   }
+  },
+  {
+   "name": "cutRatioWarning/a long build and a long cut",
+   "input": {
+    "call": "cutRatioWarning",
+    "history": [
+     {
+      "phase": "maintain",
+      "from": "2025-01-06",
+      "to": "2025-09-01"
+     },
+     {
+      "phase": "loss",
+      "from": "2025-09-01",
+      "to": "2025-12-01"
+     }
+    ],
+    "today": "2026-01-12"
+   },
+   "output": "So far: 34 weeks building or maintaining, 13 cutting. The 4:1 guideline suggests about 22 more weeks of building or maintaining before this cut (N-PHS-02)."
+  },
+  {
+   "name": "nextAdjustState/a lifestyle rebase keeps both",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": "2026-10-01",
+     "initialAdjustDone": false
+    },
+    "change": {
+     "phaseChanged": false
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-10-01",
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/an accepted multiplier proposal",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": "2026-10-01",
+     "initialAdjustDone": false
+    },
+    "change": {
+     "phaseChanged": false,
+     "multiplierAdjust": true
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-10-27",
+    "initialAdjustDone": true
+   }
+  },
+  {
+   "name": "nextAdjustState/an accepted kcal change",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": "2026-10-01",
+     "initialAdjustDone": false
+    },
+    "change": {
+     "phaseChanged": false,
+     "kcalOffsetDelta": -150
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-10-27",
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/a kcal change of zero",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": "2026-10-01",
+     "initialAdjustDone": false
+    },
+    "change": {
+     "phaseChanged": false,
+     "kcalOffsetDelta": 0
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-10-01",
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/a multiplier flag set to false",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": null,
+     "initialAdjustDone": true
+    },
+    "change": {
+     "phaseChanged": false,
+     "multiplierAdjust": false
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": null,
+    "initialAdjustDone": true
+   }
+  },
+  {
+   "name": "nextAdjustState/a phase change reopens the first-week check",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": null,
+     "initialAdjustDone": true
+    },
+    "change": {
+     "phaseChanged": true
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": null,
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/a phase change with no previous state",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": null,
+    "change": {
+     "phaseChanged": true
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": null,
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/no previous state and no change",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": null,
+    "change": {
+     "phaseChanged": false
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": null,
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/no previous state and a kcal change",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": null,
+    "change": {
+     "phaseChanged": false,
+     "kcalOffsetDelta": 125
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-10-27",
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/a phase change together with a multiplier change",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": "2026-09-01",
+     "initialAdjustDone": true
+    },
+    "change": {
+     "phaseChanged": true,
+     "multiplierAdjust": true
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-10-27",
+    "initialAdjustDone": false
+   }
+  },
+  {
+   "name": "nextAdjustState/a check already done stays done",
+   "input": {
+    "call": "nextAdjustState",
+    "prev": {
+     "lastAdjustedOn": "2026-09-01",
+     "initialAdjustDone": true
+    },
+    "change": {
+     "phaseChanged": false
+    },
+    "today": "2026-10-27"
+   },
+   "output": {
+    "lastAdjustedOn": "2026-09-01",
+    "initialAdjustDone": true
+   }
+  },
+  {
+   "name": "bodyweightChangedEnough/less than half a kilo",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80,
+    "currentKg": 80.4
+   },
+   "output": false
+  },
+  {
+   "name": "bodyweightChangedEnough/exactly half a kilo up",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80,
+    "currentKg": 80.5
+   },
+   "output": true
+  },
+  {
+   "name": "bodyweightChangedEnough/exactly half a kilo down",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80,
+    "currentKg": 79.5
+   },
+   "output": true
+  },
+  {
+   "name": "bodyweightChangedEnough/half a kilo with float noise",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80.1,
+    "currentKg": 80.6
+   },
+   "output": true
+  },
+  {
+   "name": "bodyweightChangedEnough/just under half a kilo",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80,
+    "currentKg": 80.49
+   },
+   "output": false
+  },
+  {
+   "name": "bodyweightChangedEnough/no recorded weight",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": null,
+    "currentKg": 80
+   },
+   "output": true
+  },
+  {
+   "name": "bodyweightChangedEnough/no recorded weight, left out",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "currentKg": 80
+   },
+   "output": true
+  },
+  {
+   "name": "bodyweightChangedEnough/no current weight",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80,
+    "currentKg": null
+   },
+   "output": false
+  },
+  {
+   "name": "bodyweightChangedEnough/no current weight, left out",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 80
+   },
+   "output": false
+  },
+  {
+   "name": "bodyweightChangedEnough/neither weight",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": null,
+    "currentKg": null
+   },
+   "output": false
+  },
+  {
+   "name": "bodyweightChangedEnough/no change",
+   "input": {
+    "call": "bodyweightChangedEnough",
+    "usedKg": 72.3,
+    "currentKg": 72.3
+   },
+   "output": false
+  }
+ ]
+}
