@@ -1,0 +1,3777 @@
+{
+ "fn": "status",
+ "cases": [
+  {
+   "name": "statusFromYears 0 years",
+   "input": {
+    "call": "statusFromYears",
+    "years": 0
+   },
+   "output": "novice"
+  },
+  {
+   "name": "statusFromYears 0.5 years",
+   "input": {
+    "call": "statusFromYears",
+    "years": 0.5
+   },
+   "output": "novice"
+  },
+  {
+   "name": "statusFromYears 0.99 years",
+   "input": {
+    "call": "statusFromYears",
+    "years": 0.99
+   },
+   "output": "novice"
+  },
+  {
+   "name": "statusFromYears 1 years",
+   "input": {
+    "call": "statusFromYears",
+    "years": 1
+   },
+   "output": "intermediate"
+  },
+  {
+   "name": "statusFromYears 7 years",
+   "input": {
+    "call": "statusFromYears",
+    "years": 7
+   },
+   "output": "intermediate"
+  },
+  {
+   "name": "statusFromYears 6 years, heavy lifts stalled",
+   "input": {
+    "call": "statusFromYears",
+    "years": 6,
+    "heavyLiftsStalled": true
+   },
+   "output": "advanced"
+  },
+  {
+   "name": "statusFromYears 5 years, heavy lifts stalled",
+   "input": {
+    "call": "statusFromYears",
+    "years": 5,
+    "heavyLiftsStalled": true
+   },
+   "output": "advanced"
+  },
+  {
+   "name": "statusFromYears 4.99 years, heavy lifts stalled",
+   "input": {
+    "call": "statusFromYears",
+    "years": 4.99,
+    "heavyLiftsStalled": true
+   },
+   "output": "intermediate"
+  },
+  {
+   "name": "statusFromYears 3 years, heavy lifts stalled",
+   "input": {
+    "call": "statusFromYears",
+    "years": 3,
+    "heavyLiftsStalled": true
+   },
+   "output": "intermediate"
+  },
+  {
+   "name": "statusFromYears 0.5 years, heavy lifts stalled",
+   "input": {
+    "call": "statusFromYears",
+    "years": 0.5,
+    "heavyLiftsStalled": true
+   },
+   "output": "novice"
+  },
+  {
+   "name": "statusFromYears 6 years, heavy lifts moving",
+   "input": {
+    "call": "statusFromYears",
+    "years": 6,
+    "heavyLiftsStalled": false
+   },
+   "output": "intermediate"
+  },
+  {
+   "name": "statusFromYears 5 years, heavy lifts moving",
+   "input": {
+    "call": "statusFromYears",
+    "years": 5,
+    "heavyLiftsStalled": false
+   },
+   "output": "intermediate"
+  },
+  {
+   "name": "inferTrainingStatus nothing logged",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [],
+     "today": "2026-10-24",
+     "anchorExerciseIds": []
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "No training logged yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus only warm-up sets",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": true
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": true
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "No training logged yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus three weeks of logs",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-04",
+       "setIndex": 0,
+       "loadKg": 101,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-07",
+       "setIndex": 0,
+       "loadKg": 102,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 103,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Only 3 weeks of logs (need 8).",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus one day short of eight weeks",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-31",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-04",
+       "setIndex": 0,
+       "loadKg": 62.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-08",
+       "setIndex": 0,
+       "loadKg": 65,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 67.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-16",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-20",
+       "setIndex": 0,
+       "loadKg": 72.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-24",
+       "setIndex": 0,
+       "loadKg": 75,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-28",
+       "setIndex": 0,
+       "loadKg": 77.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-02",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-06",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-14",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-18",
+       "setIndex": 0,
+       "loadKg": 90,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-22",
+       "setIndex": 0,
+       "loadKg": 92.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-26",
+       "setIndex": 0,
+       "loadKg": 95,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-30",
+       "setIndex": 0,
+       "loadKg": 97.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-03",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-07",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-11",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-15",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Only 7 weeks of logs (need 8).",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus exactly eight weeks",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 62.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 65,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 67.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 72.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-23",
+       "setIndex": 0,
+       "loadKg": 75,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-27",
+       "setIndex": 0,
+       "loadKg": 77.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-05",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-09",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-13",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 90,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-21",
+       "setIndex": 0,
+       "loadKg": 92.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-25",
+       "setIndex": 0,
+       "loadKg": 95,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-29",
+       "setIndex": 0,
+       "loadKg": 97.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-02",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-06",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-10",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-14",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-12-23",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "novice",
+    "share": 1,
+    "evidence": "Your anchor lifts improved in 100% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus logs dated after today",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-08",
+       "setIndex": 0,
+       "loadKg": 101,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-15",
+       "setIndex": 0,
+       "loadKg": 102,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-22",
+       "setIndex": 0,
+       "loadKg": 103,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-11-29",
+       "setIndex": 0,
+       "loadKg": 104,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-12-06",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-12-13",
+       "setIndex": 0,
+       "loadKg": 106,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-12-20",
+       "setIndex": 0,
+       "loadKg": 107,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Only -2 weeks of logs (need 8).",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus steady progress reads as novice",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 62.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 65,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 67.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 72.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 75,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 77.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 90,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 92.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 95,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 97.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "novice",
+    "share": 1,
+    "evidence": "Your anchor lifts improved in 100% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus progress every third session reads as intermediate",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.3157894736842105,
+    "evidence": "Your anchor lifts improved in 32% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus no progress reads as advanced",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "advanced",
+    "share": 0,
+    "evidence": "Your anchor lifts improved in 0% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus too few repeated sessions",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-04-02",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-04-06",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-04-10",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Not enough repeated anchor-lift sessions yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus exactly six comparisons",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "advanced",
+    "share": 0,
+    "evidence": "Your anchor lifts improved in 0% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus five comparisons",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Not enough repeated anchor-lift sessions yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus enough logs, but the anchor lift was never trained",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 62.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 65,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 67.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 72.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 75,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 77.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 90,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 92.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 95,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 97.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Not enough repeated anchor-lift sessions yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus enough logs, no anchor lifts given",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 62.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 65,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 67.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 72.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 75,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 77.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 90,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 92.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 95,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 97.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": []
+    }
+   },
+   "output": {
+    "status": null,
+    "share": null,
+    "evidence": "Not enough repeated anchor-lift sessions yet.",
+    "ruleIds": [
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus sessions given newest first",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.3157894736842105,
+    "evidence": "Your anchor lifts improved in 32% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus several sets a day: the lowest working set index counts",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 2,
+       "loadKg": 110,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 1,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": true
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-08",
+       "setIndex": 1,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-08",
+       "setIndex": 1,
+       "loadKg": 90,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-08",
+       "setIndex": 2,
+       "loadKg": 105,
+       "reps": 4,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-15",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 6,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-15",
+       "setIndex": 1,
+       "loadKg": 102.5,
+       "reps": 4,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-22",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 6,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-12",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-30",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat"
+     ]
+    }
+   },
+   "output": {
+    "status": "novice",
+    "share": 0.7142857142857143,
+    "evidence": "Your anchor lifts improved in 71% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus more reps at the same load is progress; no load counts as zero",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-07-08",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 6,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-07-15",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 6,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-07-22",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 7,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-08-12",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-08-19",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 9,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "pull-up",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 7,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "pull-up"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.5,
+    "evidence": "Your anchor lifts improved in 50% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus two anchor lifts are pooled",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-17",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-25",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-29",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-02",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-06",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-14",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-18",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-26",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-03",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-07",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-11",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-15",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 117.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 122.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 127.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 132.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 137.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-20",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-25",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat",
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.5,
+    "evidence": "Your anchor lifts improved in 50% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus an anchor lift named twice is counted twice",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-09",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-07-13",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-20",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-25",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "back-squat",
+      "back-squat",
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.23529411764705882,
+    "evidence": "Your anchor lifts improved in 24% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus share exactly at the novice line",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 117.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 122.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 127.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-20",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "novice",
+    "share": 0.7,
+    "evidence": "Your anchor lifts improved in 70% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus share just under the novice line",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 117.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 122.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 127.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-20",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-25",
+       "setIndex": 0,
+       "loadKg": 130,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "novice",
+    "share": 0.6363636363636364,
+    "evidence": "Your anchor lifts improved in 64% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus share exactly at the advanced line",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-20",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-25",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-04",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-09",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-14",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-24",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-29",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-04",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-09",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.3,
+    "evidence": "Your anchor lifts improved in 30% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus share just under the advanced line",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-20",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-25",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-30",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-04",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-09",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-14",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-24",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-29",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-04",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-09",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.2,
+    "evidence": "Your anchor lifts improved in 20% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus a share that ends in half a percent",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 117.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 122.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "novice",
+    "share": 0.875,
+    "evidence": "Your anchor lifts improved in 88% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  },
+  {
+   "name": "inferTrainingStatus one in eight",
+   "input": {
+    "call": "inferTrainingStatus",
+    "h": {
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-06",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-11",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-16",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-21",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-26",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-07-31",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-05",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-10",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false
+      }
+     ],
+     "today": "2026-10-24",
+     "anchorExerciseIds": [
+      "bench-press"
+     ]
+    }
+   },
+   "output": {
+    "status": "intermediate",
+    "share": 0.25,
+    "evidence": "Your anchor lifts improved in 25% of sessions over 16 weeks.",
+    "ruleIds": [
+     "T-STA-01",
+     "T-STA-03"
+    ]
+   }
+  }
+ ]
+}
