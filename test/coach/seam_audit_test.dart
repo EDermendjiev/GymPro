@@ -20,6 +20,8 @@ const _expected = <String, int>{
   'packages/sync/lib/sync.dart': 1, // coach merges atomically
   'lib/screens/settings_screen.dart': 5, // import, Coach category, its title, its group, its section
   'pubspec.yaml': 1, // coach package dependencies
+  'android/app/src/main/res/xml/shortcuts.xml': 1, // app identity
+  'ios/Runner/Info.plist': 1, // app identity
 };
 
 /// Seams in files that cannot carry a comment. They are not counted; each must exist.
@@ -27,6 +29,10 @@ const _exempt = <String>[
   'README.md',
   'lib/l10n/app_en.arb',
   'test/pending_translation_keys.txt',
+  // App identity: Xcode rewrites the project file, and the store titles are plain text.
+  'ios/Runner.xcodeproj/project.pbxproj',
+  'fastlane/metadata/android/en-US/title.txt',
+  'fastlane/metadata/android/es-ES/title.txt',
 ];
 
 /// Generated from the ARB files, so never edited by hand and never marked.

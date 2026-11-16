@@ -6,6 +6,7 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<!-- coach-seam: the fork's name, here and in CFBundleName and the usage descriptions below -->
 	<key>CFBundleDisplayName</key>
 	<string>GymPro</string>
 	<key>CFBundleExecutable</key>

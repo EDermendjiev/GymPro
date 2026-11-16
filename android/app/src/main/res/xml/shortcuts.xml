@@ -6,6 +6,7 @@
         android:icon="@drawable/ic_shortcut_play"
         android:shortcutShortLabel="@string/shortcut_start_short"
         android:shortcutLongLabel="@string/shortcut_start_long">
+        <!-- coach-seam: the fork's application id -->
         <intent
             android:action="android.intent.action.MAIN"
             android:targetPackage="io.github.edermendjiev.gympro"
