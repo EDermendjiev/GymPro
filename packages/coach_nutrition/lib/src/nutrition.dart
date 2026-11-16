@@ -4,7 +4,6 @@ import 'dart:math' as math;
 
 import 'package:coach_kernel/coach_kernel.dart';
 
-import 'js_number.dart';
 
 NutritionPhase phaseForGoal(Goal goal) {
   if (goal == Goal.leanGain) return NutritionPhase.gain;

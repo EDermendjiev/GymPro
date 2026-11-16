@@ -104,3 +104,13 @@ List<List<T>> combinations<T>(List<T> items, int k) {
 
 /// Distinct values in first-seen order.
 List<T> uniq<T>(Iterable<T> xs) => {...xs}.toList();
+
+/// A number as the reference's string interpolation writes it: whole values without a fraction (`1`, not
+/// Dart's `1.0`), negative zero as `0`, everything else as the shortest round-trip form, which Dart and the
+/// reference share for the magnitudes coach messages use. Use it wherever a ported message embeds a number.
+String jsNumber(num x) {
+  if (x is int) return x.toString();
+  final d = x.toDouble();
+  if (d.isFinite && d == d.truncateToDouble() && d.abs() < 1e21) return d.toInt().toString();
+  return d.toString();
+}

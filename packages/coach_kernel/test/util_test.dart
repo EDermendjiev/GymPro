@@ -81,4 +81,13 @@ void main() {
     expect(jsRound(-0.5), 0);
     expect(jsRound(-0.5000000000000001), -1);
   });
+
+  test('jsNumber writes numbers the way the reference interpolates them', () {
+    expect(jsNumber(1), '1');
+    expect(jsNumber(1.0), '1');
+    expect(jsNumber(-0.0), '0');
+    expect(jsNumber(0.5), '0.5');
+    expect(jsNumber(82.4), '82.4');
+    expect(jsNumber(-2.5), '-2.5');
+  });
 }

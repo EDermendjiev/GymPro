@@ -2,7 +2,6 @@
 // Nutrition adjustments from the bodyweight trend. Rules: N-ADJ-01…06, N-WGT-02/04.
 import 'package:coach_kernel/coach_kernel.dart';
 
-import 'js_number.dart';
 import 'trend.dart';
 
 class WeighInState {
