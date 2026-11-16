@@ -1,0 +1,5371 @@
+{
+ "fn": "generator",
+ "cases": [
+  {
+   "name": "EQUIPMENT_PRESETS",
+   "input": {
+    "call": "constants"
+   },
+   "output": {
+    "EQUIPMENT_PRESETS": {
+     "full": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "cable",
+      "bodyweight",
+      "band",
+      "sled"
+     ],
+     "dumbbells": [
+      "dumbbell",
+      "bodyweight"
+     ],
+     "bodyweight": [
+      "bodyweight",
+      "band"
+     ]
+    }
+   }
+  },
+  {
+   "name": "generateSession 30-minute dumbbell upper",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 30,
+     "equipmentPreset": "dumbbells",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {
+      "dumbbell": 2
+     },
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 28,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession full gym lower, tired, hamstring pain",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": "lower",
+     "readiness": "tired",
+     "exercises": "@seed",
+     "injuries": [
+      {
+       "id": "x",
+       "muscleId": "hamstrings",
+       "label": "x",
+       "severity": "pain",
+       "status": "active",
+       "avoidExerciseIds": []
+      }
+     ],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · lower",
+    "estMinutes": 25,
+    "exercises": [
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 0,
+      "sets": 3,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 2,
+      "rirMax": 5,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "standing-calf-raise",
+      "slotKey": "gen_calves",
+      "position": 1,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "quads",
+     "calves"
+    ],
+    "notes": [
+     "Skipping hamstrings (pain or injury).",
+     "Tired today: one set fewer per exercise and one more rep in reserve."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession auto, biceps behind",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "auto",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 0,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · catch-up",
+    "estMinutes": 23,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 2,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "biceps",
+     "chest"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession auto, everything done",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "auto",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {
+      "chest": 12,
+      "back": 12,
+      "front_delts": 12,
+      "side_delts": 12,
+      "rear_delts": 12,
+      "biceps": 12,
+      "triceps": 12,
+      "quads": 12,
+      "hamstrings": 12,
+      "glutes": 12,
+      "calves": 12
+     },
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · catch-up",
+    "estMinutes": 21,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 2,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession auto, nothing logged",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 90,
+     "equipmentPreset": "full",
+     "focus": "auto",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · catch-up",
+    "estMinutes": 87,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 2,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 14 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 3,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 4,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 5,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 6,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 7,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps",
+     "triceps",
+     "quads",
+     "hamstrings"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession auto, mixed deficits",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": "auto",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 14,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 8,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {
+      "chest": 2,
+      "back": 9,
+      "quads": 12,
+      "hamstrings": 3.5,
+      "side_delts": 0
+     },
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · catch-up",
+    "estMinutes": 60,
+    "exercises": [
+     {
+      "exerciseId": "barbell-hip-thrust",
+      "slotKey": "gen_glutes",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 3,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 4,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "standing-calf-raise",
+      "slotKey": "gen_calves",
+      "position": 5,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "side_delts",
+     "rear_delts",
+     "biceps",
+     "triceps",
+     "glutes",
+     "calves"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession custom cables and machines, calves and side delts",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "custom",
+     "focus": [
+      "calves",
+      "side_delts"
+     ],
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "equipment": [
+      "cable",
+      "machine"
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · calves + side_delts",
+    "estMinutes": 25,
+    "exercises": [
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 0,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "standing-calf-raise",
+      "slotKey": "gen_calves",
+      "position": 1,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "side_delts",
+     "calves"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession custom without a list",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "custom",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 43,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession custom with nothing picked",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "custom",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "equipment": []
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 43,
+    "exercises": [
+     {
+      "exerciseId": "push-up",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "band-pull-apart",
+      "slotKey": "gen_rear_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "rear_delts"
+    ],
+    "notes": [
+     "No equipment picked, so this uses bodyweight and bands."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession bodyweight full, chest trained, quads stressed",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "bodyweight",
+     "focus": "full",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {
+      "chest": 8
+     },
+     "sportStressed": [
+      "quads"
+     ],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · full",
+    "estMinutes": 45,
+    "exercises": [
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 0,
+      "sets": 4,
+      "repMin": 6,
+      "repMax": 10,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "bulgarian-split-squat",
+      "slotKey": "gen_glutes",
+      "position": 1,
+      "sets": 2,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 14 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "band-pull-apart",
+      "slotKey": "gen_rear_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "nordic-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 3,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "back",
+     "rear_delts",
+     "hamstrings",
+     "glutes"
+    ],
+    "notes": [
+     "Muscles trained hard in the last 48 h or stressed by a sport are last in line."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession full, deprioritised muscles last",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": "full",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {
+      "back": 6,
+      "quads": 5.5,
+      "biceps": 7
+     },
+     "sportStressed": [
+      "calves",
+      "chest"
+     ],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · full",
+    "estMinutes": 60,
+    "exercises": [
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 3,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 4,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 5,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "side_delts",
+     "rear_delts",
+     "triceps",
+     "quads",
+     "hamstrings",
+     "biceps"
+    ],
+    "notes": [
+     "Muscles trained hard in the last 48 h or stressed by a sport are last in line."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession sore chest and back",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "recentSore": [
+      "chest",
+      "back"
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 43,
+    "exercises": [
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 0,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 3,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "side_delts",
+     "rear_delts",
+     "biceps",
+     "triceps"
+    ],
+    "notes": [
+     "Skipping chest, back (sore in the last 48 h)."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession sore biceps only",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": [
+      "biceps"
+     ],
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "recentSore": [
+      "biceps"
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · biceps",
+    "estMinutes": 17,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 0,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "biceps"
+    ],
+    "notes": [
+     "biceps still sore; kept because nothing else was left. Go lighter if it hurts."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession pain empties the pool",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": [
+      "biceps"
+     ],
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [
+      "biceps"
+     ],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · biceps",
+    "estMinutes": 8,
+    "exercises": [],
+    "muscles": [],
+    "notes": [
+     "Skipping biceps (pain or injury)."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession pain and injury notes",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "full",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [
+      {
+       "id": "a",
+       "muscleId": "chest",
+       "label": "a",
+       "severity": "injury",
+       "status": "rehab",
+       "avoidExerciseIds": []
+      },
+      {
+       "id": "b",
+       "muscleId": "calves",
+       "label": "b",
+       "severity": "niggle",
+       "status": "active",
+       "avoidExerciseIds": []
+      },
+      {
+       "id": "c",
+       "muscleId": "back",
+       "label": "c",
+       "severity": "pain",
+       "status": "resolved",
+       "avoidExerciseIds": []
+      }
+     ],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [
+      "quads",
+      "chest"
+     ],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · full",
+    "estMinutes": 43,
+    "exercises": [
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 0,
+      "sets": 4,
+      "repMin": 6,
+      "repMax": 10,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 3,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps"
+    ],
+    "notes": [
+     "Skipping chest, quads (pain or injury)."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession sore and painful together",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [
+      "chest"
+     ],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "recentSore": [
+      "chest",
+      "triceps",
+      "quads"
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 43,
+    "exercises": [
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 0,
+      "sets": 4,
+      "repMin": 6,
+      "repMax": 10,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 3,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps"
+    ],
+    "notes": [
+     "Skipping chest (pain or injury).",
+     "Skipping triceps (sore in the last 48 h)."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession front delts picked",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": [
+      "front_delts",
+      "chest"
+     ],
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · front_delts + chest",
+    "estMinutes": 21,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession every muscle listed",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 120,
+     "equipmentPreset": "full",
+     "focus": [
+      "chest",
+      "back",
+      "front_delts",
+      "side_delts",
+      "rear_delts",
+      "biceps",
+      "triceps",
+      "quads",
+      "hamstrings",
+      "glutes",
+      "calves"
+     ],
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · chest + back + front_delts + side_delts + rear_delts + biceps + triceps + quads + hamstrings + glutes + calves",
+    "estMinutes": 91,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 2,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 14 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 3,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 4,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 5,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 6,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 7,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps",
+     "triceps",
+     "quads",
+     "hamstrings"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession front delts not in the list",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": [
+      "side_delts",
+      "rear_delts",
+      "biceps"
+     ],
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · side_delts + rear_delts + biceps",
+    "estMinutes": 34,
+    "exercises": [
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 0,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "side_delts",
+     "rear_delts",
+     "biceps"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession very short session",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 15,
+     "equipmentPreset": "full",
+     "focus": "full",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · full",
+    "estMinutes": 15,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 2,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession 20 minutes, short sets only",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 20,
+     "equipmentPreset": "full",
+     "focus": "lower",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {
+      "chest": 0,
+      "back": 0,
+      "front_delts": 0,
+      "side_delts": 0,
+      "rear_delts": 0,
+      "biceps": 0,
+      "triceps": 0,
+      "quads": 0,
+      "hamstrings": 0,
+      "glutes": 0,
+      "calves": 0
+     },
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · lower",
+    "estMinutes": 19,
+    "exercises": [
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 0,
+      "sets": 2,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 1,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "quads",
+     "hamstrings"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession long session, deep deficits",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 120,
+     "equipmentPreset": "full",
+     "focus": "full",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 20,
+      "back": 20,
+      "front_delts": 20,
+      "side_delts": 20,
+      "rear_delts": 20,
+      "biceps": 20,
+      "triceps": 20,
+      "quads": 20,
+      "hamstrings": 20,
+      "glutes": 20,
+      "calves": 20
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · full",
+    "estMinutes": 91,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 2,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 14 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 3,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 4,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 5,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 6,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 7,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps",
+     "triceps",
+     "quads",
+     "hamstrings"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession tired, upper",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": "upper",
+     "readiness": "tired",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 54,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 3,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 2,
+      "rirMax": 5,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 2,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 3,
+      "sets": 3,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 4,
+      "sets": 3,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "overhead-cable-triceps-extension",
+      "slotKey": "gen_triceps",
+      "position": 5,
+      "sets": 3,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps",
+     "triceps"
+    ],
+    "notes": [
+     "Tired today: one set fewer per exercise and one more rep in reserve."
+    ],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession sport priority, lower",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": "lower",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "sportPriority": true
+    }
+   },
+   "output": {
+    "title": "Generated · lower",
+    "estMinutes": 39,
+    "exercises": [
+     {
+      "exerciseId": "hack-squat",
+      "slotKey": "gen_quads",
+      "position": 0,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 2,
+      "rirMax": 5,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 5 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-INT-05",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "seated-leg-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-INT-05",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "standing-calf-raise",
+      "slotKey": "gen_calves",
+      "position": 2,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 1,
+      "rirMax": 3,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 21 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-INT-05",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "quads",
+     "hamstrings",
+     "calves"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession disliked exercises",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "disliked": [
+      "bench-press",
+      "incline-dumbbell-press",
+      "lat-pulldown",
+      "cable-lateral-raise"
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 43,
+    "exercises": [
+     {
+      "exerciseId": "incline-barbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "dumbbell-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession dumbbells only, lower",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "dumbbells",
+     "focus": "lower",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · lower",
+    "estMinutes": 39,
+    "exercises": [
+     {
+      "exerciseId": "bulgarian-split-squat",
+      "slotKey": "gen_quads",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "nordic-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "single-leg-dumbbell-calf-raise",
+      "slotKey": "gen_calves",
+      "position": 2,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "quads",
+     "hamstrings",
+     "calves"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession bodyweight only, everything",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 90,
+     "equipmentPreset": "bodyweight",
+     "focus": "full",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · full",
+    "estMinutes": 74,
+    "exercises": [
+     {
+      "exerciseId": "push-up",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "bulgarian-split-squat",
+      "slotKey": "gen_quads",
+      "position": 2,
+      "sets": 4,
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 14 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "band-pull-apart",
+      "slotKey": "gen_rear_delts",
+      "position": 3,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "nordic-curl",
+      "slotKey": "gen_hamstrings",
+      "position": 4,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "single-leg-dumbbell-calf-raise",
+      "slotKey": "gen_calves",
+      "position": 5,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "rear_delts",
+     "quads",
+     "hamstrings",
+     "calves"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession targets missing for some muscles",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "full",
+     "focus": "auto",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 12,
+      "back": 12
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": []
+    }
+   },
+   "output": {
+    "title": "Generated · catch-up",
+    "estMinutes": 35,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 11 times, stopping with 4 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession history: loads and hints",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 60,
+     "equipmentPreset": "full",
+     "focus": "upper",
+     "readiness": "normal",
+     "exercises": "@seed",
+     "injuries": [],
+     "increments": {
+      "barbell": 2.5,
+      "dumbbell": 1,
+      "cable": 2.5,
+      "machine": 5
+     },
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-21",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 12,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-21",
+       "setIndex": 1,
+       "loadKg": 80,
+       "reps": 10,
+       "rir": 1,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "dumbbell-lateral-raise",
+       "performedOn": "2026-10-21",
+       "setIndex": 0,
+       "loadKg": 10,
+       "reps": 25,
+       "rir": 0,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "dumbbell-lateral-raise",
+       "performedOn": "2026-10-21",
+       "setIndex": 1,
+       "loadKg": 10,
+       "reps": 20,
+       "rir": 0,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "dumbbell-lateral-raise",
+       "performedOn": "2026-10-21",
+       "setIndex": 2,
+       "loadKg": 10,
+       "reps": 18,
+       "rir": 0,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-10-20",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 12,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-10-13",
+       "setIndex": 0,
+       "loadKg": 55,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "cable-lateral-raise",
+       "performedOn": "2026-10-22",
+       "setIndex": 0,
+       "loadKg": 7.5,
+       "reps": 15,
+       "rir": 2,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "incline-dumbbell-press",
+       "performedOn": "2026-10-19",
+       "setIndex": 0,
+       "loadKg": 30,
+       "reps": 8,
+       "rir": 4,
+       "isWarmup": false
+      },
+      {
+       "exerciseId": "incline-dumbbell-press",
+       "performedOn": "2026-10-19",
+       "setIndex": 1,
+       "loadKg": 30,
+       "reps": 7,
+       "rir": 3,
+       "isWarmup": false
+      }
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · upper",
+    "estMinutes": 56,
+    "exercises": [
+     {
+      "exerciseId": "incline-dumbbell-press",
+      "slotKey": "gen_chest",
+      "position": 0,
+      "sets": 4,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 1,
+      "rirMax": 4,
+      "restSeconds": 150,
+      "suggestedLoadKg": 31,
+      "note": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-04"
+      ]
+     },
+     {
+      "exerciseId": "pull-up",
+      "slotKey": "gen_back",
+      "position": 1,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 3,
+      "restSeconds": 150,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 16 times, stopping with 3 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "cable-lateral-raise",
+      "slotKey": "gen_side_delts",
+      "position": 2,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": 10,
+      "note": null,
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-04"
+      ]
+     },
+     {
+      "exerciseId": "reverse-pec-deck",
+      "slotKey": "gen_rear_delts",
+      "position": 3,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "incline-dumbbell-curl",
+      "slotKey": "gen_biceps",
+      "position": 4,
+      "sets": 2,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "chest",
+     "back",
+     "side_delts",
+     "rear_delts",
+     "biceps"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "generateSession custom library",
+   "input": {
+    "call": "generateSession",
+    "input": {
+     "today": "2026-10-28",
+     "minutes": 45,
+     "equipmentPreset": "custom",
+     "focus": [
+      "front_delts",
+      "back"
+     ],
+     "readiness": "normal",
+     "exercises": [
+      {
+       "id": "band-front-raise",
+       "slug": "band-front-raise",
+       "name": "band-front-raise",
+       "pattern": "isolation",
+       "category": "isolation",
+       "equipment": [
+        "band"
+       ],
+       "isMainLift": false,
+       "longLengthBias": false,
+       "unilateral": false,
+       "axialLoad": false,
+       "impactLowerBody": false,
+       "defaultIncrementKg": 0.5,
+       "muscles": [
+        {
+         "muscle": "front_delts",
+         "role": "primary"
+        }
+       ],
+       "substitutions": [],
+       "slotTags": [
+        "front_raise"
+       ],
+       "popularity": 1000,
+       "custom": true
+      },
+      {
+       "id": "band-straight-arm-pulldown",
+       "slug": "band-straight-arm-pulldown",
+       "name": "band-straight-arm-pulldown",
+       "pattern": "isolation",
+       "category": "isolation",
+       "equipment": [
+        "band"
+       ],
+       "isMainLift": false,
+       "longLengthBias": false,
+       "unilateral": false,
+       "axialLoad": false,
+       "impactLowerBody": false,
+       "defaultIncrementKg": 0.5,
+       "muscles": [
+        {
+         "muscle": "back",
+         "role": "primary"
+        }
+       ],
+       "substitutions": [],
+       "slotTags": [
+        "pullover"
+       ],
+       "popularity": 1000,
+       "custom": true
+      }
+     ],
+     "injuries": [],
+     "increments": {},
+     "targets": {
+      "chest": 10,
+      "back": 10,
+      "front_delts": 10,
+      "side_delts": 10,
+      "rear_delts": 10,
+      "biceps": 10,
+      "triceps": 10,
+      "quads": 10,
+      "hamstrings": 10,
+      "glutes": 10,
+      "calves": 10
+     },
+     "loggedThisWeek": {},
+     "recentPain": [],
+     "trainedLast48h": {},
+     "sportStressed": [],
+     "sets": [],
+     "equipment": [
+      "band"
+     ]
+    }
+   },
+   "output": {
+    "title": "Generated · front_delts + back",
+    "estMinutes": 25,
+    "exercises": [
+     {
+      "exerciseId": "band-straight-arm-pulldown",
+      "slotKey": "gen_back",
+      "position": 0,
+      "sets": 4,
+      "repMin": 10,
+      "repMax": 15,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 15 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     },
+     {
+      "exerciseId": "band-front-raise",
+      "slotKey": "gen_front_delts",
+      "position": 1,
+      "sets": 4,
+      "repMin": 15,
+      "repMax": 20,
+      "rirMin": 0,
+      "rirMax": 2,
+      "restSeconds": 90,
+      "suggestedLoadKg": null,
+      "note": "Pick a weight you could lift about 20 times, stopping with 2 reps in the tank.",
+      "ruleIds": [
+       "T-INT-03",
+       "T-INT-04",
+       "T-RST-02",
+       "T-PRG-01"
+      ]
+     }
+    ],
+    "muscles": [
+     "back",
+     "front_delts"
+    ],
+    "notes": [],
+    "ruleIds": [
+     "T-SEL-05",
+     "T-INT-03",
+     "T-VOL-05"
+    ]
+   }
+  },
+  {
+   "name": "setsInLast48h evening",
+   "input": {
+    "call": "setsInLast48h",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T17:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T19:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T18:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T09:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-29",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T10:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T08:00:00Z"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T20:00:00+02:00"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 3,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T10:00:00.250Z"
+     },
+     {
+      "exerciseId": "romanian-deadlift",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "no-such-exercise",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "lying-leg-curl",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 5,
+      "isWarmup": false,
+      "loggedAt": null
+     }
+    ],
+    "now": "2026-10-28T18:00:00Z",
+    "today": "2026-10-28"
+   },
+   "output": [
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T19:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T18:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "back-squat",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false
+    },
+    {
+     "exerciseId": "lat-pulldown",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-27T20:00:00+02:00"
+    },
+    {
+     "exerciseId": "lat-pulldown",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 3,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-27T10:00:00.250Z"
+    },
+    {
+     "exerciseId": "romanian-deadlift",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": true,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "no-such-exercise",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "lying-leg-curl",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 5,
+     "isWarmup": false,
+     "loggedAt": null
+    }
+   ]
+  },
+  {
+   "name": "trainedLast48h evening",
+   "input": {
+    "call": "trainedLast48h",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T17:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T19:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T18:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T09:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-29",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T10:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T08:00:00Z"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T20:00:00+02:00"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 3,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T10:00:00.250Z"
+     },
+     {
+      "exerciseId": "romanian-deadlift",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "no-such-exercise",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "lying-leg-curl",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 5,
+      "isWarmup": false,
+      "loggedAt": null
+     }
+    ],
+    "exercises": "@seed",
+    "now": "2026-10-28T18:00:00Z",
+    "today": "2026-10-28"
+   },
+   "output": {
+    "chest": 3,
+    "back": 1,
+    "front_delts": 3,
+    "side_delts": 0,
+    "rear_delts": 0.5,
+    "biceps": 0.5,
+    "triceps": 1.5,
+    "quads": 1,
+    "hamstrings": 0,
+    "glutes": 1,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0.5,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "setsInLast48h morning",
+   "input": {
+    "call": "setsInLast48h",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T17:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T19:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T18:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T09:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-29",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T10:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T08:00:00Z"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T20:00:00+02:00"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 3,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T10:00:00.250Z"
+     },
+     {
+      "exerciseId": "romanian-deadlift",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "no-such-exercise",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "lying-leg-curl",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 5,
+      "isWarmup": false,
+      "loggedAt": null
+     }
+    ],
+    "now": "2026-10-28T06:30:00Z",
+    "today": "2026-10-28"
+   },
+   "output": [
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T17:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T19:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T18:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "back-squat",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false
+    },
+    {
+     "exerciseId": "lat-pulldown",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-27T20:00:00+02:00"
+    },
+    {
+     "exerciseId": "lat-pulldown",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 3,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-27T10:00:00.250Z"
+    },
+    {
+     "exerciseId": "romanian-deadlift",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": true,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "no-such-exercise",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "lying-leg-curl",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 5,
+     "isWarmup": false,
+     "loggedAt": null
+    }
+   ]
+  },
+  {
+   "name": "trainedLast48h morning",
+   "input": {
+    "call": "trainedLast48h",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T17:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T19:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T18:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T09:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-29",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T10:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T08:00:00Z"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T20:00:00+02:00"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 3,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T10:00:00.250Z"
+     },
+     {
+      "exerciseId": "romanian-deadlift",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "no-such-exercise",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "lying-leg-curl",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 5,
+      "isWarmup": false,
+      "loggedAt": null
+     }
+    ],
+    "exercises": "@seed",
+    "now": "2026-10-28T06:30:00Z",
+    "today": "2026-10-28"
+   },
+   "output": {
+    "chest": 4,
+    "back": 1,
+    "front_delts": 4,
+    "side_delts": 0,
+    "rear_delts": 0.5,
+    "biceps": 0.5,
+    "triceps": 2,
+    "quads": 1,
+    "hamstrings": 0,
+    "glutes": 1,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0.5,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "setsInLast48h with an offset",
+   "input": {
+    "call": "setsInLast48h",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T17:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T19:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T18:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T09:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-29",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T10:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T08:00:00Z"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T20:00:00+02:00"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 3,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T10:00:00.250Z"
+     },
+     {
+      "exerciseId": "romanian-deadlift",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "no-such-exercise",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "lying-leg-curl",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 5,
+      "isWarmup": false,
+      "loggedAt": null
+     }
+    ],
+    "now": "2026-10-28T20:00:00+02:00",
+    "today": "2026-10-28"
+   },
+   "output": [
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T19:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-26",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-26T18:00:00Z"
+    },
+    {
+     "exerciseId": "bench-press",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "back-squat",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false
+    },
+    {
+     "exerciseId": "lat-pulldown",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-27T20:00:00+02:00"
+    },
+    {
+     "exerciseId": "lat-pulldown",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 3,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": "2026-10-27T10:00:00.250Z"
+    },
+    {
+     "exerciseId": "romanian-deadlift",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": true,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "no-such-exercise",
+     "performedOn": "2026-10-28",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 2,
+     "isWarmup": false,
+     "loggedAt": null
+    },
+    {
+     "exerciseId": "lying-leg-curl",
+     "performedOn": "2026-10-27",
+     "setIndex": 0,
+     "loadKg": 60,
+     "reps": 8,
+     "rir": 5,
+     "isWarmup": false,
+     "loggedAt": null
+    }
+   ]
+  },
+  {
+   "name": "trainedLast48h with an offset",
+   "input": {
+    "call": "trainedLast48h",
+    "sets": [
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T17:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T19:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-26T18:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-20",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T09:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-26",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "back-squat",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-29",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-28T10:00:00Z"
+     },
+     {
+      "exerciseId": "bench-press",
+      "performedOn": "2026-10-25",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T08:00:00Z"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T20:00:00+02:00"
+     },
+     {
+      "exerciseId": "lat-pulldown",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 3,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": "2026-10-27T10:00:00.250Z"
+     },
+     {
+      "exerciseId": "romanian-deadlift",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": true,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "no-such-exercise",
+      "performedOn": "2026-10-28",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 2,
+      "isWarmup": false,
+      "loggedAt": null
+     },
+     {
+      "exerciseId": "lying-leg-curl",
+      "performedOn": "2026-10-27",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 8,
+      "rir": 5,
+      "isWarmup": false,
+      "loggedAt": null
+     }
+    ],
+    "exercises": "@seed",
+    "now": "2026-10-28T20:00:00+02:00",
+    "today": "2026-10-28"
+   },
+   "output": {
+    "chest": 3,
+    "back": 1,
+    "front_delts": 3,
+    "side_delts": 0,
+    "rear_delts": 0.5,
+    "biceps": 0.5,
+    "triceps": 1.5,
+    "quads": 1,
+    "hamstrings": 0,
+    "glutes": 1,
+    "calves": 0,
+    "abs": 0,
+    "forearms": 0,
+    "traps": 0,
+    "erectors": 0.5,
+    "adductors": 0
+   }
+  },
+  {
+   "name": "setsInLast48h nothing logged",
+   "input": {
+    "call": "setsInLast48h",
+    "sets": [],
+    "now": "2026-10-28T18:00:00Z",
+    "today": "2026-10-28"
+   },
+   "output": []
+  },
+  {
+   "name": "checkinSoreness none",
+   "input": {
+    "call": "checkinSoreness",
+    "checkins": [],
+    "today": "2026-10-28"
+   },
+   "output": {
+    "pain": [],
+    "sore": []
+   }
+  },
+  {
+   "name": "checkinSoreness pain from any day, sore from two days",
+   "input": {
+    "call": "checkinSoreness",
+    "checkins": [
+     {
+      "day": "2026-10-28",
+      "soreness": {
+       "chest": "sore"
+      }
+     },
+     {
+      "day": "2026-10-27",
+      "soreness": {
+       "quads": "sore",
+       "biceps": "pain"
+      }
+     },
+     {
+      "day": "2026-10-25",
+      "soreness": {
+       "back": "sore",
+       "calves": "pain"
+      }
+     }
+    ],
+    "today": "2026-10-28"
+   },
+   "output": {
+    "pain": [
+     "biceps",
+     "calves"
+    ],
+    "sore": [
+     "chest",
+     "quads"
+    ]
+   }
+  },
+  {
+   "name": "checkinSoreness pain wins over sore",
+   "input": {
+    "call": "checkinSoreness",
+    "checkins": [
+     {
+      "day": "2026-10-28",
+      "soreness": {
+       "chest": "sore",
+       "back": "pain"
+      }
+     },
+     {
+      "day": "2026-10-27",
+      "soreness": {
+       "chest": "pain",
+       "back": "sore",
+       "abs": "sore"
+      }
+     }
+    ],
+    "today": "2026-10-28"
+   },
+   "output": {
+    "pain": [
+     "back",
+     "chest"
+    ],
+    "sore": [
+     "abs"
+    ]
+   }
+  },
+  {
+   "name": "checkinSoreness no soreness given",
+   "input": {
+    "call": "checkinSoreness",
+    "checkins": [
+     {
+      "day": "2026-10-28",
+      "soreness": null
+     },
+     {
+      "day": "2026-10-27",
+      "soreness": {}
+     }
+    ],
+    "today": "2026-10-28"
+   },
+   "output": {
+    "pain": [],
+    "sore": []
+   }
+  },
+  {
+   "name": "checkinSoreness other values and a future day",
+   "input": {
+    "call": "checkinSoreness",
+    "checkins": [
+     {
+      "day": "2026-10-29",
+      "soreness": {
+       "chest": "sore",
+       "glutes": "pain"
+      }
+     },
+     {
+      "day": "2026-10-28",
+      "soreness": {
+       "quads": "fine",
+       "triceps": "sore"
+      }
+     }
+    ],
+    "today": "2026-10-28"
+   },
+   "output": {
+    "pain": [
+     "glutes"
+    ],
+    "sore": [
+     "triceps"
+    ]
+   }
+  },
+  {
+   "name": "blockWeekIndex 2026-10-26 from 2026-10-26, 6 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-10-26",
+    "blockStart": "2026-10-26",
+    "weeks": 6
+   },
+   "output": 0
+  },
+  {
+   "name": "blockWeekIndex 2026-11-09 from 2026-10-26, 6 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-11-09",
+    "blockStart": "2026-10-26",
+    "weeks": 6
+   },
+   "output": 2
+  },
+  {
+   "name": "blockWeekIndex 2027-01-04 from 2026-10-26, 6 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2027-01-04",
+    "blockStart": "2026-10-26",
+    "weeks": 6
+   },
+   "output": 5
+  },
+  {
+   "name": "blockWeekIndex 2026-10-19 from 2026-10-26, 6 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-10-19",
+    "blockStart": "2026-10-26",
+    "weeks": 6
+   },
+   "output": 0
+  },
+  {
+   "name": "blockWeekIndex 2026-11-01 from 2026-10-26, 6 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-11-01",
+    "blockStart": "2026-10-26",
+    "weeks": 6
+   },
+   "output": 0
+  },
+  {
+   "name": "blockWeekIndex 2026-11-02 from 2026-10-26, 0 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-11-02",
+    "blockStart": "2026-10-26",
+    "weeks": 0
+   },
+   "output": 0
+  },
+  {
+   "name": "blockWeekIndex 2026-12-21 from 2026-10-26, 8 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-12-21",
+    "blockStart": "2026-10-26",
+    "weeks": 8
+   },
+   "output": 7
+  },
+  {
+   "name": "blockWeekIndex 2026-10-25 from 2026-10-26, 1 weeks",
+   "input": {
+    "call": "blockWeekIndex",
+    "weekStart": "2026-10-25",
+    "blockStart": "2026-10-26",
+    "weeks": 1
+   },
+   "output": 0
+  }
+ ]
+}
