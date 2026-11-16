@@ -24,5 +24,6 @@ export 'ui/nutrition_goals_card.dart' show CoachGoalsCard;
 export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSettingsIcon, coachSettingsSearchRows;
 export 'ui/onboarding_pages.dart' show CoachGoalChoices, CoachLengthChips, CoachLevelChoices, CoachPageFrame, coachOnboardingPageCount, coachOnboardingPages;
 export 'ui/proposal_card.dart' show CoachHomeSlot, CoachProposalCard;
+export 'ui/recovery_sheets.dart' show CoachHomeHint, coachShowInjurySheet, coachShowSportsSheet;
 export 'ui/soreness_sheet.dart' show CoachSorenessRow, coachAreaLabel, coachShowSorenessSheet;
 export 'ui/plan_ui.dart' show CoachPlanWhy, CoachQuickMinutes, coachBlockKindLabel;

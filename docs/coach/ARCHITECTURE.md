@@ -449,6 +449,21 @@ session already opens with the cut sets (applying the deload wrote them into the
 In the week of an applied targeted deload, a coach routine's workout leaves out the exercises the proposal removes
 (`coachShapeSession`); the block holds the reduced sets of the others.
 
+### Sports and injuries
+
+Two sheets (`lib/coach/ui/recovery_sheets.dart`), reachable from Settings › Coach and from a hint in the Home slot
+(shown while the plan module is on and nothing is entered, until dismissed; `coach.review.hintDone`):
+
+- Sports: pick one of the coach's seven sports (names in the packages' English), the weekdays, how hard (light,
+  moderate, hard, match) and the length. It is stored in `coach.sports` with the sport's load figures from the
+  training package's catalog (`SPORT_SEEDS`), which the block generator and the calorie target read.
+- Injuries: pick an area (the soreness sheet's list) and niggle, pain or injury; "Healed" marks one resolved. It is
+  stored in `coach.injuries`. A pain tag on the same area on two days in fourteen raises an `injury_adjust`
+  proposal from the weekly review instead.
+
+Either change generates the plan again while the plan module is on (`coachRegenerate`). Onboarding now offers
+the "Support my sport" goal too.
+
 ### Proposals: apply, undo, the Home card
 
 Every proposal kind has a tier (`coachTierFor` in `lib/coach/policy/autonomy.dart`, the table under

@@ -27,8 +27,8 @@ List<Widget> coachOnboardingPages({required int first, required CoachPageFrame f
       _LevelPage(step: first + 1, frame: frame),
     ];
 
-/// The goals the questions offer. Sport support waits until sports can be entered.
-const List<CoachGoal> _goals = [CoachGoal.leanGain, CoachGoal.recomp, CoachGoal.strength, CoachGoal.fatLoss];
+/// The goals the questions offer. The sports themselves are entered in Settings › Coach or from the Home hint.
+const List<CoachGoal> _goals = CoachGoal.values;
 
 String _goalLabel(CoachGoal g) => switch (g) {
       CoachGoal.leanGain => t.coachGoalLeanGain,

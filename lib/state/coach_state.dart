@@ -707,6 +707,55 @@ mixin CoachState
     if (changed) coach = coach.copyWith(proposals: records);
   }
 
+  // Sports and injuries (Task 5.6).
+
+  /// The sports the coach knows.
+  List<CoachSportChoice> get coachSportChoices => CoachFacade.sportChoices();
+
+  /// The user's sports.
+  List<CoachSportEntry> get coachSports => CoachFacade.sportEntries(coach);
+
+  /// Stores [sports] as the user's sports, and generates the plan again while the plan module is on.
+  void setCoachSports(List<CoachSportEntry> sports) {
+    coach = CoachFacade.withSports(coach, sports);
+    _coachAfterSettingsChange();
+  }
+
+  /// The user's injuries, healed ones included.
+  List<CoachInjuryEntry> get coachInjuries => CoachFacade.injuryEntries(coach);
+
+  /// Records a new injury of [area], and generates the plan again while the plan module is on.
+  void addCoachInjury(CoachArea area, CoachInjurySeverity severity) {
+    coach = CoachFacade.withNewInjury(coach, area, severity, _coachDay(coachClock()));
+    _coachAfterSettingsChange();
+  }
+
+  /// Marks the injury [id] healed, and generates the plan again while the plan module is on.
+  void healCoachInjury(String id) {
+    coach = CoachFacade.withInjuryHealed(coach, id);
+    _coachAfterSettingsChange();
+  }
+
+  void _coachAfterSettingsChange() {
+    if (coach.isOn(CoachModule.plan) && coach.block != null) {
+      coachRegenerate('settings');
+      return;
+    }
+    _persist();
+    notifyListeners();
+  }
+
+  /// Whether the Home slot shows the hint about sports and injuries: the plan module is on, none are entered, and
+  /// the hint was not dismissed.
+  bool get coachShowsHomeHint =>
+      coach.isOn(CoachModule.plan) && coach.sports.isEmpty && coach.injuries.isEmpty && coach.review['hintDone'] != true;
+
+  void dismissCoachHomeHint() {
+    coach = coach.copyWith(review: {...coach.review, 'hintDone': true});
+    _persist();
+    notifyListeners();
+  }
+
   // Need-based deloads (Task 5.4).
 
   /// The deload an applied proposal set up for this week (`weekStart`, `cutPct`, and for a targeted deload

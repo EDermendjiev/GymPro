@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // The coach's place on the Home screen (Task 5.5): the proposals waiting for the user (Apply, Not now), the ones the
-// coach applied by itself in the last seven days (Undo), and the soreness row. Draws nothing when there is nothing
+// coach applied by itself in the last seven days (Undo), the one-time hint about sports and injuries, and the soreness row. Draws nothing when there is nothing
 // to show. Titles and reasons come from the coach packages, in English.
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
@@ -13,6 +13,7 @@ import '../../widgets/liquid_notch.dart';
 import '../../widgets/ui_kit.dart';
 import '../model/coach_data.dart';
 import '../model/coach_recovery.dart';
+import 'recovery_sheets.dart';
 import 'soreness_sheet.dart';
 
 /// The coach's slot on the Home screen, under the day's card.
@@ -25,11 +26,13 @@ class CoachHomeSlot extends StatelessWidget {
   Widget _slot(BuildContext context) {
     final recovery = fit.coach.isOn(CoachModule.recovery);
     final proposals = fit.coachCardProposals;
-    if (proposals.isEmpty && !recovery) return const SizedBox.shrink();
+    final hint = fit.coachShowsHomeHint;
+    if (proposals.isEmpty && !recovery && !hint) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         for (final p in proposals) Padding(padding: const EdgeInsets.only(bottom: 10), child: CoachProposalCard(p)),
+        if (hint) const CoachHomeHint(),
         if (recovery) const CoachSorenessRow(),
       ]),
     );

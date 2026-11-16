@@ -10,6 +10,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/ui_kit.dart';
 import '../model/coach_data.dart';
 import 'onboarding_pages.dart';
+import 'recovery_sheets.dart';
 import 'soreness_sheet.dart';
 
 /// Builds one settings row: icon, label, the switch, and a one-line hint. The settings screen passes its own, so
@@ -23,6 +24,8 @@ const IconData coachSettingsIcon = PhosphorIconsRegular.clipboardText;
 List<(String, IconData)> coachSettingsSearchRows() => [
       (t.coachBuildPlan, PhosphorIconsRegular.magicWand),
       for (final m in CoachModule.values) (_label(m), _icon(m)),
+      (t.coachSports, PhosphorIconsRegular.soccerBall),
+      (t.coachInjuries, PhosphorIconsRegular.firstAid),
       (t.coachAskFirst, PhosphorIconsRegular.handPalm),
     ];
 
@@ -65,6 +68,10 @@ class CoachSettings extends StatelessWidget {
               child: build(_icon(m), _label(m), TinySwitch(on: fit.coach.isOn(m)), _hint(m)),
             ),
           ),
+        _open(context, build, 'coach-sports', PhosphorIconsRegular.soccerBall, t.coachSports, t.coachSportsHint,
+            () => coachShowSportsSheet(context)),
+        _open(context, build, 'coach-injuries', PhosphorIconsRegular.firstAid, t.coachInjuries, t.coachInjuriesHint,
+            () => coachShowInjurySheet(context)),
         if (fit.coach.isOn(CoachModule.recovery))
           GestureDetector(
             key: const ValueKey('coach-ask-first'),

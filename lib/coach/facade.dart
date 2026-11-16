@@ -573,6 +573,87 @@ abstract final class CoachFacade {
     return coach.copyWith(nutrition: n);
   }
 
+  // Sports and injuries (Task 5.6).
+
+  /// The sports the coach knows, for the sports sheet.
+  static List<CoachSportChoice> sportChoices() => [
+        for (final s in ct.SPORT_SEEDS) CoachSportChoice(id: s.id, name: s.name, defaultMinutes: s.defaultMinutes),
+      ];
+
+  /// The sports in [coach], as the sports sheet edits them. Sports of unknown intensity are left out.
+  static List<CoachSportEntry> sportEntries(CoachData coach) => [
+        for (final s in coach.sports)
+          if (CoachSportIntensity.fromWire(s.intensity.wire) case final i?)
+            CoachSportEntry(sportId: s.sportId, weekdays: s.weekdays, intensity: i, minutes: s.minutes),
+      ];
+
+  /// [coach] with [sports] as its sports, each with the load figures of its sport from the coach's catalog. An
+  /// entry of a sport the catalog does not know keeps the stored figures when there are any, else it is dropped.
+  static CoachData withSports(CoachData coach, List<CoachSportEntry> sports) {
+    final stored = {for (final s in coach.sports) s.sportId: s};
+    final out = <ck.UserSport>[];
+    for (final e in sports) {
+      final seed = ct.SPORT_SEEDS.where((s) => s.id == e.sportId).firstOrNull;
+      final known = stored[e.sportId];
+      final intensity = ck.SportIntensity.fromWire(e.intensity.name);
+      final days = [...{...e.weekdays}]..sort();
+      if (seed != null) {
+        out.add(ck.UserSport(
+          sportId: seed.id,
+          name: seed.name,
+          lowerBodyLoad: seed.lower,
+          upperBodyLoad: seed.upper,
+          eccentricImpact: seed.impact,
+          conditioning: seed.conditioning,
+          musclesStressed: [...seed.muscles],
+          weekdays: days,
+          intensity: intensity,
+          minutes: e.minutes,
+        ));
+      } else if (known != null) {
+        out.add(known.copyWith(weekdays: days, intensity: intensity, minutes: e.minutes));
+      }
+    }
+    return coach.copyWith(sports: out);
+  }
+
+  /// The injuries in [coach], as the injury sheet shows them.
+  static List<CoachInjuryEntry> injuryEntries(CoachData coach) => [
+        for (final i in coach.injuries)
+          CoachInjuryEntry(
+            id: i.id,
+            area: CoachArea.fromWire(i.muscleId?.wire),
+            label: i.label,
+            severity: CoachInjurySeverity.fromWire(i.severity.wire)!,
+            active: i.status != ck.InjuryStatus.resolved,
+          ),
+      ];
+
+  /// [coach] with a new active injury of [area] at [severity], recorded [today].
+  static CoachData withNewInjury(CoachData coach, CoachArea area, CoachInjurySeverity severity, String today) {
+    final muscle = ck.MuscleId.fromWire(area.wire);
+    var n = coach.injuries.length;
+    while (coach.injuries.any((i) => i.id == 'inj-$today-$n')) {
+      n++;
+    }
+    return coach.copyWith(injuries: [
+      ...coach.injuries,
+      ck.Injury(
+        id: 'inj-$today-$n',
+        muscleId: muscle,
+        label: cr.label(muscle),
+        severity: ck.InjurySeverity.fromWire(severity.name),
+        status: ck.InjuryStatus.active,
+        avoidExerciseIds: const [],
+      ),
+    ]);
+  }
+
+  /// [coach] with the injury [id] marked healed (resolved).
+  static CoachData withInjuryHealed(CoachData coach, String id) => coach.copyWith(injuries: [
+        for (final i in coach.injuries) i.id == id ? i.copyWith(status: ck.InjuryStatus.resolved) : i,
+      ]);
+
   // ---------- Nutrition ----------
 
   /// The coach's daily calorie and macro targets for someone weighing [bodyweightKg], of app sex [sex] and app
