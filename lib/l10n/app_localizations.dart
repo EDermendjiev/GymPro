@@ -13591,6 +13591,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name} (copy)'**
   String exerciseCopyName(String name);
+
+  /// No description provided for @sectionCoach.
+  ///
+  /// In en, this message translates to:
+  /// **'Coach'**
+  String get sectionCoach;
+
+  /// No description provided for @coachProgression.
+  ///
+  /// In en, this message translates to:
+  /// **'Progression'**
+  String get coachProgression;
+
+  /// No description provided for @coachProgressionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Load and rep targets for exercises set to Auto'**
+  String get coachProgressionHint;
+
+  /// No description provided for @coachPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Training plan'**
+  String get coachPlan;
+
+  /// No description provided for @coachPlanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds your weekly routines. Needs Progression'**
+  String get coachPlanHint;
+
+  /// No description provided for @coachRecovery.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery'**
+  String get coachRecovery;
+
+  /// No description provided for @coachRecoveryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly review, deloads and swaps. Needs Training plan'**
+  String get coachRecoveryHint;
+
+  /// No description provided for @coachNutrition.
+  ///
+  /// In en, this message translates to:
+  /// **'Nutrition targets'**
+  String get coachNutrition;
+
+  /// No description provided for @coachNutritionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Calorie and macro goals from your weigh-ins'**
+  String get coachNutritionHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

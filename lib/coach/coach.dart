@@ -10,3 +10,4 @@ library;
 
 export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_profile.dart' show CoachProfile;
+export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSettingsIcon, coachSettingsSearchRows;

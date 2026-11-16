@@ -165,10 +165,10 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | planned |
 | `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | planned |
-| `lib/screens/settings_screen.dart` | "Coach" category | planned |
+| `lib/screens/settings_screen.dart` | "Coach" category: import of the barrel, the category, its title, its place in the Home group, its section | done |
 | `lib/screens/about_screen.dart`, `README.md` | credit line, fork links | done |
 | `lib/app/gymmane_app.dart`, `android/app/build.gradle.kts`, `android/app/src/main/AndroidManifest.xml` | app identity (name and application id) | done |
-| `lib/l10n/app_en.arb`, `test/pending_translation_keys.txt` | new strings, added as each module needs them | planned (one string so far, for the credit) |
+| `lib/l10n/app_en.arb`, `test/pending_translation_keys.txt` | new strings, added as each module needs them | in use (the credit, Settings › Coach) |
 | `.github/workflows/coach-ci.yml` | new file, not a seam: analyzer, app tests and package tests on the `coach` branch | done |
 
 Notes on the table:

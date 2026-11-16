@@ -18,6 +18,7 @@ const _expected = <String, int>{
   'lib/state/fit_core.dart': 1, // block of no-op coach methods
   'lib/state/fit_state.dart': 7, // import, part, mixin, loadFromStore, toJson, applyBackup, resetAllData
   'packages/sync/lib/sync.dart': 1, // coach merges atomically
+  'lib/screens/settings_screen.dart': 5, // import, Coach category, its title, its group, its section
   'pubspec.yaml': 1, // coach package dependencies
 };
 

@@ -19,3 +19,12 @@ reportChooseCsv
 reportWeighIns
 reportSessionDetails
 basedOnGymMane
+sectionCoach
+coachProgression
+coachProgressionHint
+coachPlan
+coachPlanHint
+coachRecovery
+coachRecoveryHint
+coachNutrition
+coachNutritionHint

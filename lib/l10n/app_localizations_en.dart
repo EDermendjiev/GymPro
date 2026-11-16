@@ -7749,4 +7749,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String exerciseCopyName(String name) {
     return '$name (copy)';
   }
+
+  @override
+  String get sectionCoach => 'Coach';
+
+  @override
+  String get coachProgression => 'Progression';
+
+  @override
+  String get coachProgressionHint => 'Load and rep targets for exercises set to Auto';
+
+  @override
+  String get coachPlan => 'Training plan';
+
+  @override
+  String get coachPlanHint => 'Builds your weekly routines. Needs Progression';
+
+  @override
+  String get coachRecovery => 'Recovery';
+
+  @override
+  String get coachRecoveryHint => 'Weekly review, deloads and swaps. Needs Training plan';
+
+  @override
+  String get coachNutrition => 'Nutrition targets';
+
+  @override
+  String get coachNutritionHint => 'Calorie and macro goals from your weigh-ins';
 }

@@ -14,6 +14,7 @@ import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../app/desktop.dart';
+import '../coach/coach.dart'; // coach-seam
 import '../l10n/l10n.dart';
 import '../models/profile.dart';
 import '../services/graphics_mode.dart';
@@ -737,6 +738,8 @@ class SettingsScreen extends StatelessWidget {
             (PhosphorIconsRegular.githubLogo, t.nutritionAboutSuggest, () => _open(context, '$_kRepoUrl/issues')),
           ]),
         ];
+      case 'coach':
+        return [_card(gc, [CoachSettings(row: (i, l, c, h) => _prefRow(gc, i, l, c, hint: h))])]; // coach-seam
       case 'widgets':
         return [
           _linkGroup(gc, [
@@ -822,6 +825,7 @@ class SettingsScreen extends StatelessWidget {
         'home' => t.sectionHome,
         'widgets' => t.sectionWidgets,
         'beta' => t.sectionBeta,
+        'coach' => t.sectionCoach, // coach-seam
         'data' => t.sectionData,
         'about' => t.aboutGymmane,
         _ => titleCase(t.support),
@@ -891,6 +895,7 @@ class SettingsScreen extends StatelessWidget {
           (t.addTodayWidget, PhosphorIconsRegular.checkCircle),
           (t.addWeekWidget, PhosphorIconsRegular.calendarCheck),
         ]),
+      _Category('coach', coachSettingsIcon, _sectionTitle('coach'), coachSettingsSearchRows()), // coach-seam
       _Category('beta', PhosphorIconsRegular.flask, _sectionTitle('beta'), [
         (t.nutritionBeta, PhosphorIconsRegular.forkKnife),
       ]),
@@ -2674,7 +2679,7 @@ class _SettingsHomeState extends State<_SettingsHome> {
                           children: [
                             for (final (g, label) in [
                               (const {'general', 'training', 'alerts'}, t.settingsGroupApp),
-                              (const {'home', 'widgets', 'beta'}, t.settingsGroupHome),
+                              (const {'home', 'widgets', 'coach', 'beta'}, t.settingsGroupHome), // coach-seam
                               (const {'data', 'support', 'about'}, t.settingsGroupData),
                             ]) ...[
                               Padding(

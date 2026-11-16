@@ -2692,5 +2692,15 @@
 
   "duplicateExercise": "Duplicate",
   "exerciseCopyName": "{name} (copy)",
-  "@exerciseCopyName": { "placeholders": { "name": { "type": "String" } } }
+  "@exerciseCopyName": { "placeholders": { "name": { "type": "String" } } },
+
+  "sectionCoach": "Coach",
+  "coachProgression": "Progression",
+  "coachProgressionHint": "Load and rep targets for exercises set to Auto",
+  "coachPlan": "Training plan",
+  "coachPlanHint": "Builds your weekly routines. Needs Progression",
+  "coachRecovery": "Recovery",
+  "coachRecoveryHint": "Weekly review, deloads and swaps. Needs Training plan",
+  "coachNutrition": "Nutrition targets",
+  "coachNutritionHint": "Calorie and macro goals from your weigh-ins"
 }
