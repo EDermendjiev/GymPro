@@ -11,6 +11,7 @@ import '../models/workout.dart';
 import 'adapters/block_input_adapter.dart';
 import 'adapters/catalog_adapter.dart';
 import 'adapters/category_adapter.dart';
+import 'adapters/checkin_adapter.dart';
 import 'adapters/equipment_map.dart';
 import 'adapters/exposure_adapter.dart';
 import 'adapters/history_adapter.dart';
@@ -22,6 +23,7 @@ import 'model/coach_data.dart';
 import 'model/coach_nutrition.dart';
 import 'model/coach_plan.dart';
 import 'model/coach_profile.dart';
+import 'model/coach_recovery.dart';
 import 'model/coach_targets.dart';
 
 /// Entry points are added as the modules land. It holds no state.
@@ -372,6 +374,28 @@ abstract final class CoachFacade {
     final ranked = count.keys.toList()..sort((a, b) => count[b] != count[a] ? count[b]! - count[a]! : a - b);
     return ranked.take(n).toList()..sort();
   }
+
+  // ---------- Recovery ----------
+
+  /// The coach's daily check-ins from [from] to [to] (Task 5.1): sleep from [sleepMinutes] (Health Connect, by ISO
+  /// day), energy from the rating after the day's last rated workout, soreness from `coach.soreness`, bodyweight
+  /// from the day's last weigh-in. Stress is not collected. Missing sources are null.
+  static List<CoachCheckin> checkins({
+    required DateTime from,
+    required DateTime to,
+    required Map<String, double> sleepMinutes,
+    required List<LoggedSession> sessions,
+    required List<BodyweightEntry> bodyweight,
+    required CoachData coach,
+  }) =>
+      coachCheckinDays(
+        from: coachIsoDay(from),
+        to: coachIsoDay(to),
+        sleepMinutes: sleepMinutes,
+        sessions: sessions,
+        bodyweight: bodyweight,
+        soreness: coach.soreness,
+      );
 
   // ---------- Nutrition ----------
 

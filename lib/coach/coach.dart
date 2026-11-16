@@ -13,6 +13,7 @@ export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_nutrition.dart' show CoachNutritionPhase, CoachNutritionTargets;
 export 'model/coach_plan.dart' show CoachBlockSummary, CoachBuiltPlan, CoachOpeningSet, CoachPlanInputs, CoachQuickSession, CoachRoutineExercise, CoachRoutinePlan;
 export 'model/coach_profile.dart' show CoachProfile;
+export 'model/coach_recovery.dart' show CoachArea, CoachAutonomyTier, CoachCheckin, CoachInjuryEntry, CoachInjurySeverity, CoachProposal, CoachProposalKind, CoachProposalState, CoachSoreness, CoachSportChoice, CoachSportEntry, CoachSportIntensity;
 export 'model/coach_prompt.dart' show CoachCorrectionPrompt, CoachEffortPrompt, CoachPrompt;
 export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarget, CoachWarmupSet;
 export 'facade.dart' show CoachFacade;

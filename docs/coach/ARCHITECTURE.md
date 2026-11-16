@@ -378,6 +378,27 @@ for the chosen muscles (sore and painful muscles skipped, muscles trained hard
 in the last 48 hours last). Length chips (20, 30, 45, 60 minutes) above the
 list pick the session length; the session opens with the generated sets.
 
+## Recovery module
+
+With the `recovery` switch on (it needs `plan`), the coach reviews each week from what was logged and turns what
+it finds into proposals.
+
+### Check-ins
+
+The coach's daily check-ins (`CoachState.coachCheckins`, `lib/coach/adapters/checkin_adapter.dart`) are built
+from data the app already has; no daily form is added:
+
+| Signal | Taken from |
+|---|---|
+| Sleep hours | Health Connect's sleep for the day |
+| Energy (1–5) | the energy rating after the day's last rated workout |
+| Stress | not collected: always empty |
+| Soreness | `coach.soreness` (the soreness sheet) |
+| Bodyweight | the day's last weigh-in |
+
+A source with nothing for a day is empty, never zero, and a day with no signal at all has no check-in. The sleep
+rating after a workout is a 1–5 quality score, not hours, so the coach does not read it.
+
 ## Nutrition module
 
 With the `nutrition` switch on, the app's suggested calorie and macro goals

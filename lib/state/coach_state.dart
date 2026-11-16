@@ -3,7 +3,8 @@
 // answer in [coach] and notifies. The coaching rules live in the coach packages, never here.
 part of 'fit_state.dart';
 
-mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsState, NutritionState, RoutinesState {
+mixin CoachState
+    on FitCore, LibraryState, SettingsState, PlacesState, StatsState, HealthState, NutritionState, RoutinesState {
   /// Everything the coach keeps. Stored under the `coach` key, and left out entirely while it is empty.
   CoachData coach = CoachData.empty();
 
@@ -501,6 +502,37 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     if (!coach.isOn(CoachModule.plan)) return null;
     final q = CoachFacade.quickSession(_coachInputs(), minutes: coachQuickMinutes);
     return q == null || q.muscles.isEmpty ? null : q.muscles;
+  }
+
+  // ---------- Recovery (Phase 5) ----------
+
+  /// Health Connect's sleep, in minutes, by ISO day, from [from] to [to].
+  Map<String, double> _coachSleep(DateTime from, DateTime to) {
+    final out = <String, double>{};
+    for (var d = DateTime(from.year, from.month, from.day); !d.isAfter(to); d = DateTime(d.year, d.month, d.day + 1)) {
+      final v = healthOnDay(HealthMetric.sleep, d);
+      if (v != null && v.isNotEmpty && v.first > 0) {
+        out['${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}'] =
+            v.first;
+      }
+    }
+    return out;
+  }
+
+  /// The coach's check-ins for the last [days] days up to today (Task 5.1), from what the app already has: sleep
+  /// from Health Connect, the energy rating after a workout, the soreness sheet, the weigh-ins. Stress is not
+  /// collected. A source with nothing for a day is null.
+  List<CoachCheckin> coachCheckins({int days = 35}) {
+    final today = coachClock();
+    final from = DateTime(today.year, today.month, today.day - (days - 1));
+    return CoachFacade.checkins(
+      from: from,
+      to: today,
+      sleepMinutes: _coachSleep(from, today),
+      sessions: sessions,
+      bodyweight: bodyweight,
+      coach: coach,
+    );
   }
 
   // ---------- Nutrition (Phase 6) ----------
