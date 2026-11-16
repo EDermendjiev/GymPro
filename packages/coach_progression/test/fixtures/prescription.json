@@ -1,0 +1,3939 @@
+{
+ "fn": "prescription",
+ "cases": [
+  {
+   "name": "isCompound lower_free_compound",
+   "input": {
+    "call": "isCompound",
+    "category": "lower_free_compound"
+   },
+   "output": true
+  },
+  {
+   "name": "isCompound lower_machine_compound",
+   "input": {
+    "call": "isCompound",
+    "category": "lower_machine_compound"
+   },
+   "output": true
+  },
+  {
+   "name": "isCompound upper_free_press",
+   "input": {
+    "call": "isCompound",
+    "category": "upper_free_press"
+   },
+   "output": true
+  },
+  {
+   "name": "isCompound upper_machine_press",
+   "input": {
+    "call": "isCompound",
+    "category": "upper_machine_press"
+   },
+   "output": true
+  },
+  {
+   "name": "isCompound pulling_compound",
+   "input": {
+    "call": "isCompound",
+    "category": "pulling_compound"
+   },
+   "output": true
+  },
+  {
+   "name": "isCompound isolation",
+   "input": {
+    "call": "isCompound",
+    "category": "isolation"
+   },
+   "output": false
+  },
+  {
+   "name": "restFor lower_free_compound, no options",
+   "input": {
+    "call": "restFor",
+    "category": "lower_free_compound"
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor lower_free_compound, empty options",
+   "input": {
+    "call": "restFor",
+    "category": "lower_free_compound",
+    "opts": {}
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor lower_free_compound, not a strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "lower_free_compound",
+    "opts": {
+     "strengthMain": false
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor lower_free_compound, strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "lower_free_compound",
+    "opts": {
+     "strengthMain": true
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor lower_machine_compound, no options",
+   "input": {
+    "call": "restFor",
+    "category": "lower_machine_compound"
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor lower_machine_compound, empty options",
+   "input": {
+    "call": "restFor",
+    "category": "lower_machine_compound",
+    "opts": {}
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor lower_machine_compound, not a strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "lower_machine_compound",
+    "opts": {
+     "strengthMain": false
+    }
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor lower_machine_compound, strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "lower_machine_compound",
+    "opts": {
+     "strengthMain": true
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor upper_free_press, no options",
+   "input": {
+    "call": "restFor",
+    "category": "upper_free_press"
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor upper_free_press, empty options",
+   "input": {
+    "call": "restFor",
+    "category": "upper_free_press",
+    "opts": {}
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor upper_free_press, not a strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "upper_free_press",
+    "opts": {
+     "strengthMain": false
+    }
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor upper_free_press, strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "upper_free_press",
+    "opts": {
+     "strengthMain": true
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor upper_machine_press, no options",
+   "input": {
+    "call": "restFor",
+    "category": "upper_machine_press"
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor upper_machine_press, empty options",
+   "input": {
+    "call": "restFor",
+    "category": "upper_machine_press",
+    "opts": {}
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor upper_machine_press, not a strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "upper_machine_press",
+    "opts": {
+     "strengthMain": false
+    }
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor upper_machine_press, strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "upper_machine_press",
+    "opts": {
+     "strengthMain": true
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor pulling_compound, no options",
+   "input": {
+    "call": "restFor",
+    "category": "pulling_compound"
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor pulling_compound, empty options",
+   "input": {
+    "call": "restFor",
+    "category": "pulling_compound",
+    "opts": {}
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor pulling_compound, not a strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "pulling_compound",
+    "opts": {
+     "strengthMain": false
+    }
+   },
+   "output": 150
+  },
+  {
+   "name": "restFor pulling_compound, strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "pulling_compound",
+    "opts": {
+     "strengthMain": true
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "restFor isolation, no options",
+   "input": {
+    "call": "restFor",
+    "category": "isolation"
+   },
+   "output": 90
+  },
+  {
+   "name": "restFor isolation, empty options",
+   "input": {
+    "call": "restFor",
+    "category": "isolation",
+    "opts": {}
+   },
+   "output": 90
+  },
+  {
+   "name": "restFor isolation, not a strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "isolation",
+    "opts": {
+     "strengthMain": false
+    }
+   },
+   "output": 90
+  },
+  {
+   "name": "restFor isolation, strength main lift",
+   "input": {
+    "call": "restFor",
+    "category": "isolation",
+    "opts": {
+     "strengthMain": true
+    }
+   },
+   "output": 180
+  },
+  {
+   "name": "subRange lower_free_compound low",
+   "input": {
+    "call": "subRange",
+    "category": "lower_free_compound",
+    "level": "low"
+   },
+   "output": [
+    4,
+    6
+   ]
+  },
+  {
+   "name": "subRange lower_free_compound mid",
+   "input": {
+    "call": "subRange",
+    "category": "lower_free_compound",
+    "level": "mid"
+   },
+   "output": [
+    6,
+    8
+   ]
+  },
+  {
+   "name": "subRange lower_free_compound high",
+   "input": {
+    "call": "subRange",
+    "category": "lower_free_compound",
+    "level": "high"
+   },
+   "output": [
+    6,
+    8
+   ]
+  },
+  {
+   "name": "subRange lower_machine_compound low",
+   "input": {
+    "call": "subRange",
+    "category": "lower_machine_compound",
+    "level": "low"
+   },
+   "output": [
+    5,
+    8
+   ]
+  },
+  {
+   "name": "subRange lower_machine_compound mid",
+   "input": {
+    "call": "subRange",
+    "category": "lower_machine_compound",
+    "level": "mid"
+   },
+   "output": [
+    8,
+    12
+   ]
+  },
+  {
+   "name": "subRange lower_machine_compound high",
+   "input": {
+    "call": "subRange",
+    "category": "lower_machine_compound",
+    "level": "high"
+   },
+   "output": [
+    8,
+    12
+   ]
+  },
+  {
+   "name": "subRange upper_free_press low",
+   "input": {
+    "call": "subRange",
+    "category": "upper_free_press",
+    "level": "low"
+   },
+   "output": [
+    5,
+    8
+   ]
+  },
+  {
+   "name": "subRange upper_free_press mid",
+   "input": {
+    "call": "subRange",
+    "category": "upper_free_press",
+    "level": "mid"
+   },
+   "output": [
+    8,
+    12
+   ]
+  },
+  {
+   "name": "subRange upper_free_press high",
+   "input": {
+    "call": "subRange",
+    "category": "upper_free_press",
+    "level": "high"
+   },
+   "output": [
+    8,
+    12
+   ]
+  },
+  {
+   "name": "subRange upper_machine_press low",
+   "input": {
+    "call": "subRange",
+    "category": "upper_machine_press",
+    "level": "low"
+   },
+   "output": [
+    6,
+    10
+   ]
+  },
+  {
+   "name": "subRange upper_machine_press mid",
+   "input": {
+    "call": "subRange",
+    "category": "upper_machine_press",
+    "level": "mid"
+   },
+   "output": [
+    10,
+    15
+   ]
+  },
+  {
+   "name": "subRange upper_machine_press high",
+   "input": {
+    "call": "subRange",
+    "category": "upper_machine_press",
+    "level": "high"
+   },
+   "output": [
+    10,
+    15
+   ]
+  },
+  {
+   "name": "subRange pulling_compound low",
+   "input": {
+    "call": "subRange",
+    "category": "pulling_compound",
+    "level": "low"
+   },
+   "output": [
+    6,
+    10
+   ]
+  },
+  {
+   "name": "subRange pulling_compound mid",
+   "input": {
+    "call": "subRange",
+    "category": "pulling_compound",
+    "level": "mid"
+   },
+   "output": [
+    10,
+    15
+   ]
+  },
+  {
+   "name": "subRange pulling_compound high",
+   "input": {
+    "call": "subRange",
+    "category": "pulling_compound",
+    "level": "high"
+   },
+   "output": [
+    10,
+    15
+   ]
+  },
+  {
+   "name": "subRange isolation low",
+   "input": {
+    "call": "subRange",
+    "category": "isolation",
+    "level": "low"
+   },
+   "output": [
+    10,
+    15
+   ]
+  },
+  {
+   "name": "subRange isolation mid",
+   "input": {
+    "call": "subRange",
+    "category": "isolation",
+    "level": "mid"
+   },
+   "output": [
+    10,
+    15
+   ]
+  },
+  {
+   "name": "subRange isolation high",
+   "input": {
+    "call": "subRange",
+    "category": "isolation",
+    "level": "high"
+   },
+   "output": [
+    15,
+    20
+   ]
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound 1 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 1,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound 2 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 2,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound -1 isolation 0",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": -1,
+     "isolationIndex": 0,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound -1 isolation 1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": -1,
+     "isolationIndex": 1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound -1 isolation 2",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": -1,
+     "isolationIndex": 2,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound -1 isolation 3",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": -1,
+     "isolationIndex": 3,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound -1 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": -1,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound -1 isolation -2",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": -1,
+     "isolationIndex": -2,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation within_session A week 0 compound 0 isolation 0",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": 0,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation between_session A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation between_session A week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation between_session A week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 2
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation between_session A week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation between_session B week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 0
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation between_session B week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 1
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation between_session B week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 2
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation between_session B week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 5
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week A week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 1
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week A week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 2
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week A week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 5
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week B week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week B week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 1
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week B week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 2
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel isolation alternating_week B week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "isolation",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 5
+    }
+   },
+   "output": "high"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound 1 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 1,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound 2 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 2,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound -1 isolation 0",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": -1,
+     "isolationIndex": 0,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound -1 isolation 1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": -1,
+     "isolationIndex": 1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound -1 isolation 2",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": -1,
+     "isolationIndex": 2,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound -1 isolation 3",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": -1,
+     "isolationIndex": 3,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound -1 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": -1,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound -1 isolation -2",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": -1,
+     "isolationIndex": -2,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press within_session A week 0 compound 0 isolation 0",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": 0,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session A week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 1
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session A week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 2
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session A week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 5
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session B week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session B week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session B week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 2
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press between_session B week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week A week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week A week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 2
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week A week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week B week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week B week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week B week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 2
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel upper_free_press alternating_week B week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "upper_free_press",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound 1 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 1,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound 2 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 2,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound -1 isolation 0",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": -1,
+     "isolationIndex": 0,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound -1 isolation 1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": -1,
+     "isolationIndex": 1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound -1 isolation 2",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": -1,
+     "isolationIndex": 2,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound -1 isolation 3",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": -1,
+     "isolationIndex": 3,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound -1 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": -1,
+     "isolationIndex": -1,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound -1 isolation -2",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": -1,
+     "isolationIndex": -2,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound within_session A week 0 compound 0 isolation 0",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": 0,
+     "variation": "within_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session A week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 1
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session A week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 2
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session A week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "A",
+     "weekIndex": 5
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session B week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 0
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session B week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session B week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 2
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound between_session B week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "between_session",
+     "variant": "B",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week A week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week A week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week A week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 2
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week A week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "A",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week B week 0 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 0
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week B week 1 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 1
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week B week 2 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 2
+    }
+   },
+   "output": "low"
+  },
+  {
+   "name": "rangeLevel lower_free_compound alternating_week B week 5 compound 0 isolation -1",
+   "input": {
+    "call": "rangeLevel",
+    "opts": {
+     "category": "lower_free_compound",
+     "compoundIndex": 0,
+     "isolationIndex": -1,
+     "variation": "alternating_week",
+     "variant": "B",
+     "weekIndex": 5
+    }
+   },
+   "output": "mid"
+  },
+  {
+   "name": "prescribe lower_free_compound low",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 4,
+    "repMax": 6,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound low, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 4,
+    "repMax": 6,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound low, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 4,
+    "repMax": 6,
+    "rirMin": 3,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound low, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 3,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound mid",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound mid, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound mid, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 3,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound mid, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 3,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound high",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound high, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 2,
+    "rirMax": 4,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound high, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 3,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_free_compound high, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_free_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 8,
+    "rirMin": 3,
+    "rirMax": 5,
+    "restSeconds": 180,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound low",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 5,
+    "repMax": 8,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound low, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 5,
+    "repMax": 8,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound low, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 5,
+    "repMax": 8,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound low, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound mid",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound mid, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound mid, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound mid, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound high",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound high, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound high, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe lower_machine_compound high, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "lower_machine_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press low",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 5,
+    "repMax": 8,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press low, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 5,
+    "repMax": 8,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press low, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 5,
+    "repMax": 8,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press low, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press mid",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press mid, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press mid, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press mid, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press high",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press high, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press high, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_free_press high, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_free_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 8,
+    "repMax": 12,
+    "rirMin": 2,
+    "rirMax": 5,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press low",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 10,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press low, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 10,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press low, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 10,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press low, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press mid",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press mid, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press mid, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press mid, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press high",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press high, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press high, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe upper_machine_press high, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "upper_machine_press",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound low",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 10,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound low, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 10,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound low, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 6,
+    "repMax": 10,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound low, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound mid",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound mid, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound mid, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound mid, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound high",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound high, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 3,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound high, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe pulling_compound high, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "pulling_compound",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 4,
+    "restSeconds": 150,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation low",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 2,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation low, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "low",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 2,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation low, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 3,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation low, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "low",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 3,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation mid",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 2,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation mid, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "mid",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 0,
+    "rirMax": 2,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation mid, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 3,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation mid, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "mid",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 10,
+    "repMax": 15,
+    "rirMin": 1,
+    "rirMax": 3,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation high",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 15,
+    "repMax": 20,
+    "rirMin": 0,
+    "rirMax": 2,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation high, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "high",
+     "sportPriority": false,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 15,
+    "repMax": 20,
+    "rirMin": 0,
+    "rirMax": 2,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation high, sport priority",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": false
+    }
+   },
+   "output": {
+    "repMin": 15,
+    "repMax": 20,
+    "rirMin": 1,
+    "rirMax": 3,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "prescribe isolation high, sport priority, lower compound",
+   "input": {
+    "call": "prescribe",
+    "category": "isolation",
+    "opts": {
+     "level": "high",
+     "sportPriority": true,
+     "isLowerCompound": true
+    }
+   },
+   "output": {
+    "repMin": 15,
+    "repMax": 20,
+    "rirMin": 1,
+    "rirMax": 3,
+    "restSeconds": 90,
+    "ruleIds": [
+     "T-INT-03",
+     "T-INT-04",
+     "T-RST-02",
+     "T-INT-05"
+    ]
+   }
+  },
+  {
+   "name": "formatRx a range of both",
+   "input": {
+    "call": "formatRx",
+    "rx": {
+     "sets": 3,
+     "repMin": 8,
+     "repMax": 12,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": "3 × 8–12 @ 2–0 RIR"
+  },
+  {
+   "name": "formatRx single values",
+   "input": {
+    "call": "formatRx",
+    "rx": {
+     "sets": 1,
+     "repMin": 1,
+     "repMax": 1,
+     "rirMin": 2,
+     "rirMax": 2
+    }
+   },
+   "output": "1 × 1 @ 2 RIR"
+  },
+  {
+   "name": "formatRx half RIR steps",
+   "input": {
+    "call": "formatRx",
+    "rx": {
+     "sets": 2,
+     "repMin": 3,
+     "repMax": 5,
+     "rirMin": 0.5,
+     "rirMax": 2.5
+    }
+   },
+   "output": "2 × 3–5 @ 2.5–0.5 RIR"
+  },
+  {
+   "name": "formatRx one rep value, half RIR",
+   "input": {
+    "call": "formatRx",
+    "rx": {
+     "sets": 4,
+     "repMin": 1,
+     "repMax": 1,
+     "rirMin": 1.5,
+     "rirMax": 1.5
+    }
+   },
+   "output": "4 × 1 @ 1.5 RIR"
+  },
+  {
+   "name": "formatRx rep range, one RIR",
+   "input": {
+    "call": "formatRx",
+    "rx": {
+     "sets": 5,
+     "repMin": 15,
+     "repMax": 20,
+     "rirMin": 0,
+     "rirMax": 0
+    }
+   },
+   "output": "5 × 15–20 @ 0 RIR"
+  },
+  {
+   "name": "formatRx no sets",
+   "input": {
+    "call": "formatRx",
+    "rx": {
+     "sets": 0,
+     "repMin": 6,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": "0 × 6–8 @ 4–2 RIR"
+  },
+  {
+   "name": "rpeToRir 8",
+   "input": {
+    "call": "rpeToRir",
+    "rpe": 8
+   },
+   "output": 2
+  },
+  {
+   "name": "rpeToRir 10",
+   "input": {
+    "call": "rpeToRir",
+    "rpe": 10
+   },
+   "output": 0
+  },
+  {
+   "name": "rpeToRir 11",
+   "input": {
+    "call": "rpeToRir",
+    "rpe": 11
+   },
+   "output": 0
+  },
+  {
+   "name": "rpeToRir 6.5",
+   "input": {
+    "call": "rpeToRir",
+    "rpe": 6.5
+   },
+   "output": 3.5
+  },
+  {
+   "name": "rpeToRir 9.5",
+   "input": {
+    "call": "rpeToRir",
+    "rpe": 9.5
+   },
+   "output": 0.5
+  },
+  {
+   "name": "rpeToRir 0",
+   "input": {
+    "call": "rpeToRir",
+    "rpe": 0
+   },
+   "output": 10
+  },
+  {
+   "name": "rirToRpe 1",
+   "input": {
+    "call": "rirToRpe",
+    "rir": 1
+   },
+   "output": 9
+  },
+  {
+   "name": "rirToRpe 0",
+   "input": {
+    "call": "rirToRpe",
+    "rir": 0
+   },
+   "output": 10
+  },
+  {
+   "name": "rirToRpe -1",
+   "input": {
+    "call": "rirToRpe",
+    "rir": -1
+   },
+   "output": 10
+  },
+  {
+   "name": "rirToRpe 2.5",
+   "input": {
+    "call": "rirToRpe",
+    "rir": 2.5
+   },
+   "output": 7.5
+  },
+  {
+   "name": "rirToRpe 0.5",
+   "input": {
+    "call": "rirToRpe",
+    "rir": 0.5
+   },
+   "output": 9.5
+  },
+  {
+   "name": "rirToRpe 12",
+   "input": {
+    "call": "rirToRpe",
+    "rir": 12
+   },
+   "output": -2
+  },
+  {
+   "name": "showRirHint 8",
+   "input": {
+    "call": "showRirHint",
+    "repMax": 8
+   },
+   "output": false
+  },
+  {
+   "name": "showRirHint 12",
+   "input": {
+    "call": "showRirHint",
+    "repMax": 12
+   },
+   "output": false
+  },
+  {
+   "name": "showRirHint 13",
+   "input": {
+    "call": "showRirHint",
+    "repMax": 13
+   },
+   "output": true
+  },
+  {
+   "name": "showRirHint 15",
+   "input": {
+    "call": "showRirHint",
+    "repMax": 15
+   },
+   "output": true
+  },
+  {
+   "name": "showRirHint 20",
+   "input": {
+    "call": "showRirHint",
+    "repMax": 20
+   },
+   "output": true
+  },
+  {
+   "name": "warmupRamp 100 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 100,
+    "increment": 2.5
+   },
+   "output": [
+    {
+     "load": 50,
+     "reps": 8
+    },
+    {
+     "load": 70,
+     "reps": 4
+    },
+    {
+     "load": 85,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 30 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 30,
+    "increment": 2.5
+   },
+   "output": []
+  },
+  {
+   "name": "warmupRamp 39.9 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 39.9,
+    "increment": 2.5
+   },
+   "output": []
+  },
+  {
+   "name": "warmupRamp 40 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 40,
+    "increment": 2.5
+   },
+   "output": [
+    {
+     "load": 20,
+     "reps": 8
+    },
+    {
+     "load": 27.5,
+     "reps": 4
+    },
+    {
+     "load": 35,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 41 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 41,
+    "increment": 2.5
+   },
+   "output": [
+    {
+     "load": 20,
+     "reps": 8
+    },
+    {
+     "load": 27.5,
+     "reps": 4
+    },
+    {
+     "load": 35,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 62.5 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 62.5,
+    "increment": 2.5
+   },
+   "output": [
+    {
+     "load": 32.5,
+     "reps": 8
+    },
+    {
+     "load": 45,
+     "reps": 4
+    },
+    {
+     "load": 52.5,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 47.5 kg in 5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 47.5,
+    "increment": 5
+   },
+   "output": [
+    {
+     "load": 25,
+     "reps": 8
+    },
+    {
+     "load": 35,
+     "reps": 4
+    },
+    {
+     "load": 40,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 55 kg in 2 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 55,
+    "increment": 2
+   },
+   "output": [
+    {
+     "load": 28,
+     "reps": 8
+    },
+    {
+     "load": 38,
+     "reps": 4
+    },
+    {
+     "load": 46,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 102.5 kg in 1.25 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 102.5,
+    "increment": 1.25
+   },
+   "output": [
+    {
+     "load": 51.25,
+     "reps": 8
+    },
+    {
+     "load": 71.25,
+     "reps": 4
+    },
+    {
+     "load": 87.5,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 180 kg in 5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 180,
+    "increment": 5
+   },
+   "output": [
+    {
+     "load": 90,
+     "reps": 8
+    },
+    {
+     "load": 125,
+     "reps": 4
+    },
+    {
+     "load": 155,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 72 kg in 1 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 72,
+    "increment": 1
+   },
+   "output": [
+    {
+     "load": 36,
+     "reps": 8
+    },
+    {
+     "load": 50,
+     "reps": 4
+    },
+    {
+     "load": 61,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 45 kg in 0.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 45,
+    "increment": 0.5
+   },
+   "output": [
+    {
+     "load": 22.5,
+     "reps": 8
+    },
+    {
+     "load": 31.5,
+     "reps": 4
+    },
+    {
+     "load": 38.5,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 137.5 kg in 2.5 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 137.5,
+    "increment": 2.5
+   },
+   "output": [
+    {
+     "load": 70,
+     "reps": 8
+    },
+    {
+     "load": 97.5,
+     "reps": 4
+    },
+    {
+     "load": 117.5,
+     "reps": 2
+    }
+   ]
+  },
+  {
+   "name": "warmupRamp 51 kg in 2 kg steps",
+   "input": {
+    "call": "warmupRamp",
+    "workingLoad": 51,
+    "increment": 2
+   },
+   "output": [
+    {
+     "load": 26,
+     "reps": 8
+    },
+    {
+     "load": 36,
+     "reps": 4
+    },
+    {
+     "load": 44,
+     "reps": 2
+    }
+   ]
+  }
+ ]
+}
