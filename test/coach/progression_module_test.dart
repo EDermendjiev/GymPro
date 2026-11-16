@@ -324,4 +324,59 @@ void main() {
       fit.saveAndExit();
     });
   });
+
+  group('3.4 one effort tap', () {
+    List<CoachEffortPrompt> asks() => fit.takeCoachPrompts().whereType<CoachEffortPrompt>().toList();
+
+    test('the picker is requested once per exercise, for its first working set', () {
+      final id = _auto('Barbell Bench Press');
+      _start(id);
+      fit.toggleSet(0, 0);
+      final first = asks();
+      expect([for (final a in first) (a.exerciseIndex, a.setIndex)], [(0, 0)]);
+      fit.toggleSet(0, 0); // untick
+      fit.toggleSet(0, 0); // and tick again
+      fit.toggleSet(0, 1);
+      fit.toggleSet(0, 2);
+      expect(asks(), isEmpty);
+      fit.saveAndExit();
+    });
+
+    test('a set that already has an effort is not asked about', () {
+      final id = _auto('Barbell Bench Press');
+      _start(id);
+      fit.setSessionRpe(0, 0, 8);
+      fit.toggleSet(0, 0);
+      expect(asks(), isEmpty);
+      fit.saveAndExit();
+    });
+
+    test('skipping leaves the effort empty and the next target still computes, as on target', () {
+      final id = _auto('Barbell Bench Press');
+      _start(id);
+      for (var j = 0; j < 3; j++) {
+        fit.setSessionWeight(0, j, 50);
+      }
+      fit.setSessionReps(0, 0, 12);
+      for (var j = 0; j < 3; j++) {
+        fit.toggleSet(0, j);
+      }
+      expect(asks().length, 1);
+      fit.finishSession();
+      fit.saveAndExit();
+      expect(fit.lastSetsFor(id).first.rpe, isNull);
+      final next = fit.nextTarget(id)!;
+      expect((next.weightKg, next.reps), (52.5, 9)); // top of 8–12, effort read as on target: one step up
+    });
+
+    test('no request with the module off or on another kind', () {
+      final id = _id('Barbell Bench Press');
+      fit.setProgressRule(id, const ProgressRule(kind: ProgressKind.double));
+      fit.setCoachModule(CoachModule.progression, true);
+      _start(id);
+      fit.toggleSet(0, 0);
+      expect(fit.hasCoachPrompts, isFalse);
+      fit.saveAndExit();
+    });
+  });
 }

@@ -129,7 +129,7 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
   /// Called when set [setIdx] of exercise [exIdx] is ticked, before the change is saved. On the first working set
   /// of an Auto exercise, and only once per exercise of the session, the coach checks the reps against the range:
   /// a miss moves the load of the remaining sets (about 4 % per rep), and the workout screen is asked to say so
-  /// with an Undo.
+  /// with an Undo. When that set has no effort yet, the workout screen is also asked to open its effort picker.
   @override
   void coachSetLogged(int exIdx, int setIdx) {
     final s = session;
@@ -146,6 +146,15 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
       _coachSeenIn = s;
     }
     if (!_coachSeen.add(ex)) return;
+    final st = sets[setIdx];
+    _coachCorrect(exIdx, ex, rx, setIdx);
+    // One effort question per exercise, on its first working set. Skipping it leaves the effort empty, which the
+    // coach reads as "on target".
+    if (st.rpe == null) _coachPrompts.add(CoachEffortPrompt(exerciseIndex: exIdx, setIndex: setIdx));
+  }
+
+  void _coachCorrect(int exIdx, SessionExercise ex, CoachRx rx, int setIdx) {
+    final sets = ex.sets;
     final st = sets[setIdx];
     final target = CoachFacade.nextSet(
       rx: rx,
