@@ -2,12 +2,16 @@
 // The one door between the app's state and the coach packages: the app's own types go in, the app's own types
 // or `Coach*` values come out. Package types never leave this layer by name.
 import 'package:coach_kernel/coach_kernel.dart' as ck;
+import 'package:coach_nutrition/coach_nutrition.dart' as cn;
 import 'package:coach_progression/coach_progression.dart' as cp;
 
 import '../models/exercise.dart';
 import '../models/workout.dart';
 import 'adapters/category_adapter.dart';
 import 'adapters/exposure_adapter.dart';
+import 'adapters/nutrition_adapter.dart';
+import 'model/coach_data.dart';
+import 'model/coach_nutrition.dart';
 import 'model/coach_profile.dart';
 import 'model/coach_targets.dart';
 
@@ -86,6 +90,52 @@ abstract final class CoachFacade {
   static List<CoachWarmupSet> warmup(double workingKg, double incrementKg) => [
         for (final w in cp.warmupRamp(workingKg, incrementKg)) CoachWarmupSet(loadKg: w.load, reps: w.reps),
       ];
+
+  // ---------- Nutrition ----------
+
+  /// The coach's daily calorie and macro targets for someone weighing [bodyweightKg], of app sex [sex] and app
+  /// activity multiplier [activity], with what [coach] knows: training status and goal from its profile, the
+  /// sports, and the phase the user picked under `nutrition.phase`.
+  ///
+  /// Without a picked phase the phase follows the coaching goal, and without a coaching profile it is maintain;
+  /// without a profile the status is novice. The activity band is the one nearest to [activity]. Everything else
+  /// the calculation can take (body fat, target rate, logged sport efforts, calorie override) is left at the
+  /// coach's defaults.
+  static CoachNutritionTargets nutritionTargets({
+    required double bodyweightKg,
+    required String sex,
+    required double activity,
+    required CoachData coach,
+  }) {
+    final profile = coach.profile;
+    final picked = CoachNutritionPhase.fromWire(coach.nutrition['phase']);
+    final phase = picked != null
+        ? ck.NutritionPhase.fromWire(picked.wire)
+        : profile != null
+            ? cn.phaseForGoal(profile.goal)
+            : ck.NutritionPhase.maintain;
+    final t = cn.nutritionTargets(cn.NutritionInput(
+      bodyweightKg: bodyweightKg,
+      sex: coachSexFor(sex),
+      status: profile?.status ?? ck.Status.novice,
+      phase: phase,
+      lifestyle: coachLifestyleFor(activity),
+      sports: [for (final s in coach.sports) cn.SportForKcal.fromUserSport(s)],
+    ));
+    return CoachNutritionTargets(
+      kcal: t.kcal,
+      proteinG: t.proteinG.round(),
+      fatG: t.fatG.round(),
+      carbsG: t.carbsG.round(),
+      phase: CoachNutritionPhase.fromWire(t.phase.wire)!,
+      phasePicked: picked != null,
+      bodyweightKg: bodyweightKg,
+      maintenance: t.maintenance,
+      delta: t.delta,
+      warnings: [for (final w in t.warnings) w.message],
+      ruleIds: [...t.ruleIds, for (final w in t.warnings) ...w.ruleIds],
+    );
+  }
 
   static ck.SetRx _setRx(CoachRx rx) =>
       ck.SetRx(repMin: rx.repMin, repMax: rx.repMax, rirMin: rx.rirMin, rirMax: rx.rirMax);

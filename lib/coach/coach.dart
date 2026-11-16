@@ -9,6 +9,7 @@
 library;
 
 export 'model/coach_data.dart' show CoachData, CoachModule;
+export 'model/coach_nutrition.dart' show CoachNutritionPhase, CoachNutritionTargets;
 export 'model/coach_profile.dart' show CoachProfile;
 export 'model/coach_prompt.dart' show CoachCorrectionPrompt, CoachEffortPrompt, CoachPrompt;
 export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarget, CoachWarmupSet;

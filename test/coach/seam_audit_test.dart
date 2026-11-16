@@ -26,6 +26,7 @@ const _expected = <String, int>{
   'lib/widgets/progression_sheet.dart': 4, // Auto: its name, its hint, offered while the module is on, its rule
   'lib/state/workout_state.dart': 5, // _nextPlan (asks first; Auto falls back to Linear), toggleSet, nextWhy, _warmupFor
   'lib/screens/session_screen.dart': 3, // import of the barrel, the coach's requests taken in build, target line
+  'lib/state/nutrition_state.dart': 1, // suggestedGoals asks first
 };
 
 /// Seams in files that cannot carry a comment. They are not counted; each must exist.

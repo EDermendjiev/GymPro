@@ -253,4 +253,40 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     _persist();
     notifyListeners();
   }
+
+  // ---------- Nutrition (Phase 6) ----------
+
+  /// The coach's calorie and macro targets, or null while the nutrition module is off. Worked out for the latest
+  /// weigh-in (or the profile's weight), the profile's sex and activity, and what the coach knows. Needs no plan
+  /// and no onboarding.
+  CoachNutritionTargets? get coachNutritionTargets {
+    if (!coach.isOn(CoachModule.nutrition)) return null;
+    final kg = nutritionWeightKg, sex = profile.sex, activity = profile.activity;
+    return _remember(
+      'coachNutritionTargets',
+      () => CoachFacade.nutritionTargets(bodyweightKg: kg, sex: sex, activity: activity, coach: coach),
+      (kg, sex, activity, identityHashCode(coach)),
+    );
+  }
+
+  /// Set while the stock suggestion is worked out for [coachNutritionGoals], so the seam stays out of the way.
+  bool _coachStockGoals = false;
+
+  /// The suggested goals while the nutrition module is on: the coach's calories, protein, fat and carbs, with
+  /// water, fibre, sugar, sodium and glass size as the app's own suggestion has them. Manually set goals still win,
+  /// because [activeGoals] only asks for suggested goals when none are set.
+  @override
+  NutritionGoals? coachNutritionGoals() {
+    if (_coachStockGoals) return null;
+    final c = coachNutritionTargets;
+    if (c == null) return null;
+    final NutritionGoals stock;
+    _coachStockGoals = true;
+    try {
+      stock = suggestedGoals;
+    } finally {
+      _coachStockGoals = false;
+    }
+    return stock.copyWith(kcal: c.kcal, protein: c.proteinG, fat: c.fatG, carbs: c.carbsG);
+  }
 }

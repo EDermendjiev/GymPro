@@ -167,7 +167,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/screens/home_screen.dart` | coach card slot | planned |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | planned |
 | `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
-| `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | planned |
+| `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | done |
 | `lib/screens/settings_screen.dart` | "Coach" category: import of the barrel, the category, its title, its place in the Home group, its section | done |
 | `lib/screens/about_screen.dart`, `README.md` | credit line, fork links | done |
 | `lib/app/gymmane_app.dart`, `android/app/build.gradle.kts`, `android/app/src/main/AndroidManifest.xml`, `android/app/src/main/res/xml/shortcuts.xml`, `ios/Runner/Info.plist`; unmarked: `ios/Runner.xcodeproj/project.pbxproj`, `fastlane/metadata/android/*/title.txt`, `web/index.html`, `web/manifest.json` | app identity (name and application id) | done |
@@ -266,6 +266,33 @@ the workout they were made in.
 Until the per-exercise coaching attributes exist, the exercise's category is
 guessed by `coachCategoryFor` (`lib/coach/adapters/category_adapter.dart`)
 from its equipment, primary muscle and name.
+
+## Nutrition module
+
+With the `nutrition` switch on, the app's suggested calorie and macro goals
+come from the coach. The module needs no plan and no onboarding: the switch
+alone is enough.
+
+| Input | Taken from |
+|---|---|
+| Bodyweight | the latest weigh-in, else the profile's weight (the app's own `nutritionWeightKg`) |
+| Sex | the profile's sex (`male`, `female`; anything else counts as unspecified) |
+| Training status | the coaching profile, else novice |
+| Phase | the phase the user picked (`coach.nutrition.phase`), else the one that follows from the coaching goal, else maintain |
+| Activity band | the coach band whose default multiplier is nearest to the profile's activity multiplier; a tie goes to the more active band |
+| Sports | `coach.sports` |
+| Body fat, target rate, logged sport efforts, calorie override | left at the coach's defaults |
+
+The two activity scales differ (the app multiplies a resting rate built from
+age and height, the coach one built from bodyweight only), so the app's four
+choices map as: Sedentary (1.2) and Light (1.375) to sedentary, Moderate
+(1.55, a tie) and Active (1.725) to lightly active.
+
+`coachNutritionGoals` answers `suggestedGoals` with the coach's calories,
+protein, fat and carbs. Water, fibre, sugar, sodium and glass size are the
+app's own suggestion, worked out by the stock code path (the seam stands aside
+while `CoachState` asks for it). Goals the user has set by hand always win:
+`activeGoals` only asks for the suggestion when none are set.
 
 ## Muscle and equipment mapping
 
@@ -395,8 +422,8 @@ tier to "ask first".
 | `coach_recovery` | `packages/coach_recovery` | not started |
 | `coach_nutrition` | `packages/coach_nutrition` | not started |
 | `coach_testkit` | `packages/coach_testkit` | not started |
-| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure and category adapters, persisted model, progression entry points of `CoachFacade` |
-| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3) |
+| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure and category adapters, persisted model, progression and nutrition entry points of `CoachFacade` |
+| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); nutrition goals (Phase 6) |
 
 What exists today is groundwork: the attribution credit in the About screen
 and README, the CI workflow for the `coach` branch, the upstream baseline in

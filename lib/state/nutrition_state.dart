@@ -51,6 +51,7 @@ mixin NutritionState on FitCore, ToolsState, StatsState {
   }
 
   NutritionGoals get suggestedGoals {
+    if (coachNutritionGoals() case final c?) return c; // coach-seam
     final kg = _nutritionWeight;
     final base = tdee > 0 ? tdee : (kg * 30).round();
     final aim = weightGoalKg <= 0 ? 0.0 : weightGoalKg - kg;
