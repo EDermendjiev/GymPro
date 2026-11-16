@@ -24,7 +24,7 @@ const _expected = <String, int>{
   'ios/Runner/Info.plist': 1, // app identity
   'lib/models/progression.dart': 1, // ProgressKind.auto appended
   'lib/widgets/progression_sheet.dart': 4, // Auto: its name, its hint, offered while the module is on, its rule
-  'lib/state/workout_state.dart': 1, // _nextPlan: Auto falls back to Linear
+  'lib/state/workout_state.dart': 2, // _nextPlan: asks the coach first, Auto falls back to Linear
 };
 
 /// Seams in files that cannot carry a comment. They are not counted; each must exist.

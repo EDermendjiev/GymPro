@@ -99,10 +99,13 @@ lib/coach/
   facade.dart                 CoachFacade: GymMane types in, GymMane or Coach* types out
   model/coach_data.dart       everything persisted under the "coach" key
   model/coach_profile.dart    goal, status, days, minutes, priority, lifestyle
+  model/coach_targets.dart    host values the progression module answers with (CoachRx, CoachSessionTarget, …)
   adapters/muscle_map.dart    16 coach muscles <-> 14 GymMane muscles
   adapters/equipment_map.dart GymMane equipment names -> coach equipment
   adapters/catalog_adapter.dart  Exercise -> ExerciseDef (uses coach_meta)
   adapters/history_adapter.dart  LoggedSession -> kernel LoggedSet
+  adapters/exposure_adapter.dart LoggedSession -> one exercise's ExerciseHistory (exposures per session)
+  adapters/category_adapter.dart Exercise -> coach Category (fallback guess until coach_meta exists)
   adapters/plan_writer.dart   BlockPlan -> Routine + weeklyPlan
   data/coach_meta.dart        generated: coaching attributes per GymMane exercise id
   policy/autonomy.dart        which proposals apply silently / with undo / on request
@@ -157,7 +160,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
-| `lib/state/workout_state.dart` | `_nextPlan`, `_openingSetsRaw`, `toggleSet`, `nextWhy` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off | in progress: the Auto fallback |
+| `lib/state/workout_state.dart` | `_nextPlan`, `_openingSetsRaw`, `toggleSet`, `nextWhy` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off | in progress: `_nextPlan` done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | target label in `_nextRow` | planned |
 | `lib/screens/onboarding_screen.dart` | two pages inserted in the `PageView` list | planned |
@@ -317,8 +320,8 @@ tier to "ask first".
 | `coach_recovery` | `packages/coach_recovery` | not started |
 | `coach_nutrition` | `packages/coach_nutrition` | not started |
 | `coach_testkit` | `packages/coach_testkit` | not started |
-| Adapter layer | `lib/coach/` | in progress: muscle, equipment and history adapters, persisted model |
-| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence |
+| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure and category adapters, persisted model, progression entry points of `CoachFacade` |
+| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3) |
 
 What exists today is groundwork: the attribution credit in the About screen
 and README, the CI workflow for the `coach` branch, the upstream baseline in

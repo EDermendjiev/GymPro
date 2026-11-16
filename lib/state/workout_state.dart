@@ -400,6 +400,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
   }
 
   ({List<SessionSet> sets, double weightKg, int reps, NextMove move})? _nextPlan(String id) {
+    if (coachNextPlan(id) case final c?) return c; // coach-seam
     if (modeOf(id).isNotEmpty) return null;
     final rule = progressRule(id);
     if (rule.kind == ProgressKind.manual) return null;
