@@ -82,6 +82,11 @@ abstract final class CoachFacade {
           if (ck.RULES[id] case final rule?) rule.summary,
       ];
 
+  /// The warm-up ramp before a compound worked at [workingKg], on the [incrementKg] grid. Empty under 40 kg.
+  static List<CoachWarmupSet> warmup(double workingKg, double incrementKg) => [
+        for (final w in cp.warmupRamp(workingKg, incrementKg)) CoachWarmupSet(loadKg: w.load, reps: w.reps),
+      ];
+
   static ck.SetRx _setRx(CoachRx rx) =>
       ck.SetRx(repMin: rx.repMin, repMax: rx.repMax, rirMin: rx.rirMin, rirMax: rx.rirMax);
 }

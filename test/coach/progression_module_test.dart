@@ -379,4 +379,63 @@ void main() {
       fit.saveAndExit();
     });
   });
+
+  group('3.6 warm-up ramp', () {
+    List<(double, int)> warmups() => [
+          for (final x in fit.session!.exercises[0].sets)
+            if (x.kind == SetKind.warmup) (x.weight, x.reps),
+        ];
+
+    // Every ramp of the fixture, through Add warm-up on a Bench Press worked at the case's load.
+    for (final c in _fixture('prescription.json', 'warmupRamp')) {
+      test('fixture: ${c['name']}', () {
+        final kg = (c['input']['workingLoad'] as num).toDouble();
+        final id = _auto('Barbell Bench Press', step: (c['input']['increment'] as num).toDouble());
+        _start(id);
+        for (var j = 0; j < 3; j++) {
+          fit.setSessionWeight(0, j, kg);
+        }
+        fit.addWarmupSets(0);
+        final want = [
+          for (final w in c['output'] as List) ((w['load'] as num).toDouble(), w['reps'] as int),
+        ];
+        if (want.isEmpty) {
+          // Under 40 kg the coach has no ramp, and the stock one is used.
+          expect([for (final w in warmups()) w.$2], [10, 5, 3]);
+        } else {
+          expect(warmups(), want);
+        }
+        fit.saveAndExit();
+      });
+    }
+
+    test('the first compound of a routine opens with the ramp of its coach target', () {
+      final id = _auto('Barbell Bench Press');
+      fit.toggleAutoWarmup(id);
+      _log(id, '2026-09-01', [LoggedSet(12, 100), LoggedSet(12, 100), LoggedSet(12, 100)]);
+      _start(id);
+      expect(_working(0).first.weight, 102.5);
+      expect(warmups(), [(52.5, 8), (72.5, 4), (87.5, 2)]); // 50, 70 and 85 % of 102.5 kg, to the step
+      fit.saveAndExit();
+    });
+
+    test('isolations, other kinds and the module off keep the stock ramp', () {
+      for (final (name, auto, on) in [
+        ('Dumbbell Lateral Raise', true, true),
+        ('Barbell Bench Press', false, true),
+        ('Barbell Bench Press', true, false),
+      ]) {
+        final id = auto ? _auto(name) : _id(name);
+        fit.setCoachModule(CoachModule.progression, on);
+        _start(id);
+        for (var j = 0; j < 3; j++) {
+          fit.setSessionWeight(0, j, 100);
+        }
+        fit.addWarmupSets(0);
+        expect([for (final w in warmups()) w.$2], [10, 5, 3], reason: '$name $auto $on');
+        fit.saveAndExit();
+        fit.resetAllData();
+      }
+    });
+  });
 }

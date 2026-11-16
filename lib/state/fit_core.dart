@@ -46,6 +46,7 @@ abstract class FitCore extends ChangeNotifier {
   ({List<SessionSet> sets, double weightKg, int reps, NextMove move})? coachNextPlan(String exerciseId) => null;
   List<SessionSet>? coachOpeningSets(String exerciseId, {String? routineId}) => null;
   void coachSetLogged(int exIdx, int setIdx) {}
+  List<SessionSet>? coachWarmupSets(String? exerciseId, List<SessionSet> working) => null;
   String? coachTargetLabel(String exerciseId) => null;
   String? coachWhy(String exerciseId) => null;
   double? coachWeeklySetTarget(String muscleId) => null;

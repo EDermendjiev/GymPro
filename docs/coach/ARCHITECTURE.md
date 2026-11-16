@@ -156,11 +156,11 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | File | Seam | Status |
 |---|---|---|
 | `pubspec.yaml` | five path dependencies | done |
-| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachSetLogged`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | done |
+| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | done |
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
-| `lib/state/workout_state.dart` | `_nextPlan`, `_openingSetsRaw`, `toggleSet`, `nextWhy` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off | in progress: `_nextPlan`, `toggleSet`, `nextWhy` done |
+| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first | done, except `_openingSetsRaw` (planned for the plan module) |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow` | done |
 | `lib/screens/onboarding_screen.dart` | two pages inserted in the `PageView` list | planned |
@@ -237,6 +237,36 @@ Rules for this key:
 - The key is left out entirely while the coach holds nothing and every
   switch is off.
 
+## Progression module
+
+With the `progression` switch on, the progression sheet offers a sixth kind,
+"Auto". Choosing it stores the rep range the coach prescribes for the
+exercise's category (the middle of the category's range). From then on, for
+that exercise:
+
+| Where | What the coach does | Through |
+|---|---|---|
+| NEXT line, opening sets, exercise card | Load and reps for the next session, from the exercise's logged history (deload sessions left out); a changed load is put on the exercise's weight stack or load step | `coachNextPlan` in `_nextPlan` |
+| Ticking the first working set | Once per exercise of a workout: a set outside the rep range moves the load of the remaining undone sets by about 4 % per rep; the workout screen shows the app's toast with Undo | `coachSetLogged` in `toggleSet`, `coachSessionPrompts` |
+| Same moment | When that set has no effort, the workout screen's effort picker opens once; skipping means "on target" | same |
+| Under the NEXT line | The rep and effort range; tapping it opens the why-sheet with the plain-words summary of every rule behind the numbers | `coachTargetLabel`, `CoachTargetLine` |
+| NEXT line reason | The coach's reason replaces the stock one | `coachWhy` in `nextWhy` |
+| Warm-ups of a compound | The coach's ramp (50, 70 and 85 % of the working load, from 40 kg up) replaces the stock one wherever the app adds warm-ups | `coachWarmupSets` in `_warmupFor` |
+
+The coach leaves timed, cardio, body-weight-only and assisted exercises to the
+stock rules, and does nothing when the exercise's progression is switched off.
+With the switch off, an Auto exercise progresses like Linear and the sheet no
+longer offers Auto for other exercises.
+
+The state cannot open UI, so the first-set correction and the effort question
+are queued by `CoachState` and taken by the workout screen in `build`
+(`coachSessionPrompts`), which shows them after the frame. Requests belong to
+the workout they were made in.
+
+Until the per-exercise coaching attributes exist, the exercise's category is
+guessed by `coachCategoryFor` (`lib/coach/adapters/category_adapter.dart`)
+from its equipment, primary muscle and name.
+
 ## Muscle and equipment mapping
 
 The packages use 16 muscles and their own equipment names. GymMane uses 14
@@ -293,8 +323,53 @@ How `shoulders` is resolved for one exercise:
 | Band | `band` |
 | Other | none (such exercises are never plan-eligible) |
 
-The coach equipment `sled` has no GymMane equivalent. It is only reachable
-through an exercise annotated in `coach_meta`.
+The coach equipment `sled` has no GymMane equivalent and is never used.
+
+## Exercise attributes
+
+Exercise selection needs attributes the app's catalog does not have: movement
+pattern, category, coach muscles with their roles, slot tags, long-length bias,
+axial load, lower-body impact, unilateral, main-lift key, substitutions and a
+load step. They live in `lib/coach/data/coach_meta.dart`, a generated,
+import-free `const Map<String, CoachMeta>` keyed by the app's exercise id.
+`dev/coach_meta_gen.dart` builds it from the coach's exercise annotations (the
+kernel's exercise fixture) and the app's catalog:
+
+| Step | Result |
+|---|---|
+| Exact name match | 22 |
+| Close match (word sets without parentheses, plurals and the equipment word; or an alias of the app exercise) | 22 |
+| Manual table in the generator | 28 |
+| Merged into another entry (one app exercise, one winner: the main lift, then the most common) | 3 (`low-bar-squat`, `safety-bar-squat`, `single-arm-cable-pulldown`) |
+| Dropped, no app equivalent and no template slot needs them | 2 (`backwards-sled-drag`, `tibialis-raise`) |
+| Annotations of the app's own, each copying an annotated exercise | 12 |
+
+That gives 81 annotated exercises. The app's own annotations exist because the
+annotated exercises leave template slots empty with dumbbells only, or with
+bodyweight and bands only (leg extension, lateral raise, a second row, a second
+biceps and triceps exercise, ...). They never carry a main-lift key and rank
+after every annotated exercise. Substitutions are stored as app ids and turned
+into the coach's slugs by the adapter. Equipment is not stored: it always comes
+from the app's exercise through the equipment table above, so the `sled` is
+never used.
+
+`lib/coach/adapters/catalog_adapter.dart` turns the app's exercises into the
+kernel's `ExerciseDef`. The kernel has no "plan eligible" flag, so the adapter
+has two entry points:
+
+| Function | Holds | Used for |
+|---|---|---|
+| `coachPlanLibrary(all, archived:)` | annotated exercises that are not archived | the library given to `generateBlock` and `generateSession`: the generator only picks annotated exercises |
+| `coachExercises(all)` | every exercise, archived and the user's own included | logged sets, weekly volume, swap options |
+
+Exercises without annotations get derived attributes: category from
+`coachCategoryFor`, muscles from the muscle table, equipment from the equipment
+table, pattern guessed from the name and category, slot tags from the training
+package's `deriveSlotTags`, and the lowest popularity. The user's own exercises
+take this path and are marked `custom`.
+`test/coach/catalog_adapter_test.dart` checks that `generateBlock` over the plan
+library fills every template slot for each equipment preset and 2 to 6 lifting
+days.
 
 ## Autonomy tiers
 

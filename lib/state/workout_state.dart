@@ -1526,6 +1526,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
   static const _warmupSpec = [(0.4, 10), (0.6, 5), (0.8, 3)];
 
   List<SessionSet> _warmupFor(List<SessionSet> sets, [String? id]) {
+    if (coachWarmupSets(id, sets) case final c?) return c; // coach-seam
     if (sets.isEmpty) return const [];
     final target = sets.map((st) => st.weight).reduce(math.max);
     if (target <= 0) {

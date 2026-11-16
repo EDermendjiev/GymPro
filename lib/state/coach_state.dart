@@ -141,6 +141,24 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     ];
   }
 
+  /// The coach's warm-up ramp for a compound Auto exercise, in place of the stock one, wherever the app adds
+  /// warm-ups (the exercise's warm-up switch, or Add warm-up in the workout). Null, so the stock ramp is used, for
+  /// anything else and when the coach has no ramp (a working load under 40 kg).
+  @override
+  List<SessionSet>? coachWarmupSets(String? exerciseId, List<SessionSet> working) {
+    if (exerciseId == null || working.isEmpty || _coachRx(exerciseId) == null) return null;
+    final ex = exerciseById(exerciseId);
+    if (ex == null || !CoachFacade.isCompound(ex)) return null;
+    final load = working.map((s) => s.weight).reduce(math.max);
+    final ramp = CoachFacade.warmup(load, _coachIncrement(exerciseId));
+    if (ramp.isEmpty) return null;
+    return [
+      for (final w in ramp)
+        SessionSet(w.reps, stackFor(exerciseId) == null ? w.loadKg : _coachSnap(exerciseId, w.loadKg), false,
+            kind: SetKind.warmup),
+    ];
+  }
+
   /// The workout in progress. WorkoutState, which comes after this mixin, holds it.
   WorkoutSession? get session;
 
