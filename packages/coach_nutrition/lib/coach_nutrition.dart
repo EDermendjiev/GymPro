@@ -2,4 +2,5 @@
 library;
 
 export 'src/nutrition.dart';
+export 'src/nutrition_review.dart';
 export 'src/trend.dart';

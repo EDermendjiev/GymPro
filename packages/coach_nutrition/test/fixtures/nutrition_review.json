@@ -1,0 +1,7082 @@
+{
+ "fn": "nutritionReview",
+ "cases": [
+  {
+   "name": "G10: two weigh-ins, low data",
+   "input": {
+    "today": "2026-10-19",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-01",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-13",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 72.2
+     }
+    ]
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.1,
+      "n": 2,
+      "hasWeekend": false,
+      "lowData": true
+     }
+    ],
+    "notes": [
+     "Last week had fewer than 3 weigh-ins or no weekend weigh-in, so no adjustment is made (N-WGT-02)."
+    ]
+   }
+  },
+  {
+   "name": "G11: gain phase week 1 not up",
+   "input": {
+    "today": "2026-10-19",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-05",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 71.9
+     }
+    ]
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.9 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-19",
+      "expiresOn": "2026-10-26"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "G12: loss phase too slow",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "no weigh-ins",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [],
+    "notes": [
+     "No completed weigh-in weeks yet."
+    ]
+   }
+  },
+  {
+   "name": "only weigh-ins of the current week",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-26",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-28",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-31",
+      "kg": 79
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [],
+    "notes": [
+     "No completed weigh-in weeks yet."
+    ]
+   }
+  },
+  {
+   "name": "last week has two weigh-ins",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.4
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.35,
+      "n": 2,
+      "hasWeekend": true,
+      "lowData": true
+     }
+    ],
+    "notes": [
+     "Last week had fewer than 3 weigh-ins or no weekend weigh-in, so no adjustment is made (N-WGT-02)."
+    ]
+   }
+  },
+  {
+   "name": "last week has no weekend weigh-in",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.3
+     },
+     {
+      "day": "2026-10-20",
+      "kg": 79.3
+     },
+     {
+      "day": "2026-10-23",
+      "kg": 79.3
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.3,
+      "n": 3,
+      "hasWeekend": false,
+      "lowData": true
+     }
+    ],
+    "notes": [
+     "Last week had fewer than 3 weigh-ins or no weekend weigh-in, so no adjustment is made (N-WGT-02)."
+    ]
+   }
+  },
+  {
+   "name": "adjusted 13 days ago",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true,
+    "lastAdjustedOn": "2026-10-13"
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Calories changed less than 2 weeks ago, so waiting before judging again (N-ADJ-03)."
+    ]
+   }
+  },
+  {
+   "name": "adjusted 14 days ago",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true,
+    "lastAdjustedOn": "2026-10-12"
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "adjusted the same day",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true,
+    "lastAdjustedOn": "2026-10-26"
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Calories changed less than 2 weeks ago, so waiting before judging again (N-ADJ-03)."
+    ]
+   }
+  },
+  {
+   "name": "last adjustment null",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true,
+    "lastAdjustedOn": null
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain went down",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.9
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.9 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain stayed level",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went nowhere (72 → 72 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain went up",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.3
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "First-week check passed: weight moved in the right direction.",
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "first week: gain, check flag left out",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.5
+     }
+    ]
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.5 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain, multiplier 1.5",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.5,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.5
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.50 → 1.70",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.5 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.5,
+       "to": 1.7,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain, multiplier 2",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 2,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.5
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 2.00 → 2.20",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.5 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 2,
+       "to": 2.2,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain, phase started mid-week",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-22",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.5
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.5 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: gain, today is a Wednesday",
+   "input": {
+    "today": "2026-10-28",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-10-26",
+      "kg": 71
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.5 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-04"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: check already done",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.9
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "first week: loss went up",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.3
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.45",
+      "rationale": "In the first week of your loss phase your average weight went up (80 → 80.3 kg). Your maintenance estimate is probably too high.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.45,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: loss stayed level",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.45",
+      "rationale": "In the first week of your loss phase your average weight went nowhere (80 → 80 kg). Your maintenance estimate is probably too high.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.45,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: loss went down",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.6
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.6
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.6
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "First-week check passed: weight moved in the right direction.",
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "first week: loss, multiplier 1.45",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 2200,
+    "multiplier": 1.45,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.3
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.45 → 1.25",
+      "rationale": "In the first week of your loss phase your average weight went up (80 → 80.3 kg). Your maintenance estimate is probably too high.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.45,
+       "to": 1.25,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "first week: maintain is never checked",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 82
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 82
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 82
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 82,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "second week: gain went down",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.9
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.9 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "second week: gain went up",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.2
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "First-week check passed: weight moved in the right direction.",
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "second week: loss went up",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.3
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.45",
+      "rationale": "In the first week of your loss phase your average weight went up (80 → 80.3 kg). Your maintenance estimate is probably too high.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.45,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "second week: loss went down",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.5
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "First-week check passed: weight moved in the right direction.",
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "second week: the week before had low data",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-07",
+      "kg": 75
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.9
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "multiplier_adjust",
+      "title": "Adjust activity factor 1.65 → 1.85",
+      "rationale": "In the first week of your gain phase your average weight went down (72 → 71.9 kg). Your maintenance estimate is probably too low.",
+      "ruleIds": [
+       "N-ADJ-01",
+       "N-MNT-03"
+      ],
+      "payload": {
+       "from": 1.65,
+       "to": 1.85,
+       "reason": "initial week check"
+      },
+      "appliesFrom": "2026-10-26",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 75,
+      "n": 1,
+      "hasWeekend": false,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "second week: week 1 had low data",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.9
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 1,
+      "hasWeekend": false,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "first week: past the check window",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 71.8
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 71.8
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 71.8
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 71.7
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 71.7
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 71.7
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.6
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.6
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.6
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 71.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 71.7,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Waiting for 3 weeks of trend data."
+    ]
+   }
+  },
+  {
+   "name": "first week: only the phase week",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-10-19",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-10-19",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "loss: on target",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.4
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.4
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.4
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 78.8
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 78.8
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 78.8
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.4,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 78.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "loss: too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 78
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 78
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 78
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 150 kcal (to 2350)",
+      "rationale": "You're losing 1.3% per week, faster than your 0.75% target. Slower loss protects muscle.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-01",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2350,
+       "reason": "You're losing 1.3% per week, faster than your 0.75% target. Slower loss protects muscle."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 78,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: gaining while cutting",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.3
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing -0.2% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing -0.2% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: flat",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: a 1% target",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 1% target (0.75–1.25%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 1% target (0.75–1.25%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: a 0.5% target, too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.5,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.2
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 78.4
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 78.4
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 78.4
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 150 kcal (to 2350)",
+      "rationale": "You're losing 1% per week, faster than your 0.5% target. Slower loss protects muscle.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-01",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2350,
+       "reason": "You're losing 1% per week, faster than your 0.5% target. Slower loss protects muscle."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 78.4,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: 3000 kcal takes the larger step",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 3000,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 175 kcal (to 2825)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 3000,
+       "toKcal": 2825,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: 2999 kcal takes the smaller step",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2999,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2849)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2999,
+       "toKcal": 2849,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: 3000 kcal, too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 3000,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 78
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 78
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 78
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 175 kcal (to 3175)",
+      "rationale": "You're losing 1.3% per week, faster than your 0.75% target. Slower loss protects muscle.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-01",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 3000,
+       "toKcal": 3175,
+       "reason": "You're losing 1.3% per week, faster than your 0.75% target. Slower loss protects muscle."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 78,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: one usable week",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-12",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-05",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.9
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Not enough reliable weeks yet for a trend."
+    ]
+   }
+  },
+  {
+   "name": "loss: two usable weeks, one apart",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-10-05",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-10-05",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.9
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Waiting for 2 weeks of trend data."
+    ]
+   }
+  },
+  {
+   "name": "loss: under 60 kg waits for three weeks",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 59.9,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 59.52
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 59.52
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 59.52
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 60.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 60,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 59.76,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 59.52,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Waiting for 3 weeks of trend data."
+    ]
+   }
+  },
+  {
+   "name": "loss: under 60 kg with three weeks",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 59.9,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 61
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 61
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 61
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 59.52
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 59.52
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 59.52
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 61,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 60.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 60,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 59.76,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 59.52,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "loss: exactly 60 kg uses two weeks",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 60,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 60.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 60
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 59.76
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 59.52
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 59.52
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 59.52
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 60.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 60,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 59.76,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 59.52,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: a missing week in the trend",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 81
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 81
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 81
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 81,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "loss: a low-data week in the trend",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-09-28",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 70
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2050)",
+      "rationale": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%). The cut comes from carbs and fat; protein stays the same. Alternative: add about 2,500 steps a day (~100 kcal) or up to three 30-minute moderate cardio sessions a week, kept apart from lifting (N-ADJ-05).",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2200,
+       "toKcal": 2050,
+       "reason": "You're losing 0.4% of bodyweight per week over 2 weeks, below your 0.75% target (0.5–1%)."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 70,
+      "n": 1,
+      "hasWeekend": false,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.36,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "loss: a long history picks the latest start",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-08-31",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-08-31",
+      "kg": 83
+     },
+     {
+      "day": "2026-09-02",
+      "kg": 83
+     },
+     {
+      "day": "2026-09-05",
+      "kg": 83
+     },
+     {
+      "day": "2026-09-07",
+      "kg": 82.5
+     },
+     {
+      "day": "2026-09-09",
+      "kg": 82.5
+     },
+     {
+      "day": "2026-09-12",
+      "kg": 82.5
+     },
+     {
+      "day": "2026-09-14",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-16",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-19",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-21",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 81
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-26",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-28",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-31",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-08-31",
+      "avg": 83,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-07",
+      "avg": 82.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-14",
+      "avg": 82,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-21",
+      "avg": 81.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 81,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "loss: a gap leaves only far starts",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "loss",
+    "phaseStartedOn": "2026-08-31",
+    "kcal": 2200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0.75,
+    "weighIns": [
+     {
+      "day": "2026-08-31",
+      "kg": 83
+     },
+     {
+      "day": "2026-09-02",
+      "kg": 83
+     },
+     {
+      "day": "2026-09-05",
+      "kg": 83
+     },
+     {
+      "day": "2026-09-07",
+      "kg": 82.5
+     },
+     {
+      "day": "2026-09-09",
+      "kg": 82.5
+     },
+     {
+      "day": "2026-09-12",
+      "kg": 82.5
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-26",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-28",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-31",
+      "kg": 79.36
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-08-31",
+      "avg": 83,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-07",
+      "avg": 82.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.68,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "gain: novice too slow",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.3,
+    "status": "novice",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.3
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 175 kcal (to 3275)",
+      "rationale": "You're gaining 0.6% per month, below the 1–2% range for a novice lifter.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 3100,
+       "toKcal": 3275,
+       "reason": "You're gaining 0.6% per month, below the 1–2% range for a novice lifter."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: novice on target",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.8,
+    "status": "novice",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.55
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.55
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.55
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.8
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.8
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.8
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.55,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "gain: novice too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 73.5,
+    "status": "novice",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 73
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 73
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 73
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 73.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 73.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 73.5
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 175 kcal (to 2925)",
+      "rationale": "You're gaining 2.8% per month, above the 1–2% range, so most extra weight would be fat. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 3100,
+       "toKcal": 2925,
+       "reason": "You're gaining 2.8% per month, above the 1–2% range, so most extra weight would be fat."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 73,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 73.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: intermediate too slow",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.1,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.05
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.05
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.05
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.1
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 175 kcal (to 3275)",
+      "rationale": "You're gaining 0.2% per month, below the 0.5–1.5% range for a intermediate lifter.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 3100,
+       "toKcal": 3275,
+       "reason": "You're gaining 0.2% per month, below the 0.5–1.5% range for a intermediate lifter."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.05,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: intermediate on target",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.54,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.54
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.54
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.54
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.4,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.54,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "gain: intermediate too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 73.2,
+    "status": "intermediate",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.8
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.8
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 73.2
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 73.2
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 73.2
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 175 kcal (to 2925)",
+      "rationale": "You're gaining 2.2% per month, above the 0.5–1.5% range, so most extra weight would be fat. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 3100,
+       "toKcal": 2925,
+       "reason": "You're gaining 2.2% per month, above the 0.5–1.5% range, so most extra weight would be fat."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.4,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 73.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: advanced losing weight",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 71.7,
+    "status": "advanced",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 71.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 71.8
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 71.8
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71.7
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 71.7
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 71.7
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 175 kcal (to 3275)",
+      "rationale": "You're gaining -0.6% per month, below the 0–0.5% range for a advanced lifter.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 3100,
+       "toKcal": 3275,
+       "reason": "You're gaining -0.6% per month, below the 0–0.5% range for a advanced lifter."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 71.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 71.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 71.7,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: advanced flat",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72,
+    "status": "advanced",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "gain: advanced on target",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.2,
+    "status": "advanced",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.05
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.05
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.05
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.2
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.05,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "gain: advanced too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.5,
+    "status": "advanced",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.35
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.35
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.35
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.5
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 175 kcal (to 2925)",
+      "rationale": "You're gaining 0.9% per month, above the 0–0.5% range, so most extra weight would be fat. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 3100,
+       "toKcal": 2925,
+       "reason": "You're gaining 0.9% per month, above the 0–0.5% range, so most extra weight would be fat."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.35,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: 3000 kcal, too slow",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3000,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.3,
+    "status": "novice",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 72.3
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 175 kcal (to 3175)",
+      "rationale": "You're gaining 0.6% per month, below the 1–2% range for a novice lifter.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 3000,
+       "toKcal": 3175,
+       "reason": "You're gaining 0.6% per month, below the 1–2% range for a novice lifter."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 72.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: 2900 kcal, too fast",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2900,
+    "multiplier": 1.65,
+    "bodyweightKg": 73.5,
+    "status": "novice",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 73
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 73
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 73
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 73.5
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 73.5
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 73.5
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 150 kcal (to 2750)",
+      "rationale": "You're gaining 2.8% per month, above the 1–2% range, so most extra weight would be fat. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-02",
+       "N-RAT-02",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2900,
+       "toKcal": 2750,
+       "reason": "You're gaining 2.8% per month, above the 1–2% range, so most extra weight would be fat."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 73,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 73.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "gain: waiting for three weeks",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "gain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3100,
+    "multiplier": 1.65,
+    "bodyweightKg": 72.2,
+    "status": "novice",
+    "targetRatePct": 1,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 71.5
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 72
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 72.1
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.2
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 71.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 72,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 72.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 72.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Waiting for 3 weeks of trend data."
+    ]
+   }
+  },
+  {
+   "name": "maintain: drifting up",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2700,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.8
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 125 kcal (to 2575)",
+      "rationale": "At maintenance your weight drifted 0.3% per week over 3 weeks. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-06",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2700,
+       "toKcal": 2575,
+       "reason": "At maintenance your weight drifted 0.3% per week over 3 weeks."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "maintain: drifting down",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2700,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 79.8
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 79.8
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 79.8
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.5
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.5
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.5
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.2
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.2
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.2
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Raise calories by 125 kcal (to 2825)",
+      "rationale": "At maintenance your weight drifted -0.3% per week over 3 weeks.",
+      "ruleIds": [
+       "N-ADJ-06",
+       "N-ADJ-03"
+      ],
+      "payload": {
+       "fromKcal": 2700,
+       "toKcal": 2825,
+       "reason": "At maintenance your weight drifted -0.3% per week over 3 weeks."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 79.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "maintain: steady",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2700,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.3
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "maintain: steady going down",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2700,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 79.8
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.8
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.8
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 79.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 79.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Your weight trend is on target. No change."
+    ]
+   }
+  },
+  {
+   "name": "maintain: drifting up at 3200 kcal",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 3200,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.8
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 125 kcal (to 3075)",
+      "rationale": "At maintenance your weight drifted 0.3% per week over 3 weeks. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-06",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 3200,
+       "toKcal": 3075,
+       "reason": "At maintenance your weight drifted 0.3% per week over 3 weeks."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  },
+  {
+   "name": "maintain: waiting for three weeks",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2700,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.8
+     }
+    ],
+    "initialAdjustDone": true
+   },
+   "output": {
+    "proposals": [],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": [
+     "Waiting for 3 weeks of trend data."
+    ]
+   }
+  },
+  {
+   "name": "maintain: first-week check flag unset",
+   "input": {
+    "today": "2026-10-26",
+    "phase": "maintain",
+    "phaseStartedOn": "2026-09-21",
+    "kcal": 2700,
+    "multiplier": 1.65,
+    "bodyweightKg": 79.4,
+    "status": "intermediate",
+    "targetRatePct": 0,
+    "weighIns": [
+     {
+      "day": "2026-09-21",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 80.8
+     }
+    ],
+    "initialAdjustDone": false
+   },
+   "output": {
+    "proposals": [
+     {
+      "kind": "calorie_adjust",
+      "title": "Lower calories by 125 kcal (to 2575)",
+      "rationale": "At maintenance your weight drifted 0.3% per week over 3 weeks. The cut comes from carbs and fat; protein stays the same.",
+      "ruleIds": [
+       "N-ADJ-06",
+       "N-ADJ-03",
+       "N-ADJ-04"
+      ],
+      "payload": {
+       "fromKcal": 2700,
+       "toKcal": 2575,
+       "reason": "At maintenance your weight drifted 0.3% per week over 3 weeks."
+      },
+      "appliesFrom": "2026-11-02",
+      "expiresOn": "2026-11-02"
+     }
+    ],
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.2,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.5,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-19",
+      "avg": 80.8,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ],
+    "notes": []
+   }
+  }
+ ]
+}
