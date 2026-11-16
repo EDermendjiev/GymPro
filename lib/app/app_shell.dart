@@ -48,6 +48,7 @@ import '../services/supplement_reminder.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
+import '../widgets/nfc_sheet.dart';
 import '../widgets/app_background.dart';
 import '../widgets/award_celebration.dart';
 import '../widgets/dialogs.dart';
@@ -144,6 +145,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
   }
 
   void _openFromWidget(String route) {
+    if (route == 'nfc/today') {
+      if (mounted) openTodayFromTag(context);
+      return;
+    }
     if (!mounted || !fit.onboarded || fit.isSessionActive) return;
     if (route == 'play') {
       playWorkout(context);
@@ -291,11 +296,23 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     _blurQueued = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _blurQueued = false;
-      if (!mounted || sheetRecede.value <= 0.001 || !blurEffects) return;
       final box = _appKey.currentContext?.findRenderObject();
-      if (box is! RenderRepaintBoundary || !box.hasSize) return;
+      if (!mounted || sheetRecede.value <= 0.001 || !blurEffects || box is! RenderRepaintBoundary || !box.hasSize) {
+        edgeBlurRaster.value = null;
+        return;
+      }
       final scale = fineEffects ? 0.5 : 0.3;
       final ratio = MediaQuery.devicePixelRatioOf(context) * scale;
+      if (edgeBlurRaster.value != ratio) {
+        edgeBlurRaster.value = ratio;
+        _blurQueued = true;
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _blurQueued = false;
+          _queueBlur();
+        });
+        WidgetsBinding.instance.scheduleFrame();
+        return;
+      }
       try {
         final small = box.toImageSync(pixelRatio: ratio);
         final sigma = 2 * ratio;
@@ -307,7 +324,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         final old = _blurred;
         setState(() => _blurred = soft);
         old?.dispose();
-      } catch (_) {}
+      } catch (_) {
+      } finally {
+        edgeBlurRaster.value = null;
+      }
     });
   }
 

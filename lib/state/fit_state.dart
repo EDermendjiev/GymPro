@@ -330,6 +330,7 @@ class FitState extends FitCore
     askCheckIn = data['checkIn'] as bool? ?? true;
     muscleTune = data['mTune'] as bool? ?? true;
     voiceCoach = data['voice'] as bool? ?? false;
+    nfcTag = data['nfc'] as bool? ?? false;
     final every = (data['deload'] as num?)?.toInt() ?? 0;
     deloadEvery = SettingsState.deloadChoices.contains(every) ? every : 0;
     deloadFrom = deloadEvery > 0 ? DateTime.tryParse((data['deloadFrom'] as String?) ?? '') ?? DateTime.now() : null;
@@ -464,6 +465,12 @@ class FitState extends FitCore
     eachSideOff
       ..clear()
       ..addAll(((data['eachSideOff'] as List?) ?? const []).cast<String>());
+    keepCounting
+      ..clear()
+      ..addAll(((data['keepCounting'] as List?) ?? const []).cast<String>());
+    pairOn
+      ..clear()
+      ..addAll(((data['pairOn'] as List?) ?? const []).cast<String>());
     assistedOn
       ..clear()
       ..addAll(((data['assisted'] as List?) ?? const []).cast<String>());
@@ -595,6 +602,7 @@ class FitState extends FitCore
         if (!askCheckIn) 'checkIn': false,
         if (!muscleTune) 'mTune': false,
         if (voiceCoach) 'voice': true,
+        if (nfcTag) 'nfc': true,
         if (deloadEvery > 0) 'deload': deloadEvery,
         if (deloadFrom != null) 'deloadFrom': deloadFrom!.toIso8601String(),
         if (lowEndAsked) 'lowEndAsked': true,
@@ -663,6 +671,8 @@ class FitState extends FitCore
         'repsOnlyOff': repsOnlyOff.toList(),
         'eachSide': eachSide.toList(),
         'eachSideOff': eachSideOff.toList(),
+        if (keepCounting.isNotEmpty) 'keepCounting': keepCounting.toList(),
+        if (pairOn.isNotEmpty) 'pairOn': pairOn.toList(),
         if (assistedOn.isNotEmpty) 'assisted': assistedOn.toList(),
         if (assistedOff.isNotEmpty) 'assistedOff': assistedOff.toList(),
         'sessions': _stored('sessions', sessions, (s) => s.toJson(), parts: _sessionParts),
@@ -768,6 +778,8 @@ class FitState extends FitCore
     repsOnlyOff.clear();
     eachSide.clear();
     eachSideOff.clear();
+    keepCounting.clear();
+    pairOn.clear();
     assistedOn.clear();
     assistedOff.clear();
     exerciseRest.clear();
