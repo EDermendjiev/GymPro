@@ -1,0 +1,209 @@
+{
+  "upstream": "e774a0443d3d75127d4e619ed7e17706c6135baf",
+  "counts": {
+    "sessions": 24,
+    "routines": 3,
+    "weeklyPlan": 4,
+    "progressRules": 7,
+    "bodyweight": 28,
+    "notes": 2,
+    "places": 2
+  },
+  "suggestedGoals": {
+    "k": 2180,
+    "p": 165,
+    "c": 232,
+    "f": 66,
+    "w": 3000,
+    "g": 250,
+    "fi": 31,
+    "su": 50,
+    "na": 2300
+  },
+  "activeGoals": {
+    "k": 2600,
+    "p": 170,
+    "c": 280,
+    "f": 75,
+    "w": 2500,
+    "g": 250,
+    "fi": 30,
+    "su": 50,
+    "na": 2300
+  },
+  "nextTargets": {
+    "EIeI8Vf": {
+      "weightKg": 90.0,
+      "reps": 5,
+      "up": true,
+      "deload": false,
+      "move": "up",
+      "sets": 3,
+      "perSet": [
+        5,
+        5,
+        5
+      ],
+      "label": "90 kg × 5",
+      "why": null
+    },
+    "qXTaZnJ": {
+      "weightKg": 100.0,
+      "reps": 9,
+      "up": true,
+      "deload": false,
+      "move": "reps",
+      "sets": 3,
+      "perSet": [
+        9,
+        9,
+        9
+      ],
+      "label": "100 kg × 9",
+      "why": "same weight, one more rep"
+    },
+    "eZyBC3j": {
+      "weightKg": 60.0,
+      "reps": 8,
+      "up": true,
+      "deload": false,
+      "move": "addSet",
+      "sets": 4,
+      "perSet": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "label": "4 × 60 kg × 8",
+      "why": "one more set"
+    },
+    "3d7wHyd": {
+      "weightKg": 25.0,
+      "reps": 8,
+      "up": true,
+      "deload": false,
+      "move": "up",
+      "sets": 3,
+      "perSet": [
+        8,
+        8,
+        8
+      ],
+      "label": "25 kg × 8",
+      "why": "last set: as many as you can"
+    },
+    "NbVPDMW": null,
+    "7zdxRTl": {
+      "weightKg": 182.5,
+      "reps": 8,
+      "up": true,
+      "deload": false,
+      "move": "up",
+      "sets": 3,
+      "perSet": [
+        8,
+        8,
+        8
+      ],
+      "label": "182.5 kg × 8",
+      "why": null
+    },
+    "lBDjFxJ": {
+      "weightKg": 0.0,
+      "reps": 9,
+      "up": false,
+      "deload": false,
+      "move": "hold",
+      "sets": 2,
+      "perSet": [
+        9,
+        8
+      ],
+      "label": "0 kg × 9",
+      "why": "same weight until you hit every rep"
+    },
+    "plank-hold": null,
+    "RVwzP10": {
+      "weightKg": 50.0,
+      "reps": 10,
+      "up": false,
+      "deload": true,
+      "move": "deload",
+      "sets": 3,
+      "perSet": [
+        10,
+        10,
+        10
+      ],
+      "label": "50 kg × 10",
+      "why": "lighter: 7 workouts in a row without every rep"
+    },
+    "DsgkuIt": {
+      "weightKg": 10.5,
+      "reps": 15,
+      "up": true,
+      "deload": false,
+      "move": "up",
+      "sets": 3,
+      "perSet": [
+        15,
+        15,
+        15
+      ],
+      "label": "10.5 kg × 15",
+      "why": null
+    }
+  },
+  "deloadEvery": 4,
+  "deloadByWeeksSinceStart": {
+    "0": {
+      "deloadWeek": false,
+      "weeksToDeload": 3
+    },
+    "1": {
+      "deloadWeek": false,
+      "weeksToDeload": 2
+    },
+    "2": {
+      "deloadWeek": false,
+      "weeksToDeload": 1
+    },
+    "3": {
+      "deloadWeek": true,
+      "weeksToDeload": 0
+    },
+    "4": {
+      "deloadWeek": false,
+      "weeksToDeload": 3
+    },
+    "5": {
+      "deloadWeek": false,
+      "weeksToDeload": 2
+    },
+    "6": {
+      "deloadWeek": false,
+      "weeksToDeload": 1
+    },
+    "7": {
+      "deloadWeek": true,
+      "weeksToDeload": 0
+    },
+    "8": {
+      "deloadWeek": false,
+      "weeksToDeload": 3
+    },
+    "9": {
+      "deloadWeek": false,
+      "weeksToDeload": 2
+    },
+    "10": {
+      "deloadWeek": false,
+      "weeksToDeload": 1
+    },
+    "11": {
+      "deloadWeek": true,
+      "weeksToDeload": 0
+    }
+  }
+}
