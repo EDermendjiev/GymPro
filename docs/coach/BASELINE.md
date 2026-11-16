@@ -123,3 +123,39 @@ Upstream v2.3.0 ships 52 new English keys translated into Spanish only, and
 its own `test/i18n_test.dart` fails on that commit ("faltan claves en ar").
 The fork lists those keys in `test/pending_translation_keys.txt`, which is
 what the file is for; no upstream test was changed.
+
+## Performance (2026-11-16)
+
+No phone was attached, so these are **desktop numbers**: `flutter test` (Dart VM,
+JIT, debug) on the development machine, an Intel Core i7-9750H laptop. The plan's
+targets (block under 50 ms, review under 100 ms, cold start within 5 % of
+upstream) are for a mid-range phone and still have to be checked on one.
+`test/coach/performance_test.dart` measures them and asserts generous bounds
+(block under 250 ms, review under 500 ms) so slower CI runners do not flake.
+
+The history: three years of logs, four sessions a week of six exercises (624
+sessions, 11 232 sets) and a weigh-in every other day; every module on for the
+coach's numbers. Means of five runs (ten interleaved runs for loading), two
+test runs:
+
+| Measure | Result |
+| --- | --- |
+| Block generation (`coachBuildPlan`, end to end: input, generator, routines written) | 25.6 / 26.5 ms |
+| Weekly review (`coachTick` with the weekly and weigh-in reviews due) | 22.6 / 22.7 ms |
+| `coachTick` with every module off | under 0.1 µs |
+| `coachTick` with every module on, no review due | 0.06 ms |
+| Reading the `coach` key (`CoachData.fromJson`, a full block) | 0.3 to 0.5 ms |
+| `loadFromStore`, every module off | 85.4 / 91.2 ms |
+| `loadFromStore`, the plan's routines and rules without the `coach` key | 106.9 / 110.1 ms |
+| `loadFromStore`, every module on, no review due | 107.3 / 109.9 ms |
+| `loadFromStore`, every module on, weekly review due | 118.7 / 123.9 ms |
+
+Cold start: with every module off, loading costs the same as without the
+coach's tick (ratio 1.000001 / 1.000000; the coach's whole share is the tick's
+early return and reading an absent key). With every module on, loading is
+within 0.5 % of loading the same app data without the `coach` key; the extra
+20 ms over "every module off" is upstream's own cost of the routines, weekly
+plan and progression rules the plan writes. Once a week, when the review is
+due, loading takes about 12 % longer than the same data without the coach.
+`test/coach/plan_module_test.dart` keeps its own check of `coachBuildPlan` on a
+one-year history (about 33 ms here).
