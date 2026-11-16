@@ -5,6 +5,7 @@ import '../widgets/body_map.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../app/desktop.dart';
+import '../coach/coach.dart'; // coach-seam
 import '../widgets/medal.dart' show Medal;
 import '../l10n/l10n.dart';
 import '../models/exercise.dart';
@@ -416,6 +417,7 @@ class HomeScreen extends StatelessWidget {
         : isRoutine
         ? [
             t.exerciseCount(routine.exerciseIds.length),
+            ?fit.coachBlockLabel(routine), // coach-seam
             if (fit.rotating)
               t.rotationPlace(fit.rotationStep + 1, fit.rotationSteps.length)
             else if (today.length > 1)
@@ -506,6 +508,7 @@ class HomeScreen extends StatelessWidget {
                           style: AppTheme.f(13, weight: FontWeight.w500, color: gc.textSecondary)),
                     ),
                   ]),
+                  if (rest == null && !done) CoachPlanWhy(routine: routine), // coach-seam
                   const SizedBox(height: 18),
                   Row(children: [
                     Expanded(

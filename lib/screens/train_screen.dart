@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../catalog/exercise_catalog.dart';
+import '../coach/coach.dart'; // coach-seam
 import '../l10n/l10n.dart';
 import '../models/exercise.dart';
 import '../state/fit_state.dart';
@@ -227,6 +228,7 @@ class _TrainScreenState extends State<TrainScreen> {
         const SizedBox(height: 14),
         _searchRow(context, gc),
         const SizedBox(height: 12),
+        if (!searching) const CoachQuickMinutes(), // coach-seam
         if (gearHere.length > 1) ...[
           SingleChildScrollView(
             key: const PageStorageKey('h-train_screen-232'),

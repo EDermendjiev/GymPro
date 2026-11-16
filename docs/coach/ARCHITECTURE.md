@@ -100,12 +100,15 @@ lib/coach/
   model/coach_data.dart       everything persisted under the "coach" key
   model/coach_profile.dart    goal, status, days, minutes, priority, lifestyle
   model/coach_targets.dart    host values the progression module answers with (CoachRx, CoachSessionTarget, …)
+  model/coach_choices.dart    host enums the screens can name (CoachGoal, CoachStatus, CoachBlockKind), CoachAnswers
+  model/coach_plan.dart       host values of the plan module (CoachPlanInputs, CoachBuiltPlan, CoachOpeningSet, …)
   adapters/muscle_map.dart    16 coach muscles <-> 14 GymMane muscles
   adapters/equipment_map.dart GymMane equipment names -> coach equipment
   adapters/catalog_adapter.dart  Exercise -> ExerciseDef (uses coach_meta)
   adapters/history_adapter.dart  LoggedSession -> kernel LoggedSet
   adapters/exposure_adapter.dart LoggedSession -> one exercise's ExerciseHistory (exposures per session)
-  adapters/category_adapter.dart Exercise -> coach Category (fallback guess until coach_meta exists)
+  adapters/category_adapter.dart Exercise -> coach Category (annotated, else a guess)
+  adapters/block_input_adapter.dart  app state -> BlockInput (profile, place, logs, weight step)
   adapters/plan_writer.dart   BlockPlan -> Routine + weeklyPlan
   data/coach_meta.dart        generated: coaching attributes per GymMane exercise id
   policy/autonomy.dart        which proposals apply silently / with undo / on request
@@ -156,15 +159,16 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | File | Seam | Status |
 |---|---|---|
 | `pubspec.yaml` | five path dependencies | done |
-| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | done |
+| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachDefaultPicks`, `coachFocusMuscles`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | done |
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
-| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first | done, except `_openingSetsRaw` (planned for the plan module) |
+| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first | done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow` | done |
-| `lib/screens/onboarding_screen.dart` | two pages inserted in the `PageView` list | planned |
-| `lib/screens/home_screen.dart` | coach card slot | planned |
+| `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
+| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`) | done (plan); the proposal card is planned (recovery) |
+| `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | planned |
 | `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | done |
@@ -172,7 +176,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/screens/settings_screen.dart` | "Coach" category: import of the barrel, the category, its title, its place in the Home group, its section | done |
 | `lib/screens/about_screen.dart`, `README.md` | credit line, fork links | done |
 | `lib/app/gymmane_app.dart`, `android/app/build.gradle.kts`, `android/app/src/main/AndroidManifest.xml`, `android/app/src/main/res/xml/shortcuts.xml`, `ios/Runner/Info.plist`; unmarked: `ios/Runner.xcodeproj/project.pbxproj`, `fastlane/metadata/android/*/title.txt`, `web/index.html`, `web/manifest.json` | app identity (name and application id) | done |
-| `lib/l10n/app_en.arb`, `test/pending_translation_keys.txt` | new strings, added as each module needs them | in use (the credit, Settings › Coach) |
+| `lib/l10n/app_en.arb`, `test/pending_translation_keys.txt` | new strings, added as each module needs them | in use (the credit, Settings › Coach, the modules) |
 | `.github/workflows/coach-ci.yml` | new file, not a seam: analyzer, app tests and package tests on the `coach` branch | done |
 
 Notes on the table:
@@ -264,9 +268,115 @@ are queued by `CoachState` and taken by the workout screen in `build`
 (`coachSessionPrompts`), which shows them after the frame. Requests belong to
 the workout they were made in.
 
-Until the per-exercise coaching attributes exist, the exercise's category is
-guessed by `coachCategoryFor` (`lib/coach/adapters/category_adapter.dart`)
+The exercise's category is the annotated one for an exercise with coaching
+attributes (`coach_meta`); for any other exercise it is guessed by
+`coachCategoryFor` (`lib/coach/adapters/category_adapter.dart`)
 from its equipment, primary muscle and name.
+
+## Plan module
+
+With the `plan` switch on (it needs `progression`), the coach builds a training
+block and writes it into the app as ordinary routines with a weekly schedule.
+
+### The questions
+
+Four answers lead to a plan: the goal, the experience (training status), the
+days and session length, and the place. Onboarding asks them in its own pages:
+the stock weekly-goal page gives the days per week (spread over the week:
+3 → Monday, Wednesday, Friday), the stock place page gives the equipment, and
+two coach pages, added after the stock pages, ask the goal and the experience
+with the session length (`lib/coach/ui/onboarding_pages.dart`). "Just log
+workouts" on the goal page ends onboarding with every coach module off.
+Finishing with a goal stores the profile (`CoachProfile.answered`, from the
+host enums `CoachGoal` and `CoachStatus`), switches on `progression` and `plan`
+(not `recovery`, not `nutrition`) and builds the plan.
+
+Settings › Coach › "Build me a plan" asks the same questions in one sheet, with
+the training days, prefilled from the logs (`CoachFacade.prefill`): the status
+the logs show once there are eight weeks of them (the kernel's status
+inference, anchored on the main lifts and each session's first exercise), and
+the weekdays trained on most over the last eight weeks, as many as the user
+trains a week on average. Someone with imported history answers at most the
+goal.
+
+### The generator's input
+
+`coachBlockInput` (`lib/coach/adapters/block_input_adapter.dart`) builds the
+kernel's `BlockInput`:
+
+| Input | Taken from |
+|---|---|
+| Goal, status, days, minutes, priority, lifting-day limit | the coaching profile; days default to the weekly goal spread over the week |
+| Equipment | the active place (`gearHere`; all equipment without a place) |
+| Increments | the coach's defaults per equipment, with the app's weight step for the barbell |
+| Exercises | `coachPlanLibrary` (annotated, not archived) |
+| History | the strength sets of the last 26 weeks (`coachSets`), weeks since the last session, and the average weekly sets per tracked muscle over the last four weeks (worked out here with the kernel's set counting: the packages have no helper for it) |
+| Sports, injuries, dislikes | `coach.sports`, `coach.injuries`, `coach.disliked` |
+| Rep variation, specialization | within the session; none |
+
+Exercise ids in the block are the app's ids, as in the logged sets the history
+adapter produces; the coach's slugs are used only inside the packages.
+
+### Routines and the weekly plan
+
+`CoachState.coachBuildPlan` writes the block (`lib/coach/adapters/plan_writer.dart`):
+
+- one routine per session template, in the group "Coach", named after the
+  template; its exercises and planned sets are the template's first session in
+  the block, a main lift's top single and its back-off sets being one exercise;
+  the rest per exercise from the block;
+- every exercise of the block set to progression kind Auto, with the rep range
+  of its working sets;
+- the weekly plan from the block's day placement. A weekly plan holding any
+  routine of the user's own is first saved as a plan of its own
+  (`savePlanAs`); a plan of coach routines only is replaced. Rotation is
+  switched off, since the coach plans by weekday;
+- the block in `coach.block`, the template → routine map in `coach.routineIds`.
+
+A second build updates the same routines (they are recreated only if the user
+deleted them); routines of templates the new block no longer has are deleted.
+The user's own routines are never changed.
+
+### Opening sets
+
+When a coach routine starts while the module is on, `_openingSetsRaw` asks
+`coachOpeningSets` first. The coach finds the routine by its planned sets for
+the exercise (`Routine.plan[id]`, the very list the routine start hands over),
+then the block's session of that template for today (today's own, else the
+nearest one of the block's current week), and opens with that session's set
+count and reps: intro weeks (75 % of the sets), rep variation and strength
+phases follow the calendar. Loads are worked out when the workout starts, from
+the logs (`suggestNextSession`, or the strength estimate for top singles and
+back-off sets), and put on the exercise's stack or step. Exercises the coach
+leaves to the stock rules (body weight only, assisted, timed, progression
+switched off) keep the stock reps and loads with the block's set count. With
+the module off a coach routine opens like any routine.
+
+### Edits survive
+
+`CoachState.coachRegenerate` compares each coach routine's exercises with the
+block: an exercise swapped in the routine editor becomes the block's selection
+for that slot, one removed with nothing in its place goes to `coach.disliked`.
+The block is then generated again with those selections as the previous
+block's (so they rank first), keeping its kind and weeks, and the new sessions
+go through the training package's carry-over, so a session already done (a
+workout of its routine logged on its date) is not planned again. A swap to an
+exercise without coaching attributes cannot carry over: the plan library holds
+annotated exercises only.
+
+### Home and quick workouts
+
+On the Home card a coach routine's subtitle names the block and its week
+("Muscle building · Week 2 of 6"), and "Why this plan" opens the block's
+explanations, warnings and rule summaries, in the packages' English.
+
+On the train screen, while the module is on, the quick workout comes from the
+training package's session generator: the focus suggested by "Start workout"
+on a day without a routine is the muscles furthest behind this week's targets
+of the block, and the body-map flow's default picks are the generator's picks
+for the chosen muscles (sore and painful muscles skipped, muscles trained hard
+in the last 48 hours last). Length chips (20, 30, 45, 60 minutes) above the
+list pick the session length; the session opens with the generated sets.
 
 ## Nutrition module
 
@@ -443,8 +553,8 @@ tier to "ask first".
 | `coach_recovery` | `packages/coach_recovery` | not started |
 | `coach_nutrition` | `packages/coach_nutrition` | not started |
 | `coach_testkit` | `packages/coach_testkit` | not started |
-| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure and category adapters, persisted model, progression and nutrition entry points of `CoachFacade` |
-| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); nutrition goals and phase (Phase 6) |
+| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, progression, plan and nutrition entry points of `CoachFacade` |
+| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); nutrition goals and phase (Phase 6) |
 
 What exists today is groundwork: the attribution credit in the About screen
 and README, the CI workflow for the `coach` branch, the upstream baseline in

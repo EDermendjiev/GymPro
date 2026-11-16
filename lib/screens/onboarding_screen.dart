@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../catalog/body_art.dart';
+import '../coach/coach.dart'; // coach-seam
 import '../catalog/exercise_catalog.dart';
 import '../app/desktop.dart';
 import '../l10n/l10n.dart';
@@ -37,7 +38,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final _at = ValueNotifier<int>(0);
 
   int get _index => _at.value;
-  int get _last => _slow ? 7 : 6;
+  int get _last => (_slow ? 7 : 6) + coachOnboardingPageCount; // coach-seam
   final Map<String, Set<String>> _places = {};
   final _frames = <FrameTiming>[];
   bool _slow = false;
@@ -109,6 +110,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       fit.setCalmMotion(!_motion);
       fit.markLowEndAsked();
     }
+    fit.coachFinishOnboarding(); // coach-seam
     fit.completeOnboarding();
   }
 
@@ -200,6 +202,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   _goalStep(gc),
                   _placeStep(gc),
                   if (_slow) _speedStep(gc),
+                  ...coachOnboardingPages(first: _last - 1, frame: (s, title, why, child) => _step(gc, step: s, title: title, why: why, child: child), skip: _finish), // coach-seam
                 ])
                   RepaintBoundary(child: page),
               ],
