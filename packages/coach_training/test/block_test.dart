@@ -18,7 +18,8 @@ Object? _run(Map<String, dynamic> input, List<Object?> seed) {
 }
 
 void main() {
-  final seed = loadFixture('exercises.json', root: '../coach_kernel/test/fixtures').single.output as List<Object?>;
+  final seed =
+      loadFixture('exercises.json', root: '../coach_kernel/test/fixtures').single.output as List<Object?>;
 
   for (final file in _files) {
     group(file, () {
@@ -59,8 +60,14 @@ void main() {
       popularity: 1,
       custom: custom,
     );
-    expect(incrementFor(ex([Equipment.machine], step: 1.25, custom: true), [Equipment.machine], {'machine': 5}), 1.25);
-    expect(incrementFor(ex([Equipment.machine], step: 0, custom: true), [Equipment.machine], {'machine': 5}), 5);
+    expect(
+      incrementFor(ex([Equipment.machine], step: 1.25, custom: true), [Equipment.machine], {'machine': 5}),
+      1.25,
+    );
+    expect(
+      incrementFor(ex([Equipment.machine], step: 0, custom: true), [Equipment.machine], {'machine': 5}),
+      5,
+    );
     expect(incrementFor(ex([Equipment.machine], step: 10), [Equipment.machine], {'machine': 5}), 10);
     expect(incrementFor(ex([Equipment.band, Equipment.cable]), [Equipment.cable], {}), 2.5);
     expect(incrementFor(ex([Equipment.dumbbell]), [Equipment.barbell], {}), 2);

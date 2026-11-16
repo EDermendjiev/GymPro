@@ -63,7 +63,9 @@ BaseVolume baseVolume(BlockInput input, BlockKind kind) {
     notes.add("Starts from your previous block's ${jsNumber(base)} sets per muscle.");
   } else {
     final article = input.status == Status.intermediate || input.status == Status.advanced ? 'an' : 'a';
-    notes.add('Starting volume for $article ${input.status.wire} lifter: ${jsNumber(base)} sets per muscle per week.');
+    notes.add(
+      'Starting volume for $article ${input.status.wire} lifter: ${jsNumber(base)} sets per muscle per week.',
+    );
   }
 
   final hard = hardSportSessionsPerWeek(input.sports);
@@ -126,10 +128,11 @@ MuscleTarget _target(
     t = math.max(VOLUME.minEffective, jsRound(base * VOLUME.frontDeltFactor) - trim);
     if (spec.contains(m)) t = jsRound(base * VOLUME.specialization.up).toDouble();
   } else if (specActive) {
-    t = (spec.contains(m)
-            ? jsRound(base * VOLUME.specialization.up)
-            : jsRound(base * VOLUME.specialization.others))
-        .toDouble();
+    t =
+        (spec.contains(m)
+                ? jsRound(base * VOLUME.specialization.up)
+                : jsRound(base * VOLUME.specialization.others))
+            .toDouble();
     t -= trim;
     mRules.add('T-VOL-08');
   } else {
@@ -156,8 +159,12 @@ MuscleTarget _target(
 
 /// Strength Load phase: supporting volume is cut by about one set per week (T-STR-03).
 double weeklyTargetFor(BlockKind kind, num target, int weekIndex) {
-  if (kind == BlockKind.strengthLoad) return math.max(STRENGTH.load.secondarySets[0], target - weekIndex).toDouble();
+  if (kind == BlockKind.strengthLoad) {
+    return math.max(STRENGTH.load.secondarySets[0], target - weekIndex).toDouble();
+  }
   return target.toDouble();
 }
 
-Map<TrackedMuscle, double> targetsMap(List<MuscleTarget> targets) => {for (final t in targets) t.muscle: t.target};
+Map<TrackedMuscle, double> targetsMap(List<MuscleTarget> targets) => {
+  for (final t in targets) t.muscle: t.target,
+};

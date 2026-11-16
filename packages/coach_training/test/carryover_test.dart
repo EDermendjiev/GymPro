@@ -9,7 +9,9 @@ Object? _call(Map<String, dynamic> i) {
     case 'planKey':
       return planKey(i['engineDate'] as String, i['templateKey'] as String, i['occurrence'] as int);
     case 'carryOverEdits':
-      final sessions = [for (final s in i['sessions'] as List) PlannedSession.fromJson(s as Map<String, dynamic>)];
+      final sessions = [
+        for (final s in i['sessions'] as List) PlannedSession.fromJson(s as Map<String, dynamic>),
+      ];
       final before = [for (final s in sessions) s.toJson()];
       final disallowed = [for (final d in i['disallowed'] as List) d as String];
       final prior = [for (final p in i['prior'] as List) PriorSession.fromJson(p as Map<String, dynamic>)];

@@ -20,7 +20,8 @@ enum WorkKind {
   static final Map<String, WorkKind> _byWire = {for (final v in values) v.wire: v};
 
   /// Throws a [FormatException] when [wire] is not one of the values.
-  static WorkKind fromWire(String wire) => _byWire[wire] ?? (throw FormatException('Unknown WorkKind: "$wire"'));
+  static WorkKind fromWire(String wire) =>
+      _byWire[wire] ?? (throw FormatException('Unknown WorkKind: "$wire"'));
 }
 
 /// One exercise of a session being built. The distributor changes [sets] in place.
@@ -145,7 +146,9 @@ double weeklyMuscleSets(List<WorkSession> sessions, MuscleId m) =>
 int estimateMinutes(WorkSession s) {
   var secs = 0;
   for (final w in s.exercises) {
-    final work = isCompound(w.ex.category) ? SESSION_TIME.workSecondsCompound : SESSION_TIME.workSecondsIsolation;
+    final work = isCompound(w.ex.category)
+        ? SESSION_TIME.workSecondsCompound
+        : SESSION_TIME.workSecondsIsolation;
     final rest = restFor(w.ex.category, strengthMain: w.kind != WorkKind.normal);
     secs += w.sets * (work + rest);
   }
@@ -153,7 +156,8 @@ int estimateMinutes(WorkSession s) {
 }
 
 bool _regionAllows(Region region, TrackedMuscle m) =>
-    region == Region.full || (region == Region.lower ? LOWER_MUSCLES.contains(m) : !LOWER_MUSCLES.contains(m));
+    region == Region.full ||
+    (region == Region.lower ? LOWER_MUSCLES.contains(m) : !LOWER_MUSCLES.contains(m));
 
 /// The result of [distribute].
 class DistributeResult {
@@ -186,10 +190,9 @@ DistributeResult distribute(
   final maxPerSession = FREQUENCY.maxSetsPerMusclePerSession;
   final order = stableSorted(
     TRACKED_MUSCLES,
-    (a, b) =>
-        _sign(targets[b]! - targets[a]!) != 0
-            ? _sign(targets[b]! - targets[a]!)
-            : TRACKED_MUSCLES.indexOf(a) - TRACKED_MUSCLES.indexOf(b),
+    (a, b) => _sign(targets[b]! - targets[a]!) != 0
+        ? _sign(targets[b]! - targets[a]!)
+        : TRACKED_MUSCLES.indexOf(a) - TRACKED_MUSCLES.indexOf(b),
   );
 
   for (var pass = 0; pass < 6; pass++) {
@@ -224,7 +227,9 @@ DistributeResult distribute(
             if (w.fixed || !isPrimary(w.ex, m) || w.sets <= SESSION_TIME.minSetsPerExercise) continue;
             // Don't push another primary muscle of this exercise below its target.
             for (final em in w.ex.muscles) {
-              if (em.role != MuscleRole.primary || em.muscle == m || em.muscle == MuscleId.frontDelts) continue;
+              if (em.role != MuscleRole.primary || em.muscle == m || em.muscle == MuscleId.frontDelts) {
+                continue;
+              }
               if (!TRACKED_MUSCLES.contains(em.muscle)) continue;
               final p = em.muscle;
               if (weeklyMuscleSets(sessions, p) - 1 < targets[p]! - 0.5) continue exercises;
@@ -282,7 +287,12 @@ bool _addIsolation(
   final cands = stableSorted(
     [
       for (var si = 0; si < sessions.length; si++)
-        (s: sessions[si], si: si, cur: sessionMuscleSets(sessions[si], m), mins: estimateMinutes(sessions[si])),
+        (
+          s: sessions[si],
+          si: si,
+          cur: sessionMuscleSets(sessions[si], m),
+          mins: estimateMinutes(sessions[si]),
+        ),
     ].where(
       (c) =>
           _regionAllows(c.s.region, m) &&
@@ -333,7 +343,8 @@ WorkSession orderSession(WorkSession s) {
     if (w.kind == WorkKind.backoff) return 1;
     final c = w.ex.category;
     if (c == Category.lowerFreeCompound || c == Category.upperFreePress) return 1;
-    if (c == Category.pullingCompound && w.ex.equipment.any((e) => e == Equipment.barbell || e == Equipment.bodyweight)) {
+    if (c == Category.pullingCompound &&
+        w.ex.equipment.any((e) => e == Equipment.barbell || e == Equipment.bodyweight)) {
       return 1;
     }
     if (c == Category.isolation) return 3;

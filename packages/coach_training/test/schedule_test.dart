@@ -4,7 +4,9 @@ import 'package:coach_testkit/coach_testkit.dart';
 import 'package:coach_training/coach_training.dart';
 import 'package:test/test.dart';
 
-List<UserSport> _sports(Object? json) => [for (final s in json as List) UserSport.fromJson(s as Map<String, dynamic>)];
+List<UserSport> _sports(Object? json) => [
+  for (final s in json as List) UserSport.fromJson(s as Map<String, dynamic>),
+];
 TimeOfDay? _time(Object? json) => json == null ? null : TimeOfDay.fromWire(json as String);
 
 Object? _call(Map<String, dynamic> i) {
@@ -12,7 +14,9 @@ Object? _call(Map<String, dynamic> i) {
     case 'sportBeforeLifting':
       return sportBeforeLifting(_time(i['sportTime']), _time(i['liftingTime']))?.wire;
     case 'scorePlacement':
-      final placements = [for (final p in i['placements'] as List) DayPlacement.fromJson(p as Map<String, dynamic>)];
+      final placements = [
+        for (final p in i['placements'] as List) DayPlacement.fromJson(p as Map<String, dynamic>),
+      ];
       return scorePlacement(
         placements,
         _sports(i['sports']),

@@ -111,7 +111,12 @@ class PriorSession {
 }
 
 class CarryOverInput {
-  CarryOverInput({required this.sessions, required this.prior, required this.today, required this.allowExercise});
+  CarryOverInput({
+    required this.sessions,
+    required this.prior,
+    required this.today,
+    required this.allowExercise,
+  });
 
   /// The regenerated sessions (materialised from this Monday, so sessions moved off a past day can still match).
   final List<PlannedSession> sessions;

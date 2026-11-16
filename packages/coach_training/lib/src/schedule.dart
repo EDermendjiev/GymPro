@@ -60,7 +60,8 @@ enum SportOrder {
   static final Map<String, SportOrder> _byWire = {for (final v in values) v.wire: v};
 
   /// Throws a [FormatException] when [wire] is not one of the values.
-  static SportOrder fromWire(String wire) => _byWire[wire] ?? (throw FormatException('Unknown SportOrder: "$wire"'));
+  static SportOrder fromWire(String wire) =>
+      _byWire[wire] ?? (throw FormatException('Unknown SportOrder: "$wire"'));
 }
 
 /// T-SCH-03: is a same-day sport session done before (or too close to) lifting?
@@ -78,7 +79,12 @@ SportOrder? sportBeforeLifting(TimeOfDay? sportTime, TimeOfDay? liftingTime) {
 }
 
 /// Score one candidate placement. Lower is better.
-ScheduleResult scorePlacement(List<DayPlacement> placements, List<UserSport> sports, Goal goal, [TimeOfDay? liftingTime]) {
+ScheduleResult scorePlacement(
+  List<DayPlacement> placements,
+  List<UserSport> sports,
+  Goal goal, [
+  TimeOfDay? liftingTime,
+]) {
   final penalties = <SchedulePenalty>[];
   void add(String rule, num points, String detail) =>
       penalties.add(SchedulePenalty(rule: rule, points: points.toDouble(), detail: detail));
@@ -124,7 +130,11 @@ ScheduleResult scorePlacement(List<DayPlacement> placements, List<UserSport> spo
     final prev = byDay[_prevDay(p.weekday)];
     if (prev != null) {
       final same = regionsOverlap(region(prev), r);
-      add('T-SCH-06', same ? 3 : 1, same ? 'Back-to-back sessions for the same body region' : 'Back-to-back lifting days');
+      add(
+        'T-SCH-06',
+        same ? 3 : 1,
+        same ? 'Back-to-back sessions for the same body region' : 'Back-to-back lifting days',
+      );
       if (goal == Goal.strength) {
         final t = TEMPLATES[p.templateKey]!;
         final mainHere = t.slots.where((s) => s.mainLift != null).firstOrNull?.mainLift;
@@ -150,7 +160,8 @@ ScheduleResult scorePlacement(List<DayPlacement> placements, List<UserSport> spo
   final days = [for (final p in placements) p.weekday]..sort();
   if (days.length > 1) {
     final gaps = [
-      for (var i = 0; i < days.length; i++) i == days.length - 1 ? days[0] + 7 - days[i] : days[i + 1] - days[i],
+      for (var i = 0; i < days.length; i++)
+        i == days.length - 1 ? days[0] + 7 - days[i] : days[i + 1] - days[i],
     ];
     final v = variance(gaps);
     if (v > 0) add('SPACING', 0.5 * v, 'Uneven spacing between lifting days');
@@ -206,7 +217,9 @@ List<String> moveWarnings(String templateKey, int weekday, List<UserSport> sport
     if (isLegHeavyHard(s)) out.add('Legs the day before ${s.name}');
   }
   for (final s in sportsOnDay(sports, _prevDay(weekday))) {
-    if (isLegHeavyHard(s) && s.intensity == SportIntensity.match) out.add('Legs the day after a ${s.name} match');
+    if (isLegHeavyHard(s) && s.intensity == SportIntensity.match) {
+      out.add('Legs the day after a ${s.name} match');
+    }
   }
   for (final s in sportsOnDay(sports, weekday)) {
     if (isLegHeavyHard(s)) out.add('Legs on the same day as ${s.name}');

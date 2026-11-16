@@ -6,7 +6,8 @@ import 'package:coach_kernel/coach_kernel.dart';
 
 /// "Add set" cap per exercise. Every set of an exercise trains its primary muscle, and past ~11 sets for one
 /// muscle in one session extra sets are mostly junk volume (T-FRQ-01), so one exercise can't go past that.
-const MAX_SETS_PER_EXERCISE = 11.0; // FREQUENCY.maxSetsPerMusclePerSession; a record field is not a constant expression
+const MAX_SETS_PER_EXERCISE =
+    11.0; // FREQUENCY.maxSetsPerMusclePerSession; a record field is not a constant expression
 
 bool canAddSet(num current) => current < MAX_SETS_PER_EXERCISE;
 
@@ -81,5 +82,6 @@ class MuscleWeekTotal {
 
 /// Week totals for the muscles trained today: sets logged earlier this week plus this session.
 List<MuscleWeekTotal> weekTotals(Map<MuscleId, double> earlier, Map<MuscleId, double> session) => [
-  for (final e in session.entries) MuscleWeekTotal(muscle: e.key, session: e.value, week: (earlier[e.key] ?? 0) + e.value),
+  for (final e in session.entries)
+    MuscleWeekTotal(muscle: e.key, session: e.value, week: (earlier[e.key] ?? 0) + e.value),
 ];

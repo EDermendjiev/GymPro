@@ -85,7 +85,8 @@ const List<SportSeed> SPORT_SEEDS = [
     conditioning: 3,
     muscles: [MuscleId.frontDelts, MuscleId.sideDelts, MuscleId.triceps, MuscleId.calves],
     defaultMinutes: 60,
-    notes: 'Rounds tax shoulders, arms and footwork; avoid heavy pressing right before. Legs are mostly fine.',
+    notes:
+        'Rounds tax shoulders, arms and footwork; avoid heavy pressing right before. Legs are mostly fine.',
   ),
   SportSeed(
     id: 'tennis',

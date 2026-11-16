@@ -4,7 +4,9 @@ import 'package:coach_testkit/coach_testkit.dart';
 import 'package:coach_training/coach_training.dart';
 import 'package:test/test.dart';
 
-List<UserSport> _sports(Object? json) => [for (final s in json as List) UserSport.fromJson(s as Map<String, dynamic>)];
+List<UserSport> _sports(Object? json) => [
+  for (final s in json as List) UserSport.fromJson(s as Map<String, dynamic>),
+];
 
 Object? _call(Map<String, dynamic> i, List<Object?> seed) {
   BlockInput input() => BlockInput.fromJson(expandSeed(i['input'], seed) as Map<String, dynamic>);
@@ -29,7 +31,9 @@ Object? _call(Map<String, dynamic> i, List<Object?> seed) {
     case 'computeTargets':
       return computeTargets(input(), kind()).toJson();
     case 'targetsMap':
-      final targets = [for (final t in i['targets'] as List) MuscleTarget.fromJson(t as Map<String, dynamic>)];
+      final targets = [
+        for (final t in i['targets'] as List) MuscleTarget.fromJson(t as Map<String, dynamic>),
+      ];
       return {for (final e in targetsMap(targets).entries) e.key.wire: e.value};
     case 'weeklyTargetFor':
       return weeklyTargetFor(kind(), i['target'] as num, i['weekIndex'] as int);
@@ -39,7 +43,8 @@ Object? _call(Map<String, dynamic> i, List<Object?> seed) {
 }
 
 void main() {
-  final seed = loadFixture('exercises.json', root: '../coach_kernel/test/fixtures').single.output as List<Object?>;
+  final seed =
+      loadFixture('exercises.json', root: '../coach_kernel/test/fixtures').single.output as List<Object?>;
 
   for (final c in loadFixture('volume.json', fn: 'volume')) {
     test(c.name, () => expect(jsonDiff(_call(c.input, seed), c.output), isNull));
@@ -67,7 +72,9 @@ void main() {
     final c = loadFixture('volume.json').firstWhere((c) => c.input['call'] == 'computeTargets');
     final result = c.output as Map<String, dynamic>;
     expect(jsonDiff(TargetResult.fromJson(result).toJson(), result), isNull);
-    final b = loadFixture('volume.json').firstWhere((c) => c.input['call'] == 'baseVolume').output as Map<String, dynamic>;
+    final b =
+        loadFixture('volume.json').firstWhere((c) => c.input['call'] == 'baseVolume').output
+            as Map<String, dynamic>;
     expect(jsonDiff(BaseVolume.fromJson(b).toJson(), b), isNull);
   });
 }

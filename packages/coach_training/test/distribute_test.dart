@@ -7,21 +7,22 @@ import 'package:test/test.dart';
 /// The fixtures store each work exercise by id; the seed library is shipped once in exercises.json.
 WorkSession _work(Object? json, Map<String, ExerciseDef> byId) {
   final s = Map<String, dynamic>.of(json as Map<String, dynamic>);
-  final exercises = [for (final w in s['exercises'] as List) Map<String, dynamic>.of(w as Map<String, dynamic>)];
+  final exercises = [
+    for (final w in s['exercises'] as List) Map<String, dynamic>.of(w as Map<String, dynamic>),
+  ];
   final ids = [for (final w in exercises) w['ex'] as String];
   s['exercises'] = [for (final w in exercises) w..['ex'] = byId[w['ex']]!.toJson()];
   final session = WorkSession.fromJson(s);
   // The same objects as the library, as in the reference.
-  session.exercises = [
-    for (final (i, w) in session.exercises.indexed) w.copyWith(ex: byId[ids[i]]),
-  ];
+  session.exercises = [for (final (i, w) in session.exercises.indexed) w.copyWith(ex: byId[ids[i]])];
   return session;
 }
 
 Map<String, dynamic> _stored(WorkSession s) {
   final json = s.toJson();
   json['exercises'] = [
-    for (final (i, w) in (json['exercises'] as List).indexed) (w as Map<String, dynamic>)..['ex'] = s.exercises[i].ex.id,
+    for (final (i, w) in (json['exercises'] as List).indexed)
+      (w as Map<String, dynamic>)..['ex'] = s.exercises[i].ex.id,
   ];
   return json;
 }
@@ -41,7 +42,8 @@ SelectionContext _ctx(Object? json, List<ExerciseDef> seed) {
 }
 
 Map<MuscleId, double> _muscleMap(Object? json) => {
-  for (final e in (json as Map<String, dynamic>).entries) MuscleId.fromWire(e.key): (e.value as num).toDouble(),
+  for (final e in (json as Map<String, dynamic>).entries)
+    MuscleId.fromWire(e.key): (e.value as num).toDouble(),
 };
 
 Object? _call(Map<String, dynamic> i, List<ExerciseDef> seed, Map<String, ExerciseDef> byId) {
@@ -81,7 +83,8 @@ Object? _call(Map<String, dynamic> i, List<ExerciseDef> seed, Map<String, Exerci
 
 void main() {
   final seed = [
-    for (final e in loadFixture('exercises.json', root: '../coach_kernel/test/fixtures').single.output as List)
+    for (final e
+        in loadFixture('exercises.json', root: '../coach_kernel/test/fixtures').single.output as List)
       ExerciseDef.fromJson(e as Map<String, dynamic>),
   ];
   final byId = {for (final e in seed) e.id: e};
@@ -95,7 +98,9 @@ void main() {
     final s = _work(c.input['session'], byId);
     final json = s.toJson();
     expect(jsonDiff(WorkSession.fromJson(json).toJson(), json), isNull);
-    final item = loadFixture('distribute.json').lastWhere((c) => c.input['call'] == 'summaryMuscleSets').input['items'] as List;
+    final item =
+        loadFixture('distribute.json').lastWhere((c) => c.input['call'] == 'summaryMuscleSets').input['items']
+            as List;
     for (final x in item) {
       expect(jsonDiff(SummaryItem.fromJson(x as Map<String, dynamic>).toJson(), x), isNull);
     }

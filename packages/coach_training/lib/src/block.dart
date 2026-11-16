@@ -97,7 +97,16 @@ List<WorkSession> _buildBaseWeek(SplitDef split, _BuildCtx ctx, int weekIndex, i
         if (ex == null) continue;
         mainsHere.add(mainLift);
         used.add(ex.id);
-        list.add(WorkExercise(ex: ex, slotKey: slot.key, sets: 1, kind: WorkKind.single, fixed: true, repsForCounting: 1));
+        list.add(
+          WorkExercise(
+            ex: ex,
+            slotKey: slot.key,
+            sets: 1,
+            kind: WorkKind.single,
+            fixed: true,
+            repsForCounting: 1,
+          ),
+        );
         if (ctx.kind == BlockKind.strengthVolume) {
           list.add(
             WorkExercise(
@@ -132,7 +141,8 @@ List<WorkSession> _buildBaseWeek(SplitDef split, _BuildCtx ctx, int weekIndex, i
         ctx.warnings.add(
           Warning(
             code: WarningCode.noExerciseForSlot,
-            message: 'No suitable exercise for “${slot.label}” in ${t.title} with your equipment and injuries.',
+            message:
+                'No suitable exercise for “${slot.label}” in ${t.title} with your equipment and injuries.',
             ruleIds: ['T-SEL-04'],
           ),
         );
@@ -198,7 +208,13 @@ class _Week {
   final List<int> minutes;
 }
 
-_Week _buildWeek(SplitDef split, Map<TrackedMuscle, double> targets, _BuildCtx ctx, int weekIndex, int weeks) {
+_Week _buildWeek(
+  SplitDef split,
+  Map<TrackedMuscle, double> targets,
+  _BuildCtx ctx,
+  int weekIndex,
+  int weeks,
+) {
   final base = _buildBaseWeek(split, ctx, weekIndex, weeks);
   final anyCtx = ctx.selCtx(split.templates[0]);
   final r = distribute(
@@ -247,7 +263,9 @@ BlockPlan generateBlock(BlockInput input) {
 
   final targetRes = computeTargets(input, kind);
   var targets = targetsMap(targetRes.targets);
-  explanations.addAll([for (final text in targetRes.notes) Explanation(text: text, ruleIds: targetRes.ruleIds)]);
+  explanations.addAll([
+    for (final text in targetRes.notes) Explanation(text: text, ruleIds: targetRes.ruleIds),
+  ]);
 
   final prevSel = input.history.previousBlock?.selections ?? const <String, Map<String, String>>{};
   SelectionContext selCtx(String templateKey) => SelectionContext(
@@ -286,7 +304,8 @@ BlockPlan generateBlock(BlockInput input) {
     warnings.add(
       Warning(
         code: WarningCode.lowFrequency,
-        message: 'With one lifting day per week, progress beyond maintenance is hard. Add a second day if you can.',
+        message:
+            'With one lifting day per week, progress beyond maintenance is hard. Add a second day if you can.',
         ruleIds: ['T-FRQ-04'],
       ),
     );
@@ -406,7 +425,9 @@ BlockPlan generateBlock(BlockInput input) {
   if (!strength || kind == BlockKind.strengthVolume) {
     if (input.fromHeavyPhase == true) introWeek = true;
     if ((input.history.weeksOff ?? 0) >= INTRO_WEEK.weeksOffTrigger) introWeek = true;
-    if (recent != null && recent > 0 && avgTarget > recent * (1 + INTRO_WEEK.volumeJumpTrigger)) introWeek = true;
+    if (recent != null && recent > 0 && avgTarget > recent * (1 + INTRO_WEEK.volumeJumpTrigger)) {
+      introWeek = true;
+    }
   }
   if (introWeek) {
     explanations.add(
@@ -467,7 +488,9 @@ BlockPlan generateBlock(BlockInput input) {
   }
 
   final from = input.materialiseFrom;
-  final materialiseFrom = from != null && from.isNotEmpty && from.compareTo(input.today) < 0 ? from : input.today;
+  final materialiseFrom = from != null && from.isNotEmpty && from.compareTo(input.today) < 0
+      ? from
+      : input.today;
   final sessions = <PlannedSession>[];
   final weeklyTargets = <WeeklyTarget>[];
   var weekCache = chosen;
@@ -632,7 +655,8 @@ PlannedSession _materialiseSession(
       exposures: exposuresFor(input.history.sets, w.ex.id),
       increment: inc,
       e1rm: e1,
-      heavyLowerBarbell: w.ex.category == Category.lowerFreeCompound && w.ex.equipment.contains(Equipment.barbell),
+      heavyLowerBarbell:
+          w.ex.category == Category.lowerFreeCompound && w.ex.equipment.contains(Equipment.barbell),
     );
     final sug = suggestNextSession(
       hist,
