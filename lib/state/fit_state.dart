@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart' show listEquals, setEquals;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../coach/coach.dart'; // coach-seam
 import '../widgets/glass.dart';
 import '../catalog/exercise_catalog.dart';
 import '../catalog/program_templates.dart';
@@ -45,6 +46,7 @@ import '../services/workout_import.dart';
 
 part 'awards_state.dart';
 part 'circuit_state.dart';
+part 'coach_state.dart'; // coach-seam
 part 'fit_core.dart';
 part 'gym_pass_state.dart';
 part 'health_state.dart';
@@ -64,7 +66,7 @@ part 'tools_state.dart';
 part 'workout_state.dart';
 
 class FitState extends FitCore
-    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, GymPassState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, HealthState, CircuitState, NutritionState, ReportState, AwardsState, RoutinesState, WorkoutState {
+    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, GymPassState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, HealthState, CircuitState, NutritionState, ReportState, AwardsState, RoutinesState, CoachState, WorkoutState { // coach-seam
   final Map<SoundGroup, String> notifSoundNames = {};
 
   void _loadNotifSounds(Object? raw) {
@@ -199,6 +201,7 @@ class FitState extends FitCore
       loadSteps((data['steps'] as Map?)?.cast<String, dynamic>());
       loadHealth((data['health'] as Map?)?.cast<String, dynamic>());
       loadCircuits(data['circuits'] as List?);
+      _loadCoach(data['coach']); // coach-seam
       _restoreLiveSession(data);
     }
     _stampMemberSince();
@@ -675,6 +678,7 @@ class FitState extends FitCore
         'steps': stepsJson(),
         'health': healthJson(),
         if (circuits.isNotEmpty) 'circuits': circuitsJson(),
+        if (!coach.isEmpty) 'coach': coach.toJson(), // coach-seam
         if (session != null && !session!.complete) ...{
           'live': session!.toJson(),
           'liveStart': _runningSince?.toIso8601String(),
@@ -719,6 +723,7 @@ class FitState extends FitCore
     _runningSince = null;
     _elapsedBefore = 0;
     sessionPaused = false;
+    coach = CoachData.empty(); // coach-seam
     sessions.clear();
     bodyweight.clear();
     measures.clear();
@@ -944,6 +949,7 @@ class FitState extends FitCore
     loadSteps((map['steps'] as Map?)?.cast<String, dynamic>());
     loadHealth((map['health'] as Map?)?.cast<String, dynamic>());
     loadCircuits(map['circuits'] as List?);
+    _loadCoach(map['coach']); // coach-seam
     _seedCalculatorsFromProfile();
     _loading = false;
     _persist();

@@ -1,0 +1,187 @@
+{
+ "v": 1,
+ "on": {
+  "progression": true,
+  "plan": true,
+  "recovery": true,
+  "nutrition": false
+ },
+ "profile": {
+  "goal": "lean_gain",
+  "status": "intermediate",
+  "days": [
+   1,
+   2,
+   4,
+   5
+  ],
+  "minutes": 60,
+  "priority": "lifting",
+  "lifestyle": "lightly_active",
+  "maxLiftDays": null
+ },
+ "sports": [
+  {
+   "sportId": "football",
+   "name": "Football",
+   "lowerBodyLoad": 3,
+   "upperBodyLoad": 1,
+   "eccentricImpact": 3,
+   "conditioning": 3,
+   "musclesStressed": [
+    "quads",
+    "hamstrings"
+   ],
+   "weekdays": [
+    6
+   ],
+   "intensity": "hard",
+   "minutes": 90
+  }
+ ],
+ "injuries": [
+  {
+   "id": "i1",
+   "muscleId": "hamstrings",
+   "label": "Tight hamstring",
+   "severity": "niggle",
+   "status": "active",
+   "avoidExerciseIds": []
+  }
+ ],
+ "disliked": [
+  "abc123"
+ ],
+ "soreness": {
+  "2026-11-12": {
+   "hamstrings": "sore"
+  }
+ },
+ "block": {
+  "kind": "hypertrophy",
+  "startsOn": "2026-10-26",
+  "weeks": 6,
+  "introWeek": false,
+  "splitKey": "FB2",
+  "liftDays": 2,
+  "engineVersion": "1.0.0",
+  "schedule": {
+   "placements": [
+    {
+     "weekday": 3,
+     "templateKey": "full_a"
+    },
+    {
+     "weekday": 7,
+     "templateKey": "full_b"
+    }
+   ],
+   "score": 0.125,
+   "penalties": [
+    {
+     "rule": "SPACING",
+     "points": 0.125,
+     "detail": "Uneven spacing between lifting days"
+    }
+   ]
+  },
+  "targets": [
+   {
+    "muscle": "chest",
+    "base": 6.0,
+    "sportTrim": 0.0,
+    "target": 6.0,
+    "trimBySport": [],
+    "ruleIds": [
+     "T-VOL-01"
+    ]
+   }
+  ],
+  "weeklyTargets": [
+   {
+    "weekIndex": 0,
+    "muscle": "chest",
+    "targetSets": 6.0,
+    "sportTrim": 0.0
+   }
+  ],
+  "sessions": [
+   {
+    "date": "2026-10-28",
+    "weekIndex": 0,
+    "templateKey": "full_a",
+    "title": "Full Body A",
+    "kind": "lift",
+    "orderInWeek": 0,
+    "estMinutes": 54,
+    "exercises": [
+     {
+      "sets": 3,
+      "repMin": 5,
+      "repMax": 8,
+      "rirMin": 2.0,
+      "rirMax": 5.0,
+      "restSeconds": 150,
+      "ruleIds": [
+       "T-INT-03"
+      ],
+      "exerciseId": "push-up",
+      "slotKey": "incline_press",
+      "position": 0
+     }
+    ],
+    "planKey": "2026-10-26|full_a|0"
+   }
+  ],
+  "selections": {
+   "full_a": {
+    "incline_press": "push-up",
+    "vertical_pull": "pull-up",
+    "squat": "bulgarian-split-squat",
+    "leg_curl": "nordic-curl",
+    "calf": "single-leg-dumbbell-calf-raise"
+   }
+  },
+  "warnings": [
+   {
+    "code": "NO_EXERCISE_FOR_SLOT",
+    "message": "No suitable exercise for “Lateral raise” in Full Body A with your equipment and injuries.",
+    "ruleIds": [
+     "T-SEL-04"
+    ]
+   }
+  ],
+  "explanations": [
+   {
+    "text": "Starting volume for an intermediate lifter: 12 sets per muscle per week.",
+    "ruleIds": [
+     "T-VOL-01"
+    ]
+   }
+  ],
+  "hardSessionsPerWeek": 3
+ },
+ "routineIds": {
+  "upper_a": "r1731000000001",
+  "lower_a": "r1731000000002"
+ },
+ "proposals": [
+  {
+   "id": "p1",
+   "kind": "standard_deload",
+   "state": "pending",
+   "payload": {},
+   "undo": {}
+  }
+ ],
+ "review": {
+  "lastWeekStart": "2026-11-09",
+  "previousYesCount": 0
+ },
+ "nutrition": {
+  "phase": "gain",
+  "multiplier": 1.65,
+  "kcal": 2990,
+  "lastAdjustOn": null
+ }
+}

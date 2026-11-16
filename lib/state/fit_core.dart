@@ -42,6 +42,16 @@ abstract class FitCore extends ChangeNotifier {
 
   Future<void> stepsAllowed() async {}
 
+  // coach-seam: overridden by CoachState. The defaults keep stock behaviour.
+  ({List<SessionSet> sets, double weightKg, int reps, NextMove move})? coachNextPlan(String exerciseId) => null;
+  List<SessionSet>? coachOpeningSets(String exerciseId, {String? routineId}) => null;
+  void coachSetLogged(int exIdx, int setIdx) {}
+  String? coachTargetLabel(String exerciseId) => null;
+  String? coachWhy(String exerciseId) => null;
+  double? coachWeeklySetTarget(String muscleId) => null;
+  bool? coachDeloadWeek() => null;
+  NutritionGoals? coachNutritionGoals() => null;
+
   String route = 'home';
   final List<String> _routeStack = [];
   final Map<String, bool> favorites = {};

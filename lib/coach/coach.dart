@@ -7,3 +7,6 @@
 //    app's own names;
 //  - a coach package is never re-exported.
 library;
+
+export 'model/coach_data.dart' show CoachData, CoachModule;
+export 'model/coach_profile.dart' show CoachProfile;

@@ -15,7 +15,7 @@ const kAppVersion = '2.2.0';
 const _kAuthor = 'InlitX';
 const _kAuthorUrl = 'https://github.com/InlitX';
 const _kRepoUrl = 'https://github.com/InlitX/GymMane';
-const _kForkRepoUrl = 'https://github.com/EDermendjiev/GymPro';
+const _kForkRepoUrl = 'https://github.com/EDermendjiev/GymPro'; // coach-seam
 const _kKofiUrl = 'https://ko-fi.com/inlitx';
 
 class AboutScreen extends StatelessWidget {
@@ -79,7 +79,7 @@ class AboutScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textTertiary, height: 1.6)),
             const SizedBox(height: 20),
-            Text(t.basedOnGymMane,
+            Text(t.basedOnGymMane, // coach-seam
                 textAlign: TextAlign.center,
                 style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textTertiary, height: 1.6)),
             const SizedBox(height: 8),
@@ -203,7 +203,7 @@ class AboutScreen extends StatelessWidget {
     final rows = <(IconData, String, String, String, Color?)>[
       (PhosphorIconsFill.heart, t.madeWithLoveBy, _kAuthor, _kAuthorUrl, gc.accent),
       (PhosphorIconsRegular.githubLogo, t.sourceCode, 'InlitX/GymMane', _kRepoUrl, null),
-      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'EDermendjiev/GymPro', _kForkRepoUrl, null),
+      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'EDermendjiev/GymPro', _kForkRepoUrl, null), // coach-seam
       (PhosphorIconsRegular.coffee, t.buyCoffee, 'ko-fi.com/inlitx', _kKofiUrl, null),
     ];
     return Container(

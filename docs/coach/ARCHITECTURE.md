@@ -152,10 +152,10 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 
 | File | Seam | Status |
 |---|---|---|
-| `pubspec.yaml` | five path dependencies | planned |
-| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachSetLogged`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | planned |
-| `lib/state/fit_state.dart` | `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | planned |
-| `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | planned |
+| `pubspec.yaml` | five path dependencies | done |
+| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachSetLogged`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | done |
+| `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | done |
+| `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | planned |
 | `lib/state/workout_state.dart` | `_nextPlan`, `_openingSetsRaw`, `toggleSet`, `nextWhy` each ask the seam first | planned |
 | `lib/widgets/progression_sheet.dart` | "Auto" option | planned |
@@ -167,6 +167,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | planned |
 | `lib/screens/settings_screen.dart` | "Coach" category | planned |
 | `lib/screens/about_screen.dart`, `README.md` | credit line, fork links | done |
+| `lib/app/gymmane_app.dart`, `android/app/build.gradle.kts`, `android/app/src/main/AndroidManifest.xml` | app identity (name and application id) | done |
 | `lib/l10n/app_en.arb`, `test/pending_translation_keys.txt` | new strings, added as each module needs them | planned (one string so far, for the credit) |
 | `.github/workflows/coach-ci.yml` | new file, not a seam: analyzer, app tests and package tests on the `coach` branch | done |
 
@@ -175,9 +176,12 @@ Notes on the table:
 - The files `lib/l10n/app_localizations*.dart` are generated from the ARB
   files by `flutter gen-l10n` and are committed. They change whenever a string
   is added. They are regenerated, never edited by hand, so they are not seams.
-- The seam audit test does not exist yet. The credit edits in
-  `lib/screens/about_screen.dart` were made before it and do not carry the
-  marker yet.
+- `test/coach/seam_audit_test.dart` counts the literal text `coach-seam` per
+  file (`// coach-seam` in Dart and Kotlin, `# coach-seam` in YAML, an XML
+  comment in XML) and compares it with a map of expected counts. Files that
+  cannot carry a comment (`README.md`, `lib/l10n/app_en.arb`,
+  `test/pending_translation_keys.txt`) are exempt by path, as are the
+  generated `lib/l10n/app_localizations*.dart`.
 
 ## Persisted state
 
@@ -220,6 +224,15 @@ Rules for this key:
   `toJson`, `applyBackup`, `resetAllData`), each a seam.
 - In folder sync the whole `coach` value merges atomically: the newest copy
   wins and the two sides are never mixed field by field.
+- Reading the key never fails. A part the app cannot read counts as absent,
+  and its stored value is kept and written back unchanged until the app
+  replaces it. Keys the app does not know (at the top level, in `on` and in
+  `profile`) are kept the same way, so data written by a newer version
+  survives a round trip through an older one.
+- A module whose prerequisite is off counts as off, whatever was stored.
+  Switching a module off also switches off the modules that need it.
+- The key is left out entirely while the coach holds nothing and every
+  switch is off.
 
 ## Muscle and equipment mapping
 
@@ -304,8 +317,8 @@ tier to "ask first".
 | `coach_recovery` | `packages/coach_recovery` | not started |
 | `coach_nutrition` | `packages/coach_nutrition` | not started |
 | `coach_testkit` | `packages/coach_testkit` | not started |
-| Adapter layer | `lib/coach/` | not started |
-| `CoachState` mixin | `lib/state/coach_state.dart` | not started |
+| Adapter layer | `lib/coach/` | in progress: muscle, equipment and history adapters, persisted model |
+| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence |
 
 What exists today is groundwork: the attribution credit in the About screen
 and README, the CI workflow for the `coach` branch, the upstream baseline in
