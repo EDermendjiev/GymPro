@@ -1,0 +1,7221 @@
+{
+ "fn": "split",
+ "cases": [
+  {
+   "name": "constants",
+   "input": {
+    "call": "constants"
+   },
+   "output": {
+    "TEMPLATES": {
+     "full_a": {
+      "key": "full_a",
+      "title": "Full Body A",
+      "region": "full",
+      "slots": [
+       {
+        "key": "main_squat",
+        "label": "Main lift: squat",
+        "tags": [],
+        "mainLift": "squat"
+       },
+       {
+        "key": "squat",
+        "label": "Squat",
+        "tags": [
+         "squat_free",
+         "squat_machine",
+         "split_squat"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ],
+        "replacedByMain": "squat"
+       },
+       {
+        "key": "incline_press",
+        "label": "Incline press",
+        "tags": [
+         "press_incline",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "vertical_pull",
+        "label": "Vertical pull",
+        "tags": [
+         "pull_vertical",
+         "pullover"
+        ]
+       },
+       {
+        "key": "leg_curl",
+        "label": "Leg curl",
+        "tags": [
+         "leg_curl",
+         "leg_curl_seated"
+        ]
+       },
+       {
+        "key": "lat_raise",
+        "label": "Lateral raise",
+        "tags": [
+         "lat_raise"
+        ]
+       },
+       {
+        "key": "calf",
+        "label": "Calf raise",
+        "tags": [
+         "calf"
+        ]
+       }
+      ]
+     },
+     "full_b": {
+      "key": "full_b",
+      "title": "Full Body B",
+      "region": "full",
+      "slots": [
+       {
+        "key": "main_deadlift",
+        "label": "Main lift: deadlift",
+        "tags": [],
+        "mainLift": "deadlift"
+       },
+       {
+        "key": "hinge",
+        "label": "Hip hinge (RDL)",
+        "tags": [
+         "hinge_rdl"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ]
+       },
+       {
+        "key": "press",
+        "label": "Overhead or flat press",
+        "tags": [
+         "press_vertical",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "row_flared",
+        "label": "Row (elbows wide)",
+        "tags": [
+         "row_flared",
+         "row_extension"
+        ]
+       },
+       {
+        "key": "leg_ext",
+        "label": "Leg extension",
+        "tags": [
+         "leg_ext"
+        ]
+       },
+       {
+        "key": "triceps",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       },
+       {
+        "key": "biceps",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       }
+      ]
+     },
+     "full_c": {
+      "key": "full_c",
+      "title": "Full Body C",
+      "region": "full",
+      "slots": [
+       {
+        "key": "main_bench",
+        "label": "Main lift: bench",
+        "tags": [],
+        "mainLift": "bench"
+       },
+       {
+        "key": "squat_machine",
+        "label": "Squat (machine)",
+        "tags": [
+         "squat_machine",
+         "split_squat",
+         "squat_free"
+        ],
+        "prefer": [
+         "lower_machine_compound",
+         "lower_free_compound"
+        ]
+       },
+       {
+        "key": "machine_press",
+        "label": "Machine press",
+        "tags": [
+         "press_machine",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_machine_press",
+         "upper_free_press"
+        ]
+       },
+       {
+        "key": "row_extension",
+        "label": "Row (elbows in)",
+        "tags": [
+         "row_extension",
+         "row_flared"
+        ]
+       },
+       {
+        "key": "hip_ext",
+        "label": "Hip extension",
+        "tags": [
+         "hip_ext"
+        ]
+       },
+       {
+        "key": "rear_delt",
+        "label": "Rear-delt isolation",
+        "tags": [
+         "rear_delt"
+        ]
+       },
+       {
+        "key": "calf",
+        "label": "Calf raise",
+        "tags": [
+         "calf"
+        ]
+       }
+      ]
+     },
+     "upper_a": {
+      "key": "upper_a",
+      "title": "Upper A",
+      "region": "upper",
+      "slots": [
+       {
+        "key": "main_bench",
+        "label": "Main lift: bench",
+        "tags": [],
+        "mainLift": "bench"
+       },
+       {
+        "key": "incline_press",
+        "label": "Incline press",
+        "tags": [
+         "press_incline",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "vertical_pull",
+        "label": "Vertical pull",
+        "tags": [
+         "pull_vertical",
+         "pullover"
+        ]
+       },
+       {
+        "key": "row_flared",
+        "label": "Row (elbows wide)",
+        "tags": [
+         "row_flared",
+         "row_extension"
+        ]
+       },
+       {
+        "key": "lat_raise",
+        "label": "Lateral raise",
+        "tags": [
+         "lat_raise"
+        ]
+       },
+       {
+        "key": "triceps",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       },
+       {
+        "key": "biceps",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       }
+      ]
+     },
+     "upper_b": {
+      "key": "upper_b",
+      "title": "Upper B",
+      "region": "upper",
+      "slots": [
+       {
+        "key": "main_ohp",
+        "label": "Main lift: ohp",
+        "tags": [],
+        "mainLift": "ohp"
+       },
+       {
+        "key": "press",
+        "label": "Flat press or OHP",
+        "tags": [
+         "press_flat",
+         "press_vertical"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "row_extension",
+        "label": "Row (elbows in)",
+        "tags": [
+         "row_extension",
+         "row_flared"
+        ]
+       },
+       {
+        "key": "chest_iso",
+        "label": "Chest machine or fly",
+        "tags": [
+         "chest_iso",
+         "press_machine"
+        ]
+       },
+       {
+        "key": "pulldown",
+        "label": "Pulldown or pullover",
+        "tags": [
+         "pull_vertical",
+         "pullover"
+        ]
+       },
+       {
+        "key": "rear_delt",
+        "label": "Rear-delt isolation",
+        "tags": [
+         "rear_delt"
+        ]
+       },
+       {
+        "key": "biceps",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       },
+       {
+        "key": "triceps",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       }
+      ]
+     },
+     "lower_a": {
+      "key": "lower_a",
+      "title": "Lower A",
+      "region": "lower",
+      "slots": [
+       {
+        "key": "main_squat",
+        "label": "Main lift: squat",
+        "tags": [],
+        "mainLift": "squat"
+       },
+       {
+        "key": "squat",
+        "label": "Squat",
+        "tags": [
+         "squat_free",
+         "squat_machine",
+         "split_squat"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ],
+        "replacedByMain": "squat"
+       },
+       {
+        "key": "hinge",
+        "label": "Hip hinge (RDL)",
+        "tags": [
+         "hinge_rdl"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ]
+       },
+       {
+        "key": "leg_ext",
+        "label": "Leg extension",
+        "tags": [
+         "leg_ext"
+        ]
+       },
+       {
+        "key": "leg_curl",
+        "label": "Leg curl",
+        "tags": [
+         "leg_curl",
+         "leg_curl_seated"
+        ]
+       },
+       {
+        "key": "calf",
+        "label": "Calf raise",
+        "tags": [
+         "calf"
+        ]
+       }
+      ]
+     },
+     "lower_b": {
+      "key": "lower_b",
+      "title": "Lower B",
+      "region": "lower",
+      "slots": [
+       {
+        "key": "main_deadlift",
+        "label": "Main lift: deadlift",
+        "tags": [],
+        "mainLift": "deadlift"
+       },
+       {
+        "key": "squat_machine",
+        "label": "Squat (machine or split squat)",
+        "tags": [
+         "squat_machine",
+         "split_squat",
+         "squat_free"
+        ],
+        "prefer": [
+         "lower_machine_compound",
+         "lower_free_compound"
+        ]
+       },
+       {
+        "key": "hip_ext",
+        "label": "Hip extension",
+        "tags": [
+         "hip_ext"
+        ]
+       },
+       {
+        "key": "leg_curl",
+        "label": "Leg curl (seated)",
+        "tags": [
+         "leg_curl_seated",
+         "leg_curl"
+        ]
+       },
+       {
+        "key": "leg_ext",
+        "label": "Leg extension",
+        "tags": [
+         "leg_ext"
+        ]
+       },
+       {
+        "key": "calf",
+        "label": "Calf raise",
+        "tags": [
+         "calf"
+        ]
+       }
+      ]
+     },
+     "alt_cb_qc": {
+      "key": "alt_cb_qc",
+      "title": "Chest & Back + Quads & Calves",
+      "region": "full",
+      "slots": [
+       {
+        "key": "incline_press",
+        "label": "Incline press",
+        "tags": [
+         "press_incline",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "row_flared",
+        "label": "Row (elbows wide)",
+        "tags": [
+         "row_flared",
+         "row_extension"
+        ]
+       },
+       {
+        "key": "flat_press",
+        "label": "Flat or machine press",
+        "tags": [
+         "press_flat",
+         "press_machine"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "pulldown",
+        "label": "Pulldown",
+        "tags": [
+         "pull_vertical"
+        ]
+       },
+       {
+        "key": "squat",
+        "label": "Squat or leg press",
+        "tags": [
+         "squat_free",
+         "squat_machine",
+         "split_squat"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ]
+       },
+       {
+        "key": "leg_ext",
+        "label": "Leg extension",
+        "tags": [
+         "leg_ext"
+        ]
+       },
+       {
+        "key": "calf",
+        "label": "Calf raise",
+        "tags": [
+         "calf"
+        ]
+       }
+      ]
+     },
+     "alt_arms_gh": {
+      "key": "alt_arms_gh",
+      "title": "Arms & Delts + Glutes & Hams",
+      "region": "full",
+      "slots": [
+       {
+        "key": "hinge",
+        "label": "Hip hinge (RDL)",
+        "tags": [
+         "hinge_rdl"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ]
+       },
+       {
+        "key": "hip_ext",
+        "label": "Hip extension",
+        "tags": [
+         "hip_ext"
+        ]
+       },
+       {
+        "key": "leg_curl",
+        "label": "Leg curl",
+        "tags": [
+         "leg_curl",
+         "leg_curl_seated"
+        ]
+       },
+       {
+        "key": "lat_raise",
+        "label": "Lateral raise",
+        "tags": [
+         "lat_raise"
+        ]
+       },
+       {
+        "key": "rear_delt",
+        "label": "Rear-delt isolation",
+        "tags": [
+         "rear_delt"
+        ]
+       },
+       {
+        "key": "biceps",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       },
+       {
+        "key": "triceps",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       }
+      ]
+     },
+     "upper_push": {
+      "key": "upper_push",
+      "title": "Upper Push",
+      "region": "upper",
+      "slots": [
+       {
+        "key": "incline_press",
+        "label": "Incline press",
+        "tags": [
+         "press_incline",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "flat_press",
+        "label": "Flat or machine press",
+        "tags": [
+         "press_flat",
+         "press_machine"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "ohp",
+        "label": "Shoulder press",
+        "tags": [
+         "press_vertical"
+        ]
+       },
+       {
+        "key": "lat_raise",
+        "label": "Lateral raise",
+        "tags": [
+         "lat_raise"
+        ]
+       },
+       {
+        "key": "triceps",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       },
+       {
+        "key": "triceps_2",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       }
+      ]
+     },
+     "upper_pull": {
+      "key": "upper_pull",
+      "title": "Upper Pull",
+      "region": "upper",
+      "slots": [
+       {
+        "key": "vertical_pull",
+        "label": "Vertical pull",
+        "tags": [
+         "pull_vertical",
+         "pullover"
+        ]
+       },
+       {
+        "key": "row_flared",
+        "label": "Row (elbows wide)",
+        "tags": [
+         "row_flared",
+         "row_extension"
+        ]
+       },
+       {
+        "key": "row_extension",
+        "label": "Row (elbows in)",
+        "tags": [
+         "row_extension",
+         "row_flared"
+        ]
+       },
+       {
+        "key": "rear_delt",
+        "label": "Rear-delt isolation",
+        "tags": [
+         "rear_delt"
+        ]
+       },
+       {
+        "key": "biceps",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       },
+       {
+        "key": "biceps_2",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       }
+      ]
+     },
+     "full_push": {
+      "key": "full_push",
+      "title": "Full Push",
+      "region": "full",
+      "slots": [
+       {
+        "key": "incline_press",
+        "label": "Incline press",
+        "tags": [
+         "press_incline",
+         "press_flat"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "flat_press",
+        "label": "Flat or machine press",
+        "tags": [
+         "press_flat",
+         "press_machine"
+        ],
+        "prefer": [
+         "upper_free_press",
+         "upper_machine_press"
+        ]
+       },
+       {
+        "key": "ohp",
+        "label": "Shoulder press",
+        "tags": [
+         "press_vertical"
+        ]
+       },
+       {
+        "key": "lat_raise",
+        "label": "Lateral raise",
+        "tags": [
+         "lat_raise"
+        ]
+       },
+       {
+        "key": "triceps",
+        "label": "Triceps isolation",
+        "tags": [
+         "triceps_iso"
+        ]
+       },
+       {
+        "key": "squat",
+        "label": "Squat or leg press",
+        "tags": [
+         "squat_free",
+         "squat_machine",
+         "split_squat"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ]
+       },
+       {
+        "key": "leg_ext",
+        "label": "Leg extension",
+        "tags": [
+         "leg_ext"
+        ]
+       },
+       {
+        "key": "calf",
+        "label": "Calf raise",
+        "tags": [
+         "calf"
+        ]
+       }
+      ]
+     },
+     "full_pull": {
+      "key": "full_pull",
+      "title": "Full Pull",
+      "region": "full",
+      "slots": [
+       {
+        "key": "vertical_pull",
+        "label": "Vertical pull",
+        "tags": [
+         "pull_vertical",
+         "pullover"
+        ]
+       },
+       {
+        "key": "row_flared",
+        "label": "Row (elbows wide)",
+        "tags": [
+         "row_flared",
+         "row_extension"
+        ]
+       },
+       {
+        "key": "row_extension",
+        "label": "Row (elbows in)",
+        "tags": [
+         "row_extension",
+         "row_flared"
+        ]
+       },
+       {
+        "key": "rear_delt",
+        "label": "Rear-delt isolation",
+        "tags": [
+         "rear_delt"
+        ]
+       },
+       {
+        "key": "biceps",
+        "label": "Biceps isolation",
+        "tags": [
+         "biceps_iso"
+        ]
+       },
+       {
+        "key": "hinge",
+        "label": "Hip hinge (RDL)",
+        "tags": [
+         "hinge_rdl"
+        ],
+        "prefer": [
+         "lower_free_compound",
+         "lower_machine_compound"
+        ]
+       },
+       {
+        "key": "leg_curl",
+        "label": "Leg curl",
+        "tags": [
+         "leg_curl",
+         "leg_curl_seated"
+        ]
+       },
+       {
+        "key": "hip_ext",
+        "label": "Hip extension",
+        "tags": [
+         "hip_ext"
+        ]
+       }
+      ]
+     }
+    },
+    "SPLITS": {
+     "FB2": {
+      "key": "FB2",
+      "name": "Full Body ×2",
+      "templates": [
+       "full_a",
+       "full_b"
+      ]
+     },
+     "UL2": {
+      "key": "UL2",
+      "name": "Upper / Lower",
+      "templates": [
+       "upper_a",
+       "lower_a"
+      ]
+     },
+     "FB3": {
+      "key": "FB3",
+      "name": "Full Body ×3",
+      "templates": [
+       "full_a",
+       "full_b",
+       "full_c"
+      ]
+     },
+     "FPF3": {
+      "key": "FPF3",
+      "name": "Full Push / Full Pull / Full Body",
+      "templates": [
+       "full_push",
+       "full_pull",
+       "full_a"
+      ]
+     },
+     "UL4": {
+      "key": "UL4",
+      "name": "Upper / Lower ×2",
+      "templates": [
+       "upper_a",
+       "lower_a",
+       "upper_b",
+       "lower_b"
+      ]
+     },
+     "ALT4": {
+      "key": "ALT4",
+      "name": "Alternating ×2",
+      "templates": [
+       "alt_cb_qc",
+       "alt_arms_gh",
+       "alt_cb_qc",
+       "alt_arms_gh"
+      ]
+     },
+     "UL5": {
+      "key": "UL5",
+      "name": "Upper / Lower ×2 + Full Body",
+      "templates": [
+       "upper_a",
+       "lower_a",
+       "upper_b",
+       "lower_b",
+       "full_c"
+      ]
+     },
+     "LPP5": {
+      "key": "LPP5",
+      "name": "Lower / Push / Pull / Full Push / Full Pull",
+      "templates": [
+       "lower_a",
+       "upper_push",
+       "upper_pull",
+       "full_push",
+       "full_pull"
+      ]
+     },
+     "ALT6": {
+      "key": "ALT6",
+      "name": "Alternating ×3",
+      "templates": [
+       "alt_cb_qc",
+       "alt_arms_gh",
+       "alt_cb_qc",
+       "alt_arms_gh",
+       "alt_cb_qc",
+       "alt_arms_gh"
+      ]
+     },
+     "FPP6": {
+      "key": "FPP6",
+      "name": "Full Push / Full Pull ×3",
+      "templates": [
+       "full_push",
+       "full_pull",
+       "full_push",
+       "full_pull",
+       "full_push",
+       "full_pull"
+      ]
+     },
+     "ULF6": {
+      "key": "ULF6",
+      "name": "Upper / Lower ×2 + Full Body ×2",
+      "templates": [
+       "upper_a",
+       "lower_a",
+       "full_c",
+       "upper_b",
+       "lower_b",
+       "full_a"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 1 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 1,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, lean_gain, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, lean_gain, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, lean_gain, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, recomp, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, recomp, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, recomp, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, strength, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, strength, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, strength, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, fat_loss, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, fat_loss, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, fat_loss, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, sport_support, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, sport_support, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, no style, sport_support, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, lean_gain, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, lean_gain, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, lean_gain, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, recomp, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, recomp, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, recomp, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, strength, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, strength, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, strength, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, fat_loss, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, fat_loss, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, fat_loss, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, sport_support, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, sport_support, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, default, sport_support, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, lean_gain, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, lean_gain, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, lean_gain, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, recomp, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, recomp, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, recomp, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, strength, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, strength, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, strength, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, fat_loss, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, fat_loss, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, fat_loss, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, sport_support, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, sport_support, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB2",
+     "name": "Full Body ×2",
+     "templates": [
+      "full_a",
+      "full_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 2 days, alternative, sport_support, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 2,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL2",
+     "name": "Upper / Lower",
+     "templates": [
+      "upper_a",
+      "lower_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, lean_gain, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, lean_gain, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, lean_gain, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, recomp, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, recomp, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, recomp, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, strength, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, strength, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, strength, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, fat_loss, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, fat_loss, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, fat_loss, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, sport_support, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, sport_support, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, no style, sport_support, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, lean_gain, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, lean_gain, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, lean_gain, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, recomp, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, recomp, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, recomp, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, strength, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, strength, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, strength, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, fat_loss, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, fat_loss, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, fat_loss, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, sport_support, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, sport_support, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, default, sport_support, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01",
+     "T-SPL-02"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, lean_gain, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, lean_gain, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, lean_gain, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, recomp, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, recomp, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, recomp, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, strength, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, strength, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, strength, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FB3",
+     "name": "Full Body ×3",
+     "templates": [
+      "full_a",
+      "full_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, fat_loss, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, fat_loss, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, fat_loss, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, sport_support, lower 16, max 8.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 16,
+     "maxTarget": 8.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, sport_support, lower 15.9, max 12",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 15.9,
+     "maxTarget": 12
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 3 days, alternative, sport_support, lower 20, max 7.5",
+   "input": {
+    "call": "chooseSplit",
+    "k": 3,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 20,
+     "maxTarget": 7.5
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPF3",
+     "name": "Full Push / Full Pull / Full Body",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT4",
+     "name": "Alternating ×2",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT4",
+     "name": "Alternating ×2",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL4",
+     "name": "Upper / Lower ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT4",
+     "name": "Alternating ×2",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 4 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 4,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT4",
+     "name": "Alternating ×2",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "LPP5",
+     "name": "Lower / Push / Pull / Full Push / Full Pull",
+     "templates": [
+      "lower_a",
+      "upper_push",
+      "upper_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "LPP5",
+     "name": "Lower / Push / Pull / Full Push / Full Pull",
+     "templates": [
+      "lower_a",
+      "upper_push",
+      "upper_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "UL5",
+     "name": "Upper / Lower ×2 + Full Body",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "upper_b",
+      "lower_b",
+      "full_c"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "LPP5",
+     "name": "Lower / Push / Pull / Full Push / Full Pull",
+     "templates": [
+      "lower_a",
+      "upper_push",
+      "upper_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 5 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 5,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "LPP5",
+     "name": "Lower / Push / Pull / Full Push / Full Pull",
+     "templates": [
+      "lower_a",
+      "upper_push",
+      "upper_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 6 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 6,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, no style, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, no style, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, no style, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, no style, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, no style, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, default, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "default",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, default, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "default",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, default, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "default",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, default, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "default",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, default, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "default",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ALT6",
+     "name": "Alternating ×3",
+     "templates": [
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh",
+      "alt_cb_qc",
+      "alt_arms_gh"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, alternative, lean_gain, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "alternative",
+     "goal": "lean_gain",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, alternative, recomp, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "alternative",
+     "goal": "recomp",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, alternative, strength, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "alternative",
+     "goal": "strength",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "ULF6",
+     "name": "Upper / Lower ×2 + Full Body ×2",
+     "templates": [
+      "upper_a",
+      "lower_a",
+      "full_c",
+      "upper_b",
+      "lower_b",
+      "full_a"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, alternative, fat_loss, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "alternative",
+     "goal": "fat_loss",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "chooseSplit 7 days, alternative, sport_support, lower 10, max 8",
+   "input": {
+    "call": "chooseSplit",
+    "k": 7,
+    "opts": {
+     "style": "alternative",
+     "goal": "sport_support",
+     "lowerTargetAvg": 10,
+     "maxTarget": 8
+    }
+   },
+   "output": {
+    "split": {
+     "key": "FPP6",
+     "name": "Full Push / Full Pull ×3",
+     "templates": [
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull",
+      "full_push",
+      "full_pull"
+     ]
+    },
+    "ruleIds": [
+     "T-SPL-01"
+    ]
+   }
+  },
+  {
+   "name": "sessionVariant FB2 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_a",
+     "full_b"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FB2 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_a",
+     "full_b"
+    ],
+    "index": 1
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant UL2 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant UL2 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FB3 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_a",
+     "full_b",
+     "full_c"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FB3 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_a",
+     "full_b",
+     "full_c"
+    ],
+    "index": 1
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant FB3 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_a",
+     "full_b",
+     "full_c"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant FPF3 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_a"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FPF3 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_a"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FPF3 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_a"
+    ],
+    "index": 2
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant UL4 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant UL4 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant UL4 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant UL4 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b"
+    ],
+    "index": 3
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ALT4 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ALT4 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ALT4 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ALT4 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 3
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant UL5 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b",
+     "full_c"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant UL5 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b",
+     "full_c"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant UL5 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b",
+     "full_c"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant UL5 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b",
+     "full_c"
+    ],
+    "index": 3
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant UL5 day 4",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "upper_b",
+     "lower_b",
+     "full_c"
+    ],
+    "index": 4
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant LPP5 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_a",
+     "upper_push",
+     "upper_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant LPP5 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_a",
+     "upper_push",
+     "upper_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant LPP5 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_a",
+     "upper_push",
+     "upper_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 2
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant LPP5 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_a",
+     "upper_push",
+     "upper_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 3
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant LPP5 day 4",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_a",
+     "upper_push",
+     "upper_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 4
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ALT6 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ALT6 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ALT6 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ALT6 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 3
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ALT6 day 4",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 4
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ALT6 day 5",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh",
+     "alt_cb_qc",
+     "alt_arms_gh"
+    ],
+    "index": 5
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant FPP6 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FPP6 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant FPP6 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant FPP6 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 3
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant FPP6 day 4",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 4
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant FPP6 day 5",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull",
+     "full_push",
+     "full_pull"
+    ],
+    "index": 5
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ULF6 day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "full_c",
+     "upper_b",
+     "lower_b",
+     "full_a"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ULF6 day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "full_c",
+     "upper_b",
+     "lower_b",
+     "full_a"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant ULF6 day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "full_c",
+     "upper_b",
+     "lower_b",
+     "full_a"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ULF6 day 3",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "full_c",
+     "upper_b",
+     "lower_b",
+     "full_a"
+    ],
+    "index": 3
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ULF6 day 4",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "full_c",
+     "upper_b",
+     "lower_b",
+     "full_a"
+    ],
+    "index": 4
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant ULF6 day 5",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_a",
+     "lower_a",
+     "full_c",
+     "upper_b",
+     "lower_b",
+     "full_a"
+    ],
+    "index": 5
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant a key that repeats later, day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_push",
+     "upper_pull",
+     "upper_push"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant a key that repeats later, day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_push",
+     "upper_pull",
+     "upper_push"
+    ],
+    "index": 1
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant a key that repeats later, day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "upper_push",
+     "upper_pull",
+     "upper_push"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant a key seen only once, day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "full_push"
+    ],
+    "index": 0
+   },
+   "output": "A"
+  },
+  {
+   "name": "sessionVariant keys ending in _c and _b, day 0",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_b",
+     "full_c",
+     "lower_b"
+    ],
+    "index": 0
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant keys ending in _c and _b, day 1",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_b",
+     "full_c",
+     "lower_b"
+    ],
+    "index": 1
+   },
+   "output": "B"
+  },
+  {
+   "name": "sessionVariant keys ending in _c and _b, day 2",
+   "input": {
+    "call": "sessionVariant",
+    "templates": [
+     "lower_b",
+     "full_c",
+     "lower_b"
+    ],
+    "index": 2
+   },
+   "output": "B"
+  },
+  {
+   "name": "templateRegionMuscles upper",
+   "input": {
+    "call": "templateRegionMuscles",
+    "region": "upper"
+   },
+   "output": [
+    "chest",
+    "back",
+    "front_delts",
+    "side_delts",
+    "rear_delts",
+    "biceps",
+    "triceps"
+   ]
+  },
+  {
+   "name": "loadsLower upper",
+   "input": {
+    "call": "loadsLower",
+    "region": "upper"
+   },
+   "output": false
+  },
+  {
+   "name": "regionsOverlap upper upper",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "upper",
+    "b": "upper"
+   },
+   "output": true
+  },
+  {
+   "name": "regionsOverlap upper lower",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "upper",
+    "b": "lower"
+   },
+   "output": false
+  },
+  {
+   "name": "regionsOverlap upper full",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "upper",
+    "b": "full"
+   },
+   "output": true
+  },
+  {
+   "name": "templateRegionMuscles lower",
+   "input": {
+    "call": "templateRegionMuscles",
+    "region": "lower"
+   },
+   "output": [
+    "quads",
+    "hamstrings",
+    "glutes",
+    "calves"
+   ]
+  },
+  {
+   "name": "loadsLower lower",
+   "input": {
+    "call": "loadsLower",
+    "region": "lower"
+   },
+   "output": true
+  },
+  {
+   "name": "regionsOverlap lower upper",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "lower",
+    "b": "upper"
+   },
+   "output": false
+  },
+  {
+   "name": "regionsOverlap lower lower",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "lower",
+    "b": "lower"
+   },
+   "output": true
+  },
+  {
+   "name": "regionsOverlap lower full",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "lower",
+    "b": "full"
+   },
+   "output": true
+  },
+  {
+   "name": "templateRegionMuscles full",
+   "input": {
+    "call": "templateRegionMuscles",
+    "region": "full"
+   },
+   "output": [
+    "chest",
+    "back",
+    "quads",
+    "hamstrings",
+    "glutes"
+   ]
+  },
+  {
+   "name": "loadsLower full",
+   "input": {
+    "call": "loadsLower",
+    "region": "full"
+   },
+   "output": true
+  },
+  {
+   "name": "regionsOverlap full upper",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "full",
+    "b": "upper"
+   },
+   "output": true
+  },
+  {
+   "name": "regionsOverlap full lower",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "full",
+    "b": "lower"
+   },
+   "output": true
+  },
+  {
+   "name": "regionsOverlap full full",
+   "input": {
+    "call": "regionsOverlap",
+    "a": "full",
+    "b": "full"
+   },
+   "output": true
+  }
+ ]
+}
