@@ -4,3 +4,4 @@ library;
 export 'src/split.dart';
 export 'src/selection.dart';
 export 'src/swap.dart';
+export 'src/strength.dart';

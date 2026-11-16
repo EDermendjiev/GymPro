@@ -1,0 +1,3845 @@
+{
+ "fn": "strength",
+ "cases": [
+  {
+   "name": "phase hypertrophy, week 0 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 0 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 0 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 2 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 2,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 11,
+    "backoffReps": 1,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 0 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 2 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 2,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 3 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 3,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 0 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 2 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 2,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 3 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 3,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 4 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 4,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 0 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 5.5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 2 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 2,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 3 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 3,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 4 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 4,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 5 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 5,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 6 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 6,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 0 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 0,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 1 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 1,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 5.5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 2 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 2,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 3 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 3,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 4 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 4,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 5 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 5,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 6 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 6,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 7 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 7,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase hypertrophy, week 8 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "hypertrophy",
+    "weekIndex": 8,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 2 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 2,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 11,
+    "backoffReps": 1,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 2 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 2,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 3 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 3,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 2 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 2,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 3 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 3,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 4 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 4,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 5.5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 2 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 2,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 3 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 3,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 4 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 4,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 5 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 5,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 6 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 6,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 0 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 0,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 1 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 1,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 5.5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 2 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 2,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 3 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 3,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 4 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 4,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 5 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 5,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 6 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 6,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 7 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 7,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_volume, week 8 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_volume",
+    "weekIndex": 8,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 2 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 2,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 12,
+    "backoffReps": 1,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 2 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 2,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 3 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 3,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 10.5,
+    "backoffReps": 2,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 2 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 2,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 3 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 3,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 4 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 4,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 2 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 2,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 3 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 3,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 4 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 4,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 5 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 5,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 6 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 6,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 0 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 0,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 1 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 1,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 5,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 2 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 2,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 3 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 3,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 4 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 4,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 5 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 5,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 6 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 6,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 7 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 7,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_load, week 8 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_load",
+    "weekIndex": 8,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 3,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 2 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 2,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 13,
+    "backoffReps": 0,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 2 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 2,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 3 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 3,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 11.5,
+    "backoffReps": 1,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 2 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 2,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 3 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 3,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 4 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 4,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 11,
+    "backoffReps": 1,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 2 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 2,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 3 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 3,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 4 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 4,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 5 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 5,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 6 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 6,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 10.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 0 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 0,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 1 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 1,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 4,
+    "backoffSets": 2
+   }
+  },
+  {
+   "name": "phase strength_peak, week 2 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 2,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 3 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 3,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 4 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 4,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 5 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 5,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 3,
+    "backoffSets": 1
+   }
+  },
+  {
+   "name": "phase strength_peak, week 6 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 6,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 7 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 7,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 10,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase strength_peak, week 8 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "strength_peak",
+    "weekIndex": 8,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 10.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 0",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 0
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 1",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 1
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 2 of 2",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 2,
+    "weeks": 2
+   },
+   "output": {
+    "singleRpe": 11,
+    "backoffReps": 1,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 2 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 2,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 3 of 3",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 3,
+    "weeks": 3
+   },
+   "output": {
+    "singleRpe": 9.5,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 2 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 2,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 3 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 3,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 4 of 4",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 4,
+    "weeks": 4
+   },
+   "output": {
+    "singleRpe": 9,
+    "backoffReps": 2,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 5.5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 2 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 2,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 3 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 3,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 4 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 4,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 5 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 5,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 6 of 6",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 6,
+    "weeks": 6
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 0 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 0,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 1 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 1,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 5.5,
+    "backoffReps": 5,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 2 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 2,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 3 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 3,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 4 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 4,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 6.5,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 5 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 5,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7,
+    "backoffReps": 4,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 6 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 6,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 7.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 7 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 7,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "phase sport_support, week 8 of 8",
+   "input": {
+    "call": "phase",
+    "kind": "sport_support",
+    "weekIndex": 8,
+    "weeks": 8
+   },
+   "output": {
+    "singleRpe": 8.5,
+    "backoffReps": 3,
+    "backoffSets": 0
+   }
+  },
+  {
+   "name": "peakWeeks 0",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 0
+   },
+   "output": 2
+  },
+  {
+   "name": "peakWeeks 9",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 9
+   },
+   "output": 2
+  },
+  {
+   "name": "peakWeeks 10",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 10
+   },
+   "output": 2
+  },
+  {
+   "name": "peakWeeks 12",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 12
+   },
+   "output": 2
+  },
+  {
+   "name": "peakWeeks 13",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 13
+   },
+   "output": 3
+  },
+  {
+   "name": "peakWeeks 15",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 15
+   },
+   "output": 3
+  },
+  {
+   "name": "peakWeeks 16",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 16
+   },
+   "output": 4
+  },
+  {
+   "name": "peakWeeks 20",
+   "input": {
+    "call": "peakWeeks",
+    "volumeLoadWeeks": 20
+   },
+   "output": 4
+  },
+  {
+   "name": "singleLoad null kg at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": null,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 2 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 2,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 5 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad null kg at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": null,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 2 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 2,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 5 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad null kg at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": null,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 2 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 2,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 5 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad null kg at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": null,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 2 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 2,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad null kg, 5 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": null,
+    "reps": 5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad undefined kg at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 2 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 2,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 5 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad undefined kg at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 2 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 2,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 5 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad undefined kg at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 2 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 2,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 5 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad undefined kg at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 2 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 2,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad undefined kg, 5 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "reps": 5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad 0 kg at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 0,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 2 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 2,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 5 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad 0 kg at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 0,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 2 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 2,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 5 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad 0 kg at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 0,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 2 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 2,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 5 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad 0 kg at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 0,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 2 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 2,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "backoffLoad 0 kg, 5 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 0,
+    "reps": 5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": null
+  },
+  {
+   "name": "singleLoad 100 kg at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 100,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 90
+  },
+  {
+   "name": "backoffLoad 100 kg, 2 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 2,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 85
+  },
+  {
+   "name": "backoffLoad 100 kg, 5 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 77.5
+  },
+  {
+   "name": "singleLoad 100 kg at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 100,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 93
+  },
+  {
+   "name": "backoffLoad 100 kg, 2 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 2,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 90
+  },
+  {
+   "name": "backoffLoad 100 kg, 5 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 82
+  },
+  {
+   "name": "singleLoad 100 kg at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 100,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 100
+  },
+  {
+   "name": "backoffLoad 100 kg, 2 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 2,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 95
+  },
+  {
+   "name": "backoffLoad 100 kg, 5 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 90
+  },
+  {
+   "name": "singleLoad 100 kg at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 100,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 96
+  },
+  {
+   "name": "backoffLoad 100 kg, 2 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 2,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 94
+  },
+  {
+   "name": "backoffLoad 100 kg, 5 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 100,
+    "reps": 5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 84
+  },
+  {
+   "name": "singleLoad 142.5 kg at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 142.5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 127.5
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 2 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 2,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 122.5
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 5 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 110
+  },
+  {
+   "name": "singleLoad 142.5 kg at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 142.5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 133
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 2 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 2,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 129
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 5 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 117
+  },
+  {
+   "name": "singleLoad 142.5 kg at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 142.5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 145
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 2 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 2,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 140
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 5 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 125
+  },
+  {
+   "name": "singleLoad 142.5 kg at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 142.5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 136
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 2 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 2,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 132
+  },
+  {
+   "name": "backoffLoad 142.5 kg, 5 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 142.5,
+    "reps": 5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 120
+  },
+  {
+   "name": "singleLoad 187.3 kg at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 187.3,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 167.5
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 2 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 2,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 162.5
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 5 reps at RPE 6 in 2.5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 5,
+    "rpe": 6,
+    "increment": 2.5
+   },
+   "output": 145
+  },
+  {
+   "name": "singleLoad 187.3 kg at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 187.3,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 174
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 2 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 2,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 169
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 5 reps at RPE 7.5 in 1 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 5,
+    "rpe": 7.5,
+    "increment": 1
+   },
+   "output": 153
+  },
+  {
+   "name": "singleLoad 187.3 kg at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 187.3,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 185
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 2 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 2,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 180
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 5 reps at RPE 10 in 5 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 5,
+    "rpe": 10,
+    "increment": 5
+   },
+   "output": 165
+  },
+  {
+   "name": "singleLoad 187.3 kg at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "singleLoad",
+    "e1rmKg": 187.3,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 180
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 2 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 2,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 174
+  },
+  {
+   "name": "backoffLoad 187.3 kg, 5 reps at RPE 8.5 in 2 kg steps",
+   "input": {
+    "call": "backoffLoad",
+    "e1rmKg": 187.3,
+    "reps": 5,
+    "rpe": 8.5,
+    "increment": 2
+   },
+   "output": 158
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, no test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, a null test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": null,
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, an empty test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": "",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, a test today",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": "2026-10-26",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, a test tomorrow",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": "2026-10-27",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, a test in five weeks",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": "2026-11-30",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, a test in five weeks and a day",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": "2026-12-01",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after hypertrophy, a test in the past",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "hypertrophy",
+    "testDate": "2026-10-23",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, no test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, a null test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": null,
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, an empty test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": "",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, a test today",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": "2026-10-26",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, a test tomorrow",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": "2026-10-27",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, a test in five weeks",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": "2026-11-30",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, a test in five weeks and a day",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": "2026-12-01",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_volume, a test in the past",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_volume",
+    "testDate": "2026-10-23",
+    "today": "2026-10-26"
+   },
+   "output": "strength_load"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, no test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, a null test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": null,
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, an empty test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": "",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, a test today",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": "2026-10-26",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, a test tomorrow",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": "2026-10-27",
+    "today": "2026-10-26"
+   },
+   "output": "strength_peak"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, a test in five weeks",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": "2026-11-30",
+    "today": "2026-10-26"
+   },
+   "output": "strength_peak"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, a test in five weeks and a day",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": "2026-12-01",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_load, a test in the past",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_load",
+    "testDate": "2026-10-23",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, no test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, a null test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": null,
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, an empty test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": "",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, a test today",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": "2026-10-26",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, a test tomorrow",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": "2026-10-27",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, a test in five weeks",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": "2026-11-30",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, a test in five weeks and a day",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": "2026-12-01",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after strength_peak, a test in the past",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "strength_peak",
+    "testDate": "2026-10-23",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, no test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, a null test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": null,
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, an empty test date",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": "",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, a test today",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": "2026-10-26",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, a test tomorrow",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": "2026-10-27",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, a test in five weeks",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": "2026-11-30",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, a test in five weeks and a day",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": "2026-12-01",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "nextStrengthKind after sport_support, a test in the past",
+   "input": {
+    "call": "nextStrengthKind",
+    "current": "sport_support",
+    "testDate": "2026-10-23",
+    "today": "2026-10-26"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "defaultBlockKind lean_gain",
+   "input": {
+    "call": "defaultBlockKind",
+    "goal": "lean_gain"
+   },
+   "output": "hypertrophy"
+  },
+  {
+   "name": "defaultBlockKind recomp",
+   "input": {
+    "call": "defaultBlockKind",
+    "goal": "recomp"
+   },
+   "output": "hypertrophy"
+  },
+  {
+   "name": "defaultBlockKind strength",
+   "input": {
+    "call": "defaultBlockKind",
+    "goal": "strength"
+   },
+   "output": "strength_volume"
+  },
+  {
+   "name": "defaultBlockKind fat_loss",
+   "input": {
+    "call": "defaultBlockKind",
+    "goal": "fat_loss"
+   },
+   "output": "hypertrophy"
+  },
+  {
+   "name": "defaultBlockKind sport_support",
+   "input": {
+    "call": "defaultBlockKind",
+    "goal": "sport_support"
+   },
+   "output": "sport_support"
+  },
+  {
+   "name": "blockWeeks hypertrophy, no options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "hypertrophy"
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks hypertrophy, empty options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "hypertrophy",
+    "opts": {}
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks hypertrophy, 0 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "hypertrophy",
+    "opts": {
+     "volumeLoadWeeks": 0
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks hypertrophy, 12 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "hypertrophy",
+    "opts": {
+     "volumeLoadWeeks": 12
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks hypertrophy, 13 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "hypertrophy",
+    "opts": {
+     "volumeLoadWeeks": 13
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks hypertrophy, 16 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "hypertrophy",
+    "opts": {
+     "volumeLoadWeeks": 16
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "isStrengthKind hypertrophy",
+   "input": {
+    "call": "isStrengthKind",
+    "kind": "hypertrophy"
+   },
+   "output": false
+  },
+  {
+   "name": "blockWeeks strength_volume, no options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_volume"
+   },
+   "output": 8
+  },
+  {
+   "name": "blockWeeks strength_volume, empty options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_volume",
+    "opts": {}
+   },
+   "output": 8
+  },
+  {
+   "name": "blockWeeks strength_volume, 0 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_volume",
+    "opts": {
+     "volumeLoadWeeks": 0
+    }
+   },
+   "output": 8
+  },
+  {
+   "name": "blockWeeks strength_volume, 12 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_volume",
+    "opts": {
+     "volumeLoadWeeks": 12
+    }
+   },
+   "output": 8
+  },
+  {
+   "name": "blockWeeks strength_volume, 13 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_volume",
+    "opts": {
+     "volumeLoadWeeks": 13
+    }
+   },
+   "output": 8
+  },
+  {
+   "name": "blockWeeks strength_volume, 16 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_volume",
+    "opts": {
+     "volumeLoadWeeks": 16
+    }
+   },
+   "output": 8
+  },
+  {
+   "name": "isStrengthKind strength_volume",
+   "input": {
+    "call": "isStrengthKind",
+    "kind": "strength_volume"
+   },
+   "output": true
+  },
+  {
+   "name": "blockWeeks strength_load, no options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_load"
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks strength_load, empty options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_load",
+    "opts": {}
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks strength_load, 0 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_load",
+    "opts": {
+     "volumeLoadWeeks": 0
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks strength_load, 12 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_load",
+    "opts": {
+     "volumeLoadWeeks": 12
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks strength_load, 13 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_load",
+    "opts": {
+     "volumeLoadWeeks": 13
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks strength_load, 16 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_load",
+    "opts": {
+     "volumeLoadWeeks": 16
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "isStrengthKind strength_load",
+   "input": {
+    "call": "isStrengthKind",
+    "kind": "strength_load"
+   },
+   "output": true
+  },
+  {
+   "name": "blockWeeks strength_peak, no options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_peak"
+   },
+   "output": 3
+  },
+  {
+   "name": "blockWeeks strength_peak, empty options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_peak",
+    "opts": {}
+   },
+   "output": 3
+  },
+  {
+   "name": "blockWeeks strength_peak, 0 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_peak",
+    "opts": {
+     "volumeLoadWeeks": 0
+    }
+   },
+   "output": 2
+  },
+  {
+   "name": "blockWeeks strength_peak, 12 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_peak",
+    "opts": {
+     "volumeLoadWeeks": 12
+    }
+   },
+   "output": 2
+  },
+  {
+   "name": "blockWeeks strength_peak, 13 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_peak",
+    "opts": {
+     "volumeLoadWeeks": 13
+    }
+   },
+   "output": 3
+  },
+  {
+   "name": "blockWeeks strength_peak, 16 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "strength_peak",
+    "opts": {
+     "volumeLoadWeeks": 16
+    }
+   },
+   "output": 4
+  },
+  {
+   "name": "isStrengthKind strength_peak",
+   "input": {
+    "call": "isStrengthKind",
+    "kind": "strength_peak"
+   },
+   "output": true
+  },
+  {
+   "name": "blockWeeks sport_support, no options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "sport_support"
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks sport_support, empty options",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "sport_support",
+    "opts": {}
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks sport_support, 0 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "sport_support",
+    "opts": {
+     "volumeLoadWeeks": 0
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks sport_support, 12 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "sport_support",
+    "opts": {
+     "volumeLoadWeeks": 12
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks sport_support, 13 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "sport_support",
+    "opts": {
+     "volumeLoadWeeks": 13
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "blockWeeks sport_support, 16 weeks before",
+   "input": {
+    "call": "blockWeeks",
+    "kind": "sport_support",
+    "opts": {
+     "volumeLoadWeeks": 16
+    }
+   },
+   "output": 6
+  },
+  {
+   "name": "isStrengthKind sport_support",
+   "input": {
+    "call": "isStrengthKind",
+    "kind": "sport_support"
+   },
+   "output": false
+  }
+ ]
+}
