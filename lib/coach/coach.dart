@@ -16,4 +16,5 @@ export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarg
 export 'facade.dart' show CoachFacade;
 export 'ui/session_prompts.dart' show CoachAskEffort, coachSessionPrompts;
 export 'ui/why_sheet.dart' show CoachTargetLine;
+export 'ui/nutrition_goals_card.dart' show CoachGoalsCard;
 export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSettingsIcon, coachSettingsSearchRows;

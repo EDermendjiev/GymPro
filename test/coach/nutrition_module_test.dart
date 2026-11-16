@@ -210,4 +210,43 @@ void main() {
       expect(kcalAt(1.2), lessThan(g1['output']['kcal'] as int));
     });
   });
+
+  group('6.3 the phase picker', () {
+    test('a picked phase replaces the goal\'s phase and survives a restart', () {
+      final g1 = _case('G1:');
+      _arrange(g1['input'] as Map<String, dynamic>);
+      expect(fit.coachNutritionTargets!.phase, CoachNutritionPhase.gain);
+      fit.setCoachNutritionPhase(CoachNutritionPhase.loss);
+      var c = fit.coachNutritionTargets!;
+      expect((c.phase, c.phasePicked), (CoachNutritionPhase.loss, true));
+      expect(c.delta, lessThan(0));
+      final lossKcal = fit.suggestedGoals.kcal;
+      expect(lossKcal, lessThan(g1['output']['kcal'] as int));
+
+      fit.persistNow();
+      fit.coach = CoachData.empty();
+      fit.loadFromStore();
+      expect(fit.coach.nutrition['phase'], 'loss');
+      c = fit.coachNutritionTargets!;
+      expect((c.phase, c.phasePicked), (CoachNutritionPhase.loss, true));
+      expect(fit.suggestedGoals.kcal, lossKcal);
+      expect(fit.coach.toJson()['nutrition'], {'phase': 'loss'});
+    });
+
+    test('a picked phase works without a coaching profile', () {
+      fit.setCoachModule(CoachModule.nutrition, true);
+      fit.setCoachNutritionPhase(CoachNutritionPhase.gain);
+      expect(fit.coachNutritionTargets!.phase, CoachNutritionPhase.gain);
+      expect(fit.coachNutritionTargets!.delta, greaterThan(0));
+    });
+
+    test('the coach sets the goals only while the module is on and no goals of the user\'s own are set', () {
+      expect(fit.coachSetsGoals, isFalse);
+      fit.setCoachModule(CoachModule.nutrition, true);
+      expect(fit.coachSetsGoals, isTrue);
+      expect(fit.coachNutritionRules(), isNotEmpty);
+      fit.useSuggestedGoals();
+      expect(fit.coachSetsGoals, isFalse);
+    });
+  });
 }

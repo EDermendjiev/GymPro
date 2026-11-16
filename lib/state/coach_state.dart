@@ -269,6 +269,25 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     );
   }
 
+  /// Whether the goals in force are the coach's: the nutrition module is on and the user has not set their own.
+  bool get coachSetsGoals => coach.isOn(CoachModule.nutrition) && !nutritionGoalsSet;
+
+  /// Stores [phase] as the user's pick under `coach.nutrition.phase`, in place of the one that follows from the
+  /// coaching goal.
+  void setCoachNutritionPhase(CoachNutritionPhase phase) {
+    if (coach.nutrition['phase'] == phase.wire) return;
+    coach = coach.copyWith(nutrition: {...coach.nutrition, 'phase': phase.wire});
+    _persist();
+    notifyListeners();
+  }
+
+  /// The plain-words summary of every rule behind the coach's nutrition targets, for the reason sheet. Empty while
+  /// the module is off. The texts are in English.
+  List<String> coachNutritionRules() {
+    final c = coachNutritionTargets;
+    return c == null ? const [] : CoachFacade.ruleSummaries(c.ruleIds);
+  }
+
   /// Set while the stock suggestion is worked out for [coachNutritionGoals], so the seam stays out of the way.
   bool _coachStockGoals = false;
 

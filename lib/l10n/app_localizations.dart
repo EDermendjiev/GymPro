@@ -13717,6 +13717,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The coach\'s reasoning, in its own words'**
   String get coachWhyNote;
+
+  /// No description provided for @coachGoalsSetBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Set by coach'**
+  String get coachGoalsSetBy;
+
+  /// No description provided for @coachGoalsWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why these goals'**
+  String get coachGoalsWhy;
+
+  /// No description provided for @coachGoalsPhase.
+  ///
+  /// In en, this message translates to:
+  /// **'Phase'**
+  String get coachGoalsPhase;
+
+  /// No description provided for @coachPhaseGain.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain'**
+  String get coachPhaseGain;
+
+  /// No description provided for @coachPhaseMaintain.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintain'**
+  String get coachPhaseMaintain;
+
+  /// No description provided for @coachPhaseLoss.
+  ///
+  /// In en, this message translates to:
+  /// **'Lose'**
+  String get coachPhaseLoss;
+
+  /// No description provided for @coachGoalsBasis.
+  ///
+  /// In en, this message translates to:
+  /// **'For {weight}: about {energy} a day keeps your weight'**
+  String coachGoalsBasis(String weight, String energy);
+
+  /// No description provided for @coachGoalsGain.
+  ///
+  /// In en, this message translates to:
+  /// **'Plus {energy} a day to gain'**
+  String coachGoalsGain(String energy);
+
+  /// No description provided for @coachGoalsLoss.
+  ///
+  /// In en, this message translates to:
+  /// **'Minus {energy} a day to lose'**
+  String coachGoalsLoss(String energy);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -168,6 +168,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | planned |
 | `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | done |
+| `lib/screens/nutrition_screen.dart`, `lib/screens/nutrition/settings.dart` | import of the barrel (for its part `nutrition/settings.dart`); the coach's goals card (`CoachGoalsCard`) under the goals sheet's title | done |
 | `lib/screens/settings_screen.dart` | "Coach" category: import of the barrel, the category, its title, its place in the Home group, its section | done |
 | `lib/screens/about_screen.dart`, `README.md` | credit line, fork links | done |
 | `lib/app/gymmane_app.dart`, `android/app/build.gradle.kts`, `android/app/src/main/AndroidManifest.xml`, `android/app/src/main/res/xml/shortcuts.xml`, `ios/Runner/Info.plist`; unmarked: `ios/Runner.xcodeproj/project.pbxproj`, `fastlane/metadata/android/*/title.txt`, `web/index.html`, `web/manifest.json` | app identity (name and application id) | done |
@@ -293,6 +294,15 @@ protein, fat and carbs. Water, fibre, sugar, sodium and glass size are the
 app's own suggestion, worked out by the stock code path (the seam stands aside
 while `CoachState` asks for it). Goals the user has set by hand always win:
 `activeGoals` only asks for the suggestion when none are set.
+
+While the coach supplies the goals in force (module on, no goals of the
+user's own), the goals sheet shows the coach's card (`CoachGoalsCard`): "Set
+by coach", a reason that opens a sheet with the phase, the bodyweight and
+upkeep the targets rest on, the coach's warnings and the plain-words summary of
+every rule behind them, and a phase picker (gain, maintain, lose). A picked
+phase is stored under `coach.nutrition.phase` and replaces the one that follows
+from the coaching goal. Editing any goal in the sheet makes the goals the
+user's own, and the card goes away.
 
 ## Muscle and equipment mapping
 
@@ -423,7 +433,7 @@ tier to "ask first".
 | `coach_nutrition` | `packages/coach_nutrition` | not started |
 | `coach_testkit` | `packages/coach_testkit` | not started |
 | Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure and category adapters, persisted model, progression and nutrition entry points of `CoachFacade` |
-| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); nutrition goals (Phase 6) |
+| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); nutrition goals and phase (Phase 6) |
 
 What exists today is groundwork: the attribution credit in the About screen
 and README, the CI workflow for the `coach` branch, the upstream baseline in

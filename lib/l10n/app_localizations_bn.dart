@@ -7850,4 +7850,37 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get coachWhyNote => 'The coach\'s reasoning, in its own words';
+
+  @override
+  String get coachGoalsSetBy => 'Set by coach';
+
+  @override
+  String get coachGoalsWhy => 'Why these goals';
+
+  @override
+  String get coachGoalsPhase => 'Phase';
+
+  @override
+  String get coachPhaseGain => 'Gain';
+
+  @override
+  String get coachPhaseMaintain => 'Maintain';
+
+  @override
+  String get coachPhaseLoss => 'Lose';
+
+  @override
+  String coachGoalsBasis(String weight, String energy) {
+    return 'For $weight: about $energy a day keeps your weight';
+  }
+
+  @override
+  String coachGoalsGain(String energy) {
+    return 'Plus $energy a day to gain';
+  }
+
+  @override
+  String coachGoalsLoss(String energy) {
+    return 'Minus $energy a day to lose';
+  }
 }

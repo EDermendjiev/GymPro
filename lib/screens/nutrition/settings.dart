@@ -262,6 +262,7 @@ Future<void> showGoalsSheet(BuildContext context) => _sheet<void>(context, (cont
           );
       return _sheetFrame(context, [
         SheetTitle(t.nutritionGoals),
+        const CoachGoalsCard(), // coach-seam
         const SizedBox(height: 14),
         Center(
           child: SegToggle([

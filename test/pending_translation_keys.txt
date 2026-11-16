@@ -40,3 +40,12 @@ coachWhyHold
 coachWhyStalled
 coachWhyTitle
 coachWhyNote
+coachGoalsSetBy
+coachGoalsWhy
+coachGoalsPhase
+coachPhaseGain
+coachPhaseMaintain
+coachPhaseLoss
+coachGoalsBasis
+coachGoalsGain
+coachGoalsLoss

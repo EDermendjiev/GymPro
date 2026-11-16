@@ -8,6 +8,7 @@ import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../app/desktop.dart';
+import '../coach/coach.dart'; // coach-seam
 import '../l10n/l10n.dart';
 import '../models/nutrition.dart';
 import '../services/food_library.dart';
