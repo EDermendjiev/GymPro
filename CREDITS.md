@@ -1,5 +1,14 @@
 # Credits
 
+## GymMane
+
+GymPro is based on GymMane by InlitX
+([github.com/InlitX/GymMane](https://github.com/InlitX/GymMane)), released under
+the GNU General Public License v3.0 with the additional terms in
+`ADDITIONAL_TERMS.md`. Everything below that comes from GymMane is credited as
+GymMane credits it. The coach (the `packages/coach_*` packages and `lib/coach/`)
+is new in this fork and is released under the same licence.
+
 ## Exercise illustrations
 
 The exercise art in `assets/art/` comes from

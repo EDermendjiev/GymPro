@@ -1,4 +1,14 @@
-GymMane is a strength log built for the gym floor, not for a dashboard. Tap the muscles you want to train on an interactive body map, log reps and weight set by set, rest with an alarm that actually gets your attention, and read progress that comes from your own sets. Dark, fast, and completely offline.
+GymPro is a strength log with a coach built in. It is based on GymMane by InlitX and keeps everything GymMane does, offline and private, then adds a coach you can switch on module by module.
+
+🧠 COACH
+• Answer four questions (goal, experience, days and session length, place) and get a full training block as ready-made routines
+• Auto progression: next-session weight and reps from your own sets, a one-time correction after your first set, and a plain-words reason for every number
+• A weekly review from what you already log: deloads when you need them, exercise swaps, volume and plateau changes, each with undo or an ask-first switch
+• Sports and injuries shape the plan; sore or painful muscles are worked around
+• Calorie and macro goals from your bodyweight trend, adjusted as you weigh in. Goals you set yourself always win
+• Every coach module has its own switch. With all of them off, the app is plain GymMane
+
+GymPro is a strength log built for the gym floor, not for a dashboard. Tap the muscles you want to train on an interactive body map, log reps and weight set by set, rest with an alarm that actually gets your attention, and read progress that comes from your own sets. Dark, fast, and completely offline.
 
 Yours, completely. No account, no ads, no subscription — and no Android INTERNET permission at all, so the app physically cannot send your training anywhere.
 
@@ -38,6 +48,6 @@ Yours, completely. No account, no ads, no subscription — and no Android INTERN
 • Dark and light themes, kg or lb, and 18 languages
 
 🔒 PRIVACY
-GymMane has no analytics, no advertising SDK and no network code. It never asks for the INTERNET permission, so there is no way for your data to leave the phone. The only outbound actions are links you tap yourself.
+GymPro has no analytics, no advertising SDK and no network code. It never asks for the INTERNET permission, so there is no way for your data to leave the phone. The only outbound actions are links you tap yourself.
 
 The permissions it does ask for, and why: notifications and exact alarms for the rest timer, vibration so the alarm buzzes and wake lock so it fires with the screen off.

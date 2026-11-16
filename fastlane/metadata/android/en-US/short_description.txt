@@ -1,1 +1,1 @@
-Dark, offline gym log. Tap the muscle, log your sets, watch your numbers move.
+Offline gym log with a built-in coach: plans, auto progression, smart deloads.
