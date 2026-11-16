@@ -9,3 +9,5 @@ export 'src/sports.dart';
 export 'src/sport_catalog.dart';
 export 'src/volume.dart';
 export 'src/schedule.dart';
+export 'src/distribute.dart';
+export 'src/session.dart';
