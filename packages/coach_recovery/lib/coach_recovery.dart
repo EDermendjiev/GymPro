@@ -2,3 +2,5 @@
 library;
 
 export 'src/fatigue.dart';
+export 'src/plateau.dart';
+export 'src/progress.dart';

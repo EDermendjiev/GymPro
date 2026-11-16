@@ -1,0 +1,7478 @@
+{
+ "fn": "plateau",
+ "cases": [
+  {
+   "name": "isPlateaued novice empty",
+   "input": {
+    "call": "isPlateaued",
+    "series": [],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate empty",
+   "input": {
+    "call": "isPlateaued",
+    "series": [],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced empty",
+   "input": {
+    "call": "isPlateaued",
+    "series": [],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice one exposure",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-20",
+      "v": 100
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate one exposure",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-20",
+      "v": 100
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced one exposure",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-20",
+      "v": 100
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice three exposures",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 100
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate three exposures",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 100
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced three exposures",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 100
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice four flat exposures",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 100
+     },
+     {
+      "date": "2026-10-27",
+      "v": 100
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued intermediate four flat exposures",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 100
+     },
+     {
+      "date": "2026-10-27",
+      "v": 100
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced four flat exposures",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 100
+     },
+     {
+      "date": "2026-10-27",
+      "v": 100
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice four exposures, last one higher",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 99
+     },
+     {
+      "date": "2026-10-20",
+      "v": 98
+     },
+     {
+      "date": "2026-10-27",
+      "v": 101
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate four exposures, last one higher",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 99
+     },
+     {
+      "date": "2026-10-20",
+      "v": 98
+     },
+     {
+      "date": "2026-10-27",
+      "v": 101
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced four exposures, last one higher",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 99
+     },
+     {
+      "date": "2026-10-20",
+      "v": 98
+     },
+     {
+      "date": "2026-10-27",
+      "v": 101
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice a PR inside the noise margin",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 99
+     },
+     {
+      "date": "2026-10-20",
+      "v": 98
+     },
+     {
+      "date": "2026-10-27",
+      "v": 100.0000000001
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued intermediate a PR inside the noise margin",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 99
+     },
+     {
+      "date": "2026-10-20",
+      "v": 98
+     },
+     {
+      "date": "2026-10-27",
+      "v": 100.0000000001
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced a PR inside the noise margin",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-06",
+      "v": 100
+     },
+     {
+      "date": "2026-10-13",
+      "v": 99
+     },
+     {
+      "date": "2026-10-20",
+      "v": 98
+     },
+     {
+      "date": "2026-10-27",
+      "v": 100.0000000001
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice twelve weeks, early rise then flat",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 106.66666666666667
+     },
+     {
+      "date": "2026-08-08",
+      "v": 110
+     },
+     {
+      "date": "2026-08-15",
+      "v": 113.33333333333333
+     },
+     {
+      "date": "2026-08-22",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-08-29",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-05",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-12",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-19",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-26",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-03",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-10",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-17",
+      "v": 116.66666666666667
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-24"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued intermediate twelve weeks, early rise then flat",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 106.66666666666667
+     },
+     {
+      "date": "2026-08-08",
+      "v": 110
+     },
+     {
+      "date": "2026-08-15",
+      "v": 113.33333333333333
+     },
+     {
+      "date": "2026-08-22",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-08-29",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-05",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-12",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-19",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-26",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-03",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-10",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-17",
+      "v": 116.66666666666667
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-24"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued advanced twelve weeks, early rise then flat",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 106.66666666666667
+     },
+     {
+      "date": "2026-08-08",
+      "v": 110
+     },
+     {
+      "date": "2026-08-15",
+      "v": 113.33333333333333
+     },
+     {
+      "date": "2026-08-22",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-08-29",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-05",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-12",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-19",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-09-26",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-03",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-10",
+      "v": 116.66666666666667
+     },
+     {
+      "date": "2026-10-17",
+      "v": 116.66666666666667
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-24"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued novice twelve weeks rising",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 80
+     },
+     {
+      "date": "2026-08-08",
+      "v": 81
+     },
+     {
+      "date": "2026-08-15",
+      "v": 82
+     },
+     {
+      "date": "2026-08-22",
+      "v": 83
+     },
+     {
+      "date": "2026-08-29",
+      "v": 84
+     },
+     {
+      "date": "2026-09-05",
+      "v": 85
+     },
+     {
+      "date": "2026-09-12",
+      "v": 86
+     },
+     {
+      "date": "2026-09-19",
+      "v": 87
+     },
+     {
+      "date": "2026-09-26",
+      "v": 88
+     },
+     {
+      "date": "2026-10-03",
+      "v": 89
+     },
+     {
+      "date": "2026-10-10",
+      "v": 90
+     },
+     {
+      "date": "2026-10-17",
+      "v": 91
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-24"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate twelve weeks rising",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 80
+     },
+     {
+      "date": "2026-08-08",
+      "v": 81
+     },
+     {
+      "date": "2026-08-15",
+      "v": 82
+     },
+     {
+      "date": "2026-08-22",
+      "v": 83
+     },
+     {
+      "date": "2026-08-29",
+      "v": 84
+     },
+     {
+      "date": "2026-09-05",
+      "v": 85
+     },
+     {
+      "date": "2026-09-12",
+      "v": 86
+     },
+     {
+      "date": "2026-09-19",
+      "v": 87
+     },
+     {
+      "date": "2026-09-26",
+      "v": 88
+     },
+     {
+      "date": "2026-10-03",
+      "v": 89
+     },
+     {
+      "date": "2026-10-10",
+      "v": 90
+     },
+     {
+      "date": "2026-10-17",
+      "v": 91
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-24"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced twelve weeks rising",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 80
+     },
+     {
+      "date": "2026-08-08",
+      "v": 81
+     },
+     {
+      "date": "2026-08-15",
+      "v": 82
+     },
+     {
+      "date": "2026-08-22",
+      "v": 83
+     },
+     {
+      "date": "2026-08-29",
+      "v": 84
+     },
+     {
+      "date": "2026-09-05",
+      "v": 85
+     },
+     {
+      "date": "2026-09-12",
+      "v": 86
+     },
+     {
+      "date": "2026-09-19",
+      "v": 87
+     },
+     {
+      "date": "2026-09-26",
+      "v": 88
+     },
+     {
+      "date": "2026-10-03",
+      "v": 89
+     },
+     {
+      "date": "2026-10-10",
+      "v": 90
+     },
+     {
+      "date": "2026-10-17",
+      "v": 91
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-24"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice flat for six weeks after an early peak",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 110
+     },
+     {
+      "date": "2026-08-08",
+      "v": 100
+     },
+     {
+      "date": "2026-08-15",
+      "v": 100
+     },
+     {
+      "date": "2026-08-22",
+      "v": 100
+     },
+     {
+      "date": "2026-08-29",
+      "v": 100
+     },
+     {
+      "date": "2026-09-05",
+      "v": 100
+     },
+     {
+      "date": "2026-09-12",
+      "v": 100
+     },
+     {
+      "date": "2026-09-19",
+      "v": 100
+     },
+     {
+      "date": "2026-09-26",
+      "v": 100
+     },
+     {
+      "date": "2026-10-03",
+      "v": 100
+     },
+     {
+      "date": "2026-10-10",
+      "v": 100
+     },
+     {
+      "date": "2026-10-17",
+      "v": 100
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-24"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued intermediate flat for six weeks after an early peak",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 110
+     },
+     {
+      "date": "2026-08-08",
+      "v": 100
+     },
+     {
+      "date": "2026-08-15",
+      "v": 100
+     },
+     {
+      "date": "2026-08-22",
+      "v": 100
+     },
+     {
+      "date": "2026-08-29",
+      "v": 100
+     },
+     {
+      "date": "2026-09-05",
+      "v": 100
+     },
+     {
+      "date": "2026-09-12",
+      "v": 100
+     },
+     {
+      "date": "2026-09-19",
+      "v": 100
+     },
+     {
+      "date": "2026-09-26",
+      "v": 100
+     },
+     {
+      "date": "2026-10-03",
+      "v": 100
+     },
+     {
+      "date": "2026-10-10",
+      "v": 100
+     },
+     {
+      "date": "2026-10-17",
+      "v": 100
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-24"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued advanced flat for six weeks after an early peak",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 110
+     },
+     {
+      "date": "2026-08-08",
+      "v": 100
+     },
+     {
+      "date": "2026-08-15",
+      "v": 100
+     },
+     {
+      "date": "2026-08-22",
+      "v": 100
+     },
+     {
+      "date": "2026-08-29",
+      "v": 100
+     },
+     {
+      "date": "2026-09-05",
+      "v": 100
+     },
+     {
+      "date": "2026-09-12",
+      "v": 100
+     },
+     {
+      "date": "2026-09-19",
+      "v": 100
+     },
+     {
+      "date": "2026-09-26",
+      "v": 100
+     },
+     {
+      "date": "2026-10-03",
+      "v": 100
+     },
+     {
+      "date": "2026-10-10",
+      "v": 100
+     },
+     {
+      "date": "2026-10-17",
+      "v": 100
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-24"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued novice stalled for five weeks, peak nine weeks ago",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-22",
+      "v": 90
+     },
+     {
+      "date": "2026-08-29",
+      "v": 100
+     },
+     {
+      "date": "2026-09-05",
+      "v": 95
+     },
+     {
+      "date": "2026-09-12",
+      "v": 95
+     },
+     {
+      "date": "2026-09-19",
+      "v": 95
+     },
+     {
+      "date": "2026-09-26",
+      "v": 96
+     },
+     {
+      "date": "2026-10-03",
+      "v": 97
+     },
+     {
+      "date": "2026-10-10",
+      "v": 98
+     },
+     {
+      "date": "2026-10-17",
+      "v": 99
+     },
+     {
+      "date": "2026-10-24",
+      "v": 99
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued intermediate stalled for five weeks, peak nine weeks ago",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-22",
+      "v": 90
+     },
+     {
+      "date": "2026-08-29",
+      "v": 100
+     },
+     {
+      "date": "2026-09-05",
+      "v": 95
+     },
+     {
+      "date": "2026-09-12",
+      "v": 95
+     },
+     {
+      "date": "2026-09-19",
+      "v": 95
+     },
+     {
+      "date": "2026-09-26",
+      "v": 96
+     },
+     {
+      "date": "2026-10-03",
+      "v": 97
+     },
+     {
+      "date": "2026-10-10",
+      "v": 98
+     },
+     {
+      "date": "2026-10-17",
+      "v": 99
+     },
+     {
+      "date": "2026-10-24",
+      "v": 99
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued advanced stalled for five weeks, peak nine weeks ago",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-22",
+      "v": 90
+     },
+     {
+      "date": "2026-08-29",
+      "v": 100
+     },
+     {
+      "date": "2026-09-05",
+      "v": 95
+     },
+     {
+      "date": "2026-09-12",
+      "v": 95
+     },
+     {
+      "date": "2026-09-19",
+      "v": 95
+     },
+     {
+      "date": "2026-09-26",
+      "v": 96
+     },
+     {
+      "date": "2026-10-03",
+      "v": 97
+     },
+     {
+      "date": "2026-10-10",
+      "v": 98
+     },
+     {
+      "date": "2026-10-17",
+      "v": 99
+     },
+     {
+      "date": "2026-10-24",
+      "v": 99
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued novice only one recent exposure",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 90
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate only one recent exposure",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 90
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced only one recent exposure",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-01",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 90
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice nothing before the window",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-01",
+      "v": 90
+     },
+     {
+      "date": "2026-10-08",
+      "v": 90
+     },
+     {
+      "date": "2026-10-15",
+      "v": 90
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate nothing before the window",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-01",
+      "v": 90
+     },
+     {
+      "date": "2026-10-08",
+      "v": 90
+     },
+     {
+      "date": "2026-10-15",
+      "v": 90
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued advanced nothing before the window",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-10-01",
+      "v": 90
+     },
+     {
+      "date": "2026-10-08",
+      "v": 90
+     },
+     {
+      "date": "2026-10-15",
+      "v": 90
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued novice exposure on the cutoff day",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-31",
+      "v": 100
+     },
+     {
+      "date": "2026-09-29",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 99
+     }
+    ],
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": false
+  },
+  {
+   "name": "isPlateaued intermediate exposure on the cutoff day",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-31",
+      "v": 100
+     },
+     {
+      "date": "2026-09-29",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 99
+     }
+    ],
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "isPlateaued advanced exposure on the cutoff day",
+   "input": {
+    "call": "isPlateaued",
+    "series": [
+     {
+      "date": "2026-08-31",
+      "v": 100
+     },
+     {
+      "date": "2026-09-29",
+      "v": 100
+     },
+     {
+      "date": "2026-10-20",
+      "v": 99
+     }
+    ],
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": true
+  },
+  {
+   "name": "detectPlateaus at the volume cap without selection info",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus at the volume cap: swap to a close variation",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     },
+     "selection": {
+      "equipment": [
+       "barbell",
+       "dumbbell",
+       "machine",
+       "cable"
+      ],
+      "injuries": [],
+      "disliked": []
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "exercise_swap",
+     "title": "Bench press has stalled: switch to Flat dumbbell press",
+     "rationale": "Sleep, nutrition and recovery look good and the muscles it trains are already at 20 weekly sets, so more volume isn't the answer. A close variation gives a fresh stimulus; keep it for the rest of the block so progress stays measurable. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-SEL-06",
+      "T-VOL-02"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "bench-press",
+      "toExerciseId": "flat-dumbbell-press",
+      "reason": "plateau"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus at the volume cap, nothing feasible to swap to",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     },
+     "selection": {
+      "equipment": [
+       "band"
+      ],
+      "injuries": [],
+      "disliked": []
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus at the volume cap, strength main lift keeps its main-lift key",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "strength",
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 132.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 135,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 137.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "back-squat"
+     ],
+     "mainLiftExerciseIds": [
+      "back-squat"
+     ],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "back-squat": 2
+     },
+     "targets": {
+      "quads": 20,
+      "glutes": 19
+     },
+     "selection": {
+      "equipment": [
+       "barbell",
+       "dumbbell",
+       "machine",
+       "cable"
+      ],
+      "injuries": [],
+      "disliked": []
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "exercise_swap",
+     "title": "Back squat (high bar) has stalled: switch to Low-bar squat",
+     "rationale": "Sleep, nutrition and recovery look good and the muscles it trains are already at 20 weekly sets, so more volume isn't the answer. A close variation gives a fresh stimulus; keep it for the rest of the block so progress stays measurable. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-SEL-06",
+      "T-VOL-02"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "back-squat",
+      "toExerciseId": "low-bar-squat",
+      "reason": "plateau"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus at the volume cap, strength main lift with no same-key option",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "strength",
+     "sets": [
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 52.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 55,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 57.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "overhead-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 60,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "overhead-press"
+     ],
+     "mainLiftExerciseIds": [
+      "overhead-press"
+     ],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "overhead-press": 3
+     },
+     "targets": {
+      "front_delts": 20
+     },
+     "selection": {
+      "equipment": [
+       "barbell",
+       "dumbbell",
+       "machine"
+      ],
+      "injuries": [],
+      "disliked": [
+       "seated-dumbbell-shoulder-press"
+      ]
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus room for more volume: add sets",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 12,
+      "front_delts": 18.5
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 12,
+        "to": 14
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus room for more volume, one muscle without a target",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 16
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 16,
+        "to": 18
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus deadlift: untracked primary muscles are skipped",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 172.5,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 175,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 177.5,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "conventional-deadlift",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 180,
+       "reps": 3,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "conventional-deadlift"
+     ],
+     "mainLiftExerciseIds": [
+      "conventional-deadlift"
+     ],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {},
+     "targets": {
+      "glutes": 14,
+      "hamstrings": 19
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Conventional deadlift has stalled: add 2 sets/week for glutes",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for glutes. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "conventional-deadlift",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "glutes",
+        "from": 14,
+        "to": 16
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus short sleep: fix the basics",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 6.25,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: fix the basics first",
+     "rationale": "No progress on Bench press for longer than expected for a intermediate lifter. Before changing the program: you're sleeping 6.3 h (aim for 7+). Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "fix_basics",
+      "details": "you're sleeping 6.3 h (aim for 7+)"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus sleep just under 7",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 6.96,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: fix the basics first",
+     "rationale": "No progress on Bench press for longer than expected for a intermediate lifter. Before changing the program: you're sleeping 7.0 h (aim for 7+). Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "fix_basics",
+      "details": "you're sleeping 7.0 h (aim for 7+)"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus sleep exactly 7",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus no sleep data",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": null,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus calorie deficit: fix the basics",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "loss",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: fix the basics first",
+     "rationale": "No progress on Bench press for longer than expected for a intermediate lifter. Before changing the program: you're in a calorie deficit, which slows strength gains. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "fix_basics",
+      "details": "you're in a calorie deficit, which slows strength gains"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus strength main lift trained once a week",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "strength",
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 132.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 135,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 137.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "back-squat"
+     ],
+     "mainLiftExerciseIds": [
+      "back-squat"
+     ],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "back-squat": 1
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Back squat (high bar) has stalled: fix the basics first",
+     "rationale": "No progress on Back squat (high bar) for longer than expected for a intermediate lifter. Before changing the program: train this lift at least twice a week. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06"
+     ],
+     "payload": {
+      "exerciseId": "back-squat",
+      "step": "fix_basics",
+      "details": "train this lift at least twice a week"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus strength main lift with no frequency entry, short sleep and a deficit",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "strength",
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 132.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 135,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 137.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 140,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "back-squat"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 5.55,
+     "nutritionPhase": "loss",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {},
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Back squat (high bar) has stalled: fix the basics first",
+     "rationale": "No progress on Back squat (high bar) for longer than expected for a intermediate lifter. Before changing the program: you're sleeping 5.5 h (aim for 7+); you're in a calorie deficit, which slows strength gains; train this lift at least twice a week. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06"
+     ],
+     "payload": {
+      "exerciseId": "back-squat",
+      "step": "fix_basics",
+      "details": "you're sleeping 5.5 h (aim for 7+); you're in a calorie deficit, which slows strength gains; train this lift at least twice a week"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus recovery flags up: deload first",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 2,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: deload first",
+     "rationale": "Your basics look fine but recovery flags are up. Deload for a week; if fatigue returns quickly, reduce or reorganise volume. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-FAT-01",
+      "T-FAT-03"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "deload",
+      "details": "recovery flags ≥ 2"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus one recovery flag",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 1,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus no review yet",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": null,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus still progressing",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 100,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 102.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 105,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 107.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 110,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 112.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 115,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 117.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 120,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 122.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 125,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "back-squat",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 127.5,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "back-squat"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus unknown anchor and an anchor without sets",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "not-an-exercise",
+      "leg-press",
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 20,
+      "front_delts": 20
+     }
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus novice: three exposures without a PR",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "novice",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus advanced: eight weeks are needed",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "advanced",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus advanced: stalled for nine weeks",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-12-05",
+     "status": "advanced",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-31",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-11-28",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-12-12"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus main lift: best set of the day, not the first",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 3,
+       "loadKg": 95,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [
+      "bench-press"
+     ],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": []
+  },
+  {
+   "name": "detectPlateaus other lifts: first set only, by set index",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 3,
+       "loadKg": 95,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-24",
+       "setIndex": -1,
+       "loadKg": 60,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": true,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus high-rep sets give no e1RM",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 50,
+       "reps": 15,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-20",
+       "setIndex": 0,
+       "loadKg": null,
+       "reps": 5,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {}
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 0,
+        "to": 2
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "detectPlateaus two anchors, both stalled",
+   "input": {
+    "call": "detectPlateaus",
+    "state": {
+     "today": "2026-10-24",
+     "status": "intermediate",
+     "goal": "lean_gain",
+     "sets": [
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 80,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 82.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 85,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "bench-press",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 87.5,
+       "reps": 8,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-08-01",
+       "setIndex": 0,
+       "loadKg": 62.5,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-08-08",
+       "setIndex": 0,
+       "loadKg": 65,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-08-15",
+       "setIndex": 0,
+       "loadKg": 67.5,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-08-22",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-08-29",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-09-05",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-09-12",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-09-19",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-09-26",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-10-03",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-10-10",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      },
+      {
+       "exerciseId": "lat-pulldown",
+       "performedOn": "2026-10-17",
+       "setIndex": 0,
+       "loadKg": 70,
+       "reps": 10,
+       "rir": 2,
+       "isWarmup": false,
+       "plannedRirMin": 2
+      }
+     ],
+     "exercises": "@seed",
+     "anchorExerciseIds": [
+      "bench-press",
+      "lat-pulldown"
+     ],
+     "mainLiftExerciseIds": [],
+     "sleepAvg7": 7.5,
+     "nutritionPhase": "gain",
+     "lastReviewYesCount": 0,
+     "weeklyFrequency": {
+      "bench-press": 2
+     },
+     "targets": {
+      "chest": 10,
+      "back": 20
+     },
+     "selection": {
+      "equipment": [
+       "barbell",
+       "dumbbell",
+       "machine",
+       "cable"
+      ],
+      "injuries": [],
+      "disliked": []
+     }
+    }
+   },
+   "output": [
+    {
+     "kind": "plateau_action",
+     "title": "Bench press has stalled: add 2 sets/week for chest, front_delts",
+     "rationale": "Sleep, nutrition and recovery look good, so the next step is a bit more volume: +2 weekly sets for chest, front_delts. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-VOL-07"
+     ],
+     "payload": {
+      "exerciseId": "bench-press",
+      "step": "add_volume",
+      "details": "+2 sets/week",
+      "changes": [
+       {
+        "muscle": "chest",
+        "from": 10,
+        "to": 12
+       },
+       {
+        "muscle": "front_delts",
+        "from": 0,
+        "to": 2
+       }
+      ]
+     },
+     "expiresOn": "2026-10-31"
+    },
+    {
+     "kind": "exercise_swap",
+     "title": "Lat pulldown has stalled: switch to Single-arm cable pulldown",
+     "rationale": "Sleep, nutrition and recovery look good and the muscles it trains are already at 20 weekly sets, so more volume isn't the answer. A close variation gives a fresh stimulus; keep it for the rest of the block so progress stays measurable. Also check: protein ≥1.6 g/kg most days, honest RIR ratings, and the same range of motion and tempo each session.",
+     "ruleIds": [
+      "T-PRG-06",
+      "T-SEL-06",
+      "T-VOL-02"
+     ],
+     "payload": {
+      "plannedExerciseIds": [],
+      "fromExerciseId": "lat-pulldown",
+      "toExerciseId": "single-arm-cable-pulldown",
+      "reason": "plateau"
+     },
+     "expiresOn": "2026-10-31"
+    }
+   ]
+  },
+  {
+   "name": "parseRange \"3m\"",
+   "input": {
+    "call": "parseRange",
+    "value": "3m"
+   },
+   "output": "3m"
+  },
+  {
+   "name": "parseRange \"6m\"",
+   "input": {
+    "call": "parseRange",
+    "value": "6m"
+   },
+   "output": "6m"
+  },
+  {
+   "name": "parseRange \"1y\"",
+   "input": {
+    "call": "parseRange",
+    "value": "1y"
+   },
+   "output": "1y"
+  },
+  {
+   "name": "parseRange \"all\"",
+   "input": {
+    "call": "parseRange",
+    "value": "all"
+   },
+   "output": "all"
+  },
+  {
+   "name": "parseRange \"bogus\"",
+   "input": {
+    "call": "parseRange",
+    "value": "bogus"
+   },
+   "output": "6m"
+  },
+  {
+   "name": "parseRange \"\"",
+   "input": {
+    "call": "parseRange",
+    "value": ""
+   },
+   "output": "6m"
+  },
+  {
+   "name": "parseRange null",
+   "input": {
+    "call": "parseRange",
+    "value": null
+   },
+   "output": "6m"
+  },
+  {
+   "name": "parseRange 6",
+   "input": {
+    "call": "parseRange",
+    "value": 6
+   },
+   "output": "6m"
+  },
+  {
+   "name": "parseRange true",
+   "input": {
+    "call": "parseRange",
+    "value": true
+   },
+   "output": "6m"
+  },
+  {
+   "name": "parseRange missing",
+   "input": {
+    "call": "parseRange"
+   },
+   "output": "6m"
+  },
+  {
+   "name": "constants",
+   "input": {
+    "call": "constants"
+   },
+   "output": {
+    "PROGRESS_RANGES": [
+     "3m",
+     "6m",
+     "1y",
+     "all"
+    ],
+    "DEFAULT_RANGE": "6m"
+   }
+  },
+  {
+   "name": "rangeStart 2026-10-27 3m",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-10-27",
+    "range": "3m"
+   },
+   "output": "2026-07-28"
+  },
+  {
+   "name": "rangeStart 2026-10-27 6m",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-10-27",
+    "range": "6m"
+   },
+   "output": "2026-04-28"
+  },
+  {
+   "name": "rangeStart 2026-10-27 1y",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-10-27",
+    "range": "1y"
+   },
+   "output": "2025-10-27"
+  },
+  {
+   "name": "rangeStart 2026-10-27 all",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-10-27",
+    "range": "all"
+   },
+   "output": null
+  },
+  {
+   "name": "rangeStart 2024-02-29 3m",
+   "input": {
+    "call": "rangeStart",
+    "today": "2024-02-29",
+    "range": "3m"
+   },
+   "output": "2023-11-30"
+  },
+  {
+   "name": "rangeStart 2024-02-29 6m",
+   "input": {
+    "call": "rangeStart",
+    "today": "2024-02-29",
+    "range": "6m"
+   },
+   "output": "2023-08-31"
+  },
+  {
+   "name": "rangeStart 2024-02-29 1y",
+   "input": {
+    "call": "rangeStart",
+    "today": "2024-02-29",
+    "range": "1y"
+   },
+   "output": "2023-03-01"
+  },
+  {
+   "name": "rangeStart 2024-02-29 all",
+   "input": {
+    "call": "rangeStart",
+    "today": "2024-02-29",
+    "range": "all"
+   },
+   "output": null
+  },
+  {
+   "name": "rangeStart 2026-01-01 3m",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-01-01",
+    "range": "3m"
+   },
+   "output": "2025-10-02"
+  },
+  {
+   "name": "rangeStart 2026-01-01 6m",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-01-01",
+    "range": "6m"
+   },
+   "output": "2025-07-03"
+  },
+  {
+   "name": "rangeStart 2026-01-01 1y",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-01-01",
+    "range": "1y"
+   },
+   "output": "2025-01-01"
+  },
+  {
+   "name": "rangeStart 2026-01-01 all",
+   "input": {
+    "call": "rangeStart",
+    "today": "2026-01-01",
+    "range": "all"
+   },
+   "output": null
+  },
+  {
+   "name": "mainLiftSeries pools variations, best set per day",
+   "input": {
+    "call": "mainLiftSeries",
+    "sets": [
+     {
+      "exerciseId": "bb",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ssb",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": 110,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "curl",
+      "performedOn": "2026-10-02",
+      "setIndex": 0,
+      "loadKg": 20,
+      "reps": 10,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "liftKeys": {
+     "bb": "squat",
+     "ssb": "squat",
+     "curl": null,
+     "bench": "bench",
+     "dl": "deadlift"
+    },
+    "lift": "squat"
+   },
+   "output": [
+    {
+     "x": "2026-10-01",
+     "y": 132
+    }
+   ]
+  },
+  {
+   "name": "mainLiftSeries sorted by day, warm-ups and unknown exercises skipped",
+   "input": {
+    "call": "mainLiftSeries",
+    "sets": [
+     {
+      "exerciseId": "bb",
+      "performedOn": "2026-10-09",
+      "setIndex": 0,
+      "loadKg": 120,
+      "reps": 3,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ssb",
+      "performedOn": "2026-10-02",
+      "setIndex": 0,
+      "loadKg": 115,
+      "reps": 3,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bb",
+      "performedOn": "2026-10-05",
+      "setIndex": 0,
+      "loadKg": 140,
+      "reps": 1,
+      "rir": 0,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "bb",
+      "performedOn": "2026-10-05",
+      "setIndex": 0,
+      "loadKg": 125,
+      "reps": 2,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "mystery",
+      "performedOn": "2026-10-05",
+      "setIndex": 0,
+      "loadKg": 200,
+      "reps": 2,
+      "rir": 1,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bb",
+      "performedOn": "2026-10-07",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 20,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bb",
+      "performedOn": "2026-10-08",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 5,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ],
+    "liftKeys": {
+     "bb": "squat",
+     "ssb": "squat",
+     "curl": null,
+     "bench": "bench",
+     "dl": "deadlift"
+    },
+    "lift": "squat"
+   },
+   "output": [
+    {
+     "x": "2026-10-02",
+     "y": 125.45454545454545
+    },
+    {
+     "x": "2026-10-05",
+     "y": 132.35294117647058
+    },
+    {
+     "x": "2026-10-09",
+     "y": 130.9090909090909
+    }
+   ]
+  },
+  {
+   "name": "mainLiftSeries no sets for the lift",
+   "input": {
+    "call": "mainLiftSeries",
+    "sets": [
+     {
+      "exerciseId": "bench",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ],
+    "liftKeys": {
+     "bb": "squat",
+     "ssb": "squat",
+     "curl": null,
+     "bench": "bench",
+     "dl": "deadlift"
+    },
+    "lift": "deadlift"
+   },
+   "output": []
+  },
+  {
+   "name": "mainLiftSeries no RIR logged",
+   "input": {
+    "call": "mainLiftSeries",
+    "sets": [
+     {
+      "exerciseId": "bench",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": null,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "bench",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": 102.5,
+      "reps": 3,
+      "rir": null,
+      "isWarmup": false
+     }
+    ],
+    "liftKeys": {
+     "bb": "squat",
+     "ssb": "squat",
+     "curl": null,
+     "bench": "bench",
+     "dl": "deadlift"
+    },
+    "lift": "bench"
+   },
+   "output": [
+    {
+     "x": "2026-10-01",
+     "y": 112.5
+    }
+   ]
+  },
+  {
+   "name": "exerciseTrend e1RM on every day",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-03",
+      "setIndex": 0,
+      "loadKg": 105,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "e1rm",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 120
+     },
+     {
+      "x": "2026-10-03",
+      "y": 126
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend high-rep loaded work falls back to volume load",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 20,
+      "reps": 15,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": 20,
+      "reps": 12,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-03",
+      "setIndex": 0,
+      "loadKg": 22,
+      "reps": 15,
+      "rir": 1,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "volume_load",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 540
+     },
+     {
+      "x": "2026-10-03",
+      "y": 330
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend bodyweight work falls back to reps",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 20,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": null,
+      "reps": 18,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "reps",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 38
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend half the days with an e1RM is enough",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-03",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "e1rm",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 120
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend a third of the days is not",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-03",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-05",
+      "setIndex": 0,
+      "loadKg": 60,
+      "reps": 14,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "volume_load",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 500
+     },
+     {
+      "x": "2026-10-03",
+      "y": 900
+     },
+     {
+      "x": "2026-10-05",
+      "y": 840
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend first set by set index decides the e1RM",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-03",
+      "setIndex": 2,
+      "loadKg": 100,
+      "reps": 5,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-03",
+      "setIndex": 1,
+      "loadKg": 60,
+      "reps": 15,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "e1rm",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 120
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend warm-ups are ignored",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 40,
+      "reps": 5,
+      "rir": 5,
+      "isWarmup": true
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": 20,
+      "reps": 20,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-04",
+      "setIndex": 1,
+      "loadKg": 22.5,
+      "reps": 20,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "volume_load",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 400
+     },
+     {
+      "x": "2026-10-04",
+      "y": 450
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend zero loads count as bodyweight",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 0,
+      "reps": 20,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-02",
+      "setIndex": 0,
+      "loadKg": 0,
+      "reps": 25,
+      "rir": 2,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "reps",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 20
+     },
+     {
+      "x": "2026-10-02",
+      "y": 25
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend mixed loaded and bodyweight days",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": null,
+      "reps": 20,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-02",
+      "setIndex": 0,
+      "loadKg": 10,
+      "reps": 15,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-02",
+      "setIndex": 1,
+      "loadKg": 12.5,
+      "reps": 15,
+      "rir": 1,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "volume_load",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 0
+     },
+     {
+      "x": "2026-10-02",
+      "y": 337.5
+     }
+    ]
+   }
+  },
+  {
+   "name": "exerciseTrend no sets",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": []
+   },
+   "output": {
+    "metric": "reps",
+    "points": []
+   }
+  },
+  {
+   "name": "exerciseTrend only warm-ups",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 40,
+      "reps": 5,
+      "rir": 5,
+      "isWarmup": true
+     }
+    ]
+   },
+   "output": {
+    "metric": "reps",
+    "points": []
+   }
+  },
+  {
+   "name": "exerciseTrend fractional volume load",
+   "input": {
+    "call": "exerciseTrend",
+    "sets": [
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 0,
+      "loadKg": 0.1,
+      "reps": 20,
+      "rir": 2,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 1,
+      "loadKg": 0.2,
+      "reps": 20,
+      "rir": 0,
+      "isWarmup": false
+     },
+     {
+      "exerciseId": "ex",
+      "performedOn": "2026-10-01",
+      "setIndex": 2,
+      "loadKg": 0.7,
+      "reps": 13,
+      "rir": 0,
+      "isWarmup": false
+     }
+    ]
+   },
+   "output": {
+    "metric": "volume_load",
+    "points": [
+     {
+      "x": "2026-10-01",
+      "y": 15.1
+     }
+    ]
+   }
+  },
+  {
+   "name": "adherenceBuckets five weeks",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [
+     {
+      "scheduled_on": "2026-09-29",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-01",
+      "status": "skipped"
+     },
+     {
+      "scheduled_on": "2026-10-27",
+      "status": "planned"
+     },
+     {
+      "scheduled_on": "2025-12-31",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-01-01",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-11-03",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2025-11-30",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-26",
+      "status": "in_progress"
+     }
+    ],
+    "from": "2026-09-29",
+    "today": "2026-10-27",
+    "bucket": "week"
+   },
+   "output": [
+    {
+     "week": "2026-09-28",
+     "done": 1,
+     "planned": 2
+    },
+    {
+     "week": "2026-10-05",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-12",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-19",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-26",
+     "done": 0,
+     "planned": 2
+    }
+   ]
+  },
+  {
+   "name": "adherenceBuckets eleven months",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [
+     {
+      "scheduled_on": "2026-09-29",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-01",
+      "status": "skipped"
+     },
+     {
+      "scheduled_on": "2026-10-27",
+      "status": "planned"
+     },
+     {
+      "scheduled_on": "2025-12-31",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-01-01",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-11-03",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2025-11-30",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-26",
+      "status": "in_progress"
+     }
+    ],
+    "from": "2025-12-15",
+    "today": "2026-10-27",
+    "bucket": "month"
+   },
+   "output": [
+    {
+     "week": "2025-12-01",
+     "done": 1,
+     "planned": 1
+    },
+    {
+     "week": "2026-01-01",
+     "done": 1,
+     "planned": 1
+    },
+    {
+     "week": "2026-02-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-03-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-04-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-05-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-06-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-07-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-08-01",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-09-01",
+     "done": 1,
+     "planned": 1
+    },
+    {
+     "week": "2026-10-01",
+     "done": 0,
+     "planned": 3
+    }
+   ]
+  },
+  {
+   "name": "adherenceBuckets across a year end by week",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [
+     {
+      "scheduled_on": "2026-09-29",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-01",
+      "status": "skipped"
+     },
+     {
+      "scheduled_on": "2026-10-27",
+      "status": "planned"
+     },
+     {
+      "scheduled_on": "2025-12-31",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-01-01",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-11-03",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2025-11-30",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-26",
+      "status": "in_progress"
+     }
+    ],
+    "from": "2025-12-24",
+    "today": "2026-01-08",
+    "bucket": "week"
+   },
+   "output": [
+    {
+     "week": "2025-12-22",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2025-12-29",
+     "done": 2,
+     "planned": 2
+    },
+    {
+     "week": "2026-01-05",
+     "done": 0,
+     "planned": 0
+    }
+   ]
+  },
+  {
+   "name": "adherenceBuckets across a year end by month",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [
+     {
+      "scheduled_on": "2026-09-29",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-01",
+      "status": "skipped"
+     },
+     {
+      "scheduled_on": "2026-10-27",
+      "status": "planned"
+     },
+     {
+      "scheduled_on": "2025-12-31",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-01-01",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-11-03",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2025-11-30",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-26",
+      "status": "in_progress"
+     }
+    ],
+    "from": "2025-11-30",
+    "today": "2026-02-01",
+    "bucket": "month"
+   },
+   "output": [
+    {
+     "week": "2025-11-01",
+     "done": 1,
+     "planned": 1
+    },
+    {
+     "week": "2025-12-01",
+     "done": 1,
+     "planned": 1
+    },
+    {
+     "week": "2026-01-01",
+     "done": 1,
+     "planned": 1
+    },
+    {
+     "week": "2026-02-01",
+     "done": 0,
+     "planned": 0
+    }
+   ]
+  },
+  {
+   "name": "adherenceBuckets from after today",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [
+     {
+      "scheduled_on": "2026-09-29",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-01",
+      "status": "skipped"
+     },
+     {
+      "scheduled_on": "2026-10-27",
+      "status": "planned"
+     },
+     {
+      "scheduled_on": "2025-12-31",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-01-01",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-11-03",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2025-11-30",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-26",
+      "status": "in_progress"
+     }
+    ],
+    "from": "2026-11-10",
+    "today": "2026-10-27",
+    "bucket": "week"
+   },
+   "output": []
+  },
+  {
+   "name": "adherenceBuckets one month",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [
+     {
+      "scheduled_on": "2026-09-29",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-01",
+      "status": "skipped"
+     },
+     {
+      "scheduled_on": "2026-10-27",
+      "status": "planned"
+     },
+     {
+      "scheduled_on": "2025-12-31",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-01-01",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-11-03",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2025-11-30",
+      "status": "done"
+     },
+     {
+      "scheduled_on": "2026-10-26",
+      "status": "in_progress"
+     }
+    ],
+    "from": "2026-10-27",
+    "today": "2026-10-27",
+    "bucket": "month"
+   },
+   "output": [
+    {
+     "week": "2026-10-01",
+     "done": 0,
+     "planned": 3
+    }
+   ]
+  },
+  {
+   "name": "adherenceBuckets no sessions",
+   "input": {
+    "call": "adherenceBuckets",
+    "sessions": [],
+    "from": "2026-10-01",
+    "today": "2026-10-27",
+    "bucket": "week"
+   },
+   "output": [
+    {
+     "week": "2026-09-28",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-05",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-12",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-19",
+     "done": 0,
+     "planned": 0
+    },
+    {
+     "week": "2026-10-26",
+     "done": 0,
+     "planned": 0
+    }
+   ]
+  },
+  {
+   "name": "liftStallFlags stalled squat, rising bench, empty deadlift",
+   "input": {
+    "call": "liftStallFlags",
+    "series": {
+     "squat": [
+      {
+       "x": "2026-09-01",
+       "y": 150
+      },
+      {
+       "x": "2026-10-05",
+       "y": 145
+      },
+      {
+       "x": "2026-10-20",
+       "y": 148
+      }
+     ],
+     "bench": [
+      {
+       "x": "2026-09-01",
+       "y": 100
+      },
+      {
+       "x": "2026-10-05",
+       "y": 102
+      },
+      {
+       "x": "2026-10-20",
+       "y": 105
+      }
+     ],
+     "deadlift": []
+    },
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": [
+    {
+     "lift": "squat",
+     "stalled": true,
+     "exposures": 3,
+     "lastPrOn": "2026-09-01"
+    },
+    {
+     "lift": "bench",
+     "stalled": false,
+     "exposures": 3,
+     "lastPrOn": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "name": "liftStallFlags ties do not count as PRs",
+   "input": {
+    "call": "liftStallFlags",
+    "series": {
+     "ohp": [
+      {
+       "x": "2026-09-01",
+       "y": 60
+      },
+      {
+       "x": "2026-09-08",
+       "y": 60
+      },
+      {
+       "x": "2026-09-15",
+       "y": 60.0000000001
+      },
+      {
+       "x": "2026-09-22",
+       "y": 61
+      }
+     ]
+    },
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": [
+    {
+     "lift": "ohp",
+     "stalled": false,
+     "exposures": 4,
+     "lastPrOn": "2026-09-22"
+    }
+   ]
+  },
+  {
+   "name": "liftStallFlags novice window",
+   "input": {
+    "call": "liftStallFlags",
+    "series": {
+     "bench": [
+      {
+       "x": "2026-09-01",
+       "y": 100
+      },
+      {
+       "x": "2026-09-08",
+       "y": 101
+      },
+      {
+       "x": "2026-09-15",
+       "y": 100
+      },
+      {
+       "x": "2026-09-22",
+       "y": 99
+      },
+      {
+       "x": "2026-09-29",
+       "y": 101
+      }
+     ]
+    },
+    "status": "novice",
+    "today": "2026-10-27"
+   },
+   "output": [
+    {
+     "lift": "bench",
+     "stalled": true,
+     "exposures": 5,
+     "lastPrOn": "2026-09-08"
+    }
+   ]
+  },
+  {
+   "name": "liftStallFlags advanced window",
+   "input": {
+    "call": "liftStallFlags",
+    "series": {
+     "deadlift": [
+      {
+       "x": "2026-06-01",
+       "y": 200
+      },
+      {
+       "x": "2026-06-08",
+       "y": 205
+      },
+      {
+       "x": "2026-06-15",
+       "y": 210
+      },
+      {
+       "x": "2026-06-22",
+       "y": 210
+      },
+      {
+       "x": "2026-06-29",
+       "y": 208
+      },
+      {
+       "x": "2026-07-06",
+       "y": 207
+      },
+      {
+       "x": "2026-07-13",
+       "y": 209
+      },
+      {
+       "x": "2026-07-20",
+       "y": 210
+      },
+      {
+       "x": "2026-07-27",
+       "y": 206
+      },
+      {
+       "x": "2026-08-03",
+       "y": 205
+      },
+      {
+       "x": "2026-08-10",
+       "y": 210
+      },
+      {
+       "x": "2026-08-17",
+       "y": 209
+      },
+      {
+       "x": "2026-08-24",
+       "y": 208
+      },
+      {
+       "x": "2026-08-31",
+       "y": 207
+      },
+      {
+       "x": "2026-09-07",
+       "y": 210
+      },
+      {
+       "x": "2026-09-14",
+       "y": 210
+      },
+      {
+       "x": "2026-09-21",
+       "y": 209
+      },
+      {
+       "x": "2026-09-28",
+       "y": 208
+      },
+      {
+       "x": "2026-10-05",
+       "y": 205
+      },
+      {
+       "x": "2026-10-12",
+       "y": 210
+      },
+      {
+       "x": "2026-10-19",
+       "y": 208
+      }
+     ]
+    },
+    "status": "advanced",
+    "today": "2026-10-27"
+   },
+   "output": [
+    {
+     "lift": "deadlift",
+     "stalled": true,
+     "exposures": 21,
+     "lastPrOn": "2026-06-15"
+    }
+   ]
+  },
+  {
+   "name": "liftStallFlags nothing",
+   "input": {
+    "call": "liftStallFlags",
+    "series": {},
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": []
+  },
+  {
+   "name": "liftStallFlags negative values",
+   "input": {
+    "call": "liftStallFlags",
+    "series": {
+     "squat": [
+      {
+       "x": "2026-10-01",
+       "y": -5
+      },
+      {
+       "x": "2026-10-08",
+       "y": -3
+      }
+     ]
+    },
+    "status": "intermediate",
+    "today": "2026-10-27"
+   },
+   "output": [
+    {
+     "lift": "squat",
+     "stalled": false,
+     "exposures": 2,
+     "lastPrOn": "2026-10-08"
+    }
+   ]
+  }
+ ]
+}
