@@ -1,0 +1,2376 @@
+{
+ "fn": "trend",
+ "cases": [
+  {
+   "name": "weeklyAverages/no weigh-ins",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": []
+   },
+   "output": []
+  },
+  {
+   "name": "weeklyAverages/two weigh-ins on Tuesday and Thursday",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-13",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 72.2
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 72.1,
+     "n": 2,
+     "hasWeekend": false,
+     "lowData": true
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/three weigh-ins with a Saturday",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 71.9
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 71.9
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 71.9,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/three weigh-ins on weekdays only",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.4
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 80.1
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 80.17,
+     "n": 3,
+     "hasWeekend": false,
+     "lowData": true
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/two weigh-ins with a Sunday",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-14",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 80.4
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 80.2,
+     "n": 2,
+     "hasWeekend": true,
+     "lowData": true
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/a single Sunday weigh-in",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-18",
+      "kg": 64.25
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 64.25,
+     "n": 1,
+     "hasWeekend": true,
+     "lowData": true
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/every day of one week",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 70
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 70.11
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 70.22
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 70.33
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 70.44
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 70.55
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 70.66
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 70.33,
+     "n": 7,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/Sunday and Monday fall in different weeks",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-18",
+      "kg": 70
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 71
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 70,
+     "n": 1,
+     "hasWeekend": true,
+     "lowData": true
+    },
+    {
+     "weekStart": "2026-10-19",
+     "avg": 71,
+     "n": 1,
+     "hasWeekend": false,
+     "lowData": true
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/weeks given out of order",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-19",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-21",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-10-24",
+      "kg": 79.36
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 79.68
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 79.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 80
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-09-28",
+     "avg": 80.6,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    {
+     "weekStart": "2026-10-05",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    {
+     "weekStart": "2026-10-12",
+     "avg": 79.68,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    {
+     "weekStart": "2026-10-19",
+     "avg": 79.36,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/the same day twice",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 70
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 71
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 71,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/across the turn of the year",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-12-28",
+      "kg": 90.5
+     },
+     {
+      "day": "2026-12-31",
+      "kg": 90.1
+     },
+     {
+      "day": "2027-01-01",
+      "kg": 90.3
+     },
+     {
+      "day": "2027-01-03",
+      "kg": 89.9
+     },
+     {
+      "day": "2027-01-04",
+      "kg": 89.7
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-12-28",
+     "avg": 90.2,
+     "n": 4,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    {
+     "weekStart": "2027-01-04",
+     "avg": 89.7,
+     "n": 1,
+     "hasWeekend": false,
+     "lowData": true
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/an average that needs rounding",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.4
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 72.37,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/an average on a rounding tie",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 70.01
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 70.02
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 70
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 70.03
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-10-12",
+     "avg": 70.02,
+     "n": 4,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "weeklyAverages/a gap of several weeks",
+   "input": {
+    "call": "weeklyAverages",
+    "weighIns": [
+     {
+      "day": "2026-08-03",
+      "kg": 85
+     },
+     {
+      "day": "2026-08-05",
+      "kg": 85
+     },
+     {
+      "day": "2026-08-08",
+      "kg": 85
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 83.2
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 83.2
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 83.2
+     }
+    ]
+   },
+   "output": [
+    {
+     "weekStart": "2026-08-03",
+     "avg": 85,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    {
+     "weekStart": "2026-10-12",
+     "avg": 83.2,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/no weigh-ins",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": []
+   },
+   "output": []
+  },
+  {
+   "name": "runningAverage/one weigh-in",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72.4
+     }
+    ]
+   },
+   "output": [
+    {
+     "day": "2026-10-12",
+     "avg": 72.4
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/daily for a month, default window",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-09-20",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-21",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-22",
+      "kg": 82.3
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-24",
+      "kg": 81.9
+     },
+     {
+      "day": "2026-09-25",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-09-27",
+      "kg": 81.7
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-29",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-10-01",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-10-02",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 81.3
+     },
+     {
+      "day": "2026-10-04",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-06",
+      "kg": 81.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-08",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-09",
+      "kg": 80.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-11",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.4
+     }
+    ]
+   },
+   "output": [
+    {
+     "day": "2026-09-20",
+     "avg": 82
+    },
+    {
+     "day": "2026-09-21",
+     "avg": 82.05
+    },
+    {
+     "day": "2026-09-22",
+     "avg": 82.13
+    },
+    {
+     "day": "2026-09-23",
+     "avg": 82.05
+    },
+    {
+     "day": "2026-09-24",
+     "avg": 82.02
+    },
+    {
+     "day": "2026-09-25",
+     "avg": 82.03
+    },
+    {
+     "day": "2026-09-26",
+     "avg": 81.97
+    },
+    {
+     "day": "2026-09-27",
+     "avg": 81.94
+    },
+    {
+     "day": "2026-09-28",
+     "avg": 81.92
+    },
+    {
+     "day": "2026-09-29",
+     "avg": 81.87
+    },
+    {
+     "day": "2026-09-30",
+     "avg": 81.84
+    },
+    {
+     "day": "2026-10-01",
+     "avg": 81.82
+    },
+    {
+     "day": "2026-10-02",
+     "avg": 81.77
+    },
+    {
+     "day": "2026-10-03",
+     "avg": 81.74
+    },
+    {
+     "day": "2026-10-04",
+     "avg": 81.69
+    },
+    {
+     "day": "2026-10-05",
+     "avg": 81.61
+    },
+    {
+     "day": "2026-10-06",
+     "avg": 81.53
+    },
+    {
+     "day": "2026-10-07",
+     "avg": 81.49
+    },
+    {
+     "day": "2026-10-08",
+     "avg": 81.4
+    },
+    {
+     "day": "2026-10-09",
+     "avg": 81.31
+    },
+    {
+     "day": "2026-10-10",
+     "avg": 81.27
+    },
+    {
+     "day": "2026-10-11",
+     "avg": 81.19
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 81.11
+    },
+    {
+     "day": "2026-10-13",
+     "avg": 81.06
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 80.98
+    },
+    {
+     "day": "2026-10-15",
+     "avg": 80.9
+    },
+    {
+     "day": "2026-10-16",
+     "avg": 80.86
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 80.77
+    },
+    {
+     "day": "2026-10-18",
+     "avg": 80.69
+    },
+    {
+     "day": "2026-10-19",
+     "avg": 80.64
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/daily for a month, 21 days",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-09-20",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-21",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-22",
+      "kg": 82.3
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-24",
+      "kg": 81.9
+     },
+     {
+      "day": "2026-09-25",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-09-27",
+      "kg": 81.7
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-29",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-10-01",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-10-02",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 81.3
+     },
+     {
+      "day": "2026-10-04",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-06",
+      "kg": 81.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-08",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-09",
+      "kg": 80.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-11",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.4
+     }
+    ],
+    "days": 21
+   },
+   "output": [
+    {
+     "day": "2026-09-20",
+     "avg": 82
+    },
+    {
+     "day": "2026-09-21",
+     "avg": 82.05
+    },
+    {
+     "day": "2026-09-22",
+     "avg": 82.13
+    },
+    {
+     "day": "2026-09-23",
+     "avg": 82.05
+    },
+    {
+     "day": "2026-09-24",
+     "avg": 82.02
+    },
+    {
+     "day": "2026-09-25",
+     "avg": 82.03
+    },
+    {
+     "day": "2026-09-26",
+     "avg": 81.97
+    },
+    {
+     "day": "2026-09-27",
+     "avg": 81.94
+    },
+    {
+     "day": "2026-09-28",
+     "avg": 81.92
+    },
+    {
+     "day": "2026-09-29",
+     "avg": 81.87
+    },
+    {
+     "day": "2026-09-30",
+     "avg": 81.84
+    },
+    {
+     "day": "2026-10-01",
+     "avg": 81.82
+    },
+    {
+     "day": "2026-10-02",
+     "avg": 81.77
+    },
+    {
+     "day": "2026-10-03",
+     "avg": 81.74
+    },
+    {
+     "day": "2026-10-04",
+     "avg": 81.71
+    },
+    {
+     "day": "2026-10-05",
+     "avg": 81.67
+    },
+    {
+     "day": "2026-10-06",
+     "avg": 81.64
+    },
+    {
+     "day": "2026-10-07",
+     "avg": 81.61
+    },
+    {
+     "day": "2026-10-08",
+     "avg": 81.56
+    },
+    {
+     "day": "2026-10-09",
+     "avg": 81.53
+    },
+    {
+     "day": "2026-10-10",
+     "avg": 81.5
+    },
+    {
+     "day": "2026-10-11",
+     "avg": 81.43
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 81.37
+    },
+    {
+     "day": "2026-10-13",
+     "avg": 81.3
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 81.22
+    },
+    {
+     "day": "2026-10-15",
+     "avg": 81.16
+    },
+    {
+     "day": "2026-10-16",
+     "avg": 81.09
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 81.01
+    },
+    {
+     "day": "2026-10-18",
+     "avg": 80.94
+    },
+    {
+     "day": "2026-10-19",
+     "avg": 80.88
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/daily for a month, 1 day",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-09-20",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-21",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-22",
+      "kg": 82.3
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-24",
+      "kg": 81.9
+     },
+     {
+      "day": "2026-09-25",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-09-27",
+      "kg": 81.7
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-29",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-10-01",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-10-02",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 81.3
+     },
+     {
+      "day": "2026-10-04",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-06",
+      "kg": 81.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-08",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-09",
+      "kg": 80.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-11",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.4
+     }
+    ],
+    "days": 1
+   },
+   "output": [
+    {
+     "day": "2026-09-20",
+     "avg": 82
+    },
+    {
+     "day": "2026-09-21",
+     "avg": 82.1
+    },
+    {
+     "day": "2026-09-22",
+     "avg": 82.3
+    },
+    {
+     "day": "2026-09-23",
+     "avg": 81.8
+    },
+    {
+     "day": "2026-09-24",
+     "avg": 81.9
+    },
+    {
+     "day": "2026-09-25",
+     "avg": 82.1
+    },
+    {
+     "day": "2026-09-26",
+     "avg": 81.6
+    },
+    {
+     "day": "2026-09-27",
+     "avg": 81.7
+    },
+    {
+     "day": "2026-09-28",
+     "avg": 81.8
+    },
+    {
+     "day": "2026-09-29",
+     "avg": 81.4
+    },
+    {
+     "day": "2026-09-30",
+     "avg": 81.5
+    },
+    {
+     "day": "2026-10-01",
+     "avg": 81.6
+    },
+    {
+     "day": "2026-10-02",
+     "avg": 81.2
+    },
+    {
+     "day": "2026-10-03",
+     "avg": 81.3
+    },
+    {
+     "day": "2026-10-04",
+     "avg": 81.4
+    },
+    {
+     "day": "2026-10-05",
+     "avg": 81
+    },
+    {
+     "day": "2026-10-06",
+     "avg": 81.1
+    },
+    {
+     "day": "2026-10-07",
+     "avg": 81.2
+    },
+    {
+     "day": "2026-10-08",
+     "avg": 80.7
+    },
+    {
+     "day": "2026-10-09",
+     "avg": 80.9
+    },
+    {
+     "day": "2026-10-10",
+     "avg": 81
+    },
+    {
+     "day": "2026-10-11",
+     "avg": 80.5
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 80.7
+    },
+    {
+     "day": "2026-10-13",
+     "avg": 80.8
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 80.3
+    },
+    {
+     "day": "2026-10-15",
+     "avg": 80.5
+    },
+    {
+     "day": "2026-10-16",
+     "avg": 80.6
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 80.1
+    },
+    {
+     "day": "2026-10-18",
+     "avg": 80.2
+    },
+    {
+     "day": "2026-10-19",
+     "avg": 80.4
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/daily for a month, 7 days",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-09-20",
+      "kg": 82
+     },
+     {
+      "day": "2026-09-21",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-22",
+      "kg": 82.3
+     },
+     {
+      "day": "2026-09-23",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-24",
+      "kg": 81.9
+     },
+     {
+      "day": "2026-09-25",
+      "kg": 82.1
+     },
+     {
+      "day": "2026-09-26",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-09-27",
+      "kg": 81.7
+     },
+     {
+      "day": "2026-09-28",
+      "kg": 81.8
+     },
+     {
+      "day": "2026-09-29",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-09-30",
+      "kg": 81.5
+     },
+     {
+      "day": "2026-10-01",
+      "kg": 81.6
+     },
+     {
+      "day": "2026-10-02",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-03",
+      "kg": 81.3
+     },
+     {
+      "day": "2026-10-04",
+      "kg": 81.4
+     },
+     {
+      "day": "2026-10-05",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-06",
+      "kg": 81.1
+     },
+     {
+      "day": "2026-10-07",
+      "kg": 81.2
+     },
+     {
+      "day": "2026-10-08",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-09",
+      "kg": 80.9
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-11",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-19",
+      "kg": 80.4
+     }
+    ],
+    "days": 7
+   },
+   "output": [
+    {
+     "day": "2026-09-20",
+     "avg": 82
+    },
+    {
+     "day": "2026-09-21",
+     "avg": 82.05
+    },
+    {
+     "day": "2026-09-22",
+     "avg": 82.13
+    },
+    {
+     "day": "2026-09-23",
+     "avg": 82.05
+    },
+    {
+     "day": "2026-09-24",
+     "avg": 82.02
+    },
+    {
+     "day": "2026-09-25",
+     "avg": 82.03
+    },
+    {
+     "day": "2026-09-26",
+     "avg": 81.97
+    },
+    {
+     "day": "2026-09-27",
+     "avg": 81.93
+    },
+    {
+     "day": "2026-09-28",
+     "avg": 81.89
+    },
+    {
+     "day": "2026-09-29",
+     "avg": 81.76
+    },
+    {
+     "day": "2026-09-30",
+     "avg": 81.71
+    },
+    {
+     "day": "2026-10-01",
+     "avg": 81.67
+    },
+    {
+     "day": "2026-10-02",
+     "avg": 81.54
+    },
+    {
+     "day": "2026-10-03",
+     "avg": 81.5
+    },
+    {
+     "day": "2026-10-04",
+     "avg": 81.46
+    },
+    {
+     "day": "2026-10-05",
+     "avg": 81.34
+    },
+    {
+     "day": "2026-10-06",
+     "avg": 81.3
+    },
+    {
+     "day": "2026-10-07",
+     "avg": 81.26
+    },
+    {
+     "day": "2026-10-08",
+     "avg": 81.13
+    },
+    {
+     "day": "2026-10-09",
+     "avg": 81.09
+    },
+    {
+     "day": "2026-10-10",
+     "avg": 81.04
+    },
+    {
+     "day": "2026-10-11",
+     "avg": 80.91
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 80.87
+    },
+    {
+     "day": "2026-10-13",
+     "avg": 80.83
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 80.7
+    },
+    {
+     "day": "2026-10-15",
+     "avg": 80.67
+    },
+    {
+     "day": "2026-10-16",
+     "avg": 80.63
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 80.5
+    },
+    {
+     "day": "2026-10-18",
+     "avg": 80.46
+    },
+    {
+     "day": "2026-10-19",
+     "avg": 80.41
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/given newest first",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-10-19",
+      "kg": 80.4
+     },
+     {
+      "day": "2026-10-18",
+      "kg": 80.2
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 80.1
+     },
+     {
+      "day": "2026-10-16",
+      "kg": 80.6
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 80.3
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 80.8
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 80.7
+     },
+     {
+      "day": "2026-10-11",
+      "kg": 80.5
+     },
+     {
+      "day": "2026-10-10",
+      "kg": 81
+     },
+     {
+      "day": "2026-10-09",
+      "kg": 80.9
+     },
+     {
+      "day": "2026-10-08",
+      "kg": 80.7
+     }
+    ]
+   },
+   "output": [
+    {
+     "day": "2026-10-08",
+     "avg": 80.7
+    },
+    {
+     "day": "2026-10-09",
+     "avg": 80.8
+    },
+    {
+     "day": "2026-10-10",
+     "avg": 80.87
+    },
+    {
+     "day": "2026-10-11",
+     "avg": 80.78
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 80.76
+    },
+    {
+     "day": "2026-10-13",
+     "avg": 80.77
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 80.7
+    },
+    {
+     "day": "2026-10-15",
+     "avg": 80.68
+    },
+    {
+     "day": "2026-10-16",
+     "avg": 80.67
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 80.61
+    },
+    {
+     "day": "2026-10-18",
+     "avg": 80.57
+    },
+    {
+     "day": "2026-10-19",
+     "avg": 80.56
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/the same day twice",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 70
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 72
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 71
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.5
+     }
+    ],
+    "days": 14
+   },
+   "output": [
+    {
+     "day": "2026-10-12",
+     "avg": 70.5
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 70.5
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 71
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 71.38
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/a gap longer than the window",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-08-03",
+      "kg": 85
+     },
+     {
+      "day": "2026-08-05",
+      "kg": 84.6
+     },
+     {
+      "day": "2026-10-12",
+      "kg": 83.2
+     },
+     {
+      "day": "2026-10-25",
+      "kg": 83
+     },
+     {
+      "day": "2026-10-26",
+      "kg": 82.7
+     }
+    ]
+   },
+   "output": [
+    {
+     "day": "2026-08-03",
+     "avg": 85
+    },
+    {
+     "day": "2026-08-05",
+     "avg": 84.8
+    },
+    {
+     "day": "2026-10-12",
+     "avg": 83.2
+    },
+    {
+     "day": "2026-10-25",
+     "avg": 83.1
+    },
+    {
+     "day": "2026-10-26",
+     "avg": 82.85
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/the window edge is included",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-10-01",
+      "kg": 80
+     },
+     {
+      "day": "2026-10-14",
+      "kg": 79
+     },
+     {
+      "day": "2026-10-15",
+      "kg": 78
+     }
+    ],
+    "days": 14
+   },
+   "output": [
+    {
+     "day": "2026-10-01",
+     "avg": 80
+    },
+    {
+     "day": "2026-10-14",
+     "avg": 79.5
+    },
+    {
+     "day": "2026-10-15",
+     "avg": 78.5
+    }
+   ]
+  },
+  {
+   "name": "runningAverage/an average that needs rounding",
+   "input": {
+    "call": "runningAverage",
+    "weighIns": [
+     {
+      "day": "2026-10-12",
+      "kg": 72.3
+     },
+     {
+      "day": "2026-10-13",
+      "kg": 72.4
+     },
+     {
+      "day": "2026-10-17",
+      "kg": 72.4
+     }
+    ]
+   },
+   "output": [
+    {
+     "day": "2026-10-12",
+     "avg": 72.3
+    },
+    {
+     "day": "2026-10-13",
+     "avg": 72.35
+    },
+    {
+     "day": "2026-10-17",
+     "avg": 72.37
+    }
+   ]
+  },
+  {
+   "name": "ratePctPerWeek/one week down",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-12",
+     "avg": 79.68,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": -0.39999999999999153
+  },
+  {
+   "name": "ratePctPerWeek/two weeks down",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-19",
+     "avg": 79.36,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": -0.40000000000000036
+  },
+  {
+   "name": "ratePctPerWeek/three weeks up",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-09-28",
+     "avg": 72,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-19",
+     "avg": 72.54,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0.2500000000000029
+  },
+  {
+   "name": "ratePctPerWeek/no change",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-12",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0
+  },
+  {
+   "name": "ratePctPerWeek/the same week",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-05",
+     "avg": 81,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0
+  },
+  {
+   "name": "ratePctPerWeek/weeks the wrong way round",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-12",
+     "avg": 80,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-05",
+     "avg": 81,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0
+  },
+  {
+   "name": "ratePctPerWeek/a starting average of zero",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": 0,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-12",
+     "avg": 81,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0
+  },
+  {
+   "name": "ratePctPerWeek/a negative starting average",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": -1,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-12",
+     "avg": 81,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0
+  },
+  {
+   "name": "ratePctPerWeek/low-data weeks are not treated differently",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-05",
+     "avg": 64.25,
+     "n": 1,
+     "hasWeekend": false,
+     "lowData": true
+    },
+    "to": {
+     "weekStart": "2026-10-12",
+     "avg": 64.6,
+     "n": 2,
+     "hasWeekend": true,
+     "lowData": true
+    }
+   },
+   "output": 0.5447470817120534
+  },
+  {
+   "name": "ratePctPerWeek/week starts that are not Mondays",
+   "input": {
+    "call": "ratePctPerWeek",
+    "from": {
+     "weekStart": "2026-10-07",
+     "avg": 90,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    },
+    "to": {
+     "weekStart": "2026-10-17",
+     "avg": 91.1,
+     "n": 3,
+     "hasWeekend": true,
+     "lowData": false
+    }
+   },
+   "output": 0.8555555555555511
+  },
+  {
+   "name": "trendDirection/no weeks",
+   "input": {
+    "call": "trendDirection",
+    "weeks": []
+   },
+   "output": "unknown"
+  },
+  {
+   "name": "trendDirection/one reliable week",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "unknown"
+  },
+  {
+   "name": "trendDirection/two weeks, one with low data",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 82,
+      "n": 2,
+      "hasWeekend": true,
+      "lowData": true
+     }
+    ]
+   },
+   "output": "unknown"
+  },
+  {
+   "name": "trendDirection/two weeks, both with low data",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 1,
+      "hasWeekend": true,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 82,
+      "n": 2,
+      "hasWeekend": true,
+      "lowData": true
+     }
+    ]
+   },
+   "output": "unknown"
+  },
+  {
+   "name": "trendDirection/up",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.4,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "up"
+  },
+  {
+   "name": "trendDirection/down",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.6,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "down"
+  },
+  {
+   "name": "trendDirection/flat",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.1,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "flat"
+  },
+  {
+   "name": "trendDirection/slightly down is flat",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 79.9,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "flat"
+  },
+  {
+   "name": "trendDirection/just above the threshold",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 100,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 100.16,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "up"
+  },
+  {
+   "name": "trendDirection/at the threshold going up",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 100,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 100.15,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "up"
+  },
+  {
+   "name": "trendDirection/at the threshold going down",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 100,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 99.85,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "down"
+  },
+  {
+   "name": "trendDirection/just below the threshold",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-05",
+      "avg": 100,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 99.84,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "down"
+  },
+  {
+   "name": "trendDirection/only the last two reliable weeks count",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 70,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 80.05,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 60,
+      "n": 2,
+      "hasWeekend": true,
+      "lowData": true
+     }
+    ]
+   },
+   "output": "flat"
+  },
+  {
+   "name": "trendDirection/low-data weeks in between are skipped",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-09-28",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 90,
+      "n": 1,
+      "hasWeekend": false,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "up"
+  },
+  {
+   "name": "trendDirection/a rise spread over three weeks is flat",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-09-21",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-09-28",
+      "avg": 79,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-05",
+      "avg": 78,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": true
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80.3,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "flat"
+  },
+  {
+   "name": "trendDirection/reliable weeks in the same week",
+   "input": {
+    "call": "trendDirection",
+    "weeks": [
+     {
+      "weekStart": "2026-10-12",
+      "avg": 80,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     },
+     {
+      "weekStart": "2026-10-12",
+      "avg": 85,
+      "n": 3,
+      "hasWeekend": true,
+      "lowData": false
+     }
+    ]
+   },
+   "output": "flat"
+  }
+ ]
+}
