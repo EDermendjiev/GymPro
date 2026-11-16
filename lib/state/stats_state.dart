@@ -1174,12 +1174,14 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
     return ids.take(3).toList();
   }
 
-  Map<String, double> get muscleSetsThisWeek => muscleSetsBetween(_weekStart, DateTime.now());
+  Map<String, double> get muscleSetsThisWeek =>
+      coachMuscleSetsThisWeek() ?? muscleSetsBetween(_weekStart, DateTime.now()); // coach-seam
 
   Map<String, double> get muscleHeatThisWeek {
     final target = muscleTargetFor(7);
     return {
-      for (final e in muscleSetsThisWeek.entries) e.key: (e.value / target).clamp(0.0, 1.0),
+      for (final e in muscleSetsThisWeek.entries)
+        e.key: (e.value / (coachWeeklySetTarget(e.key) ?? target)).clamp(0.0, 1.0), // coach-seam
     };
   }
 

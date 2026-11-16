@@ -573,6 +573,35 @@ abstract final class CoachFacade {
     return coach.copyWith(nutrition: n);
   }
 
+  // Volume targets (Task 5.7).
+
+  /// The block's weekly set target for the app's muscle [muscle] in the week of [today]: the coach's targets of
+  /// the muscles it stands for added up (the shoulders are the three delts). Null without a block, or for a muscle
+  /// with no target of the coach's.
+  static double? weeklySetTarget(CoachData coach, String muscle, DateTime today) {
+    final block = coach.block;
+    if (block == null) return null;
+    final targets = coachWeekTargets(block, coachIsoDay(today));
+    double? sum;
+    for (final e in targets.entries) {
+      if (hostMuscle(e.key) == muscle) sum = (sum ?? 0) + e.value;
+    }
+    return sum;
+  }
+
+  /// This week's sets (Monday to [CoachPlanInputs.today]) by the app's muscle, counted with the kernel's
+  /// fractional rule, as the block's targets count them.
+  static Map<String, double> muscleSetsThisWeek(CoachPlanInputs i) {
+    final counted = ck.loggedMuscleSets(coachLoggedSets(i), coachMuscleIndex(i), ck.mondayOf(coachIsoDay(i.today)));
+    final out = <String, double>{};
+    for (final e in counted.entries) {
+      final m = hostMuscle(e.key);
+      if (m == null || e.value <= 0) continue;
+      out[m] = (out[m] ?? 0) + e.value;
+    }
+    return out;
+  }
+
   // Sports and injuries (Task 5.6).
 
   /// The sports the coach knows, for the sports sheet.

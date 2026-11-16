@@ -33,6 +33,7 @@ const _expected = <String, int>{
   'lib/screens/session_screen.dart': 4, // import of the barrel, the coach's requests taken in build, target line, soreness row
   'lib/state/nutrition_state.dart': 1, // suggestedGoals asks first
   'lib/state/settings_state.dart': 1, // deloadWeek asks first
+  'lib/state/stats_state.dart': 2, // this week's sets and each muscle's weekly target ask first
   'lib/screens/nutrition_screen.dart': 1, // import of the barrel, for its part nutrition/settings.dart
   'lib/screens/nutrition/settings.dart': 1, // the coach's card in the goals sheet
 };

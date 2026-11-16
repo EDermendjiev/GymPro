@@ -707,6 +707,26 @@ mixin CoachState
     if (changed) coach = coach.copyWith(proposals: records);
   }
 
+  // Volume targets (Task 5.7).
+
+  /// While the recovery module is on, the muscle map's weekly target of the app's [muscleId] is the block's for
+  /// this week (the shoulders' is the three delts' added up). Null, so the app's own target is used, otherwise and
+  /// for a muscle the block sets no target for.
+  @override
+  double? coachWeeklySetTarget(String muscleId) {
+    if (!coach.isOn(CoachModule.recovery)) return null;
+    final v = CoachFacade.weeklySetTarget(coach, muscleId, coachClock());
+    return v == null || v <= 0 ? null : v;
+  }
+
+  /// While the recovery module is on and there is a block, this week's sets by muscle, counted the coach's way
+  /// (fractional, Monday to today), so they compare with the block's targets. Null, so the app counts, otherwise.
+  @override
+  Map<String, double>? coachMuscleSetsThisWeek() {
+    if (!coach.isOn(CoachModule.recovery) || coach.block == null) return null;
+    return CoachFacade.muscleSetsThisWeek(_coachInputs());
+  }
+
   // Sports and injuries (Task 5.6).
 
   /// The sports the coach knows.

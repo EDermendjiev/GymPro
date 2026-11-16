@@ -170,7 +170,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card, in the phone layout | done |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
-| `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
+| `lib/state/stats_state.dart` | `muscleSetsThisWeek` asks `coachMuscleSetsThisWeek` first; `muscleHeatThisWeek` asks `coachWeeklySetTarget` per muscle before the app's single target (upstream's `muscleTargetFor` takes a day count, not a muscle, so the seam sits where a muscle is known) | done |
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | done |
 | `lib/screens/nutrition_screen.dart`, `lib/screens/nutrition/settings.dart` | import of the barrel (for its part `nutrition/settings.dart`); the coach's goals card (`CoachGoalsCard`) under the goals sheet's title | done |
 | `lib/screens/settings_screen.dart` | "Coach" category: import of the barrel, the category, its title, its place in the Home group, its section | done |
@@ -463,6 +463,16 @@ Two sheets (`lib/coach/ui/recovery_sheets.dart`), reachable from Settings › Co
 
 Either change generates the plan again while the plan module is on (`coachRegenerate`). Onboarding now offers
 the "Support my sport" goal too.
+
+### Volume targets
+
+The app measures every muscle against one weekly target (12 sets, scaled by days). While the module is on and there
+is a block, the muscle map's week view (`muscleHeatThisWeek`, which also drives its list of bars) measures each
+muscle against the block's target for the current week (`coachWeeklySetTarget`; the app's shoulders get the three
+delts' targets added up, a muscle with no coach target keeps the app's), and this week's sets are counted the
+coach's way (`coachMuscleSetsThisWeek`: the kernel's fractional rule, Monday to today). The other views (several
+weeks, "behind" muscles, the share card and the home widget) keep the app's single target: they have no muscle at
+the point where the target is worked out, or span more than the block's week.
 
 ### Proposals: apply, undo, the Home card
 
