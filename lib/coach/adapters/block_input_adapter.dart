@@ -59,6 +59,7 @@ ck.BlockInput coachBlockInput(
   ck.BlockKind? blockKind,
   String? startsOn,
   String? materialiseFrom,
+  bool? fromHeavyPhase,
 }) {
   final today = coachIsoDay(i.today);
   final profile = i.coach.profile;
@@ -89,7 +90,27 @@ ck.BlockInput coachBlockInput(
     startsOn: startsOn,
     dislikedExerciseIds: i.coach.disliked.isEmpty ? null : [...i.coach.disliked],
     materialiseFrom: materialiseFrom,
+    targetAdjustments: coachTargetAdjustments(i.coach.review),
+    fromHeavyPhase: fromHeavyPhase,
   );
+}
+
+/// The extra weekly sets per muscle from accepted volume and plateau proposals, as kept under
+/// `coach.review.targetAdjustments`; null when there are none. Entries the coach cannot read are left out.
+Map<ck.TrackedMuscle, double>? coachTargetAdjustments(Map<String, dynamic> review) {
+  final raw = review['targetAdjustments'];
+  if (raw is! Map || raw.isEmpty) return null;
+  final out = <ck.TrackedMuscle, double>{};
+  for (final e in raw.entries) {
+    final v = e.value;
+    if (v is! num) continue;
+    try {
+      out[ck.MuscleId.trackedFromWire(e.key as String)] = v.toDouble();
+    } on FormatException {
+      continue;
+    }
+  }
+  return out.isEmpty ? null : out;
 }
 
 /// Whole weeks since the last logged session, or null when nothing is logged.

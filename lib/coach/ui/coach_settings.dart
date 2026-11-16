@@ -66,7 +66,7 @@ class CoachSettings extends StatelessWidget {
           ),
         if (fit.coach.isOn(CoachModule.recovery))
           _open(context, build, 'coach-soreness', PhosphorIconsRegular.bandaids, t.coachSorenessTitle,
-              t.coachSorenessRowHint, () => showCoachSorenessSheet(context)),
+              t.coachSorenessRowHint, () => coachShowSorenessSheet(context)),
       ]),
     );
   }

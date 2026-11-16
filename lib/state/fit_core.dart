@@ -54,6 +54,10 @@ abstract class FitCore extends ChangeNotifier {
   double? coachWeeklySetTarget(String muscleId) => null;
   bool? coachDeloadWeek() => null;
   NutritionGoals? coachNutritionGoals() => null;
+  void coachTick() {}
+  bool coachLighten(WorkoutSession s) => false;
+  void coachShapeSession(WorkoutSession s) {}
+  Map<String, double>? coachMuscleSetsThisWeek() => null;
 
   String route = 'home';
   final List<String> _routeStack = [];

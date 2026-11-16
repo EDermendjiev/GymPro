@@ -159,11 +159,11 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | File | Seam | Status |
 |---|---|---|
 | `pubspec.yaml` | five path dependencies | done |
-| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachDefaultPicks`, `coachFocusMuscles`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`) | done |
-| `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData` | done |
+| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachDefaultPicks`, `coachFocusMuscles`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`, `coachTick`, `coachLighten`, `coachShapeSession`, `coachMuscleSetsThisWeek`) | done |
+| `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData`; `coachTick()` at the end of `loadFromStore` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
-| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first | done |
+| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first; `finishSession` calls `coachTick()` after a workout is saved | done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
@@ -406,6 +406,37 @@ as front, side and rear delts) with "Sore" and "Pain" for today. A report is sto
 and by the coach's muscle name, and reports older than 28 days are dropped at the next change. The sheet opens
 from a row on the workout summary, from Settings › Coach and from the Home card (both while the module is on).
 The app's body map is drawn for the app's 14 muscles and cannot tell the delts apart, so the sheet uses a list.
+
+### Weekly review
+
+`CoachState.coachTick()` runs at the end of loading and after a workout is saved; there is no background service.
+With the module on and a block, it runs the weekly review once a week has passed since `coach.review.lastWeekStart`:
+the week looked at is the one before, or on a Sunday the week ending that day (the recovery package's
+`reviewWeekFor`). The very first run only sets `lastWeekStart`. Dates come from `coachClock`, so tests move time.
+
+The review's input (`lib/coach/adapters/review_adapter.dart`) is built from the app's state:
+
+| WeeklyState field | Taken from |
+|---|---|
+| `checkins` | `coachCheckins()`, the last five weeks |
+| `sessionsThisWeek`, `nextWeekSessions` | the block's sessions in the reviewed week and the next, numbered `s<i>` (exercises `s<i>.e<j>`); done when a workout of its routine was logged on its date, skipped when the block says so |
+| `sets` | the strength sets of the last 26 weeks, each with the effort floor its day's block session planned (`plannedRirMin`) |
+| `exercises`, `mainLiftExerciseIds` | every exercise (`coachExercises`); the main lifts among them |
+| `block` | the block's kind, start and weeks; its id is `block-<startsOn>`; there is no strength test date |
+| `status`, `goal`, `availableDays` | the coaching profile |
+| `statusHistory`, `previousYesCount` | `coach.review.lastInference`, `coach.review.previousYesCount` |
+| `nutritionPhase` | the picked phase, else the goal's |
+| `injuries`, `dislikedExerciseIds`, `equipment`, `targets` | `coach.injuries`, `coach.disliked`, the place's equipment, the block's targets for today's week |
+
+The review runs `weeklyReview`, then `planReview` with its yes-count, then `detectPlateaus` (sleep from the last
+seven check-ins, exposures per week from the block's current week). Each proposal is stored in `coach.proposals`
+as `{id, kind, state: pending, createdOn, title, rationale, ruleIds, payload, appliesFrom, expiresOn}`, unless one
+with the same `proposalKey` is pending or was dismissed in the last 28 days. Pending proposals past their
+`expiresOn` are put aside (`dismissed`). `coach.review` keeps `lastWeekStart`, `previousYesCount` and
+`lastInference`. `test/coach/recovery_review_test.dart` seeds the weekly-review fixtures into the app's records
+(logged workouts, Health Connect sleep, energy ratings, soreness, a block) and checks that the tick stores the
+fixtures' proposal kinds and payloads; the cases the app cannot hold (stress, answer overrides, a test date,
+planned effort inside the reviewed weeks) are listed by the test.
 
 ## Nutrition module
 

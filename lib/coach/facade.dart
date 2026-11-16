@@ -4,6 +4,7 @@
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 import 'package:coach_nutrition/coach_nutrition.dart' as cn;
 import 'package:coach_progression/coach_progression.dart' as cp;
+import 'package:coach_recovery/coach_recovery.dart' as cr;
 import 'package:coach_training/coach_training.dart' as ct;
 
 import '../models/exercise.dart';
@@ -18,6 +19,7 @@ import 'adapters/history_adapter.dart';
 import 'adapters/muscle_map.dart';
 import 'adapters/nutrition_adapter.dart';
 import 'adapters/plan_writer.dart';
+import 'adapters/review_adapter.dart';
 import 'model/coach_choices.dart';
 import 'model/coach_data.dart';
 import 'model/coach_nutrition.dart';
@@ -118,7 +120,16 @@ abstract final class CoachFacade {
   /// removal a dislike. The block keeps its kind and its weeks, and the regenerated sessions go through carry-over,
   /// so a session already done (a workout of its routine logged on its date) is not planned again. Without a block
   /// this is [buildPlan].
-  static CoachBuiltPlan regeneratePlan(CoachPlanInputs i, {required Map<String, List<String>> routineExercises}) {
+  ///
+  /// With [blockKind] (a block transition) a new block of that kind is generated from [startsOn], after a heavy
+  /// phase when [fromHeavyPhase], with the old block's selections as the previous block's.
+  static CoachBuiltPlan regeneratePlan(
+    CoachPlanInputs i, {
+    required Map<String, List<String>> routineExercises,
+    String? blockKind,
+    String? startsOn,
+    bool? fromHeavyPhase,
+  }) {
     final old = i.coach.block;
     if (old == null) return buildPlan(i);
     final today = coachIsoDay(i.today);
@@ -129,15 +140,20 @@ abstract final class CoachFacade {
     bool doneOn(String templateKey, String date) => logged.contains('${i.coach.routineIds[templateKey]}|$date');
     final edits = coachUserEdits(old, routineExercises);
     final coach = i.coach.copyWith(disliked: ck.uniq([...i.coach.disliked, ...edits.disliked]));
-    final running = ck.daysBetween(old.startsOn, today) < old.weeks * 7;
+    // A new block (a block transition) starts on its own day with its own kind; anything else keeps the running
+    // block's kind and weeks.
+    final transition = blockKind != null;
+    final running = !transition && ck.daysBetween(old.startsOn, today) < old.weeks * 7;
     final input = coachBlockInput(
       i.withCoach(coach),
       previous: coachPreviousBlock(old, edits.selections, today),
-      blockKind: running ? old.kind : null,
-      startsOn: running ? old.startsOn : null,
-      materialiseFrom: ck.mondayOf(today),
+      blockKind: transition ? ck.BlockKind.fromWire(blockKind) : running ? old.kind : null,
+      startsOn: transition ? startsOn : running ? old.startsOn : null,
+      materialiseFrom: transition ? null : ck.mondayOf(today),
+      fromHeavyPhase: fromHeavyPhase,
     );
     final fresh = ct.generateBlock(input);
+    if (transition) return _built(coach.copyWith(block: fresh), fresh);
     final allowed = {for (final e in input.exercises) e.id}..removeAll(coach.disliked);
     final carried = ct.carryOverEdits(ct.CarryOverInput(
       sessions: fresh.sessions,
@@ -396,6 +412,149 @@ abstract final class CoachFacade {
         bodyweight: bodyweight,
         soreness: coach.soreness,
       );
+
+  /// The Monday of the week the review looks at [today]: on a Sunday the week ending today, otherwise the week
+  /// before.
+  static String reviewWeekFor(DateTime today) {
+    final day = coachIsoDay(today);
+    return cr.reviewWeekFor(day, ck.isoWeekday(day));
+  }
+
+  /// The weekly review's input for the week starting on [weekStart], as JSON. For checks and tests.
+  static Map<String, dynamic> weeklyStateJson(
+    CoachPlanInputs i,
+    List<CoachCheckin> checkins, {
+    required String weekStart,
+    int? previousYesCount,
+    String? lastInference,
+  }) =>
+      coachWeeklyState(i, checkins,
+              weekStart: weekStart, previousYesCount: previousYesCount, lastInference: lastInference)
+          .toJson();
+
+  /// The weekly review of the week starting on [weekStart] (Task 5.3): the recovery questions answered from the
+  /// logs and [checkins] (`weeklyReview`), the plan-level checks (`planReview`) and the plateau check
+  /// (`detectPlateaus`), in that order. [previousYesCount] and [lastInference] come from the last review.
+  static CoachReview weeklyReview(
+    CoachPlanInputs i,
+    List<CoachCheckin> checkins, {
+    required String weekStart,
+    int? previousYesCount,
+    String? lastInference,
+  }) {
+    final w = coachWeeklyState(i, checkins,
+        weekStart: weekStart, previousYesCount: previousYesCount, lastInference: lastInference);
+    final review = cr.weeklyReview(w);
+    final proposals = [
+      ...review.proposals,
+      ...cr.planReview(w, review.yesCount),
+      ...cr.detectPlateaus(coachProgressState(i, w, review.yesCount)),
+    ];
+    return CoachReview(
+      weekStart: weekStart,
+      proposals: [for (final p in proposals) p.toJson()],
+      yesCount: review.yesCount,
+      inference: review.inference.status?.wire,
+    );
+  }
+
+  /// The identity of a proposal for duplicate checks: its kind and its target (exercise, mode, injury or muscle).
+  static String proposalKey(String kind, Object? payload) => cr.proposalKey(kind, payload);
+
+  /// Whether [payload] is a valid payload for a proposal of [kind].
+  static bool validProposal(CoachProposalKind kind, Map<String, dynamic> payload) {
+    try {
+      cr.ProposalPayload.parse(ck.ProposalKind.fromWire(kind.wire), payload);
+      return true;
+    } on FormatException {
+      return false;
+    }
+  }
+
+  /// What applying the stored proposal [record] changes, as the coach packages' `PlanDiff` JSON: session edits,
+  /// a regeneration, a setting, an injury or nutrition. Throws a [FormatException] when the record's payload is
+  /// not valid for its kind.
+  static Map<String, dynamic> proposalDiff(CoachPlanInputs i, Map<String, dynamic> record) {
+    final kind = ck.ProposalKind.fromWire(record['kind'] as String);
+    final payload = (record['payload'] as Map).cast<String, dynamic>();
+    cr.ProposalPayload.parse(kind, payload);
+    final p = ck.Proposal(
+      kind: kind,
+      title: record['title'] as String? ?? '',
+      rationale: record['rationale'] as String? ?? '',
+      ruleIds: const [],
+      payload: payload,
+    );
+    return cr.applyProposal(coachStoredPlan(i), p).toJson();
+  }
+
+  /// [coach] with [diff]'s session edits (exercise updates, deletions, session updates) written into the block.
+  static CoachData editBlock(CoachData coach, Map<String, dynamic> diff) {
+    final block = coach.block;
+    if (block == null) return coach;
+    return coach.copyWith(block: coachEditBlock(block, cr.PlanDiff.fromJson(diff)));
+  }
+
+  /// The exercise swaps [diff] makes in [coach]'s block, by template.
+  static List<({String templateKey, String from, String to})> diffSwaps(CoachData coach, Map<String, dynamic> diff) {
+    final block = coach.block;
+    return block == null ? const [] : coachDiffSwaps(block, cr.PlanDiff.fromJson(diff));
+  }
+
+  /// The Monday after [today].
+  static String nextMonday(DateTime today) {
+    final day = coachIsoDay(today);
+    return ck.addDays(day, 8 - ck.isoWeekday(day));
+  }
+
+  /// [coach] with the injury change of an applied proposal ([injury] is the coach packages' `InjuryUpdate` JSON):
+  /// an injury with that id updated (its severity, more exercises to avoid), or a new active one recorded [today].
+  static CoachData withInjury(CoachData coach, Map<String, dynamic> injury, String today) {
+    final u = cr.InjuryUpdate.fromJson(injury);
+    final list = [...coach.injuries];
+    final at = u.id == null ? -1 : list.indexWhere((x) => x.id == u.id);
+    if (at >= 0) {
+      final old = list[at];
+      list[at] = old.copyWith(
+        severity: u.severity,
+        avoidExerciseIds: ck.uniq([...old.avoidExerciseIds, ...u.addAvoidIds]),
+      );
+    } else {
+      final muscle = u.muscleId;
+      list.add(ck.Injury(
+        id: u.id ?? 'inj-$today-${list.length}',
+        muscleId: muscle,
+        label: u.label ?? (muscle == null ? 'Injury' : cr.label(muscle)),
+        severity: u.severity ?? ck.InjurySeverity.pain,
+        status: ck.InjuryStatus.active,
+        avoidExerciseIds: [...u.addAvoidIds],
+      ));
+    }
+    return coach.copyWith(injuries: list);
+  }
+
+  /// [coach] after an accepted calorie or activity-factor change: the calorie offset moved by [kcalDelta], the
+  /// activity factor set to [multiplier], and the adjustment cadence (`lastAdjustOn`, `initialAdjustDone`) moved on
+  /// as the nutrition package's `nextAdjustState` says.
+  static CoachData withNutritionAdjust(
+    CoachData coach, {
+    int? kcalDelta,
+    double? multiplier,
+    required String today,
+  }) {
+    final n = {...coach.nutrition};
+    if (kcalDelta != null && kcalDelta != 0) n['kcalOffset'] = ((n['kcalOffset'] as num?) ?? 0).round() + kcalDelta;
+    if (multiplier != null) n['multiplier'] = multiplier;
+    final last = n['lastAdjustOn'];
+    final next = cn.nextAdjustState(
+      cn.AdjustState(lastAdjustedOn: last is String ? last : null, initialAdjustDone: n['initialAdjustDone'] == true),
+      cn.AdjustChange(phaseChanged: false, kcalOffsetDelta: kcalDelta, multiplierAdjust: multiplier != null),
+      today,
+    );
+    n['lastAdjustOn'] = next.lastAdjustedOn;
+    n['initialAdjustDone'] = next.initialAdjustDone;
+    return coach.copyWith(nutrition: n);
+  }
 
   // ---------- Nutrition ----------
 

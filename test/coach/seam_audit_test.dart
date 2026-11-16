@@ -16,7 +16,7 @@ const _expected = <String, int>{
   'lib/app/gymmane_app.dart': 1, // app identity
   'lib/screens/about_screen.dart': 3, // credit line and fork link
   'lib/state/fit_core.dart': 1, // block of no-op coach methods
-  'lib/state/fit_state.dart': 7, // import, part, mixin, loadFromStore, toJson, applyBackup, resetAllData
+  'lib/state/fit_state.dart': 8, // import, part, mixin, loadFromStore, toJson, applyBackup, resetAllData, coachTick at load
   'packages/sync/lib/sync.dart': 1, // coach merges atomically
   'lib/screens/settings_screen.dart': 5, // import, Coach category, its title, its group, its section
   'pubspec.yaml': 1, // coach package dependencies
@@ -25,8 +25,8 @@ const _expected = <String, int>{
   'lib/models/progression.dart': 1, // ProgressKind.auto appended
   'lib/widgets/progression_sheet.dart': 4, // Auto: its name, its hint, offered while the module is on, its rule
   // _nextPlan (asks first; Auto falls back to Linear), toggleSet, nextWhy, _warmupFor, _openingSetsRaw,
-  // startFocusWorkout, _defaultPicks
-  'lib/state/workout_state.dart': 8,
+  // startFocusWorkout, _defaultPicks, coachTick after a workout is saved
+  'lib/state/workout_state.dart': 9,
   'lib/screens/onboarding_screen.dart': 4, // import of the barrel, page count, the coach's pages, finish
   'lib/screens/home_screen.dart': 3, // import of the barrel, block and week in the subtitle, "Why this plan"
   'lib/screens/train_screen.dart': 2, // import of the barrel, quick-workout length chips

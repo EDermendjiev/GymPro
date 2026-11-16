@@ -548,7 +548,7 @@ mixin CoachState
     if (v is! Map) return const {};
     return {
       for (final e in v.entries)
-        if (CoachArea.fromWire(e.key) case final a?) a: ?CoachSoreness.fromWire(e.value),
+        ?CoachArea.fromWire(e.key): ?CoachSoreness.fromWire(e.value),
     };
   }
 
@@ -581,6 +581,380 @@ mixin CoachState
     coach = coach.copyWith(soreness: all);
     _persist();
     notifyListeners();
+  }
+
+  // Weekly review (Task 5.3).
+
+  /// How long a dismissed proposal keeps the same one from coming back.
+  static const int coachDismissedDays = 28;
+
+  /// The stored proposals the coach can read, in stored order.
+  List<CoachProposal> get coachProposals => [
+        for (final r in coach.proposals) ?CoachProposal.read(r),
+      ];
+
+  /// Runs the coach's periodic work, at the end of loading and after a workout is saved. No background service: it
+  /// runs the next time the app opens.
+  ///
+  /// With the recovery module on and a block, once a week has passed since `coach.review.lastWeekStart`, the
+  /// weekly review runs on the week the review looks at (the week before, or on a Sunday the week ending today) and
+  /// its proposals are stored, one per kind and target: a proposal pending, or dismissed in the last
+  /// [coachDismissedDays] days, is not made again. The first run only sets `lastWeekStart`. Pending proposals past
+  /// their last day are put aside.
+  @override
+  void coachTick() {
+    final recovery = coach.isOn(CoachModule.recovery);
+    if (!recovery) return;
+    final before = coach;
+    _coachExpire();
+    if (recovery && coach.block != null) _coachWeeklyReview();
+    if (identical(before, coach)) return;
+    _persist();
+    notifyListeners();
+  }
+
+  void _coachWeeklyReview() {
+    final week = CoachFacade.reviewWeekFor(coachClock());
+    final review = coach.review;
+    final last = review['lastWeekStart'];
+    if (last is String && week.compareTo(last) <= 0) return;
+    if (last is! String) {
+      coach = coach.copyWith(review: {...review, 'lastWeekStart': week});
+      return;
+    }
+    final previous = review['previousYesCount'];
+    final inference = review['lastInference'];
+    final r = CoachFacade.weeklyReview(
+      _coachInputs(),
+      coachCheckins(),
+      weekStart: week,
+      previousYesCount: previous is int ? previous : null,
+      lastInference: inference is String ? inference : null,
+    );
+    coach = coach.copyWith(review: {
+      ...coach.review,
+      'lastWeekStart': week,
+      'previousYesCount': r.yesCount,
+      'lastInference': r.inference,
+    });
+    _coachAddProposals(r.proposals);
+  }
+
+  /// Stores [proposals] (the coach packages' JSON) as pending, leaving out those already pending or recently
+  /// dismissed, then applies the ones the coach applies by itself.
+  void _coachAddProposals(List<Map<String, dynamic>> proposals) {
+    final today = _coachDay(coachClock());
+    final since = _coachDay(DateTime.parse(today).subtract(const Duration(days: coachDismissedDays)));
+    final blocked = {
+      for (final p in coachProposals)
+        if (p.state == CoachProposalState.pending ||
+            (p.state == CoachProposalState.dismissed && (p.dismissedOn ?? p.createdOn).compareTo(since) >= 0))
+          CoachFacade.proposalKey(p.kind.wire, p.payload),
+    };
+    final added = <String>[];
+    final records = [...coach.proposals];
+    for (final p in proposals) {
+      final kind = CoachProposalKind.fromWire(p['kind']);
+      if (kind == null) continue;
+      final key = CoachFacade.proposalKey(kind.wire, p['payload']);
+      if (!blocked.add(key)) continue;
+      final id = 'p$today-${records.length}-${kind.wire}';
+      records.add({
+        'id': id,
+        'kind': kind.wire,
+        'state': CoachProposalState.pending.name,
+        'createdOn': today,
+        for (final k in const ['title', 'rationale', 'ruleIds', 'payload', 'appliesFrom', 'expiresOn'])
+          if (p[k] != null) k: p[k],
+      });
+      added.add(id);
+    }
+    if (added.isEmpty) return;
+    coach = coach.copyWith(proposals: records);
+    for (final id in added) {
+      final p = coachProposals.where((x) => x.id == id).firstOrNull;
+      if (p != null && coachTierFor(p.kind, askFirst: coachAskFirst) == CoachAutonomyTier.applyWithUndo) {
+        _coachApply(p);
+      }
+    }
+  }
+
+  /// Puts aside pending proposals past their last day, and forgets the undo data of proposals applied more than
+  /// [coachUndoDays] days ago.
+  void _coachExpire() {
+    final today = _coachDay(coachClock());
+    final undoSince = _coachDay(DateTime.parse(today).subtract(const Duration(days: coachUndoDays)));
+    var changed = false;
+    final records = [
+      for (final r in coach.proposals)
+        () {
+          final p = CoachProposal.read(r);
+          if (p == null) return r;
+          final expires = p.expiresOn;
+          if (p.state == CoachProposalState.pending && expires != null && expires.compareTo(today) < 0) {
+            changed = true;
+            return {...r, 'state': CoachProposalState.dismissed.name, 'dismissedOn': today};
+          }
+          if (p.state == CoachProposalState.applied &&
+              r.containsKey('undo') &&
+              (p.appliedOn ?? '').compareTo(undoSince) < 0) {
+            changed = true;
+            return {...r}..remove('undo');
+          }
+          return r;
+        }(),
+    ];
+    if (changed) coach = coach.copyWith(proposals: records);
+  }
+
+  // Autonomy, apply and undo (Task 5.5).
+
+  /// How long an applied proposal can be undone, and shows on the Home card.
+  static const int coachUndoDays = 7;
+
+  /// "Ask me before any change": every proposal waits for the user. Kept under `coach.review.askFirst`.
+  bool get coachAskFirst => coach.review['askFirst'] == true;
+
+  void setCoachAskFirst(bool on) {
+    if (on == coachAskFirst) return;
+    coach = coach.copyWith(review: {...coach.review, 'askFirst': on}..removeWhere((k, v) => k == 'askFirst' && !on));
+    _persist();
+    notifyListeners();
+  }
+
+  /// The proposals for the Home card: the pending ones, and the ones applied in the last [coachUndoDays] days that
+  /// can still be undone. Newest first.
+  List<CoachProposal> get coachCardProposals {
+    final since = _coachDay(coachClock().subtract(const Duration(days: coachUndoDays)));
+    return [
+      for (final p in coachProposals.reversed)
+        if (p.state == CoachProposalState.pending ||
+            (p.state == CoachProposalState.applied &&
+                p.record.containsKey('undo') &&
+                (p.appliedOn ?? '').compareTo(since) >= 0))
+          p,
+    ];
+  }
+
+  /// The tier of [p] under the current "Ask me before any change" setting.
+  CoachAutonomyTier coachTierOf(CoachProposal p) => coachTierFor(p.kind, askFirst: coachAskFirst);
+
+  CoachProposal? _coachProposal(String id) => coachProposals.where((p) => p.id == id).firstOrNull;
+
+  void _coachReplaceRecord(String id, Map<String, dynamic> record) {
+    coach = coach.copyWith(proposals: [
+      for (final r in coach.proposals) r['id'] == id ? record : r,
+    ]);
+  }
+
+  /// Applies the pending proposal [id]: its payload is checked first, and one that is not valid for its kind is
+  /// put aside instead, never applied. Returns whether it was applied.
+  bool applyCoachProposal(String id) {
+    final p = _coachProposal(id);
+    if (p == null || p.state != CoachProposalState.pending) return false;
+    final ok = _coachApply(p);
+    _planChanged();
+    return ok;
+  }
+
+  /// Puts the pending proposal [id] aside ("Not now"). The same proposal is not made again for
+  /// [coachDismissedDays] days.
+  void dismissCoachProposal(String id) {
+    final p = _coachProposal(id);
+    if (p == null || p.state != CoachProposalState.pending) return;
+    _coachReplaceRecord(id, {...p.record, 'state': CoachProposalState.dismissed.name, 'dismissedOn': _coachDay(coachClock())});
+    _persist();
+    notifyListeners();
+  }
+
+  bool _coachApply(CoachProposal p) {
+    final today = _coachDay(coachClock());
+    if (!CoachFacade.validProposal(p.kind, p.payload)) {
+      _coachReplaceRecord(p.id, {
+        ...p.record,
+        'state': CoachProposalState.dismissed.name,
+        'dismissedOn': today,
+        'invalid': true,
+      });
+      return false;
+    }
+    final snapshot = _coachSnapshot(p.record);
+    final diff = CoachFacade.proposalDiff(_coachInputs(), p.record);
+    final deload = _coachApplyDiff(p, diff);
+    _coachReplaceRecord(p.id, {
+      ...p.record,
+      'state': CoachProposalState.applied.name,
+      'appliedOn': today,
+      'summary': diff['summary'],
+      'deload': ?deload,
+      'undo': snapshot,
+    });
+    return true;
+  }
+
+  /// Applies [diff] (the coach packages' PlanDiff JSON) for [p]: a training status, an injury, nutrition, session
+  /// edits, a regeneration. Returns the deload week it sets up, if any (`weekStart`, `cutPct`).
+  Map<String, dynamic>? _coachApplyDiff(CoachProposal p, Map<String, dynamic> diff) {
+    final today = _coachDay(coachClock());
+    if (diff['settings'] case {'trainingStatus': final String status}) {
+      final profile = coach.profile;
+      if (profile != null) coach = coach.copyWith(profile: CoachProfile.fromJson({...profile.toJson(), 'status': status}));
+    }
+    if (diff['injury'] case final Map injury) {
+      coach = CoachFacade.withInjury(coach, injury.cast<String, dynamic>(), today);
+    }
+    if (diff['nutrition'] case final Map n) {
+      final kcal = n['kcal'];
+      final multiplier = n['multiplier'];
+      final current = coachNutritionTargets?.kcal;
+      coach = CoachFacade.withNutritionAdjust(
+        coach,
+        kcalDelta: kcal is num && current != null ? (kcal - current).round() : null,
+        multiplier: multiplier is num ? multiplier.toDouble() : null,
+        today: today,
+      );
+    }
+    final edits = [diff['exerciseUpdates'], diff['exerciseDeletes'], diff['sessionUpdates']]
+        .any((x) => x is List && x.isNotEmpty);
+    if (edits && coach.block != null) {
+      final swaps = CoachFacade.diffSwaps(coach, diff);
+      coach = CoachFacade.editBlock(coach, diff);
+      for (final s in swaps) {
+        final rid = coach.routineIds[s.templateKey];
+        if (rid == null) continue;
+        replaceRoutineExercise(rid, s.from, s.to);
+        final from = progressRule(s.from);
+        setProgressRule(s.to, progressRule(s.to).copyWith(kind: ProgressKind.auto, low: from.low, high: from.high));
+      }
+    }
+    if (diff['regenerate'] case final Map regen) {
+      if (regen['targetAdjustments'] case final Map adj) {
+        final sum = <String, dynamic>{...?(coach.review['targetAdjustments'] as Map?)?.cast<String, dynamic>()};
+        for (final e in adj.entries) {
+          sum[e.key as String] = ((sum[e.key] as num?) ?? 0) + (e.value as num);
+        }
+        coach = coach.copyWith(review: {...coach.review, 'targetAdjustments': sum});
+      }
+      if (coach.isOn(CoachModule.plan) && coach.block != null) {
+        _coachRegenerateWith(
+          blockKind: regen['blockKind'] as String?,
+          startsOn: regen['startsOn'] as String?,
+          fromHeavyPhase: regen['fromHeavyPhase'] as bool?,
+        );
+      }
+    }
+    return switch (p.kind) {
+      CoachProposalKind.standardDeload => {
+          'weekStart': p.payload['weekStart'],
+          'cutPct': p.payload['mode'] == 'sets' ? p.payload['setCutPct'] : 0,
+        },
+      CoachProposalKind.plateauAction when p.payload['step'] == 'deload' => {
+          'weekStart': CoachFacade.nextMonday(coachClock()),
+          'cutPct': 0.4,
+        },
+      CoachProposalKind.targetedDeload => {
+          'weekStart': p.payload['weekStart'],
+          'targeted': true,
+          'remove': p.payload['mode'] == 'higher_reps' ? const [] : p.payload['removeExerciseIds'],
+        },
+      _ => null,
+    };
+  }
+
+  /// Everything applying a proposal can change, for its undo: the coach's data (its proposals aside), the coach
+  /// routines and the exercises' progression rules, the weekly plan and rotation, and the record itself as it was.
+  Map<String, dynamic> _coachSnapshot(Map<String, dynamic> record) {
+    final data = coach.toJson()..remove('proposals');
+    final ids = coach.routineIds.values.toSet();
+    final exercises = <String>{};
+    final routineJson = <Map<String, dynamic>>[];
+    for (final (i, r) in routines.indexed) {
+      if (!ids.contains(r.id)) continue;
+      routineJson.add({'index': i, 'routine': r.toJson()});
+      exercises.addAll(r.exerciseIds);
+    }
+    return {
+      'coach': data,
+      'routines': routineJson,
+      'rules': {for (final id in exercises) id: progressRules[id]?.toJson()},
+      'weeklyPlan': {for (final e in weeklyPlan.entries) '${e.key}': e.value},
+      'planExtras': {for (final e in planExtras.entries) '${e.key}': [...e.value]},
+      'rotation': rotation,
+      'rotationIds': [...rotationIds],
+      'rotationNext': rotationNextId,
+      'record': record,
+    };
+  }
+
+  /// Whether the applied proposal [id] can still be undone.
+  bool canUndoCoachProposal(String id) {
+    final p = _coachProposal(id);
+    return p != null && p.state == CoachProposalState.applied && p.record['undo'] is Map;
+  }
+
+  /// Undoes the applied proposal [id]: the coach's data, the coach routines and their exercises' rules, the weekly
+  /// plan and rotation go back exactly to how they were before it was applied, and the proposal is pending again.
+  void undoCoachProposal(String id) {
+    if (!canUndoCoachProposal(id)) return;
+    final snap = (_coachProposal(id)!.record['undo'] as Map).cast<String, dynamic>();
+    final keep = <String>{};
+    final saved = [for (final x in snap['routines'] as List) (x as Map).cast<String, dynamic>()];
+    for (final x in saved) {
+      keep.add(((x['routine'] as Map)['id']) as String);
+    }
+    // Routines the proposal created go; the ones it changed or deleted come back where they were.
+    routines.removeWhere((r) => coach.routineIds.containsValue(r.id) && !keep.contains(r.id));
+    for (final x in saved) {
+      final r = Routine.fromJson((x['routine'] as Map).cast<String, dynamic>());
+      routines.removeWhere((o) => o.id == r.id);
+      routines.insert(math.min(x['index'] as int, routines.length), r);
+    }
+    for (final e in (snap['rules'] as Map).entries) {
+      final v = e.value;
+      if (v == null) {
+        progressRules.remove(e.key);
+      } else {
+        progressRules[e.key as String] = ProgressRule.fromJson((v as Map).cast<String, dynamic>());
+      }
+    }
+    weeklyPlan
+      ..clear()
+      ..addAll({for (final e in (snap['weeklyPlan'] as Map).entries) int.parse(e.key as String): e.value as String});
+    planExtras
+      ..clear()
+      ..addAll({
+        for (final e in (snap['planExtras'] as Map).entries)
+          int.parse(e.key as String): [for (final x in e.value as List) x as String],
+      });
+    rotation = snap['rotation'] as bool;
+    rotationIds
+      ..clear()
+      ..addAll([for (final x in snap['rotationIds'] as List) x as String]);
+    rotationNextId = snap['rotationNext'] as String;
+    final record = (snap['record'] as Map).cast<String, dynamic>();
+    coach = CoachData.fromJson({
+      ...(snap['coach'] as Map).cast<String, dynamic>(),
+      'proposals': [
+        for (final r in coach.proposals) r['id'] == id ? record : r,
+      ],
+    });
+    _planChanged();
+  }
+
+  /// [coachRegenerate] with a block transition's new kind, start day and heavy-phase flag.
+  void _coachRegenerateWith({String? blockKind, String? startsOn, bool? fromHeavyPhase}) {
+    if (coach.block == null) return;
+    final now = {
+      for (final e in coach.routineIds.entries)
+        if (routineById(e.value) case final r?) e.key: [...r.exerciseIds],
+    };
+    _coachWritePlan(CoachFacade.regeneratePlan(
+      _coachInputs(),
+      routineExercises: now,
+      blockKind: blockKind,
+      startsOn: startsOn,
+      fromHeavyPhase: fromHeavyPhase,
+    ));
   }
 
   // ---------- Nutrition (Phase 6) ----------

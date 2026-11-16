@@ -1820,6 +1820,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
       _computeSummaryHighlights(entry);
       _offerLevelUp(entry);
       healthSave(entry);
+      coachTick(); // coach-seam
     } else {
       _filed = null;
       summaryPrs = 0;

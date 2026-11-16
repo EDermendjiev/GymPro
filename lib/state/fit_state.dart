@@ -207,6 +207,7 @@ class FitState extends FitCore
     _stampMemberSince();
     _seedCalculatorsFromProfile();
     _loading = false;
+    coachTick(); // coach-seam
     refreshAwards(silent: true);
     pendingAwards.clear();
     if (gamification) pendingAwards.addAll(unseenAwards);

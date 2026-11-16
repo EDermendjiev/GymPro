@@ -258,3 +258,26 @@ final class CoachInjuryEntry {
   /// False once the injury is resolved.
   final bool active;
 }
+
+/// What one weekly review found.
+final class CoachReview {
+  CoachReview({
+    required this.weekStart,
+    required List<Map<String, dynamic>> proposals,
+    required this.yesCount,
+    required this.inference,
+  }) : proposals = List.unmodifiable(proposals);
+
+  /// The Monday of the reviewed week.
+  final String weekStart;
+
+  /// The proposals, in the coach packages' JSON shape (kind, title, rationale, ruleIds, payload, appliesFrom,
+  /// expiresOn), in the order the review made them: the week's, the plan's, then the plateaus'.
+  final List<Map<String, dynamic>> proposals;
+
+  /// How many of the five recovery questions the week answered "yes".
+  final int yesCount;
+
+  /// The training status the week's logs point to, by its wire name, or null when they do not tell.
+  final String? inference;
+}

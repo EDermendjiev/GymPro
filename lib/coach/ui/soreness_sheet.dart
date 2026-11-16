@@ -47,7 +47,7 @@ Widget coachChoiceRow<T>(
 }
 
 /// The soreness sheet: every area with "Sore" and "Pain" for today. Tapping the chosen level again clears it.
-void showCoachSorenessSheet(BuildContext context) {
+void coachShowSorenessSheet(BuildContext context) {
   showAppSheet<void>(
     context: context,
     backgroundColor: Colors.transparent,
@@ -116,7 +116,7 @@ class CoachSorenessRow extends StatelessWidget {
       child: GestureDetector(
         key: const ValueKey('coach-soreness-row'),
         behavior: HitTestBehavior.opaque,
-        onTap: () => showCoachSorenessSheet(context),
+        onTap: () => coachShowSorenessSheet(context),
         child: SoftCard(
           radius: 22,
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
