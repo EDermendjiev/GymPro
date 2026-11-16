@@ -11,13 +11,18 @@ import '../../widgets/glass.dart';
 import '../../widgets/ui_kit.dart';
 import '../model/coach_nutrition.dart';
 
-/// "Set by coach" with a tap that opens the reason sheet, and the phase picker. Draws nothing unless the coach
-/// supplies the goals in force: the nutrition module is on and the user has not set goals of their own.
+/// While the coach supplies the goals in force: "Set by coach" with a tap that opens the reason sheet, and the
+/// phase picker. While the nutrition module is on but the user has set goals of their own: a way back to the
+/// coach's goals. Nothing while the module is off.
 class CoachGoalsCard extends StatelessWidget {
   const CoachGoalsCard({super.key});
 
+  // It listens itself: placed as a const widget, it is not rebuilt with its parent.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ListenableBuilder(listenable: fit, builder: (context, _) => _build(context));
+
+  Widget _build(BuildContext context) {
+    if (fit.coachCanRestoreGoals) return const _RestoreCard();
     final c = fit.coachNutritionTargets;
     if (!fit.coachSetsGoals || c == null) return const SizedBox.shrink();
     final gc = context.gc;
@@ -61,6 +66,37 @@ class CoachGoalsCard extends StatelessWidget {
                 SegOption(_phaseLabel(p), c.phase == p, () => fit.setCoachNutritionPhase(p)),
             ]),
           ]),
+        ]),
+      ),
+    );
+  }
+}
+
+/// The user's own goals are in force: says so, and offers the coach's goals instead, with what that replaces.
+class _RestoreCard extends StatelessWidget {
+  const _RestoreCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final gc = context.gc;
+    return Padding(
+      padding: const EdgeInsets.only(top: 14),
+      child: SoftCard(
+        radius: 20,
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Row(children: [
+            Icon(_goalsIcon, size: 16, color: gc.textTertiary),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(t.coachGoalsOwn, style: AppTheme.f(14, weight: FontWeight.w800, color: gc.text)),
+            ),
+          ]),
+          const SizedBox(height: 12),
+          GhostButton(label: t.coachGoalsUseCoach, icon: PhosphorIconsBold.arrowCounterClockwise, onTap: fit.useCoachGoals),
+          const SizedBox(height: 8),
+          Text(t.coachGoalsUseCoachNote,
+              textAlign: TextAlign.center, style: AppTheme.s(11.5, color: gc.textTertiary, height: 1.4)),
         ]),
       ),
     );

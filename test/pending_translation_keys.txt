@@ -49,3 +49,6 @@ coachPhaseLoss
 coachGoalsBasis
 coachGoalsGain
 coachGoalsLoss
+coachGoalsOwn
+coachGoalsUseCoach
+coachGoalsUseCoachNote

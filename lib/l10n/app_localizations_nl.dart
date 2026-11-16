@@ -7915,4 +7915,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String coachGoalsLoss(String energy) {
     return 'Minus $energy a day to lose';
   }
+
+  @override
+  String get coachGoalsOwn => 'You set these goals yourself';
+
+  @override
+  String get coachGoalsUseCoach => 'Use coach\'s goals';
+
+  @override
+  String get coachGoalsUseCoachNote => 'This replaces all of your own goals, water and sodium included.';
 }

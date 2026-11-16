@@ -13771,6 +13771,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Minus {energy} a day to lose'**
   String coachGoalsLoss(String energy);
+
+  /// No description provided for @coachGoalsOwn.
+  ///
+  /// In en, this message translates to:
+  /// **'You set these goals yourself'**
+  String get coachGoalsOwn;
+
+  /// No description provided for @coachGoalsUseCoach.
+  ///
+  /// In en, this message translates to:
+  /// **'Use coach\'s goals'**
+  String get coachGoalsUseCoach;
+
+  /// No description provided for @coachGoalsUseCoachNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This replaces all of your own goals, water and sodium included.'**
+  String get coachGoalsUseCoachNote;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

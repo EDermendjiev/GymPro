@@ -22,8 +22,15 @@ Map<String, dynamic> _case(String prefix) {
   ].single;
 }
 
-/// The app activity multiplier that maps onto each coach activity band: the band's own multiplier.
-const _activity = {'sedentary': 1.45, 'lightly_active': 1.65, 'active': 1.85, 'very_active': 2.05};
+/// The app's activity choice that maps onto each coach activity band, by rank.
+const _activity = {'sedentary': 1.2, 'lightly_active': 1.375, 'active': 1.55, 'very_active': 1.725};
+
+/// The activity multipliers the app's profile screen offers, read from its source.
+List<double> _screenChoices() => [
+      for (final m in RegExp(r"_act\(gc, t\.activityName\('\w+'\), ([\d.]+)\)")
+          .allMatches(File('lib/screens/settings_screen.dart').readAsStringSync()))
+        double.parse(m.group(1)!),
+    ];
 
 /// A sport as `coach.sports` stores it, with the fields the calorie calculation reads taken from [s].
 Map<String, dynamic> _sport(Map s, int i) => {
@@ -180,18 +187,28 @@ void main() {
       expect(fit.activeGoals.toJson(), own.toJson());
     });
 
-    test('the activity band is the one nearest to the app\'s activity multiplier', () {
-      expect(coachLifestyleFor(1.2), ck.Lifestyle.sedentary);
-      expect(coachLifestyleFor(1.375), ck.Lifestyle.sedentary);
-      expect(coachLifestyleFor(1.55), ck.Lifestyle.lightlyActive, reason: 'a tie goes to the more active band');
-      expect(coachLifestyleFor(1.725), ck.Lifestyle.lightlyActive);
-      expect(coachLifestyleFor(1.9), ck.Lifestyle.active);
-      expect(coachLifestyleFor(1.95), ck.Lifestyle.veryActive, reason: 'a tie goes to the more active band');
-      expect(coachLifestyleFor(3), ck.Lifestyle.veryActive);
-      expect(coachLifestyleFor(0), ck.Lifestyle.sedentary);
-      for (final l in ck.Lifestyle.values) {
-        expect(coachLifestyleFor(_activity[l.wire]!), l);
-      }
+    test("the app's activity choices are the ones the profile screen offers", () {
+      expect(_screenChoices(), [1.2, 1.375, 1.55, 1.725]);
+      expect(coachActivityChoices, _screenChoices());
+    });
+
+    test('each app activity choice maps to a coach band by rank', () {
+      expect(coachLifestyleFor(1.2), ck.Lifestyle.sedentary, reason: 'Sedentary');
+      expect(coachLifestyleFor(1.375), ck.Lifestyle.lightlyActive, reason: 'Light');
+      expect(coachLifestyleFor(1.55), ck.Lifestyle.active, reason: 'Moderate');
+      expect(coachLifestyleFor(1.725), ck.Lifestyle.veryActive, reason: 'Active');
+    });
+
+    test('values off the choices take the band of the nearer choice', () {
+      expect(coachLifestyleFor(0), ck.Lifestyle.sedentary, reason: 'below the first choice');
+      expect(coachLifestyleFor(1.1), ck.Lifestyle.sedentary, reason: 'below the first choice');
+      expect(coachLifestyleFor(1.9), ck.Lifestyle.veryActive, reason: 'above the last choice');
+      expect(coachLifestyleFor(3), ck.Lifestyle.veryActive, reason: 'above the last choice');
+      expect(coachLifestyleFor(1.25), ck.Lifestyle.sedentary);
+      expect(coachLifestyleFor(1.33), ck.Lifestyle.lightlyActive);
+      expect(coachLifestyleFor(1.5), ck.Lifestyle.active);
+      expect(coachLifestyleFor(1.65), ck.Lifestyle.veryActive);
+      expect(coachLifestyleFor(1.6375), ck.Lifestyle.veryActive, reason: 'a tie goes to the more active band');
     });
 
     test('the activity band reaches the targets through fit', () {
@@ -202,12 +219,11 @@ void main() {
         return fit.suggestedGoals.kcal;
       }
 
-      // The app's Moderate and Active fall in G1's band, lightly active.
-      expect(kcalAt(1.55), g1['output']['kcal']);
-      expect(kcalAt(1.725), g1['output']['kcal']);
-      // Its Sedentary and Light fall in the sedentary band: less.
-      expect(kcalAt(1.2), kcalAt(1.375));
-      expect(kcalAt(1.2), lessThan(g1['output']['kcal'] as int));
+      // G1 is lightly active: the app's Light.
+      expect(kcalAt(1.375), g1['output']['kcal']);
+      final byChoice = [for (final a in [1.2, 1.375, 1.55, 1.725]) kcalAt(a)];
+      expect(byChoice, [...byChoice]..sort(), reason: 'more active, more calories');
+      expect(byChoice.toSet(), hasLength(4));
     });
   });
 
@@ -247,6 +263,40 @@ void main() {
       expect(fit.coachNutritionRules(), isNotEmpty);
       fit.useSuggestedGoals();
       expect(fit.coachSetsGoals, isFalse);
+    });
+
+    test("\"use coach's goals\" drops the user's own goals, and that survives a restart", () {
+      _arrange(_case('G1:')['input'] as Map<String, dynamic>);
+      // A reload first, so the app's own calculators follow the profile set above, as they do in use: the stock
+      // part of the goals (fibre) depends on them.
+      fit.persistNow();
+      fit.loadFromStore();
+      final coachGoals = fit.activeGoals.toJson();
+      expect(fit.coachCanRestoreGoals, isFalse, reason: 'nothing to restore yet');
+      fit.setNutritionGoals(const NutritionGoals(kcal: 2000, protein: 150, waterMl: 4000, sodium: 1500));
+      expect(fit.coachCanRestoreGoals, isTrue);
+      expect(fit.activeGoals.kcal, 2000);
+
+      fit.useCoachGoals();
+      expect(fit.nutritionGoalsSet, isFalse);
+      expect(fit.nutritionGoals.toJson(), const NutritionGoals().toJson(), reason: 'as on a fresh install');
+      expect(fit.activeGoals.toJson(), coachGoals);
+      expect(fit.coachSetsGoals, isTrue);
+      expect(fit.coachCanRestoreGoals, isFalse);
+
+      fit.persistNow();
+      fit.setNutritionGoals(const NutritionGoals(kcal: 1));
+      fit.loadFromStore();
+      expect(fit.nutritionGoalsSet, isFalse);
+      expect(fit.activeGoals.toJson(), coachGoals);
+    });
+
+    test("\"use coach's goals\" does nothing while the module is off", () {
+      fit.setNutritionGoals(const NutritionGoals(kcal: 2000));
+      expect(fit.coachCanRestoreGoals, isFalse);
+      fit.useCoachGoals();
+      expect(fit.nutritionGoalsSet, isTrue);
+      expect(fit.activeGoals.kcal, 2000);
     });
   });
 }

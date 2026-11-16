@@ -272,6 +272,20 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
   /// Whether the goals in force are the coach's: the nutrition module is on and the user has not set their own.
   bool get coachSetsGoals => coach.isOn(CoachModule.nutrition) && !nutritionGoalsSet;
 
+  /// Whether the user can go back to the coach's goals: the nutrition module is on and goals of their own are set.
+  bool get coachCanRestoreGoals => coach.isOn(CoachModule.nutrition) && nutritionGoalsSet;
+
+  /// Drops the user's own goals, every one of them (water, glass size, fibre, sugar and sodium included), so the
+  /// coach's goals are in force again. The goals go back to how a fresh install has them; rest-day goals are kept.
+  /// Does nothing unless [coachCanRestoreGoals].
+  void useCoachGoals() {
+    if (!coachCanRestoreGoals) return;
+    nutritionGoals = const NutritionGoals();
+    nutritionGoalsSet = false;
+    _persist();
+    notifyListeners();
+  }
+
   /// Stores [phase] as the user's pick under `coach.nutrition.phase`, in place of the one that follows from the
   /// coaching goal.
   void setCoachNutritionPhase(CoachNutritionPhase phase) {

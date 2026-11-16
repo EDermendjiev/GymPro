@@ -280,14 +280,20 @@ alone is enough.
 | Sex | the profile's sex (`male`, `female`; anything else counts as unspecified) |
 | Training status | the coaching profile, else novice |
 | Phase | the phase the user picked (`coach.nutrition.phase`), else the one that follows from the coaching goal, else maintain |
-| Activity band | the coach band whose default multiplier is nearest to the profile's activity multiplier; a tie goes to the more active band |
+| Activity band | the profile's activity multiplier, by rank (below) |
 | Sports | `coach.sports` |
 | Body fat, target rate, logged sport efforts, calorie override | left at the coach's defaults |
 
-The two activity scales differ (the app multiplies a resting rate built from
-age and height, the coach one built from bodyweight only), so the app's four
-choices map as: Sedentary (1.2) and Light (1.375) to sedentary, Moderate
-(1.55, a tie) and Active (1.725) to lightly active.
+The two activity scales are not comparable number for number (the app
+multiplies a resting rate built from age and height, the coach one built from
+bodyweight only), so only their order is used. The app's four choices, lowest
+first, map to the coach's four bands in order: Sedentary (1.2) to sedentary,
+Light (1.375) to lightly active, Moderate (1.55) to active, Active (1.725) to
+very active. Any other value takes the band of the nearer choice (a tie goes to
+the more active one), so anything below Sedentary is sedentary and anything
+above Active is very active. The choices are listed in
+`lib/coach/adapters/nutrition_adapter.dart`; a test checks them against the
+profile screen.
 
 `coachNutritionGoals` answers `suggestedGoals` with the coach's calories,
 protein, fat and carbs. Water, fibre, sugar, sodium and glass size are the
@@ -302,7 +308,12 @@ upkeep the targets rest on, the coach's warnings and the plain-words summary of
 every rule behind them, and a phase picker (gain, maintain, lose). A picked
 phase is stored under `coach.nutrition.phase` and replaces the one that follows
 from the coaching goal. Editing any goal in the sheet makes the goals the
-user's own, and the card goes away.
+user's own. The card then says so and offers "Use coach's goals", noting that
+this replaces all of the user's own goals, water and sodium included. That
+action (`CoachState.useCoachGoals`) puts the goals back as a fresh install has
+them and clears the "set by hand" flag, so the coach's goals are in force
+again; rest-day goals are kept. It writes the existing fields from
+`CoachState`, so it needs no seam.
 
 ## Muscle and equipment mapping
 

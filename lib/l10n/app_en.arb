@@ -2730,5 +2730,8 @@
   "coachGoalsGain": "Plus {energy} a day to gain",
   "@coachGoalsGain": {"placeholders": {"energy": {"type": "String"}}},
   "coachGoalsLoss": "Minus {energy} a day to lose",
-  "@coachGoalsLoss": {"placeholders": {"energy": {"type": "String"}}}
+  "@coachGoalsLoss": {"placeholders": {"energy": {"type": "String"}}},
+  "coachGoalsOwn": "You set these goals yourself",
+  "coachGoalsUseCoach": "Use coach's goals",
+  "coachGoalsUseCoachNote": "This replaces all of your own goals, water and sodium included."
 }

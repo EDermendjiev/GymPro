@@ -98,9 +98,9 @@ abstract final class CoachFacade {
   /// sports, and the phase the user picked under `nutrition.phase`.
   ///
   /// Without a picked phase the phase follows the coaching goal, and without a coaching profile it is maintain;
-  /// without a profile the status is novice. The activity band is the one nearest to [activity]. Everything else
-  /// the calculation can take (body fat, target rate, logged sport efforts, calorie override) is left at the
-  /// coach's defaults.
+  /// without a profile the status is novice. The activity band follows from [activity] by rank among the app's
+  /// choices (`coachLifestyleFor`). Everything else the calculation can take (body fat, target rate, logged sport
+  /// efforts, calorie override) is left at the coach's defaults.
   static CoachNutritionTargets nutritionTargets({
     required double bodyweightKg,
     required String sex,

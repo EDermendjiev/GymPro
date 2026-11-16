@@ -89,10 +89,27 @@ void main() {
     }
   });
 
-  testWidgets('goals of the user\'s own hide the card', (tester) async {
+  testWidgets("goals of the user's own: no \"Set by coach\", but a way back to the coach's goals", (tester) async {
     fit.setCoachModule(CoachModule.nutrition, true);
+    final coachKcal = fit.activeGoals.kcal;
     fit.setNutritionGoals(const NutritionGoals(kcal: 2000));
     await _openGoalsSheet(tester);
     expect(find.text('Set by coach'), findsNothing);
+    expect(find.text('Gain'), findsNothing, reason: 'no phase picker for goals the coach does not set');
+    expect(find.text("Use coach's goals"), findsOneWidget);
+    expect(find.text('This replaces all of your own goals, water and sodium included.'), findsOneWidget);
+
+    await tester.tap(find.text("Use coach's goals"));
+    await tester.pumpAndSettle();
+    expect(fit.nutritionGoalsSet, isFalse);
+    expect(fit.activeGoals.kcal, coachKcal);
+    expect(find.text('Set by coach'), findsOneWidget);
+    expect(find.text("Use coach's goals"), findsNothing);
+  });
+
+  testWidgets("module off with goals of the user's own: no way back offered", (tester) async {
+    fit.setNutritionGoals(const NutritionGoals(kcal: 2000));
+    await _openGoalsSheet(tester);
+    expect(find.text("Use coach's goals"), findsNothing);
   });
 }
