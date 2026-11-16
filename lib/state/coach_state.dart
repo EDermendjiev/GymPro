@@ -601,13 +601,19 @@ mixin CoachState
   /// its proposals are stored, one per kind and target: a proposal pending, or dismissed in the last
   /// [coachDismissedDays] days, is not made again. The first run only sets `lastWeekStart`. Pending proposals past
   /// their last day are put aside.
+  ///
+  /// With the nutrition module on, once per week the weigh-in review runs (Task 6.2): its calorie or
+  /// activity-factor proposal joins the others (it always asks first); when last week had too few weigh-ins the
+  /// review's note is kept for the Home card instead.
   @override
   void coachTick() {
     final recovery = coach.isOn(CoachModule.recovery);
-    if (!recovery) return;
+    final nutrition = coach.isOn(CoachModule.nutrition);
+    if (!recovery && !nutrition) return;
     final before = coach;
     _coachExpire();
     if (recovery && coach.block != null) _coachWeeklyReview();
+    if (nutrition) _coachWeighInReview();
     if (identical(before, coach)) return;
     _persist();
     notifyListeners();
@@ -638,6 +644,43 @@ mixin CoachState
       'lastInference': r.inference,
     });
     _coachAddProposals(r.proposals);
+  }
+
+  void _coachWeighInReview() {
+    final today = coachClock();
+    final week = CoachFacade.mondayOf(today);
+    var n = {...coach.nutrition};
+    // A new phase (picked, or following a new goal) starts the adjustment cadence over.
+    final phase = coachNutritionTargets?.phase.wire;
+    if (n['phaseFor'] != phase) {
+      n
+        ..['phaseFor'] = phase
+        ..['phaseStartedOn'] = _coachDay(today)
+        ..['initialAdjustDone'] = false;
+      coach = coach.copyWith(nutrition: n);
+    }
+    // Goals of the user's own win, so there is nothing to adjust.
+    if (!coachSetsGoals || coach.review['nutritionWeek'] == week) return;
+    final r = CoachFacade.nutritionReview(
+      bodyweightKg: nutritionWeightKg,
+      sex: profile.sex,
+      activity: profile.activity,
+      coach: coach,
+      weighIns: bodyweight,
+      today: today,
+    );
+    final review = {...coach.review, 'nutritionWeek': week}..remove('nutritionNote');
+    if (r.lowData && r.notes.isNotEmpty) review['nutritionNote'] = r.notes.first;
+    coach = coach.copyWith(review: review);
+    _coachAddProposals(r.proposals);
+  }
+
+  /// The weigh-in review's note for the Home card, while the nutrition module is on and last week had too few
+  /// weigh-ins to judge. In English: it comes from the coach packages.
+  String? get coachNutritionNote {
+    if (!coach.isOn(CoachModule.nutrition)) return null;
+    final v = coach.review['nutritionNote'];
+    return v is String ? v : null;
   }
 
   /// Stores [proposals] (the coach packages' JSON) as pending, leaving out those already pending or recently

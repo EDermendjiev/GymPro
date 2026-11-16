@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // The coach's place on the Home screen (Task 5.5): the proposals waiting for the user (Apply, Not now), the ones the
-// coach applied by itself in the last seven days (Undo), the one-time hint about sports and injuries, and the soreness row. Draws nothing when there is nothing
-// to show. Titles and reasons come from the coach packages, in English.
+// coach applied by itself in the last seven days (Undo), the weigh-in review's note, the one-time hint about sports
+// and injuries, and the soreness row. Draws nothing when there is nothing to show. Titles, reasons and notes come
+// from the coach packages, in English.
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
@@ -27,11 +28,13 @@ class CoachHomeSlot extends StatelessWidget {
     final recovery = fit.coach.isOn(CoachModule.recovery);
     final proposals = fit.coachCardProposals;
     final hint = fit.coachShowsHomeHint;
-    if (proposals.isEmpty && !recovery && !hint) return const SizedBox.shrink();
+    final note = fit.coachNutritionNote;
+    if (proposals.isEmpty && !recovery && !hint && note == null) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         for (final p in proposals) Padding(padding: const EdgeInsets.only(bottom: 10), child: CoachProposalCard(p)),
+        if (note != null) Padding(padding: const EdgeInsets.only(bottom: 10), child: _NoteCard(note)),
         if (hint) const CoachHomeHint(),
         if (recovery) const CoachSorenessRow(),
       ]),
@@ -108,6 +111,33 @@ class _CoachProposalCardState extends State<CoachProposalCard> {
             button('later', t.coachProposalNotNow, () => fit.dismissCoachProposal(p.id)),
           ],
         ]),
+      ]),
+    );
+  }
+}
+
+/// A note of the coach's, in English (it comes from the coach packages), such as why no calorie change was made.
+class _NoteCard extends StatelessWidget {
+  const _NoteCard(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final gc = context.gc;
+    return SoftCard(
+      radius: 22,
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: Icon(PhosphorIconsRegular.scales, size: 16, color: gc.brass)),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(text,
+              key: const ValueKey('coach-nutrition-note'),
+              style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textSecondary, height: 1.4)),
+        ),
       ]),
     );
   }

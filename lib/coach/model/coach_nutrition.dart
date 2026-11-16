@@ -63,3 +63,26 @@ final class CoachNutritionTargets {
   /// The rules behind the targets, warnings included.
   final List<String> ruleIds;
 }
+
+/// What one weigh-in review found (Task 6.2).
+final class CoachNutritionReview {
+  CoachNutritionReview({
+    required List<Map<String, dynamic>> proposals,
+    required List<String> notes,
+    required this.lowData,
+    required this.phase,
+  })  : proposals = List.unmodifiable(proposals),
+        notes = List.unmodifiable(notes);
+
+  /// `calorie_adjust` or `multiplier_adjust` proposals, in the coach packages' JSON shape (at most one).
+  final List<Map<String, dynamic>> proposals;
+
+  /// The review's notes, in English: they come from the coach packages.
+  final List<String> notes;
+
+  /// True when last week had too few weigh-ins (fewer than three, or none on a weekend) to judge.
+  final bool lowData;
+
+  /// The phase the review judged.
+  final CoachNutritionPhase phase;
+}

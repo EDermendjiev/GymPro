@@ -246,7 +246,9 @@ void main() {
       c = fit.coachNutritionTargets!;
       expect((c.phase, c.phasePicked), (CoachNutritionPhase.loss, true));
       expect(fit.suggestedGoals.kcal, lossKcal);
-      expect(fit.coach.toJson()['nutrition'], {'phase': 'loss'});
+      // The phase, and the weigh-in review's cadence the load's tick started for it (Task 6.2).
+      expect((fit.coach.toJson()['nutrition'] as Map).keys, ['phase', 'phaseFor', 'phaseStartedOn', 'initialAdjustDone']);
+      expect(fit.coach.nutrition['phaseFor'], 'loss');
     });
 
     test('a picked phase works without a coaching profile', () {

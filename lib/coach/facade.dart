@@ -701,6 +701,29 @@ abstract final class CoachFacade {
     required double activity,
     required CoachData coach,
   }) {
+    final (t, picked) = _nutrition(bodyweightKg: bodyweightKg, sex: sex, activity: activity, coach: coach);
+    return CoachNutritionTargets(
+      kcal: t.kcal,
+      proteinG: t.proteinG.round(),
+      fatG: t.fatG.round(),
+      carbsG: t.carbsG.round(),
+      phase: CoachNutritionPhase.fromWire(t.phase.wire)!,
+      phasePicked: picked,
+      bodyweightKg: bodyweightKg,
+      maintenance: t.maintenance,
+      delta: t.delta,
+      warnings: [for (final w in t.warnings) w.message],
+      ruleIds: [...t.ruleIds, for (final w in t.warnings) ...w.ruleIds],
+    );
+  }
+
+  /// The nutrition package's targets for [nutritionTargets], and whether the phase was picked.
+  static (cn.NutritionTargets, bool) _nutrition({
+    required double bodyweightKg,
+    required String sex,
+    required double activity,
+    required CoachData coach,
+  }) {
     final profile = coach.profile;
     final picked = CoachNutritionPhase.fromWire(coach.nutrition['phase']);
     final phase = picked != null
@@ -710,6 +733,7 @@ abstract final class CoachFacade {
             : ck.NutritionPhase.maintain;
     final multiplier = coach.nutrition['multiplier'];
     final offset = coach.nutrition['kcalOffset'];
+    final rate = coach.nutrition['targetRatePct'];
     cn.NutritionInput input({int? kcal}) => cn.NutritionInput(
           bodyweightKg: bodyweightKg,
           sex: coachSexFor(sex),
@@ -718,24 +742,52 @@ abstract final class CoachFacade {
           lifestyle: coachLifestyleFor(activity),
           multiplier: multiplier is num ? multiplier.toDouble() : null,
           sports: [for (final s in coach.sports) cn.SportForKcal.fromUserSport(s)],
+          targetRatePct: rate is num ? rate.toDouble() : null,
           kcalOverride: kcal,
         );
     var t = cn.nutritionTargets(input());
     // An accepted calorie change is kept as an offset from the coach's own target, so the target still follows
     // the bodyweight; the package takes the result as its calorie override.
     if (offset is num && offset != 0) t = cn.nutritionTargets(input(kcal: t.kcal + offset.round()));
-    return CoachNutritionTargets(
+    return (t, picked != null);
+  }
+
+  /// The weigh-in review (Task 6.2): the nutrition package's `nutritionReview` over the weekly averages of
+  /// [weighIns], for the targets in force (the same inputs as [nutritionTargets]). The phase started on
+  /// `nutrition.phaseStartedOn` ([today] when unknown).
+  static CoachNutritionReview nutritionReview({
+    required double bodyweightKg,
+    required String sex,
+    required double activity,
+    required CoachData coach,
+    required List<BodyweightEntry> weighIns,
+    required DateTime today,
+  }) {
+    final (t, _) = _nutrition(bodyweightKg: bodyweightKg, sex: sex, activity: activity, coach: coach);
+    final n = coach.nutrition;
+    final day = coachIsoDay(today);
+    final started = n['phaseStartedOn'];
+    final last = n['lastAdjustOn'];
+    final state = cn.WeighInState(
+      today: day,
+      phase: t.phase,
+      phaseStartedOn: started is String ? started : day,
+      lastAdjustedOn: last is String ? last : null,
       kcal: t.kcal,
-      proteinG: t.proteinG.round(),
-      fatG: t.fatG.round(),
-      carbsG: t.carbsG.round(),
-      phase: CoachNutritionPhase.fromWire(t.phase.wire)!,
-      phasePicked: picked != null,
+      multiplier: t.multiplier,
       bodyweightKg: bodyweightKg,
-      maintenance: t.maintenance,
-      delta: t.delta,
-      warnings: [for (final w in t.warnings) w.message],
-      ruleIds: [...t.ruleIds, for (final w in t.warnings) ...w.ruleIds],
+      status: coach.profile?.status ?? ck.Status.novice,
+      targetRatePct: t.ratePct,
+      weighIns: [for (final w in weighIns) cn.WeighIn(day: coachIsoDay(w.date), kg: w.kg)],
+      initialAdjustDone: n['initialAdjustDone'] == true,
+    );
+    final r = cn.nutritionReview(state);
+    final done = [for (final w in r.weeks) if (w.weekStart.compareTo(ck.mondayOf(day)) < 0) w];
+    return CoachNutritionReview(
+      proposals: [for (final p in r.proposals) p.toJson()],
+      notes: r.notes,
+      lowData: done.isNotEmpty && done.last.lowData,
+      phase: CoachNutritionPhase.fromWire(t.phase.wire)!,
     );
   }
 

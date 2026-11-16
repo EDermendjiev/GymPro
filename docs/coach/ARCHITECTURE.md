@@ -221,8 +221,8 @@ All coach data is stored under one key, `coach`, in the existing state blob.
 | `block` | The current generated block, as written by `BlockPlan.toJson()` |
 | `routineIds` | The GymMane routine each block session was written to |
 | `proposals` | Proposals with their state and the data needed to undo them |
-| `review` | Bookkeeping for the weekly review |
-| `nutrition` | Current nutrition phase and targets |
+| `review` | Bookkeeping for the weekly and weigh-in reviews, the "Ask me before any change" switch, accumulated target adjustments |
+| `nutrition` | The picked nutrition phase and the weigh-in review's adjustments (see [Weigh-in review](#weigh-in-review)) |
 
 Rules for this key:
 
@@ -535,6 +535,27 @@ protein, fat and carbs. Water, fibre, sugar, sodium and glass size are the
 app's own suggestion, worked out by the stock code path (the seam stands aside
 while `CoachState` asks for it). Goals the user has set by hand always win:
 `activeGoals` only asks for the suggestion when none are set.
+
+### Weigh-in review
+
+`coachTick()` also runs the weigh-in review once per ISO week while the nutrition module is on and the coach's
+goals are in force (`coach.review.nutritionWeek`): the nutrition package's `nutritionReview` over the weekly
+averages of the app's weigh-ins, for the targets in force. A week needs at least three weigh-ins, one on a
+weekend; when last week had fewer, nothing is proposed and the package's note shows on the Home card
+(`coach.review.nutritionNote`). A `calorie_adjust` or `multiplier_adjust` proposal goes through the recovery
+module's pipeline (de-duplicated, stored, always "ask first"). The module keeps, under `coach.nutrition`:
+
+| Key | Holds |
+|---|---|
+| `phase` | the phase the user picked |
+| `phaseFor`, `phaseStartedOn` | the phase in force when the review last looked, and the day it started; a new phase (picked, or from a new goal) starts the cadence over |
+| `multiplier` | the activity factor, after an accepted `multiplier_adjust` |
+| `kcalOffset` | calories added to (or taken from) the coach's own target, after an accepted `calorie_adjust`; the target still follows the bodyweight |
+| `lastAdjustOn`, `initialAdjustDone` | the adjustment cadence (the package's `nextAdjustState`) |
+| `targetRatePct` | a target rate of the user's own, when set; otherwise the coach's default for the phase |
+
+`CoachFacade.nutritionTargets` reads `multiplier`, `kcalOffset` and `targetRatePct`, so the coach's goals follow an
+accepted proposal at once, and undo puts them back.
 
 While the coach supplies the goals in force (module on, no goals of the
 user's own), the goals sheet shows the coach's card (`CoachGoalsCard`): "Set
