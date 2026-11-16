@@ -699,8 +699,8 @@ tier to "ask first".
 | `coach_recovery` | `packages/coach_recovery` | not started |
 | `coach_nutrition` | `packages/coach_nutrition` | not started |
 | `coach_testkit` | `packages/coach_testkit` | not started |
-| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, progression, plan and nutrition entry points of `CoachFacade` |
-| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); nutrition goals and phase (Phase 6) |
+| Adapter layer | `lib/coach/` | in progress: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
+| `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 What exists today is groundwork: the attribution credit in the About screen
 and README, the CI workflow for the `coach` branch, the upstream baseline in
