@@ -1,0 +1,6796 @@
+{
+ "fn": "progression",
+ "cases": [
+  {
+   "name": "constants",
+   "input": {
+    "call": "constants"
+   },
+   "output": {
+    "EXPECTED_SESSIONS_PER_LOAD_JUMP": {
+     "novice": 2.5,
+     "intermediate": 5,
+     "advanced": 10
+    },
+    "LOAD_PACE_STALL_FACTOR": 2
+   }
+  },
+  {
+   "name": "suggestNextSet first set in range keeps load and reps",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 10,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 10,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set at the bottom of the range",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 8,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set at the top of the range",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 12,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 12,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set in range without a load",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": null,
+     "reps": 9,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set two reps short drops the load",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 6,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 45,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set one rep short",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 7,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 47.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set one rep short, 1 kg steps",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 51,
+     "reps": 7,
+     "increment": 1
+    }
+   },
+   "output": {
+    "load": 48,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set short, the drop lands on a step",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 62.5,
+     "reps": 4,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set short, 5 kg steps round down",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 87.5,
+     "reps": 5,
+     "increment": 5
+    }
+   },
+   "output": {
+    "load": 75,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set two reps over raises the load",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 14,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 55,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set one rep over",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 13,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set far over, 2 kg steps",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 22,
+     "reps": 20,
+     "increment": 2
+    }
+   },
+   "output": {
+    "load": 30,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set over, the rise lands on a step",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 100,
+     "reps": 17,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 120,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set short without a load",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": null,
+     "reps": 5,
+     "increment": 2
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set over without a load",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": null,
+     "reps": 15,
+     "increment": 2
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set short with no weight on the bar",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 0,
+     "reps": 5,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 0,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet first set with no reps at all",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 0,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 32.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet a miss so large the load would go below zero",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 30,
+      "repMax": 40,
+      "rirMin": 0,
+      "rirMax": 2
+     },
+     "setIndex": 0,
+     "load": 10,
+     "reps": 1,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 0,
+    "repsTarget": 30,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet with the reps of the previous set, which are not read",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 0,
+     "load": 50,
+     "reps": 6,
+     "increment": 2.5,
+     "previousReps": 9
+    }
+   },
+   "output": {
+    "load": 45,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-03"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet later set keeps the load and the reps done",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 1,
+     "load": 50,
+     "reps": 10,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 10,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet later set below the range aims one under the bottom",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 1,
+     "load": 50,
+     "reps": 6,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet later set far below the range",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 3,
+     "load": 50,
+     "reps": 2,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet later set above the range",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 2,
+     "load": 50,
+     "reps": 15,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 15,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet later set exactly one under the bottom",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 1,
+     "load": 50,
+     "reps": 7,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSet later set without a load",
+   "input": {
+    "call": "suggestNextSet",
+    "ctx": {
+     "rx": {
+      "repMin": 8,
+      "repMax": 12,
+      "rirMin": 1,
+      "rirMax": 4
+     },
+     "setIndex": 2,
+     "load": null,
+     "reps": 9,
+     "increment": 2.5
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession no history, load from the strength estimate",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 2.5,
+     "e1rm": 100
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 72.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession no history, no estimate gives a hint",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank."
+   }
+  },
+  {
+   "name": "suggestNextSession no history, an estimate of zero counts as none",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 2.5,
+     "e1rm": 0
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank."
+   }
+  },
+  {
+   "name": "suggestNextSession no history, odd rep range rounds the middle up",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 2.5,
+     "e1rm": 142.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 9,
+     "rirMin": 1,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 107.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession no history, hint with a half RIR",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 5,
+     "repMax": 8,
+     "rirMin": 0,
+     "rirMax": 0.5
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 7.5 times, stopping with 0.5 reps in the tank."
+   }
+  },
+  {
+   "name": "suggestNextSession no history, estimate with a half RIR and 1 kg steps",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 1,
+     "e1rm": 87.3
+    },
+    "rx": {
+     "repMin": 3,
+     "repMax": 5,
+     "rirMin": 0.5,
+     "rirMax": 1.5
+    }
+   },
+   "output": {
+    "load": 76,
+    "repsTarget": 4,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession no history, target beyond twelve effective reps is capped",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [],
+     "increment": 5,
+     "e1rm": 60
+    },
+    "rx": {
+     "repMin": 15,
+     "repMax": 20,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 40,
+    "repsTarget": 18,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession last exposure has no sets, estimate known",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-10",
+       "sets": []
+      }
+     ],
+     "increment": 2.5,
+     "e1rm": 80
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 57.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession last exposure has no sets, no estimate",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-10",
+       "sets": []
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank."
+   }
+  },
+  {
+   "name": "suggestNextSession last first set has no load, estimate known",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": null,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "e1rm": 80
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 57.5,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession last first set has no load, no estimate",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": null,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "novice"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": null,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-01"
+    ],
+    "hint": "Pick a weight you could lift about 11 times, stopping with 3 reps in the tank."
+   }
+  },
+  {
+   "name": "suggestNextSession top of the range with reps in reserve adds one step",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession above the top of the range adds one step",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 12,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession top of the range, RIR not logged counts as on target",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": null
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession top of the range but too close to failure keeps the load",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 10,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession top of the range, load off the step grid",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 51,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession top of the range, 2 kg dumbbell steps",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 15,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2
+    },
+    "rx": {
+     "repMin": 10,
+     "repMax": 15,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 22,
+    "repsTarget": 11,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession in range adds a rep",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession one under the top targets the top",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 9,
+         "rir": 3
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 10,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession below the range adds a rep",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 3,
+         "rir": 0
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 4,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession only the first set of the last exposure is read",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 7,
+         "rir": 3
+        },
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        },
+        {
+         "load": 55,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 8,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, two top sessions in a row jump 5 kg",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 125,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, exactly at the 100 kg threshold",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 100,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 100,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 105,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, just under the threshold",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 97.5,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 97.5,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 100,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, one session only",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 122.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, the session before was short of the top",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 7,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 122.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, the session before was too close to failure",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 3
+        }
+       ]
+      },
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 122.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, the session before has no sets",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-08-30",
+       "sets": []
+      },
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 122.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, RIR not logged on either session",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 140,
+         "reps": 8,
+         "rir": null
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 140,
+         "reps": 8,
+         "rir": null
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 145,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, steps already above 5 kg",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 10,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 130,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession heavy lower barbell lift, 2 kg steps round the 5 kg jump",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 121,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 121,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2,
+     "heavyLowerBarbell": true
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 126,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession same history without the heavy-lift flag",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "heavyLowerBarbell": false
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 122.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession same history with the flag left out",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 120,
+         "reps": 8,
+         "rir": 4
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 4,
+     "repMax": 8,
+     "rirMin": 2,
+     "rirMax": 4
+    }
+   },
+   "output": {
+    "load": 122.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession novice stalled for five sessions gets the pace hint",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "novice"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02",
+     "T-PRG-06"
+    ],
+    "hint": "5 sessions at this load. Novice lifters usually add load about every 2.5 sessions: make sure set 1 really reaches 10 reps at 3 RIR."
+   }
+  },
+  {
+   "name": "suggestNextSession novice at four sessions is not stalled yet",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "novice"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession stalled but status unknown gets no hint",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession intermediate stalled for ten sessions",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-06",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-07",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-08",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-09",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-10",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "intermediate"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02",
+     "T-PRG-06"
+    ],
+    "hint": "10 sessions at this load. Intermediate lifters usually add load about every 5 sessions: make sure set 1 really reaches 10 reps at 3 RIR."
+   }
+  },
+  {
+   "name": "suggestNextSession intermediate at nine sessions",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-06",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-07",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-08",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-09",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "intermediate"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 50,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession advanced stalled for twenty sessions, half RIR in the hint",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-06",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-07",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-08",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-09",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-10",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-11",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-12",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-13",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-14",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-15",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-16",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-17",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-18",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-19",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-20",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "advanced"
+    },
+    "rx": {
+     "repMin": 3,
+     "repMax": 5,
+     "rirMin": 0.5,
+     "rirMax": 1.5
+    }
+   },
+   "output": {
+    "load": 142.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-02",
+     "T-PRG-06"
+    ],
+    "hint": "20 sessions at this load. Advanced lifters usually add load about every 10 sessions: make sure set 1 really reaches 5 reps at 1.5 RIR."
+   }
+  },
+  {
+   "name": "suggestNextSession advanced at nineteen sessions",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-06",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-07",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-08",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-09",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-10",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-11",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-12",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-13",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-14",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-15",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-16",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-17",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-18",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-19",
+       "sets": [
+        {
+         "load": 142.5,
+         "reps": 4,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "advanced"
+    },
+    "rx": {
+     "repMin": 3,
+     "repMax": 5,
+     "rirMin": 0.5,
+     "rirMax": 1.5
+    }
+   },
+   "output": {
+    "load": 142.5,
+    "repsTarget": 5,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession a load jump wins over the pace hint",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 10,
+         "rir": 3
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "novice"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 7,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession stalled count restarts after the load went up",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-09-01",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-02",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-03",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-04",
+       "sets": [
+        {
+         "load": 50,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-05",
+       "sets": [
+        {
+         "load": 52.5,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-09-06",
+       "sets": [
+        {
+         "load": 52.5,
+         "reps": 8,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2.5,
+     "status": "novice"
+    },
+    "rx": {
+     "repMin": 6,
+     "repMax": 10,
+     "rirMin": 1,
+     "rirMax": 3
+    }
+   },
+   "output": {
+    "load": 52.5,
+    "repsTarget": 9,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession double progression, after session 1",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-01-01",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 12,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2
+    },
+    "rx": {
+     "repMin": 10,
+     "repMax": 15,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 20,
+    "repsTarget": 13,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession double progression, after session 2",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-01-01",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 12,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-02",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 13,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2
+    },
+    "rx": {
+     "repMin": 10,
+     "repMax": 15,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 20,
+    "repsTarget": 14,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession double progression, after session 3",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-01-01",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 12,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-02",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 13,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-03",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 14,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2
+    },
+    "rx": {
+     "repMin": 10,
+     "repMax": 15,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 20,
+    "repsTarget": 15,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession double progression, after session 4",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-01-01",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 12,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-02",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 13,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-03",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 14,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-04",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 15,
+         "rir": 1
+        }
+       ]
+      }
+     ],
+     "increment": 2
+    },
+    "rx": {
+     "repMin": 10,
+     "repMax": 15,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 20,
+    "repsTarget": 15,
+    "ruleIds": [
+     "T-PRG-02"
+    ]
+   }
+  },
+  {
+   "name": "suggestNextSession double progression, after session 5",
+   "input": {
+    "call": "suggestNextSession",
+    "history": {
+     "exposures": [
+      {
+       "date": "2026-01-01",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 12,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-02",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 13,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-03",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 14,
+         "rir": 2
+        }
+       ]
+      },
+      {
+       "date": "2026-01-04",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 15,
+         "rir": 1
+        }
+       ]
+      },
+      {
+       "date": "2026-01-05",
+       "sets": [
+        {
+         "load": 20,
+         "reps": 15,
+         "rir": 2
+        }
+       ]
+      }
+     ],
+     "increment": 2
+    },
+    "rx": {
+     "repMin": 10,
+     "repMax": 15,
+     "rirMin": 0,
+     "rirMax": 2
+    }
+   },
+   "output": {
+    "load": 22,
+    "repsTarget": 11,
+    "ruleIds": [
+     "T-PRG-04"
+    ]
+   }
+  },
+  {
+   "name": "nudgeLoad 50 kg up by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 50,
+    "increment": 2.5,
+    "dir": 1
+   },
+   "output": 52.5
+  },
+  {
+   "name": "nudgeLoad 50 kg down by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 50,
+    "increment": 2.5,
+    "dir": -1
+   },
+   "output": 47.5
+  },
+  {
+   "name": "nudgeLoad null kg up by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": null,
+    "increment": 2.5,
+    "dir": 1
+   },
+   "output": null
+  },
+  {
+   "name": "nudgeLoad null kg down by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": null,
+    "increment": 2.5,
+    "dir": -1
+   },
+   "output": null
+  },
+  {
+   "name": "nudgeLoad 0 kg down by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 0,
+    "increment": 2.5,
+    "dir": -1
+   },
+   "output": 0
+  },
+  {
+   "name": "nudgeLoad 0 kg up by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 0,
+    "increment": 2.5,
+    "dir": 1
+   },
+   "output": 2.5
+  },
+  {
+   "name": "nudgeLoad 1 kg down by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 1,
+    "increment": 2.5,
+    "dir": -1
+   },
+   "output": 0
+  },
+  {
+   "name": "nudgeLoad 2 kg down by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 2,
+    "increment": 2.5,
+    "dir": -1
+   },
+   "output": 0
+  },
+  {
+   "name": "nudgeLoad 51 kg up by 2.5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 51,
+    "increment": 2.5,
+    "dir": 1
+   },
+   "output": 52.5
+  },
+  {
+   "name": "nudgeLoad 47.5 kg up by 5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 47.5,
+    "increment": 5,
+    "dir": 1
+   },
+   "output": 55
+  },
+  {
+   "name": "nudgeLoad 47.5 kg down by 5",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 47.5,
+    "increment": 5,
+    "dir": -1
+   },
+   "output": 45
+  },
+  {
+   "name": "nudgeLoad 21 kg down by 2",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 21,
+    "increment": 2,
+    "dir": -1
+   },
+   "output": 20
+  },
+  {
+   "name": "nudgeLoad 102.5 kg up by 1.25",
+   "input": {
+    "call": "nudgeLoad",
+    "load": 102.5,
+    "increment": 1.25,
+    "dir": 1
+   },
+   "output": 103.75
+  },
+  {
+   "name": "sessionsAtLoad no exposures",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": []
+   },
+   "output": 0
+  },
+  {
+   "name": "sessionsAtLoad one exposure",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 1
+  },
+  {
+   "name": "sessionsAtLoad three at the load after a rise",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 52.5,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 52.5,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 52.5,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 3
+  },
+  {
+   "name": "sessionsAtLoad never went up",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 3
+  },
+  {
+   "name": "sessionsAtLoad a drop does not restart the count",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 60,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 55,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 55,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 3
+  },
+  {
+   "name": "sessionsAtLoad a session without a load stops the count",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": null,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 1
+  },
+  {
+   "name": "sessionsAtLoad the last session has no load",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": null,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 0
+  },
+  {
+   "name": "sessionsAtLoad the last exposure has no sets",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": []
+     }
+    ]
+   },
+   "output": 0
+  },
+  {
+   "name": "sessionsAtLoad an exposure without sets in the middle",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": []
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 2
+  },
+  {
+   "name": "sessionsAtLoad went up at the last session",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 52.5,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 1
+  },
+  {
+   "name": "sessionsAtLoad up, down, then level",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 55,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 52.5,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 52.5,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 3
+  },
+  {
+   "name": "sessionsAtLoad only the first set of each exposure counts",
+   "input": {
+    "call": "sessionsAtLoad",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 60,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       },
+       {
+        "load": 40,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ]
+   },
+   "output": 2
+  },
+  {
+   "name": "loadPace novice, 0 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 0,
+    "expected": 2.5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace novice, 1 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 1,
+    "expected": 2.5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace novice, 4 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 4,
+    "expected": 2.5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace novice, 5 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 5,
+    "expected": 2.5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace novice, 9 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 9,
+    "expected": 2.5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace novice, 10 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 10,
+    "expected": 2.5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace novice, 19 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 19,
+    "expected": 2.5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace novice, 20 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-20",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 20,
+    "expected": 2.5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace novice, 21 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-20",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-21",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "novice"
+   },
+   "output": {
+    "sessions": 21,
+    "expected": 2.5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace intermediate, 0 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 0,
+    "expected": 5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace intermediate, 1 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 1,
+    "expected": 5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace intermediate, 4 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 4,
+    "expected": 5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace intermediate, 5 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 5,
+    "expected": 5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace intermediate, 9 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 9,
+    "expected": 5,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace intermediate, 10 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 10,
+    "expected": 5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace intermediate, 19 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 19,
+    "expected": 5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace intermediate, 20 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-20",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 20,
+    "expected": 5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace intermediate, 21 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-20",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-21",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "intermediate"
+   },
+   "output": {
+    "sessions": 21,
+    "expected": 5,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace advanced, 0 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 0,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 1 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 1,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 4 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 4,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 5 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 5,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 9 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 9,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 10 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 10,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 19 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 19,
+    "expected": 10,
+    "stalled": false
+   }
+  },
+  {
+   "name": "loadPace advanced, 20 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-20",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 20,
+    "expected": 10,
+    "stalled": true
+   }
+  },
+  {
+   "name": "loadPace advanced, 21 sessions at the load",
+   "input": {
+    "call": "loadPace",
+    "exposures": [
+     {
+      "date": "2026-09-01",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-02",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-03",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-04",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-05",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-06",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-07",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-08",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-09",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-10",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-11",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-12",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-13",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-14",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-15",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-16",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-17",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-18",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-19",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-20",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     },
+     {
+      "date": "2026-09-21",
+      "sets": [
+       {
+        "load": 50,
+        "reps": 8,
+        "rir": 2
+       }
+      ]
+     }
+    ],
+    "status": "advanced"
+   },
+   "output": {
+    "sessions": 21,
+    "expected": 10,
+    "stalled": true
+   }
+  }
+ ]
+}
