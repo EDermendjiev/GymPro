@@ -103,3 +103,23 @@ Deliberate differences from the fixture generator, each pinned by a Dart test:
   `FormatException`.
 - Proposal payloads are checked by hand-written validators that throw
   `FormatException`.
+
+## Upstream merge: GymMane v2.3.0 (2026-11-16)
+
+`upstream/main` moved from `37fb00d` to `e774a0443d3d75127d4e619ed7e17706c6135baf`
+(tag v2.3.0, 31 commits, `pubspec.yaml` version 2.3.0+14). `main` was
+fast-forwarded to it and merged into `coach`, following
+[UPSTREAM.md](UPSTREAM.md).
+
+| Check | Result |
+| --- | --- |
+| Conflicts | `lib/screens/train_screen.dart`, `lib/l10n/app_en.arb`, the generated `lib/l10n/app_localizations*.dart`; all in the seams table |
+| `flutter analyze --no-fatal-infos` | No issues found |
+| `flutter test` | 1551 passed, 0 failed, 3 skipped (the three fixture placeholders above) |
+| Package tests (`dart test`) | `sync` 6, `coach_kernel` 649, `coach_progression` 400, `coach_training` 2895, `coach_recovery` 983, `coach_nutrition` 410; all passed |
+| `test/coach/seam_audit_test.dart` | passed, no seam added or moved |
+
+Upstream v2.3.0 ships 52 new English keys translated into Spanish only, and
+its own `test/i18n_test.dart` fails on that commit ("faltan claves en ar").
+The fork lists those keys in `test/pending_translation_keys.txt`, which is
+what the file is for; no upstream test was changed.
