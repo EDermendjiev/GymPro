@@ -8088,4 +8088,132 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get coachGoalsUseCoachNote => 'This replaces all of your own goals, water and sodium included.';
+
+  @override
+  String get coachRoutineGroup => 'Coach';
+
+  @override
+  String get coachPlanName => 'Coach plan';
+
+  @override
+  String get coachBlockHypertrophy => 'Muscle building';
+
+  @override
+  String get coachBlockStrengthVolume => 'Strength · volume';
+
+  @override
+  String get coachBlockStrengthLoad => 'Strength · load';
+
+  @override
+  String get coachBlockStrengthPeak => 'Strength · peak';
+
+  @override
+  String get coachBlockSportSupport => 'Sport support';
+
+  @override
+  String coachBlockWeek(String kind, int week, int weeks) {
+    return '$kind · Week $week of $weeks';
+  }
+
+  @override
+  String get coachPlanWhy => 'Why this plan';
+
+  @override
+  String get coachPlanWhyNote => 'The coach\'s reasoning, in its own words';
+
+  @override
+  String get coachPlanWarnings => 'Worth knowing';
+
+  @override
+  String get coachOnbGoalTitle => 'What are you training for?';
+
+  @override
+  String get coachOnbGoalWhy =>
+      'Pick a goal and the coach builds your weekly routines around it. You can change it later in Settings.';
+
+  @override
+  String get coachGoalLeanGain => 'Build muscle';
+
+  @override
+  String get coachGoalLeanGainHint => 'More size, with a small food surplus';
+
+  @override
+  String get coachGoalRecomp => 'Build muscle, lose fat';
+
+  @override
+  String get coachGoalRecompHint => 'Change your shape at about the same weight';
+
+  @override
+  String get coachGoalStrength => 'Get stronger';
+
+  @override
+  String get coachGoalStrengthHint => 'Heavier squat, bench and deadlift';
+
+  @override
+  String get coachGoalFatLoss => 'Lose fat';
+
+  @override
+  String get coachGoalFatLossHint => 'Keep your muscle while the weight comes down';
+
+  @override
+  String get coachGoalSportSupport => 'Support my sport';
+
+  @override
+  String get coachGoalSportSupportHint => 'Lifting that helps your sport without tiring you';
+
+  @override
+  String get coachJustLog => 'Just log workouts';
+
+  @override
+  String get coachOnbLevelTitle => 'How long have you been lifting?';
+
+  @override
+  String get coachOnbLevelWhy => 'This sets how much training you start with and how fast the weights go up.';
+
+  @override
+  String get coachLevelNovice => 'Less than a year';
+
+  @override
+  String get coachLevelNoviceHint => 'Or getting back after a long break';
+
+  @override
+  String get coachLevelIntermediate => 'One to five years';
+
+  @override
+  String get coachLevelIntermediateHint => 'The weights still go up, just not every week';
+
+  @override
+  String get coachLevelAdvanced => 'More than five years';
+
+  @override
+  String get coachLevelAdvancedHint => 'Progress comes slowly now';
+
+  @override
+  String get coachLevelFromLogs => 'From your logs';
+
+  @override
+  String get coachSessionLength => 'Session length';
+
+  @override
+  String coachMinutes(int n) {
+    return '$n min';
+  }
+
+  @override
+  String get coachTrainingDays => 'Training days';
+
+  @override
+  String get coachBuildPlan => 'Build me a plan';
+
+  @override
+  String get coachBuildPlanHint => 'Weekly routines from your goal, your days and your gear';
+
+  @override
+  String get coachBuildPlanGo => 'Build plan';
+
+  @override
+  String get coachPlanBuilt => 'Your plan is ready';
+
+  @override
+  String get coachQuickLength => 'Workout length';
 }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// Settings › Coach: one switch per coach module.
+// Settings › Coach: "Build me a plan", and one switch per coach module.
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
@@ -9,6 +9,7 @@ import '../../theme/app_colors.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/ui_kit.dart';
 import '../model/coach_data.dart';
+import 'onboarding_pages.dart';
 
 /// Builds one settings row: icon, label, the switch, and a one-line hint. The settings screen passes its own, so
 /// the coach rows look and behave like their neighbours.
@@ -19,6 +20,7 @@ const IconData coachSettingsIcon = PhosphorIconsRegular.clipboardText;
 
 /// The rows the settings search finds in the Coach section.
 List<(String, IconData)> coachSettingsSearchRows() => [
+      (t.coachBuildPlan, PhosphorIconsRegular.magicWand),
       for (final m in CoachModule.values) (_label(m), _icon(m)),
     ];
 
@@ -36,6 +38,17 @@ class CoachSettings extends StatelessWidget {
     return ListenableBuilder(
       listenable: fit,
       builder: (context, _) => Column(children: [
+        GestureDetector(
+          key: const ValueKey('coach-build-plan-row'),
+          behavior: HitTestBehavior.opaque,
+          onTap: () => showCoachPlanSheet(context),
+          child: build(
+            PhosphorIconsRegular.magicWand,
+            t.coachBuildPlan,
+            Icon(PhosphorIconsBold.caretRight, size: 13, color: context.gc.textTertiary),
+            t.coachBuildPlanHint,
+          ),
+        ),
         for (final m in CoachModule.values)
           GestureDetector(
             key: ValueKey('coach-module-${m.name}'),

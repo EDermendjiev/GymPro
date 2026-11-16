@@ -4,14 +4,23 @@
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 import 'package:coach_nutrition/coach_nutrition.dart' as cn;
 import 'package:coach_progression/coach_progression.dart' as cp;
+import 'package:coach_training/coach_training.dart' as ct;
 
 import '../models/exercise.dart';
 import '../models/workout.dart';
+import 'adapters/block_input_adapter.dart';
+import 'adapters/catalog_adapter.dart';
 import 'adapters/category_adapter.dart';
+import 'adapters/equipment_map.dart';
 import 'adapters/exposure_adapter.dart';
+import 'adapters/history_adapter.dart';
+import 'adapters/muscle_map.dart';
 import 'adapters/nutrition_adapter.dart';
+import 'adapters/plan_writer.dart';
+import 'model/coach_choices.dart';
 import 'model/coach_data.dart';
 import 'model/coach_nutrition.dart';
+import 'model/coach_plan.dart';
 import 'model/coach_profile.dart';
 import 'model/coach_targets.dart';
 
@@ -22,7 +31,7 @@ abstract final class CoachFacade {
   /// The rep range, effort range and rest the coach prescribes for [exercise] when nothing else is known about
   /// the session: the middle of the category's range, without a sport priority.
   static CoachRx rxFor(Exercise exercise) {
-    final category = coachCategoryFor(exercise);
+    final category = coachCategory(exercise);
     final lower = category == ck.Category.lowerFreeCompound || category == ck.Category.lowerMachineCompound;
     final rx = cp.prescribe(
       category,
@@ -39,7 +48,7 @@ abstract final class CoachFacade {
   }
 
   /// Whether the coach treats [exercise] as a compound lift.
-  static bool isCompound(Exercise exercise) => cp.isCompound(coachCategoryFor(exercise));
+  static bool isCompound(Exercise exercise) => cp.isCompound(coachCategory(exercise));
 
   /// The load and reps for the first working set the next time [exercise] is done, from its logged [sessions].
   ///
@@ -90,6 +99,279 @@ abstract final class CoachFacade {
   static List<CoachWarmupSet> warmup(double workingKg, double incrementKg) => [
         for (final w in cp.warmupRamp(workingKg, incrementKg)) CoachWarmupSet(loadKg: w.load, reps: w.reps),
       ];
+
+  // ---------- Plan ----------
+
+  /// The input the block generator gets for [i], as JSON (the kernel's `BlockInput.toJson`). For checks and tests.
+  static Map<String, dynamic> blockInputJson(CoachPlanInputs i) => coachBlockInput(i).toJson();
+
+  /// A new block for [i]: the coach's data with the block in it, its routines and its week.
+  static CoachBuiltPlan buildPlan(CoachPlanInputs i) {
+    final block = ct.generateBlock(coachBlockInput(i));
+    return _built(i.coach.copyWith(block: block), block);
+  }
+
+  /// The current block generated again, keeping what the user changed (Task 4.5). [routineExercises] holds the
+  /// exercise ids each coach routine has now, by template key; a swap becomes the block's selection for that slot, a
+  /// removal a dislike. The block keeps its kind and its weeks, and the regenerated sessions go through carry-over,
+  /// so a session already done (a workout of its routine logged on its date) is not planned again. Without a block
+  /// this is [buildPlan].
+  static CoachBuiltPlan regeneratePlan(CoachPlanInputs i, {required Map<String, List<String>> routineExercises}) {
+    final old = i.coach.block;
+    if (old == null) return buildPlan(i);
+    final today = coachIsoDay(i.today);
+    final logged = {
+      for (final s in i.sessions)
+        if (s.routineId case final id?) '$id|${coachIsoDay(s.date)}',
+    };
+    bool doneOn(String templateKey, String date) => logged.contains('${i.coach.routineIds[templateKey]}|$date');
+    final edits = coachUserEdits(old, routineExercises);
+    final coach = i.coach.copyWith(disliked: ck.uniq([...i.coach.disliked, ...edits.disliked]));
+    final running = ck.daysBetween(old.startsOn, today) < old.weeks * 7;
+    final input = coachBlockInput(
+      i.withCoach(coach),
+      previous: coachPreviousBlock(old, edits.selections, today),
+      blockKind: running ? old.kind : null,
+      startsOn: running ? old.startsOn : null,
+      materialiseFrom: ck.mondayOf(today),
+    );
+    final fresh = ct.generateBlock(input);
+    final allowed = {for (final e in input.exercises) e.id}..removeAll(coach.disliked);
+    final carried = ct.carryOverEdits(ct.CarryOverInput(
+      sessions: fresh.sessions,
+      prior: coachPriorSessions(old, doneOn),
+      today: today,
+      allowExercise: allowed.contains,
+    ));
+    final block = fresh.copyWith(sessions: carried.sessions);
+    return _built(coach.copyWith(block: block), block);
+  }
+
+  /// Training days for a weekly goal of [n] sessions, spread over the week (1 = Monday … 7 = Sunday).
+  static List<int> spreadDays(int n) => coachSpreadDays(n);
+
+  static CoachBuiltPlan _built(CoachData data, ck.BlockPlan block) =>
+      CoachBuiltPlan(data: data, routines: coachRoutinePlans(block), week: coachWeek(block));
+
+  /// The block's session for [templateKey] that applies [today]: today's own, else the nearest one of the block's
+  /// current week, else the nearest one of the block.
+  static ck.PlannedSession? _sessionFor(ck.BlockPlan block, String templateKey, String today) {
+    final week = ct.blockWeekIndex(ck.mondayOf(today), block.startsOn, block.weeks);
+    int rank(ck.PlannedSession s) =>
+        (s.date == today ? 0 : s.weekIndex == week ? 1 : 2) * 10000 + ck.daysBetween(today, s.date).abs();
+    ck.PlannedSession? best;
+    for (final s in block.sessions) {
+      if (s.templateKey != templateKey) continue;
+      if (best == null || rank(s) < rank(best)) best = s;
+    }
+    return best;
+  }
+
+  /// The sets [exercise] opens with in the coach routine of [templateKey] [today]: the set count, reps and effort of
+  /// the block's session for this week, with loads worked out now from the logged [sessions]. Null when the block
+  /// has no such session or the session does not hold the exercise.
+  static List<CoachOpeningSet>? openingSets({
+    required CoachData coach,
+    required String templateKey,
+    required Exercise exercise,
+    required DateTime today,
+    required List<LoggedSession> sessions,
+    required double incrementKg,
+  }) {
+    final block = coach.block;
+    if (block == null) return null;
+    final s = _sessionFor(block, templateKey, coachIsoDay(today));
+    if (s == null) return null;
+    final entries = [for (final e in s.exercises) if (e.exerciseId == exercise.id) e];
+    if (entries.isEmpty) return null;
+    return _opening(entries, exercise, sessions, incrementKg, coach.profile?.status);
+  }
+
+  static List<CoachOpeningSet> _opening(
+    List<ck.PlannedExercise> entries,
+    Exercise exercise,
+    List<LoggedSession> sessions,
+    double incrementKg,
+    ck.Status? status,
+  ) {
+    final history = coachExerciseHistory(
+      sessions,
+      exercise.id,
+      increment: incrementKg,
+      heavyLowerBarbell: coachHeavyLowerBarbell(exercise),
+      status: status,
+    );
+    final mine = [for (final s in sessions) if (s.exercises.any((e) => e.id == exercise.id)) s];
+    final e1rm = ck.bestRecentE1rm(coachSets(mine, since: '0000-01-01'), exercise.id);
+    final out = <CoachOpeningSet>[];
+    for (final e in entries) {
+      if (e.isMainLiftSingle == true) {
+        final load = ct.singleLoad(e1rm, 10 - e.rirMin, incrementKg) ?? e.suggestedLoadKg;
+        out.add(CoachOpeningSet(reps: 1, loadKg: load));
+      } else if (e.slotKey.endsWith('_backoff')) {
+        final load = ct.backoffLoad(e1rm, e.repMin, 10 - e.rirMin, incrementKg) ?? e.suggestedLoadKg;
+        for (var n = 0; n < e.sets; n++) {
+          out.add(CoachOpeningSet(reps: e.repMin, loadKg: load));
+        }
+      } else {
+        final rx = ck.SetRx(repMin: e.repMin, repMax: e.repMax, rirMin: e.rirMin, rirMax: e.rirMax);
+        final sug = cp.suggestNextSession(history.copyWith(e1rm: e1rm), rx);
+        for (var n = 0; n < e.sets; n++) {
+          out.add(CoachOpeningSet(reps: sug.repsTarget, loadKg: sug.load));
+        }
+      }
+    }
+    return out;
+  }
+
+  /// Where the block in [coach] stands [today], or null without a block.
+  static CoachBlockSummary? blockSummary(CoachData coach, DateTime today) {
+    final block = coach.block;
+    if (block == null) return null;
+    final week = ct.blockWeekIndex(ck.mondayOf(coachIsoDay(today)), block.startsOn, block.weeks);
+    return CoachBlockSummary(
+      kind: CoachBlockKind.fromWire(block.kind.wire)!,
+      week: week + 1,
+      weeks: block.weeks,
+      explanations: [for (final e in block.explanations) e.text],
+      rules: ruleSummaries([for (final e in block.explanations) ...e.ruleIds]),
+      warnings: [for (final w in block.warnings) w.message],
+    );
+  }
+
+  /// A quick workout of about [minutes] for [i], from the muscles furthest behind this week's targets of the
+  /// block (skipping painful and sore muscles, and putting the ones trained hard in the last 48 hours last).
+  /// [focus] limits it to some of the app's muscles. Null without a block.
+  static CoachQuickSession? quickSession(CoachPlanInputs i, {required int minutes, List<String>? focus}) {
+    final block = i.coach.block;
+    if (block == null) return null;
+    final today = coachIsoDay(i.today);
+    final week = ct.blockWeekIndex(ck.mondayOf(today), block.startsOn, block.weeks);
+    final focusMuscles = focus == null ? null : _trackedFor(focus);
+    if (focusMuscles != null && focusMuscles.isEmpty) return null;
+    final sets = coachLoggedSets(i);
+    final index = coachMuscleIndex(i);
+    final now = i.today;
+    // The logs' timestamps carry no zone and the kernel reads them as UTC, so "now" is given the same way.
+    final utcNow = DateTime.utc(now.year, now.month, now.day, now.hour, now.minute, now.second);
+    final sore = ct.checkinSoreness(_checkins(i.coach).take(3).toList(), today);
+    final near = {ck.isoWeekday(today), ck.isoWeekday(ck.addDays(today, -1)), ck.isoWeekday(ck.addDays(today, 1))};
+    final equipment = [...coachEquipment(i.equipment)];
+    final increments = coachIncrements(i.barbellStepKg);
+    final g = ct.generateSession(ct.GeneratorInput(
+      today: today,
+      minutes: minutes,
+      equipmentPreset: ct.EquipmentPreset.custom,
+      equipment: equipment,
+      focus: focusMuscles == null ? const ct.Focus.area(ct.FocusArea.auto) : ct.Focus.muscles(focusMuscles),
+      readiness: ct.Readiness.normal,
+      exercises: coachPlanLibrary(i.exercises, archived: i.archived),
+      injuries: [...i.coach.injuries],
+      increments: increments,
+      targets: {
+        for (final t in block.weeklyTargets)
+          if (t.weekIndex == week) t.muscle: t.targetSets,
+      },
+      loggedThisWeek: ck.loggedMuscleSets(sets, index, ck.mondayOf(today)),
+      recentPain: sore.pain,
+      recentSore: sore.sore,
+      trainedLast48h: ct.trainedLast48h(sets, index, utcNow, today),
+      sportStressed: ck.uniq([
+        for (final s in i.coach.sports)
+          if (s.weekdays.any(near.contains)) ...s.musclesStressed,
+      ]),
+      sets: sets,
+      disliked: [...i.coach.disliked],
+    ));
+    final byId = {for (final e in i.exercises) e.id: e};
+    final ids = ck.uniq([
+      for (final e in g.exercises)
+        if (byId.containsKey(e.exerciseId)) e.exerciseId,
+    ]);
+    return CoachQuickSession(
+      exerciseIds: ids,
+      sets: {
+        for (final id in ids)
+          id: _opening(
+            [for (final e in g.exercises) if (e.exerciseId == id) e],
+            byId[id]!,
+            i.sessions,
+            ct.incrementFor(coachExerciseDef(byId[id]!), equipment, increments),
+            i.coach.profile?.status,
+          ),
+      },
+      muscles: ck.uniq([for (final m in g.muscles) ?hostMuscle(m)]),
+    );
+  }
+
+  /// The coach's tracked muscles for the app's muscles [muscles]: the app's shoulders are all three delts.
+  static List<ck.MuscleId> _trackedFor(List<String> muscles) => ck.uniq([
+        for (final m in muscles)
+          ...(m == 'shoulders'
+              ? const [ck.MuscleId.frontDelts, ck.MuscleId.sideDelts, ck.MuscleId.rearDelts]
+              : [?coachMuscle(m)]),
+      ]).where((m) => m.tracked).toList();
+
+  /// The soreness reports under `coach.soreness`, newest first. Entries the coach cannot read are left out.
+  static List<ct.SorenessCheckin> _checkins(CoachData coach) {
+    final known = {for (final m in ck.MuscleId.values) m.wire};
+    final out = <ct.SorenessCheckin>[];
+    for (final e in coach.soreness.entries) {
+      final v = e.value;
+      if (v is! Map) continue;
+      out.add(ct.SorenessCheckin(day: e.key, soreness: {
+        for (final x in v.entries)
+          if (known.contains(x.key) && x.value is String) x.key as String: x.value as String,
+      }));
+    }
+    return out..sort((a, b) => b.day.compareTo(a.day));
+  }
+
+  /// The answers to prefill the plan questions with for someone who already has logs (Task 4.8): the training
+  /// status the logs show once there are eight weeks of them, else the profile's; the weekdays trained on most over
+  /// the last eight weeks; the profile's goal and session length.
+  static CoachAnswers prefill(CoachPlanInputs i) {
+    final profile = i.coach.profile;
+    final today = coachIsoDay(i.today);
+    final sets = coachSets(i.sessions, since: '0000-01-01', skip: i.skip, bodyweight: i.bodyweight);
+    final mains = {
+      for (final e in coachPlanLibrary(i.exercises, archived: const {}))
+        if (e.isMainLift) e.id,
+    };
+    final anchors = <String>{
+      for (final s in sets)
+        if (mains.contains(s.exerciseId)) s.exerciseId,
+      for (final s in i.sessions)
+        for (final e in s.exercises.where((e) => !i.skip(e.id)).take(1)) e.id,
+    };
+    final inferred = cp.inferTrainingStatus(
+      cp.TrainingStatusInput(sets: sets, today: today, anchorExerciseIds: [...anchors]),
+    );
+    final fromLogs = inferred.status;
+    return CoachAnswers(
+      goal: profile?.coachGoal,
+      status: fromLogs == null ? profile?.coachStatus : CoachStatus.fromWire(fromLogs.wire),
+      minutes: profile?.minutes ?? 60,
+      days: _daysFromLogs(i),
+    )..statusFromLogs = fromLogs != null;
+  }
+
+  /// The weekdays trained on most over the last eight weeks, as many as the user trains a week on average; null
+  /// without logs in that time.
+  static List<int>? _daysFromLogs(CoachPlanInputs i) {
+    final from = i.today.subtract(const Duration(days: 56));
+    final count = <int, int>{};
+    var total = 0;
+    for (final s in i.sessions) {
+      if (s.date.isBefore(from) || s.date.isAfter(i.today)) continue;
+      count[s.date.weekday] = (count[s.date.weekday] ?? 0) + 1;
+      total++;
+    }
+    if (total == 0) return null;
+    final n = (total / 8).round().clamp(1, 6);
+    final ranked = count.keys.toList()..sort((a, b) => count[b] != count[a] ? count[b]! - count[a]! : a - b);
+    return ranked.take(n).toList()..sort();
+  }
 
   // ---------- Nutrition ----------
 

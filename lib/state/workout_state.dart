@@ -30,7 +30,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     pushRoute('train');
   }
 
-  void startFocusWorkout() => startWorkout(suggestedFocus.muscles);
+  void startFocusWorkout() => startWorkout(coachFocusMuscles() ?? suggestedFocus.muscles); // coach-seam
 
   void startPicking({DateTime? on}) {
     if (_backToParked()) return;
@@ -126,6 +126,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
   static const _pickTarget = 6;
 
   List<Exercise> _defaultPicks(List<String> muscles) {
+    if (coachDefaultPicks(muscles) case final c?) return c; // coach-seam
     final pool = getFilteredExercises(muscles).where((e) => suggests(e.id)).toList();
     if (pool.length <= _pickTarget) return pool;
 
@@ -250,6 +251,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
       _withSides(id, _openingSetsRaw(id, count: count, planned: planned));
 
   List<SessionSet> _openingSetsRaw(String id, {int? count, List<PlannedSet>? planned}) {
+    if (coachOpeningSets(id, planned: planned) case final c?) return c; // coach-seam
     if (planned != null && planned.isNotEmpty) return _fromPlan(id, planned);
     final sets = _workingOpeners(id, count: count);
     if (!warmsUp(id) || isRepsOnly(id) || modeOf(id).isNotEmpty) return sets;

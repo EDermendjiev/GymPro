@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // The coach's exercise category for one of the app's exercises.
 //
-// This is a fallback. The app's exercises carry no coaching attributes yet, so the category is guessed from what
-// the app does know: the equipment, the primary muscle and the name. The per-exercise attributes table
-// (lib/coach/data/coach_meta.dart, still to come) will replace this guess with annotated data; until then this
-// function is the only place that guesses.
+// An annotated exercise (one with an entry in lib/coach/data/coach_meta.dart) has its category written down. For
+// every other exercise, the user's own included, the category is guessed from what the app does know: the
+// equipment, the primary muscle and the name. [coachCategory] answers for both; [coachCategoryFor] is the guess.
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 
 import '../../models/exercise.dart';
+import '../data/coach_meta.dart';
 
 /// Equipment that moves freely in space. Everything else (machines, Smith machines, cables, bands) guides the
 /// path and counts as a machine.
@@ -56,6 +56,13 @@ ck.Category coachCategoryFor(Exercise e) {
   return ck.Category.isolation;
 }
 
+/// The coach category of [e]: the annotated one when [e] has coaching attributes, otherwise the guess of
+/// [coachCategoryFor].
+ck.Category coachCategory(Exercise e) {
+  final meta = kCoachMeta[e.id];
+  return meta == null ? coachCategoryFor(e) : ck.Category.fromWire(meta.category);
+}
+
 /// Whether [e] is a barbell lift of the lower body, the only kind the coach may move up by a larger jump.
 bool coachHeavyLowerBarbell(Exercise e) =>
-    e.equipment == 'Barbell' && coachCategoryFor(e) == ck.Category.lowerFreeCompound;
+    e.equipment == 'Barbell' && coachCategory(e) == ck.Category.lowerFreeCompound;

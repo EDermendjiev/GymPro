@@ -2,6 +2,8 @@
 // The user's coaching profile, as stored under `coach.profile`.
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 
+import '../adapters/nutrition_adapter.dart';
+import 'coach_choices.dart';
 import 'json_util.dart';
 
 /// Goal, training status, training days, session length, priority and lifestyle.
@@ -50,6 +52,34 @@ final class CoachProfile {
       },
     );
   }
+
+  /// A profile from the answers the app's screens can give, with the coach's defaults for the rest: lifting
+  /// priority, and no limit on lifting days. The activity band follows from the app's activity multiplier
+  /// [activity] (see `coachLifestyleFor`). Priority, the lifting-day limit and unknown keys come from [keep].
+  factory CoachProfile.answered({
+    required CoachGoal goal,
+    required CoachStatus status,
+    required List<int> days,
+    required int minutes,
+    required double activity,
+    CoachProfile? keep,
+  }) =>
+      CoachProfile(
+        goal: ck.Goal.fromWire(goal.wire),
+        status: ck.Status.fromWire(status.wire),
+        days: days,
+        minutes: minutes,
+        priority: keep?.priority ?? ck.Priority.lifting,
+        lifestyle: coachLifestyleFor(activity),
+        maxLiftDays: keep?.maxLiftDays,
+        extra: keep?.extra ?? const {},
+      );
+
+  /// The goal, as the app's screens name it.
+  CoachGoal get coachGoal => CoachGoal.fromWire(goal.wire)!;
+
+  /// The training status, as the app's screens name it.
+  CoachStatus get coachStatus => CoachStatus.fromWire(status.wire)!;
 
   static const _known = {'goal', 'status', 'days', 'minutes', 'priority', 'lifestyle', 'maxLiftDays'};
 

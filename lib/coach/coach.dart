@@ -8,8 +8,10 @@
 //  - a coach package is never re-exported.
 library;
 
+export 'model/coach_choices.dart' show CoachAnswers, CoachBlockKind, CoachGoal, CoachStatus, coachSessionLengths;
 export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_nutrition.dart' show CoachNutritionPhase, CoachNutritionTargets;
+export 'model/coach_plan.dart' show CoachBlockSummary, CoachBuiltPlan, CoachOpeningSet, CoachPlanInputs, CoachQuickSession, CoachRoutineExercise, CoachRoutinePlan;
 export 'model/coach_profile.dart' show CoachProfile;
 export 'model/coach_prompt.dart' show CoachCorrectionPrompt, CoachEffortPrompt, CoachPrompt;
 export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarget, CoachWarmupSet;
@@ -18,3 +20,5 @@ export 'ui/session_prompts.dart' show CoachAskEffort, coachSessionPrompts;
 export 'ui/why_sheet.dart' show CoachTargetLine;
 export 'ui/nutrition_goals_card.dart' show CoachGoalsCard;
 export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSettingsIcon, coachSettingsSearchRows;
+export 'ui/onboarding_pages.dart' show CoachGoalChoices, CoachLengthChips, CoachLevelChoices, CoachPageFrame, coachOnboardingPageCount, coachOnboardingPages;
+export 'ui/plan_ui.dart' show CoachPlanWhy, CoachQuickMinutes, coachBlockKindLabel;

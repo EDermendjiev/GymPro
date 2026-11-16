@@ -254,6 +254,255 @@ mixin CoachState on FitCore, LibraryState, SettingsState, PlacesState, StatsStat
     notifyListeners();
   }
 
+  // ---------- Plan (Phase 4) ----------
+
+  /// The clock the plan module reads. Tests replace it.
+  DateTime Function() coachClock = DateTime.now;
+
+  /// The answers given so far in onboarding. Nothing is stored until onboarding ends.
+  CoachAnswers coachDraft = CoachAnswers();
+
+  CoachPlanInputs _coachInputs() => CoachPlanInputs(
+        today: coachClock(),
+        coach: coach,
+        exercises: allExercises,
+        archived: archived,
+        sessions: sessions,
+        equipment: gearHere,
+        barbellStepKg: fromDisplayWeight(weightStep),
+        weeklyGoal: profile.weeklyGoal,
+        skip: (id) => modeOf(id).isNotEmpty,
+        bodyweight: (id) => exerciseById(id)?.equipment == 'Bodyweight',
+      );
+
+  /// What the block generator gets for the current state, as JSON. For checks and tests.
+  Map<String, dynamic> coachBlockInput() => CoachFacade.blockInputJson(_coachInputs());
+
+  /// Training days for a weekly goal of [n] sessions, spread over the week (1 = Monday … 7 = Sunday).
+  List<int> coachSpreadDays(int n) => CoachFacade.spreadDays(n);
+
+  /// Ends onboarding for the coach: with a goal picked, stores the answers as the coaching profile, switches on
+  /// the progression and plan modules and builds the plan. Without one ("Just log workouts") nothing changes.
+  void coachFinishOnboarding() {
+    final a = coachDraft;
+    coachDraft = CoachAnswers();
+    coachApplyAnswers(a);
+  }
+
+  /// Stores [a] as the coaching profile, switches on the progression and plan modules and builds the plan. Does
+  /// nothing while no goal is picked. Training days default to the weekly goal spread over the week.
+  void coachApplyAnswers(CoachAnswers a) {
+    final goal = a.goal;
+    if (goal == null) return;
+    final days = a.days;
+    coach = coach
+        .copyWith(
+          profile: CoachProfile.answered(
+            goal: goal,
+            status: a.status ?? CoachStatus.novice,
+            days: days == null || days.isEmpty ? coachSpreadDays(profile.weeklyGoal) : days,
+            minutes: a.minutes,
+            activity: profile.activity,
+            keep: coach.profile,
+          ),
+        )
+        .withModule(CoachModule.progression, true)
+        .withModule(CoachModule.plan, true);
+    coachBuildPlan();
+  }
+
+  /// Builds a new block from the coaching profile and writes it as routines in the "Coach" group with a weekly
+  /// schedule (see [_coachWritePlan]).
+  void coachBuildPlan() => _coachWritePlan(CoachFacade.buildPlan(_coachInputs()));
+
+  /// Generates the current block again, keeping the user's edits of the coach routines: a swapped exercise stays,
+  /// a removed one is not picked again. [reason] says what asked for it.
+  void coachRegenerate(String reason) {
+    if (coach.block == null) return;
+    final now = {
+      for (final e in coach.routineIds.entries)
+        if (routineById(e.value) case final r?) e.key: [...r.exerciseIds],
+    };
+    _coachWritePlan(CoachFacade.regeneratePlan(_coachInputs(), routineExercises: now));
+  }
+
+  /// Writes [built] into the app: one routine per template in the "Coach" group (the same routines as last time
+  /// when they still exist), every exercise of them on Auto progression with the block's rep range, and the
+  /// weekly plan from the block's day placement. The user's own routines and saved plans are never changed: a
+  /// weekly plan holding any routine of the user's own is first saved as a plan of its own.
+  void _coachWritePlan(CoachBuiltPlan built) {
+    final old = coach.routineIds;
+    final ids = <String, String>{};
+    for (final r in built.routines) {
+      final known = old[r.templateKey];
+      final id = known != null && routineById(known) != null ? known : createRoutine(r.title);
+      final routine = routineById(id)!;
+      routine.name = r.title;
+      routine.archived = false;
+      for (final ex in [...routine.exerciseIds]) {
+        toggleRoutineExercise(id, ex);
+      }
+      for (final e in r.exercises) {
+        toggleRoutineExercise(id, e.exerciseId);
+        setPlannedSets(id, e.exerciseId, e.sets);
+        setRoutineRest(id, e.exerciseId, e.restSeconds);
+        setProgressRule(
+          e.exerciseId,
+          progressRule(e.exerciseId).copyWith(kind: ProgressKind.auto, low: e.repMin, high: e.repMax),
+        );
+      }
+      setRoutineGroup(id, t.coachRoutineGroup);
+      ids[r.templateKey] = id;
+    }
+    for (final e in old.entries) {
+      if (!ids.containsKey(e.key) && routineById(e.value) != null) deleteRoutine(e.value);
+    }
+    final coachIds = {...old.values, ...ids.values};
+    final mine = [...weeklyPlan.values, for (final x in planExtras.values) ...x].any((id) => !coachIds.contains(id));
+    if (mine) {
+      savePlanAs(t.coachPlanName, empty: true);
+    } else {
+      weeklyPlan.clear();
+      planExtras.clear();
+    }
+    if (rotation) setRotation(false);
+    for (final e in built.week.entries) {
+      if (ids[e.value] case final id?) weeklyPlan[e.key] = id;
+    }
+    coach = built.data.copyWith(routineIds: ids);
+    _planChanged();
+  }
+
+  /// The template of the coach routine whose planned sets for [exerciseId] are [planned], or of [routineId].
+  String? _coachTemplateOf(String exerciseId, String? routineId, List<PlannedSet> planned) {
+    for (final e in coach.routineIds.entries) {
+      if (routineId != null) {
+        if (e.value == routineId) return e.key;
+        continue;
+      }
+      final r = routineById(e.value);
+      if (r != null && identical(r.plan[exerciseId], planned)) return e.key;
+    }
+    return null;
+  }
+
+  /// WorkoutState, which comes after this mixin, holds these.
+  List<SessionSet> _workingOpeners(String id, {int? count});
+  List<SessionSet> _warmupFor(List<SessionSet> sets, [String? id]);
+  void resetDefaultPicks();
+
+  /// The sets an exercise opens with in a coach routine while the plan module is on: the set count and reps of the
+  /// block's session for this week (intro weeks, rep variation and strength phases included), with the coach's
+  /// loads worked out now. In a quick workout the coach picked, the generated session's sets. Null, so the stock
+  /// opening sets are used, for anything else. Exercises the coach leaves to the stock rules (body weight only,
+  /// assisted, or with their progression switched off) keep the stock reps and loads with the block's set count.
+  @override
+  List<SessionSet>? coachOpeningSets(String exerciseId, {String? routineId, List<PlannedSet>? planned}) {
+    if (!coach.isOn(CoachModule.plan) || modeOf(exerciseId).isNotEmpty) return null;
+    final ex = exerciseById(exerciseId);
+    if (ex == null) return null;
+    final List<CoachOpeningSet>? plan;
+    if (planned != null) {
+      final key = _coachTemplateOf(exerciseId, routineId, planned);
+      if (key == null) return null;
+      plan = CoachFacade.openingSets(
+        coach: coach,
+        templateKey: key,
+        exercise: ex,
+        today: coachClock(),
+        sessions: sessions,
+        incrementKg: _coachIncrement(exerciseId),
+      );
+    } else {
+      plan = route == 'train' ? _coachQuick?.sets[exerciseId] : null;
+    }
+    if (plan == null || plan.isEmpty) return null;
+    final drives = _coachRx(exerciseId) != null;
+    final stock = _workingOpeners(exerciseId, count: plan.length);
+    final sets = [
+      for (final (i, p) in plan.indexed)
+        () {
+          final s = stock[math.min(i, stock.length - 1)];
+          final load = p.loadKg;
+          return SessionSet(
+            drives ? p.reps : s.reps,
+            drives && load != null ? _coachSnap(exerciseId, load) : s.weight,
+            false,
+          );
+        }(),
+    ];
+    if (!warmsUp(exerciseId) || isRepsOnly(exerciseId)) return sets;
+    return [..._warmupFor(sets, exerciseId), ...sets];
+  }
+
+  /// Where the block stands today, while the plan module is on.
+  CoachBlockSummary? get coachPlanSummary =>
+      coach.isOn(CoachModule.plan) ? CoachFacade.blockSummary(coach, coachClock()) : null;
+
+  /// Whether [routineId] is one of the coach's routines.
+  bool isCoachRoutine(String routineId) => coach.routineIds.containsValue(routineId);
+
+  /// The block's kind and week for the Home card ("Hypertrophy · Week 2 of 6"), when [r] is a coach routine and
+  /// the plan module is on; else null.
+  String? coachBlockLabel(Routine r) {
+    if (!isCoachRoutine(r.id)) return null;
+    final s = coachPlanSummary;
+    if (s == null) return null;
+    return t.coachBlockWeek(coachBlockKindLabel(s.kind), s.week, s.weeks);
+  }
+
+  /// The answers to prefill the plan questions with, from the profile and the logs (Settings › Coach).
+  CoachAnswers coachPrefill() => CoachFacade.prefill(_coachInputs());
+
+  // Quick workout (Task 4.7).
+
+  /// The session lengths the train screen offers for a quick workout.
+  static const List<int> coachQuickLengths = [20, 30, 45, 60];
+
+  int? _coachQuickMinutes;
+  CoachQuickSession? _coachQuick;
+
+  /// The length of a quick workout: the one picked on the train screen, else the one nearest the profile's.
+  int get coachQuickMinutes {
+    final picked = _coachQuickMinutes;
+    if (picked != null) return picked;
+    final want = coach.profile?.minutes ?? 45;
+    return coachQuickLengths.reduce((a, b) => (b - want).abs() < (a - want).abs() ? b : a);
+  }
+
+  /// Picks the length of a quick workout and picks its exercises again.
+  void setCoachQuickMinutes(int minutes) {
+    if (minutes == coachQuickMinutes) return;
+    _coachQuickMinutes = minutes;
+    resetDefaultPicks();
+  }
+
+  /// The quick workout's exercises for [muscles] while the plan module is on: what the coach's session generator
+  /// picks for them, deficit first. Null, so the stock picks are used, when the module is off or nothing fits.
+  @override
+  List<Exercise>? coachDefaultPicks(List<String> muscles) {
+    _coachQuick = null;
+    if (!coach.isOn(CoachModule.plan)) return null;
+    final q = CoachFacade.quickSession(_coachInputs(), minutes: coachQuickMinutes, focus: muscles);
+    if (q == null) return null;
+    final picks = [
+      for (final id in q.exerciseIds)
+        if (!noSuggest.contains(id)) ?exerciseById(id),
+    ];
+    if (picks.isEmpty) return null;
+    _coachQuick = q;
+    return picks;
+  }
+
+  /// The muscles a quick workout starts from while the plan module is on: the ones furthest behind this week's
+  /// targets. Null, so the stock focus is used, when the module is off or nothing fits.
+  @override
+  List<String>? coachFocusMuscles() {
+    if (!coach.isOn(CoachModule.plan)) return null;
+    final q = CoachFacade.quickSession(_coachInputs(), minutes: coachQuickMinutes);
+    return q == null || q.muscles.isEmpty ? null : q.muscles;
+  }
+
   // ---------- Nutrition (Phase 6) ----------
 
   /// The coach's calorie and macro targets, or null while the nutrition module is off. Worked out for the latest

@@ -44,7 +44,9 @@ abstract class FitCore extends ChangeNotifier {
 
   // coach-seam: overridden by CoachState. The defaults keep stock behaviour.
   ({List<SessionSet> sets, double weightKg, int reps, NextMove move})? coachNextPlan(String exerciseId) => null;
-  List<SessionSet>? coachOpeningSets(String exerciseId, {String? routineId}) => null;
+  List<SessionSet>? coachOpeningSets(String exerciseId, {String? routineId, List<PlannedSet>? planned}) => null;
+  List<Exercise>? coachDefaultPicks(List<String> muscles) => null;
+  List<String>? coachFocusMuscles() => null;
   void coachSetLogged(int exIdx, int setIdx) {}
   List<SessionSet>? coachWarmupSets(String? exerciseId, List<SessionSet> working) => null;
   String? coachTargetLabel(String exerciseId) => null;

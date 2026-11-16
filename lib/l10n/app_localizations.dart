@@ -13789,6 +13789,252 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This replaces all of your own goals, water and sodium included.'**
   String get coachGoalsUseCoachNote;
+
+  /// No description provided for @coachRoutineGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Coach'**
+  String get coachRoutineGroup;
+
+  /// No description provided for @coachPlanName.
+  ///
+  /// In en, this message translates to:
+  /// **'Coach plan'**
+  String get coachPlanName;
+
+  /// No description provided for @coachBlockHypertrophy.
+  ///
+  /// In en, this message translates to:
+  /// **'Muscle building'**
+  String get coachBlockHypertrophy;
+
+  /// No description provided for @coachBlockStrengthVolume.
+  ///
+  /// In en, this message translates to:
+  /// **'Strength · volume'**
+  String get coachBlockStrengthVolume;
+
+  /// No description provided for @coachBlockStrengthLoad.
+  ///
+  /// In en, this message translates to:
+  /// **'Strength · load'**
+  String get coachBlockStrengthLoad;
+
+  /// No description provided for @coachBlockStrengthPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Strength · peak'**
+  String get coachBlockStrengthPeak;
+
+  /// No description provided for @coachBlockSportSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Sport support'**
+  String get coachBlockSportSupport;
+
+  /// No description provided for @coachBlockWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'{kind} · Week {week} of {weeks}'**
+  String coachBlockWeek(String kind, int week, int weeks);
+
+  /// No description provided for @coachPlanWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why this plan'**
+  String get coachPlanWhy;
+
+  /// No description provided for @coachPlanWhyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach\'s reasoning, in its own words'**
+  String get coachPlanWhyNote;
+
+  /// No description provided for @coachPlanWarnings.
+  ///
+  /// In en, this message translates to:
+  /// **'Worth knowing'**
+  String get coachPlanWarnings;
+
+  /// No description provided for @coachOnbGoalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What are you training for?'**
+  String get coachOnbGoalTitle;
+
+  /// No description provided for @coachOnbGoalWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a goal and the coach builds your weekly routines around it. You can change it later in Settings.'**
+  String get coachOnbGoalWhy;
+
+  /// No description provided for @coachGoalLeanGain.
+  ///
+  /// In en, this message translates to:
+  /// **'Build muscle'**
+  String get coachGoalLeanGain;
+
+  /// No description provided for @coachGoalLeanGainHint.
+  ///
+  /// In en, this message translates to:
+  /// **'More size, with a small food surplus'**
+  String get coachGoalLeanGainHint;
+
+  /// No description provided for @coachGoalRecomp.
+  ///
+  /// In en, this message translates to:
+  /// **'Build muscle, lose fat'**
+  String get coachGoalRecomp;
+
+  /// No description provided for @coachGoalRecompHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Change your shape at about the same weight'**
+  String get coachGoalRecompHint;
+
+  /// No description provided for @coachGoalStrength.
+  ///
+  /// In en, this message translates to:
+  /// **'Get stronger'**
+  String get coachGoalStrength;
+
+  /// No description provided for @coachGoalStrengthHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Heavier squat, bench and deadlift'**
+  String get coachGoalStrengthHint;
+
+  /// No description provided for @coachGoalFatLoss.
+  ///
+  /// In en, this message translates to:
+  /// **'Lose fat'**
+  String get coachGoalFatLoss;
+
+  /// No description provided for @coachGoalFatLossHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your muscle while the weight comes down'**
+  String get coachGoalFatLossHint;
+
+  /// No description provided for @coachGoalSportSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support my sport'**
+  String get coachGoalSportSupport;
+
+  /// No description provided for @coachGoalSportSupportHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifting that helps your sport without tiring you'**
+  String get coachGoalSportSupportHint;
+
+  /// No description provided for @coachJustLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Just log workouts'**
+  String get coachJustLog;
+
+  /// No description provided for @coachOnbLevelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How long have you been lifting?'**
+  String get coachOnbLevelTitle;
+
+  /// No description provided for @coachOnbLevelWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'This sets how much training you start with and how fast the weights go up.'**
+  String get coachOnbLevelWhy;
+
+  /// No description provided for @coachLevelNovice.
+  ///
+  /// In en, this message translates to:
+  /// **'Less than a year'**
+  String get coachLevelNovice;
+
+  /// No description provided for @coachLevelNoviceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Or getting back after a long break'**
+  String get coachLevelNoviceHint;
+
+  /// No description provided for @coachLevelIntermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'One to five years'**
+  String get coachLevelIntermediate;
+
+  /// No description provided for @coachLevelIntermediateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The weights still go up, just not every week'**
+  String get coachLevelIntermediateHint;
+
+  /// No description provided for @coachLevelAdvanced.
+  ///
+  /// In en, this message translates to:
+  /// **'More than five years'**
+  String get coachLevelAdvanced;
+
+  /// No description provided for @coachLevelAdvancedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress comes slowly now'**
+  String get coachLevelAdvancedHint;
+
+  /// No description provided for @coachLevelFromLogs.
+  ///
+  /// In en, this message translates to:
+  /// **'From your logs'**
+  String get coachLevelFromLogs;
+
+  /// No description provided for @coachSessionLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Session length'**
+  String get coachSessionLength;
+
+  /// No description provided for @coachMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} min'**
+  String coachMinutes(int n);
+
+  /// No description provided for @coachTrainingDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Training days'**
+  String get coachTrainingDays;
+
+  /// No description provided for @coachBuildPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Build me a plan'**
+  String get coachBuildPlan;
+
+  /// No description provided for @coachBuildPlanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly routines from your goal, your days and your gear'**
+  String get coachBuildPlanHint;
+
+  /// No description provided for @coachBuildPlanGo.
+  ///
+  /// In en, this message translates to:
+  /// **'Build plan'**
+  String get coachBuildPlanGo;
+
+  /// No description provided for @coachPlanBuilt.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan is ready'**
+  String get coachPlanBuilt;
+
+  /// No description provided for @coachQuickLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Workout length'**
+  String get coachQuickLength;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
