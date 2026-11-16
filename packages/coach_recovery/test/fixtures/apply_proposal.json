@@ -2407,6 +2407,28 @@
    }
   },
   {
+   "name": "validateProposal invalid injury_adjust numeric injury id",
+   "input": {
+    "call": "validateProposal",
+    "proposal": {
+     "kind": "injury_adjust",
+     "title": "t",
+     "rationale": "r",
+     "ruleIds": [
+      "X"
+     ],
+     "payload": {
+      "injuryId": 7,
+      "removeExerciseIds": [],
+      "addExerciseIds": []
+     }
+    }
+   },
+   "output": {
+    "threw": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"injuryId\"\n    ],\n    \"message\": \"Invalid input: expected string, received number\"\n  }\n]"
+   }
+  },
+  {
    "name": "validateProposal invalid injury_adjust unknown severity",
    "input": {
     "call": "validateProposal",
@@ -46871,6 +46893,276 @@
    },
    "output": {
     "threw": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"injuryId\"\n    ],\n    \"message\": \"Invalid input: expected string, received undefined\"\n  }\n]"
+   }
+  },
+  {
+   "name": "applyProposal invalid injury_adjust numeric injury id",
+   "input": {
+    "call": "applyProposal",
+    "plan": {
+     "sessions": [
+      {
+       "id": "a",
+       "date": "2026-11-04",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "a-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "a-1",
+         "exerciseId": "leg-extension",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "a-2",
+         "exerciseId": "romanian-deadlift",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "a-3",
+         "exerciseId": "seated-leg-curl",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "b",
+       "date": "2026-11-02",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "b-0",
+         "exerciseId": "bench-press",
+         "sets": 5,
+         "rirMin": 0.5,
+         "rirMax": 2.5,
+         "repMin": 4,
+         "repMax": 6
+        },
+        {
+         "id": "b-1",
+         "exerciseId": "cable-fly",
+         "sets": 1,
+         "rirMin": 0,
+         "rirMax": 2,
+         "repMin": 15,
+         "repMax": 20
+        },
+        {
+         "id": "b-2",
+         "exerciseId": "lat-pulldown",
+         "sets": 4,
+         "rirMin": 1,
+         "rirMax": 3
+        },
+        {
+         "id": "b-3",
+         "exerciseId": "overhead-press",
+         "sets": 2,
+         "rirMin": 1,
+         "rirMax": 2,
+         "repMin": 12,
+         "repMax": 12
+        }
+       ]
+      },
+      {
+       "id": "c",
+       "date": "2026-11-04",
+       "status": "planned",
+       "templateKey": "pull",
+       "exercises": [
+        {
+         "id": "c-0",
+         "exerciseId": "pull-up",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "c-1",
+         "exerciseId": "barbell-row",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "d",
+       "date": "2026-11-06",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "d-0",
+         "exerciseId": "walking-lunge",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "d-1",
+         "exerciseId": "hip-thrust-unknown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "d-2",
+         "exerciseId": "standing-calf-raise",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "e",
+       "date": "2026-11-07",
+       "status": "skipped",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "e-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "f",
+       "date": "2026-11-09",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "f-0",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "f-1",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "g",
+       "date": "2026-10-30",
+       "status": "done",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "g-0",
+         "exerciseId": "back-squat",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "g-1",
+         "exerciseId": "bench-press",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      },
+      {
+       "id": "h",
+       "date": "2026-10-31",
+       "status": "planned",
+       "templateKey": "upper_a",
+       "exercises": [
+        {
+         "id": "h-0",
+         "exerciseId": "lat-pulldown",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        },
+        {
+         "id": "h-1",
+         "exerciseId": "shrug",
+         "sets": 3,
+         "rirMin": 1,
+         "rirMax": 3,
+         "repMin": 6,
+         "repMax": 10
+        }
+       ]
+      }
+     ],
+     "exercises": "@seed",
+     "today": "2026-10-27"
+    },
+    "proposal": {
+     "kind": "injury_adjust",
+     "title": "t",
+     "rationale": "r",
+     "ruleIds": [
+      "X"
+     ],
+     "payload": {
+      "injuryId": 7,
+      "removeExerciseIds": [],
+      "addExerciseIds": []
+     }
+    }
+   },
+   "output": {
+    "threw": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"injuryId\"\n    ],\n    \"message\": \"Invalid input: expected string, received number\"\n  }\n]"
    }
   },
   {
