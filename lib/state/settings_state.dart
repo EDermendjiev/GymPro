@@ -73,7 +73,8 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
     return (today.difference(start).inDays / 7).floor();
   }
 
-  bool get deloadWeek => deloadEvery > 0 && deloadWeekIndex >= 0 && deloadWeekIndex % deloadEvery == deloadEvery - 1;
+  bool get deloadWeek => // coach-seam: the recovery module's deloads supersede the calendar's
+      coachDeloadWeek() ?? (deloadEvery > 0 && deloadWeekIndex >= 0 && deloadWeekIndex % deloadEvery == deloadEvery - 1);
 
   int get weeksToDeload {
     final i = deloadWeekIndex;

@@ -551,6 +551,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
               linkedNext: chained.contains(ex.id),
             ))
         .toList();
+    if (!s.manual) coachShapeSession(s); // coach-seam
     if (deloadWeek && !s.manual) _lighten(s);
     _restTimer?.cancel();
     _elapsedBefore = 0;
@@ -565,6 +566,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
   }
 
   void _lighten(WorkoutSession s) {
+    if (coachLighten(s)) return; // coach-seam
     s.deload = true;
     s.lightened = true;
     for (final e in s.exercises) {

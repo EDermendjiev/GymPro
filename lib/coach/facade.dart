@@ -501,6 +501,23 @@ abstract final class CoachFacade {
     return block == null ? const [] : coachDiffSwaps(block, cr.PlanDiff.fromJson(diff));
   }
 
+  /// The working sets a deload keeps of [sets]: sets × (1 − [cutPct]) rounded half up, at least one, as the
+  /// recovery package's deload works it out.
+  static int deloadSets(int sets, num cutPct) {
+    final n = ck.roundHalfUp(sets * (1 - cutPct));
+    return n < 1 ? 1 : n;
+  }
+
+  /// Whether the block's session of [templateKey] for [today] is a deload session, its sets already cut.
+  static bool deloadInBlock(CoachData coach, String templateKey, DateTime today) {
+    final block = coach.block;
+    if (block == null) return false;
+    return _sessionFor(block, templateKey, coachIsoDay(today))?.kind == ck.SessionKind.deload;
+  }
+
+  /// The Monday of the week of [today].
+  static String mondayOf(DateTime today) => ck.mondayOf(coachIsoDay(today));
+
   /// The Monday after [today].
   static String nextMonday(DateTime today) {
     final day = coachIsoDay(today);

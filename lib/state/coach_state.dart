@@ -707,6 +707,63 @@ mixin CoachState
     if (changed) coach = coach.copyWith(proposals: records);
   }
 
+  // Need-based deloads (Task 5.4).
+
+  /// The deload an applied proposal set up for this week (`weekStart`, `cutPct`, and for a targeted deload
+  /// `targeted` and the exercises it removes), or null.
+  Map<String, dynamic>? _coachDeloadNow({bool targeted = false}) {
+    final monday = CoachFacade.mondayOf(coachClock());
+    for (final p in coachProposals.reversed) {
+      if (p.state != CoachProposalState.applied) continue;
+      final d = p.record['deload'];
+      if (d is Map && d['weekStart'] == monday && (d['targeted'] == true) == targeted) return d.cast<String, dynamic>();
+    }
+    return null;
+  }
+
+  /// While the recovery module is on, the coach decides the deload weeks and the calendar's are superseded: true in
+  /// the week of an applied deload, false otherwise. Null (the calendar decides) while the module is off.
+  @override
+  bool? coachDeloadWeek() => coach.isOn(CoachModule.recovery) ? _coachDeloadNow() != null : null;
+
+  /// A workout started in the week of the coach's deload: every exercise keeps its loads and drops to its sets ×
+  /// (1 − the deload's cut), rounded half up. A coach routine whose block session today is a deload session already
+  /// opens with the cut sets. False, so the stock deload is applied, for anything else.
+  @override
+  bool coachLighten(WorkoutSession s) {
+    if (!coach.isOn(CoachModule.recovery)) return false;
+    final d = _coachDeloadNow();
+    if (d == null) return false;
+    s.deload = true;
+    s.lightened = true;
+    final cut = d['cutPct'];
+    if (cut is! num || cut <= 0) return true;
+    final template = coach.routineIds.entries.where((e) => e.value == s.routineId).firstOrNull?.key;
+    if (template != null &&
+        coach.isOn(CoachModule.plan) &&
+        CoachFacade.deloadInBlock(coach, template, coachClock())) {
+      return true;
+    }
+    for (final e in s.exercises) {
+      final working = e.sets.where((st) => st.kind != SetKind.warmup).toList();
+      if (working.isEmpty) continue;
+      final keep = CoachFacade.deloadSets(working.length, cut);
+      final drop = working.sublist(keep).toSet();
+      e.sets.removeWhere(drop.contains);
+    }
+    return true;
+  }
+
+  /// A coach routine started in the week of an applied targeted deload leaves out the exercises it removes.
+  @override
+  void coachShapeSession(WorkoutSession s) {
+    if (!coach.isOn(CoachModule.recovery) || !coach.isOn(CoachModule.plan)) return;
+    if (s.routineId == null || !isCoachRoutine(s.routineId!)) return;
+    final remove = _coachDeloadNow(targeted: true)?['remove'];
+    if (remove is! List || remove.isEmpty) return;
+    s.exercises.removeWhere((e) => remove.contains(e.id));
+  }
+
   // Autonomy, apply and undo (Task 5.5).
 
   /// How long an applied proposal can be undone, and shows on the Home card.
@@ -862,21 +919,18 @@ mixin CoachState
   }
 
   /// Everything applying a proposal can change, for its undo: the coach's data (its proposals aside), the coach
-  /// routines and the exercises' progression rules, the weekly plan and rotation, and the record itself as it was.
+  /// routines, the progression rules, the weekly plan and rotation, and the record itself as it was.
   Map<String, dynamic> _coachSnapshot(Map<String, dynamic> record) {
     final data = coach.toJson()..remove('proposals');
     final ids = coach.routineIds.values.toSet();
-    final exercises = <String>{};
     final routineJson = <Map<String, dynamic>>[];
     for (final (i, r) in routines.indexed) {
-      if (!ids.contains(r.id)) continue;
-      routineJson.add({'index': i, 'routine': r.toJson()});
-      exercises.addAll(r.exerciseIds);
+      if (ids.contains(r.id)) routineJson.add({'index': i, 'routine': r.toJson()});
     }
     return {
       'coach': data,
       'routines': routineJson,
-      'rules': {for (final id in exercises) id: progressRules[id]?.toJson()},
+      'rules': {for (final e in progressRules.entries) e.key: e.value.toJson()},
       'weeklyPlan': {for (final e in weeklyPlan.entries) '${e.key}': e.value},
       'planExtras': {for (final e in planExtras.entries) '${e.key}': [...e.value]},
       'rotation': rotation,
@@ -909,14 +963,12 @@ mixin CoachState
       routines.removeWhere((o) => o.id == r.id);
       routines.insert(math.min(x['index'] as int, routines.length), r);
     }
-    for (final e in (snap['rules'] as Map).entries) {
-      final v = e.value;
-      if (v == null) {
-        progressRules.remove(e.key);
-      } else {
-        progressRules[e.key as String] = ProgressRule.fromJson((v as Map).cast<String, dynamic>());
-      }
-    }
+    progressRules
+      ..clear()
+      ..addAll({
+        for (final e in (snap['rules'] as Map).entries)
+          e.key as String: ProgressRule.fromJson((e.value as Map).cast<String, dynamic>()),
+      });
     weeklyPlan
       ..clear()
       ..addAll({for (final e in (snap['weeklyPlan'] as Map).entries) int.parse(e.key as String): e.value as String});

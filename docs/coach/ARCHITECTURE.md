@@ -163,13 +163,13 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData`; `coachTick()` at the end of `loadFromStore` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
-| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first; `finishSession` calls `coachTick()` after a workout is saved | done |
+| `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first; `finishSession` calls `coachTick()` after a workout is saved; `_beginSession` lets the coach shape a coach routine's workout (`coachShapeSession`) and `_lighten` asks the seam first (`coachLighten`) | done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
 | `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`) | done (plan); the proposal card is planned (recovery) |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
-| `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | planned |
+| `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
 | `lib/state/stats_state.dart` | `muscleTargetFor` asks the seam first | planned |
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | done |
 | `lib/screens/nutrition_screen.dart`, `lib/screens/nutrition/settings.dart` | import of the barrel (for its part `nutrition/settings.dart`); the coach's goals card (`CoachGoalsCard`) under the goals sheet's title | done |
@@ -437,6 +437,17 @@ with the same `proposalKey` is pending or was dismissed in the last 28 days. Pen
 (logged workouts, Health Connect sleep, energy ratings, soreness, a block) and checks that the tick stores the
 fixtures' proposal kinds and payloads; the cases the app cannot hold (stress, answer overrides, a test date,
 planned effort inside the reviewed weeks) are listed by the test.
+
+### Deloads
+
+While the module is on, the coach decides the deload weeks: `deloadWeek` asks `coachDeloadWeek` first, which is
+true in the week of an applied `standard_deload` (or a plateau proposal's deload step) and false otherwise, so the
+calendar's deloads are superseded. With the module off the calendar decides, as upstream. In the coach's deload
+week `_lighten` asks `coachLighten` first: every exercise keeps its loads and drops to its sets × (1 − the
+proposal's cut, 0.4 by default), rounded half up, at least one. A coach routine whose block session is a deload
+session already opens with the cut sets (applying the deload wrote them into the block), so it is not cut again.
+In the week of an applied targeted deload, a coach routine's workout leaves out the exercises the proposal removes
+(`coachShapeSession`); the block holds the reduced sets of the others.
 
 ## Nutrition module
 
