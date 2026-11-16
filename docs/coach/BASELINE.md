@@ -74,3 +74,32 @@ No test failed. Three placeholder tests are skipped:
 
 In each of these files the real tests are only registered when the private
 fixture exists, so their content is not exercised by this baseline.
+
+## Coach parity gate (`coach-parity-v1`, 2026-11-16)
+
+The five coach packages were proven equal to the fixture generator and tagged
+`coach-parity-v1`. From this tag on the Dart packages are the source of truth;
+the fixture generator is frozen at commit
+`1e559398316f14db0a994edd6154d114fe80f60d` and its engine is not changed again.
+Any later behaviour change is a separate commit with its own test.
+
+| Package | Tests | Line coverage |
+| --- | --- | --- |
+| `coach_kernel` | 649 | 99.0% (1076/1087) |
+| `coach_progression` | 400 | 100% (216/216) |
+| `coach_training` | 2895 | 99.7% (1477/1482) |
+| `coach_recovery` | 983 | 100% (1106/1106) |
+| `coach_nutrition` | 410 | 95.9% (493/514) |
+
+Coverage was measured with `dart pub global run coverage:test_with_coverage`
+in each package. Regenerating every fixture from the frozen generator commit
+reproduced all 34 committed fixture files byte for byte.
+
+Deliberate differences from the fixture generator, each pinned by a Dart test:
+- `setsInLast48h` reads a timestamp without a zone as UTC (the generator read
+  it in the host's local time).
+- `checkinSoreness` rejects an unknown muscle key with a `FormatException`.
+- `block_transition` rejects an unknown target block kind with a
+  `FormatException`.
+- Proposal payloads are checked by hand-written validators that throw
+  `FormatException`.
