@@ -8,3 +8,4 @@ export 'src/strength.dart';
 export 'src/sports.dart';
 export 'src/sport_catalog.dart';
 export 'src/volume.dart';
+export 'src/schedule.dart';
