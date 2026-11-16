@@ -18,6 +18,12 @@ Object? _call(Map<String, dynamic> i) {
 
 void main() {
   for (final c in loadFixture('status.json', fn: 'status')) {
-    test(c.name, () => expect(jsonDiff(_call(c.input), c.output), isNull));
+    test(c.name, () {
+      expect(jsonDiff(_call(c.input), c.output), isNull);
+      if (c.input['call'] == 'inferTrainingStatus') {
+        final h = c.input['h'] as Map<String, dynamic>;
+        expect(jsonDiff(TrainingStatusInput.fromJson(h).toJson(), h), isNull);
+      }
+    });
   }
 }

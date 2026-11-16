@@ -37,6 +37,12 @@ Object? _call(Map<String, dynamic> i) {
 
 void main() {
   for (final c in loadFixture('progression.json', fn: 'progression')) {
-    test(c.name, () => expect(jsonDiff(_call(c.input), c.output), isNull));
+    test(c.name, () {
+      expect(jsonDiff(_call(c.input), c.output), isNull);
+      // The result type is persisted by the app: its JSON form must read back unchanged.
+      if (c.input['call'] == 'loadPace') {
+        expect(jsonDiff(LoadPace.fromJson(c.output as Map<String, dynamic>).toJson(), c.output), isNull);
+      }
+    });
   }
 }

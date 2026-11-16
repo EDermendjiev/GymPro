@@ -41,8 +41,24 @@ Object? _call(Map<String, dynamic> i) {
   }
 }
 
+/// The option and result types are persisted by the app: their JSON form must read back unchanged.
+String? _roundTrip(Map<String, dynamic> i, Object? output) {
+  Map<String, dynamic> m(Object? x) => x as Map<String, dynamic>;
+  return switch (i['call']) {
+    'rangeLevel' => jsonDiff(RangeLevelOptions.fromJson(m(i['opts'])).toJson(), i['opts']),
+    'prescribe' =>
+      jsonDiff(RxOptions.fromJson(m(i['opts'])).toJson(), i['opts']) ??
+          jsonDiff(RxBase.fromJson(m(output)).toJson(), output),
+    'warmupRamp' => jsonDiff([for (final s in output as List) WarmupSet.fromJson(m(s)).toJson()], output),
+    _ => null,
+  };
+}
+
 void main() {
   for (final c in loadFixture('prescription.json', fn: 'prescription')) {
-    test(c.name, () => expect(jsonDiff(_call(c.input), c.output), isNull));
+    test(c.name, () {
+      expect(jsonDiff(_call(c.input), c.output), isNull);
+      expect(_roundTrip(c.input, c.output), isNull);
+    });
   }
 }
