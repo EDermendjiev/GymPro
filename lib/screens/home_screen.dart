@@ -56,6 +56,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 14),
             ],
             const CoachHomeSlot(), // coach-seam
+            const CoachWeekAhead(), // coach-seam
             if (fit.photoDue) ...[
               const SizedBox(height: 14),
               _away(_photoNudge(gc)),
@@ -88,6 +89,7 @@ class HomeScreen extends StatelessWidget {
     }
     if (hero) add(_hero(context, gc), (c) => FlowSlot(column: fixed ? 0 : null, child: c));
     if (fit.coachShowsHomeSlot) add(const CoachHomeSlot(), (c) => FlowSlot(column: fixed ? 0 : null, child: c)); // coach-seam
+    if (coachWeekAheadRows().isNotEmpty) add(const CoachWeekAhead(), (c) => FlowSlot(column: fixed ? 0 : null, child: c)); // coach-seam
     if (fit.photoDue) add(_photoNudge(gc), (c) => FlowSlot(column: fixed ? 0 : null, child: c));
     final ids = fixed
         ? [

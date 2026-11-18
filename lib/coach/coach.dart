@@ -27,3 +27,4 @@ export 'ui/proposal_card.dart' show CoachHomeSlot, CoachProposalCard;
 export 'ui/recovery_sheets.dart' show CoachHomeHint, coachShowInjurySheet, coachShowSportsSheet;
 export 'ui/soreness_sheet.dart' show CoachSorenessRow, coachAreaLabel, coachShowSorenessSheet;
 export 'ui/plan_ui.dart' show CoachPlanWhy, CoachQuickMinutes, coachBlockKindLabel;
+export 'ui/week_ahead.dart' show CoachWeekAhead, CoachWeekAheadRow, coachWeekAheadRows;
