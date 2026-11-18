@@ -234,6 +234,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     final warmWeight = fromDisplayWeight(_roundTo(toDisplayWeight(first.weight * 0.5), plateStep));
     final out = <SessionSet>[];
     var w = 0;
+    final hold = nextHoldSeconds(id);
     for (final p in planned) {
       final warm = p.kind == SetKind.warmup;
       final b = warm || base.isEmpty ? first : base[(w++).clamp(0, base.length - 1)];
@@ -243,7 +244,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
         own ? b.weight : p.weightKg ?? (warm ? warmWeight : b.weight),
         false,
         kind: p.kind,
-        sec: p.sec ?? b.sec,
+        sec: !warm && hold != null ? hold : p.sec ?? b.sec,
         km: p.km ?? b.km,
         goal: own || warm || p.repsMax == null ? null : p.repsLabel,
       ));
@@ -305,14 +306,14 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     if (step <= 0) return null;
     final secs = [for (final l in lastSetsFor(id)) if (l.counts && (l.sec ?? 0) > 0) l.sec!];
     if (secs.isEmpty) return null;
-    final aim = secs.first;
+    final aim = secs.reduce(math.max);
     return secs.every((s) => s >= aim) ? aim + step : aim;
   }
 
   bool holdGoesUp(String id) {
     final next = nextHoldSeconds(id);
     final last = [for (final l in lastSetsFor(id)) if (l.counts && (l.sec ?? 0) > 0) l.sec!];
-    return next != null && last.isNotEmpty && next > last.first;
+    return next != null && last.isNotEmpty && next > last.reduce(math.max);
   }
 
   List<SessionSet> _modeOpeners(String mode, List<LoggedSet> last, [String? id]) {
@@ -908,7 +909,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     for (final e in session?.exercises ?? const <SessionExercise>[]) {
       final times = isPaired(e.id) ? 2 : 1;
       for (final st in e.sets) {
-        if (st.done && st.counts) kg += st.weakReps * st.weight * times;
+        if (st.done && st.counts) kg += st.logged.volume * (st.repsR == null ? times : 1);
       }
     }
     return kg;
@@ -948,7 +949,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
       var now = 0.0;
       var then = 0.0;
       for (var i = 0; i < done.length; i++) {
-        now += done[i].weakReps * done[i].weight;
+        now += done[i].logged.volume;
         if (i < before.length) then += before[i].volume;
       }
       if (now <= 0 && then <= 0) continue;
@@ -1407,7 +1408,11 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     if (s != null && holdEx >= 0 && holdEx < s.exercises.length && holdLead == 0) {
       final ex = s.exercises[holdEx];
       final ran = holdTotal - (holdRemaining ?? 0);
-      if (modeOf(ex.id) == 'cardio' && ran > 0 && holdSet < ex.sets.length) ex.sets[holdSet].sec = ran;
+      final mode = modeOf(ex.id);
+      final short = mode == 'cardio' ? ran < holdTotal : ran < holdTotal - 2;
+      if ((mode == 'cardio' || mode == 'time') && ran > 0 && short && holdSet < ex.sets.length) {
+        ex.sets[holdSet].sec = ran;
+      }
     }
     _finishHold();
   }
@@ -1920,7 +1925,7 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
         if (st.counts) working.add(st);
       }
     }
-    s.summaryVolume = working.fold<double>(0, (sum, st) => sum + st.weakReps * st.weight).round();
+    s.summaryVolume = working.fold<double>(0, (sum, st) => sum + st.logged.volume).round();
     s.summarySets = working.length;
     s.summaryDuration = s.manual ? _elapsedBefore : sessionElapsed;
     s.complete = true;

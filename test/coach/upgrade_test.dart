@@ -109,6 +109,13 @@ void main() {
       // Every key of the backup comes back out of the fork unchanged.
       final upstream = (jsonDecode(_backup) as Map).cast<String, dynamic>();
       final mine = _export();
+      // Upstream v2.4.0 added the minerals tracker; like upstream itself, the fork lists it among the known
+      // trackers after reading an older backup. Every other part of the nutrition key must be unchanged.
+      final known = (mine['nutrition'] as Map)['trkKnown'] as List;
+      final knownBefore = ((upstream['nutrition'] as Map)['trkKnown'] as List).toSet();
+      expect(known.where((n) => !knownBefore.contains(n)), ['minerals']);
+      expect(known.toSet().containsAll(knownBefore), isTrue);
+      (mine['nutrition'] as Map)['trkKnown'] = (upstream['nutrition'] as Map)['trkKnown'];
       final differs = [
         for (final k in upstream.keys)
           if (jsonEncode(mine[k]) != jsonEncode(upstream[k])) k,

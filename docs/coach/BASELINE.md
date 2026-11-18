@@ -129,6 +129,27 @@ its own `test/i18n_test.dart` fails on that commit ("faltan claves en ar").
 The fork lists those keys in `test/pending_translation_keys.txt`, which is
 what the file is for; no upstream test was changed.
 
+## Upstream merge: GymMane v2.4.0 (2026-11-18)
+
+`upstream/main` moved from `e774a04` to `06dfcc9b` (tag v2.4.0 plus four
+commits, 24 commits in all, `pubspec.yaml` version 2.4.0+15). `main` was
+fast-forwarded to it and merged into `coach`, following
+[UPSTREAM.md](UPSTREAM.md).
+
+| Check | Result |
+| --- | --- |
+| Conflicts | `lib/l10n/app_en.arb` (both sides appended keys; both kept), the generated `lib/l10n/app_localizations*.dart` (regenerated) |
+| `flutter analyze --no-fatal-infos` | No issues found |
+| `flutter test` | 1615 passed, 0 failed, 3 skipped |
+| Package tests (`dart test`) | `sync` 6, `coach_testkit` 203, `coach_kernel` 649, `coach_progression` 400, `coach_training` 2895, `coach_recovery` 983, `coach_nutrition` 410; all passed |
+| `test/coach/seam_audit_test.dart` | passed, no seam added or moved |
+
+Upstream v2.4.0 adds the minerals tracker (iron, potassium), and reading an
+older backup now lists it among the known trackers (`nutrition.trkKnown`), as
+upstream does itself. `test/coach/upgrade_test.dart` allows exactly that
+change in its v2.3.0 round trip. Upstream's developer scripts under `wear/`
+address the package `com.gymmane.app`, so they do not reach GymPro.
+
 ## Performance (2026-11-16)
 
 No phone was attached, so these are **desktop numbers**: `flutter test` (Dart VM,

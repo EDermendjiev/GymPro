@@ -642,6 +642,7 @@ class FitState extends FitCore
         'place': activePlaceId,
         if (gymPasses.isNotEmpty) 'passes': gymPasses.map((p) => p.toJson()).toList(),
         if (lastPassId.isNotEmpty) 'lastPass': lastPassId,
+        if (quickPassId.isNotEmpty) 'quickPass': quickPassId,
         'checkins': checkins.toList(),
         if (daysOff.isNotEmpty) 'daysOff': daysOff,
         'routines': routines.map((r) => r.toJson()).toList(),
@@ -759,6 +760,7 @@ class FitState extends FitCore
     activePlaceId = '';
     gymPasses.clear();
     lastPassId = '';
+    quickPassId = '';
     checkins.clear();
     daysOff.clear();
     routines.clear();
@@ -1303,7 +1305,14 @@ class FitState extends FitCore
     return [
       ...explicit,
       for (var i = working; i < wanted.clamp(0, 20); i++)
-        PlannedSet(reps: item.reps, repsMax: item.repsMax, weightKg: item.weightKg, sec: item.sec, km: item.km),
+        PlannedSet(
+          reps: item.reps,
+          repsMax: item.repsMax,
+          weightKg: item.weightKg,
+          kind: setKindFrom(item.kind),
+          sec: item.sec,
+          km: item.km,
+        ),
     ];
   }
 
