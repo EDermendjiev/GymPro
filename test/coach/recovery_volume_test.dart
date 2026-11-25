@@ -7,7 +7,6 @@ import 'package:gymmane/coach/coach.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/services/local_store.dart';
 import 'package:gymmane/state/fit_state.dart';
-import 'package:gymmane/state/fit_state.dart' as fs show StatsState;
 import 'package:shared_preferences/shared_preferences.dart';
 
 String _id(String name) => fit.allExercises.firstWhere((e) => e.name == name).id;
@@ -43,7 +42,7 @@ void main() {
 
   test('module off: the stock target and the stock count', () {
     final heat = fit.muscleHeatThisWeek;
-    expect(heat['chest'], closeTo(4 / fs.StatsState.weeklySetTarget, 1e-9));
+    expect(heat['chest'], closeTo(4 / fit.muscleTargetFor(7, 'chest'), 1e-9));
   });
 
   test('module on: the block\'s target for this week, per muscle, with the shoulders\' three delts added up', () {

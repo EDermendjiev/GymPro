@@ -121,7 +121,8 @@ void main() {
           if (jsonEncode(mine[k]) != jsonEncode(upstream[k])) k,
       ];
       expect(differs, isEmpty, reason: 'keys that changed in a round trip through the fork');
-      expect(mine.keys.toSet().difference(upstream.keys.toSet()), isEmpty);
+      // Upstream v2.5.0 always writes its refresh-rate setting and the recovery tracker; nothing else is new.
+      expect(mine.keys.toSet().difference(upstream.keys.toSet()), {'hz', 'recovery'});
     });
 
     test('leaves every coach module off and writes no coach key', () {

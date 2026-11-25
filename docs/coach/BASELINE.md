@@ -150,6 +150,27 @@ upstream does itself. `test/coach/upgrade_test.dart` allows exactly that
 change in its v2.3.0 round trip. Upstream's developer scripts under `wear/`
 address the package `com.gymmane.app`, so they do not reach GymPro.
 
+## Upstream merge: GymMane v2.5.0 (2026-11-25)
+
+`upstream/main` moved from `06dfcc9` to `de325c9` (tag v2.5.0, 48 commits,
+`pubspec.yaml` version 2.5.0+16). `main` was fast-forwarded to it and merged
+into `coach`, following [UPSTREAM.md](UPSTREAM.md).
+
+| Check | Result |
+| --- | --- |
+| Conflicts | `lib/state/fit_state.dart` (upstream's new `RecoveryState` mixin next to the `CoachState` seam), `lib/state/stats_state.dart` (upstream's per-muscle set goals; the coach's weekly target still asked first), `lib/state/workout_state.dart` (upstream's repeated exercises in a routine, `nth` and slots; the four coach seams re-applied on the new code), `test/pending_translation_keys.txt` (upstream emptied it; rebuilt as the keys still missing from another language: the coach's and the credit) |
+| `flutter analyze --no-fatal-infos` | No issues found |
+| `flutter test` | 1742 passed, 0 failed, 3 skipped |
+| Package tests (`dart test`) | `sync` 6, `coach_testkit` 203, `coach_kernel` 660, `coach_progression` 400, `coach_training` 2910, `coach_recovery` 983, `coach_nutrition` 410, `coach_planner` 84; all passed |
+| `test/coach/seam_audit_test.dart` | passed, no seam added or moved |
+
+Upstream v2.5.0 replaces its fixed 12-set weekly muscle target with goals the
+user can set per muscle (`muscleTargetFor(days, id)`); with the plan's
+recovery view on, the block's weekly target still comes first. A v2.3.0
+backup read and written again now also carries upstream's new `hz` and
+`recovery` keys, which upstream always writes; `test/coach/upgrade_test.dart`
+allows exactly those two.
+
 ## Performance (2026-11-16)
 
 No phone was attached, so these are **desktop numbers**: `flutter test` (Dart VM,

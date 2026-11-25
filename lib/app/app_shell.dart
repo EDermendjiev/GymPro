@@ -25,6 +25,7 @@ import '../screens/onboarding_screen.dart';
 import '../screens/places_screen.dart';
 import '../screens/plan_import_sheet.dart';
 import '../screens/progress_screen.dart';
+import '../screens/recovery_screen.dart';
 import '../screens/routine_edit_screen.dart';
 import '../screens/routines_screen.dart';
 import '../screens/session_screen.dart';
@@ -37,6 +38,7 @@ import '../screens/timeline_screen.dart';
 import '../screens/tool_detail_screen.dart';
 import '../screens/tools_screen.dart';
 import '../screens/train_screen.dart';
+import '../screens/workout_view_screen.dart';
 import '../services/auto_backup.dart';
 import '../services/device_kind.dart';
 import '../services/health_steps.dart';
@@ -53,6 +55,7 @@ import '../widgets/nfc_sheet.dart';
 import '../widgets/app_background.dart';
 import '../widgets/award_celebration.dart';
 import '../widgets/dialogs.dart';
+import '../widgets/rest_glow.dart';
 import '../widgets/steps_card.dart';
 import '../widgets/glass.dart';
 import '../widgets/health_cards.dart';
@@ -201,7 +204,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
       if (food != null) {
         fit.setNutritionBeta(true);
         if (fit.route != 'nutrition') fit.goNutrition();
-        showFoodEditor(context, pick: food);
+        if (isQuickFood(text)) {
+          showQuickAddSheet(context, fit.openMeal, pick: food);
+        } else {
+          showFoodEditor(context, pick: food);
+        }
         return;
       }
       if (fit.isMealPlanText(text)) {
@@ -590,6 +597,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
                       ),
                     ),
                   ),
+                if (fit.restGlow) Positioned.fill(child: RestGlow(tick: fit.restDoneTick)),
               ]),
             ),
             ),
@@ -672,6 +680,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         'about' => t.about,
         'health' => t.healthTitle,
         'nutrition' => t.nutrition,
+        'recovery' => t.recoveryTitle,
         _ when fit.route.startsWith('preferences/') => SettingsScreen.sectionTitleOf(fit.route.substring(12)),
         _ => null,
       };
@@ -722,8 +731,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         return NotesScreen();
       case 'history':
         return HistoryScreen();
+      case 'workout':
+        return const WorkoutViewScreen();
       case 'nutrition':
         return NutritionScreen();
+      case 'recovery':
+        return RecoveryScreen();
       case 'health':
         return const HealthScreen();
       case 'note-edit':
@@ -769,7 +782,25 @@ class _CollapsedBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final top = MediaQuery.viewPaddingOf(context).top;
-    final blur = EdgeBlur(height: top + 64, sigma: 14);
+    final height = top + 88;
+    final bg = context.gc.bg;
+    final blur = Stack(children: [
+      EdgeBlur(height: height, sigma: 14),
+      SizedBox(
+        height: height,
+        width: double.infinity,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [bg.withValues(alpha: 0.9), bg.withValues(alpha: 0.82), bg.withValues(alpha: 0)],
+              stops: [0, (top + 50) / height, 1],
+            ),
+          ),
+        ),
+      ),
+    ]);
     return AnimatedBuilder(
       animation: progress,
       builder: (context, _) {
@@ -1289,6 +1320,7 @@ class _Sidebar extends StatelessWidget {
         'notes' => titleCase(t.journal),
         'tools' => titleCase(t.tools),
         'nutrition' => sentenceCase(t.nutrition),
+        'recovery' => sentenceCase(t.recoveryTitle),
         _ => titleCase(t.settings),
       };
 
@@ -1314,6 +1346,9 @@ class _Sidebar extends StatelessWidget {
       case 'nutrition':
         fit.goHome();
         fit.goNutrition();
+      case 'recovery':
+        fit.goHome();
+        fit.goRecovery();
       default:
         fit.goSettings();
         fit.goPreferences();
@@ -1327,7 +1362,7 @@ class _Sidebar extends StatelessWidget {
     if (r == 'note-edit') return 'notes';
     if (r == 'tools-detail') return 'tools';
     if (r == 'exercise-detail') return 'exercises';
-    if (const ['history', 'measures', 'timeline', 'compare', 'health'].contains(r)) return 'progress';
+    if (const ['history', 'workout', 'measures', 'timeline', 'compare', 'health'].contains(r)) return 'progress';
     if (const ['awards', 'moments', 'passes', 'about', 'places'].contains(r)) return 'settings';
     return r;
   }
@@ -1381,6 +1416,7 @@ class _Sidebar extends StatelessWidget {
           ('notes', PhosphorIconsRegular.notebook, PhosphorIconsFill.notebook),
           ('tools', PhosphorIconsRegular.calculator, PhosphorIconsFill.calculator),
           if (fit.nutritionBeta) ('nutrition', PhosphorIconsRegular.forkKnife, PhosphorIconsFill.forkKnife),
+          if (fit.recoveryOn) ('recovery', PhosphorIconsRegular.thermometerSimple, PhosphorIconsFill.thermometerSimple),
         ]) ...[
           _SideItem(
             label: _label(id),
@@ -1549,7 +1585,7 @@ class _DesktopPage extends StatelessWidget {
 
   static const _sheets = {'history', 'awards'};
 
-  static const _flow = {'home', 'progress', 'settings', 'tools', 'nutrition', 'preferences', 'notes', 'routines', 'exercises', 'history', 'awards', 'exercise-detail'};
+  static const _flow = {'home', 'progress', 'settings', 'tools', 'nutrition', 'preferences', 'notes', 'routines', 'exercises', 'history', 'workout', 'awards', 'exercise-detail', 'recovery'};
 
   @override
   Widget build(BuildContext context) {

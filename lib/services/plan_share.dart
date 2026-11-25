@@ -20,6 +20,7 @@ class PlanItem {
     this.weightKg,
     this.restSec,
     this.superset = false,
+    this.jump = false,
     this.plan = const [],
     this.muscle,
     this.equipment,
@@ -41,6 +42,7 @@ class PlanItem {
   final double? weightKg;
   final int? restSec;
   final bool superset;
+  final bool jump;
   final List<PlanSet> plan;
   final String? muscle;
   final List<String> secondary;
@@ -201,6 +203,8 @@ Object? _value(Map<Object?, Object?> map, List<String> keys) {
   return null;
 }
 
+bool _flag(Object? v) => v == true || (v is String && v.toLowerCase() == 'true');
+
 String _string(Object? v) => v is String ? v.trim() : (v is num ? '$v' : '');
 
 bool _isLb(Object? v) => v is String && RegExp(r'^\s*(lb|lbs|pounds?)\s*$', caseSensitive: false).hasMatch(v);
@@ -319,6 +323,7 @@ List<PlanItem> _items(Object? raw, bool lb) {
     final info = custom is Map<Object?, Object?> ? custom : const <Object?, Object?>{};
     final steps = _value(info, ['steps', 'howto', 'pasos', 'instructions']);
     final superset = _value(entry, ['superset', 'supersetwithnext', 'linked', 'chain']);
+    final jump = _flag(_value(entry, ['jumpset', 'jump']));
     out.add(PlanItem(
       name.isEmpty ? id : name,
       _int(_value(entry, _setKeys)),
@@ -327,7 +332,8 @@ List<PlanItem> _items(Object? raw, bool lb) {
       repsMax: _repsMax(entry, _int(_value(entry, _repKeys))),
       weightKg: _weight(_value(entry, _weightKeys), itemLb),
       restSec: _seconds(_value(entry, _restKeys)),
-      superset: superset == true || (superset is String && superset.toLowerCase() == 'true'),
+      superset: jump || _flag(superset),
+      jump: jump,
       plan: _planSets(_value(entry, ['plan', 'setplan', 'setsplan', 'detail']) ?? (_value(entry, _setKeys) is List ? _value(entry, _setKeys) : null), itemLb),
       muscle: _string(_value(info, ['muscle', 'primary', 'musculo'])),
       equipment: _string(_value(info, ['equipment', 'material', 'gear'])),
@@ -393,15 +399,13 @@ List<PlanSet> _expanded(PlanItem item) {
 
 List<PlanItem> _mergeRepeats(List<PlanItem> items) {
   String key(PlanItem i) => (i.id ?? i.name).trim().toLowerCase();
-  final seen = <String, int>{};
   final out = <PlanItem>[];
   for (final item in items) {
-    final at = seen[key(item)];
-    if (at == null) {
-      seen[key(item)] = out.length;
+    if (out.isEmpty || key(out.last) != key(item)) {
       out.add(item);
       continue;
     }
+    final at = out.length - 1;
     final first = out[at];
     final plan = [..._expanded(first), ..._expanded(item)];
     out[at] = PlanItem(
@@ -413,6 +417,7 @@ List<PlanItem> _mergeRepeats(List<PlanItem> items) {
       weightKg: first.weightKg ?? item.weightKg,
       restSec: first.restSec ?? item.restSec,
       superset: first.superset || item.superset,
+      jump: first.jump || item.jump,
       plan: plan,
       muscle: first.muscle,
       equipment: first.equipment,
