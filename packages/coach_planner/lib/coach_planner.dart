@@ -4,5 +4,6 @@
 library;
 
 export 'src/budget.dart';
+export 'src/catalog.dart';
 export 'src/constants.dart';
 export 'src/profile.dart';
