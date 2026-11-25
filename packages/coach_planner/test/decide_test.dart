@@ -70,9 +70,15 @@ void main() {
     expect(trimmed.targets!.values.every((t) => t <= 10), isTrue);
     expect(trimmed.explanations.map((e) => e.text), contains(startsWith('Volume was trimmed')));
     expect(decidePlan(_p(days: 6, minutes: 45, style: StylePref.pushPullLegs)).split.key, 'PPL6');
+    // Muscle-group days fit only at low volume. At five days of 45 min, supersets let push/pull/legs keep about
+    // 9 sets per muscle, which beats muscle-group days cut to about 5.
+    expect(
+      decidePlan(_p(status: Status.advanced, days: 4, minutes: 45, style: StylePref.bodyPart)).split.family,
+      SplitFamily.bodyPart,
+    );
     expect(
       decidePlan(_p(status: Status.advanced, days: 5, minutes: 45, style: StylePref.bodyPart)).split.family,
-      SplitFamily.bodyPart,
+      SplitFamily.pushPullLegs,
     );
     // Muscle-group days are not for novices, whatever the style asked for.
     expect(

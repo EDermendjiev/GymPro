@@ -219,6 +219,45 @@ void main() {
     if (!warned) expect(b.explanations.map((e) => e.text), contains(startsWith('Volume was trimmed')));
   });
 
+  test('a long session pairs isolation exercises as supersets before sets are cut', () {
+    final targets = {for (final m in TRACKED_MUSCLES) m: 12.0};
+    BlockPlan build(bool supersets) => generateBlock(
+      _input(minutes: 50),
+      design: BlockDesign(split: fb3, targets: targets, supersets: supersets),
+    );
+    final plain = build(false);
+    final paired = build(true);
+    final sessions = _week0(paired);
+    var pairs = 0;
+    for (final s in sessions) {
+      for (final (i, e) in s.exercises.indexed) {
+        if (e.supersetWithNext != true) continue;
+        pairs++;
+        final a = _ex(e.exerciseId);
+        final b = _ex(s.exercises[i + 1].exerciseId);
+        expect(a.category, Category.isolation);
+        expect(b.category, Category.isolation);
+        expect(
+          a.muscles.map((m) => m.muscle).toSet().intersection(b.muscles.map((m) => m.muscle).toSet()),
+          isEmpty,
+        );
+        expect(s.exercises[i + 1].supersetWithNext, isNot(isTrue), reason: 'pairs, not chains');
+      }
+    }
+    expect(pairs, greaterThan(0));
+    expect(paired.explanations.map((e) => e.text), contains(supersetExplanation(50)));
+    // Fewer sets cut than without supersets.
+    double total(BlockPlan b) => b.targets.fold(0.0, (a, t) => a + t.target);
+    expect(total(paired), greaterThan(total(plain)));
+    // No supersets without the design flag, or when the session already fits.
+    expect(_week0(plain).expand((s) => s.exercises).any((e) => e.supersetWithNext == true), isFalse);
+    final roomy = generateBlock(
+      _input(minutes: 120),
+      design: BlockDesign(split: fb3, targets: targets, supersets: true),
+    );
+    expect(_week0(roomy).expand((s) => s.exercises).any((e) => e.supersetWithNext == true), isFalse);
+  });
+
   test('the design follows the strength phases for main lifts', () {
     final b = generateBlock(
       _input(goal: Goal.strength, days: [1, 3, 5]),

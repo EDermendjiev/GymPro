@@ -38,6 +38,7 @@
      "T-PLN-05",
      "T-PLN-06",
      "T-PLN-07",
+     "T-PLN-08",
      "T-SEL-01",
      "T-SEL-02",
      "T-SEL-03",
@@ -565,6 +566,20 @@
      "summary": "The training style you prefer and the split you already use weigh in the choice, because a plan you enjoy is a plan you keep."
     },
     "why": "The training style you prefer and the split you already use weigh in the choice, because a plan you enjoy is a plan you keep."
+   }
+  },
+  {
+   "name": "T-PLN-08",
+   "input": {
+    "id": "T-PLN-08"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-08",
+     "basis": "evidence",
+     "summary": "When a session runs long, isolation exercises for different muscles are paired as supersets, one rest for each pair, before any sets are cut."
+    },
+    "why": "When a session runs long, isolation exercises for different muscles are paired as supersets, one rest for each pair, before any sets are cut."
    }
   },
   {

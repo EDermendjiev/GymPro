@@ -201,6 +201,11 @@ const List<RuleDef> RULE_LIST = [
     RuleBasis.heuristic,
     'The training style you prefer and the split you already use weigh in the choice, because a plan you enjoy is a plan you keep.',
   ),
+  RuleDef(
+    'T-PLN-08',
+    RuleBasis.evidence,
+    'When a session runs long, isolation exercises for different muscles are paired as supersets, one rest for each pair, before any sets are cut.',
+  ),
   // Exercise selection
   RuleDef(
     'T-SEL-01',

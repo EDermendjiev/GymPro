@@ -55,15 +55,26 @@ class EstSlot {
   /// For an extra exercise: the muscle it was added for.
   final TrackedMuscle? muscle;
 
+  /// Done as a superset with the next slot of the session (T-PLN-08).
+  bool superset = false;
+
   TagInfo get info => TAG_INFO[tag]!;
 
-  int get seconds {
-    final category = info.category;
-    final work = isCompound(category) ? SESSION_TIME.workSecondsCompound : SESSION_TIME.workSecondsIsolation;
-    return sets * (work + restFor(category, strengthMain: main));
-  }
+  int get workSeconds =>
+      isCompound(info.category) ? SESSION_TIME.workSecondsCompound : SESSION_TIME.workSecondsIsolation;
 
-  Map<String, dynamic> toJson() => {'key': key, 'tag': tag.wire, 'sets': sets, 'main': main, 'extra': extra};
+  int get restSeconds => restFor(info.category, strengthMain: main);
+
+  int get seconds => sets * (workSeconds + restSeconds);
+
+  Map<String, dynamic> toJson() => {
+    'key': key,
+    'tag': tag.wire,
+    'sets': sets,
+    'main': main,
+    'extra': extra,
+    if (superset) 'superset': true,
+  };
 }
 
 /// One estimated session.
@@ -88,7 +99,30 @@ class EstSession {
     return out;
   }
 
-  int get minutes => jsRound(slots.fold(0, (a, s) => a + s.seconds) / 60 + SESSION_TIME.warmupMinutes);
+  /// Minutes, with a superset's paired rounds taking one rest, plus the warm-up.
+  int get minutes {
+    var secs = 0;
+    for (var i = 0; i < slots.length; i++) {
+      final s = slots[i];
+      if (s.superset && i + 1 < slots.length) {
+        final n = slots[++i];
+        secs += supersetSeconds(
+          setsA: s.sets,
+          workA: s.workSeconds,
+          restA: s.restSeconds,
+          setsB: n.sets,
+          workB: n.workSeconds,
+          restB: n.restSeconds,
+        );
+        continue;
+      }
+      secs += s.seconds;
+    }
+    return jsRound(secs / 60 + SESSION_TIME.warmupMinutes);
+  }
+
+  /// Whether any slot is done as a superset.
+  bool get hasSupersets => slots.any((s) => s.superset);
 
   Map<String, dynamic> toJson() => {
     'templateKey': templateKey,
@@ -173,13 +207,16 @@ bool _regionAllows(Region region, TrackedMuscle m) =>
 /// Then, one set at a time, the muscle furthest below its target gets a set on its least-loaded slot (at most 5
 /// sets per slot), or a new exercise on a day whose region allows it (at most 8 per session). A muscle that can
 /// get neither is unmet. Main-lift slots count only when [strength] is set and their lift is in [lifts]; a slot
-/// none of whose tags is in [availableTags] (when given) is left out and counted as missing.
+/// none of whose tags is in [availableTags] (when given) is left out and counted as missing. With [pairAbove], a
+/// session over that many minutes pairs isolation slots as supersets until it fits (T-PLN-08), as the block
+/// generator does.
 WeekEstimate estimateWeek(
   PlannerSplit split,
   Map<TrackedMuscle, double> targets, {
   required bool strength,
   List<MainLift> lifts = const [MainLift.squat, MainLift.bench, MainLift.deadlift],
   Set<SlotTag>? availableTags,
+  int? pairAbove,
 }) {
   bool available(SlotTag t) => availableTags == null || availableTags.contains(t);
   var missing = 0;
@@ -353,6 +390,32 @@ WeekEstimate estimateWeek(
       if (changed) break;
     }
     if (!changed) break;
+  }
+
+  if (pairAbove != null) {
+    for (final day in sessions) {
+      final items = <SupersetItem>[
+        for (final s in day.slots)
+          (
+            category: s.info.category,
+            muscles: {...s.info.primary, ...s.info.secondary},
+            sets: s.sets,
+            free: !s.main,
+          ),
+      ];
+      final original = [...day.slots];
+      void apply(List<(int, int)> pairs) {
+        day.slots
+          ..clear()
+          ..addAll([for (final (slot, sup) in applySupersets(original, pairs)) slot..superset = sup]);
+      }
+
+      final pairs = pickSupersets(items, (p) {
+        apply(p);
+        return day.minutes <= pairAbove;
+      });
+      apply(pairs);
+    }
   }
 
   return WeekEstimate(

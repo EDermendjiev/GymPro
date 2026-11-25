@@ -75,6 +75,7 @@ class BlockDesign {
     this.focus = const [],
     this.explanations = const [],
     this.warnings = const [],
+    this.supersets = false,
   });
 
   factory BlockDesign.fromJson(Map<String, dynamic> json) => BlockDesign(
@@ -100,6 +101,7 @@ class BlockDesign {
     warnings: [
       for (final x in (json['warnings'] as List?) ?? const []) Warning.fromJson(x as Map<String, dynamic>),
     ],
+    supersets: json['supersets'] as bool? ?? false,
   );
 
   /// The split, one template per lifting day in the order of the week.
@@ -124,6 +126,9 @@ class BlockDesign {
   /// Added to the block's warnings.
   final List<Warning> warnings;
 
+  /// Sessions that run long pair isolation exercises as supersets before any sets are cut (T-PLN-08).
+  final bool supersets;
+
   /// The template for [key]: this design's own, or the generator's. Null when neither has it.
   Template? templateFor(String key) => templates[key] ?? TEMPLATES[key];
 
@@ -135,5 +140,6 @@ class BlockDesign {
     'focus': [for (final m in focus) m.wire],
     'explanations': [for (final e in explanations) e.toJson()],
     'warnings': [for (final w in warnings) w.toJson()],
+    if (supersets) 'supersets': true,
   };
 }

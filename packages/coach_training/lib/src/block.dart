@@ -335,7 +335,14 @@ _Week _buildWeek(
     ),
   );
   final focus = ctx.design?.focus ?? const <TrackedMuscle>[];
-  final ordered = [for (final s in r.sessions) orderSessionWithFocus(s, focus)];
+  final supersets = ctx.design?.supersets ?? false;
+  final ordered = [
+    for (final s in r.sessions)
+      if (supersets)
+        supersetIfLong(orderSessionWithFocus(s, focus), ctx.input.sessionMinutes)
+      else
+        orderSessionWithFocus(s, focus),
+  ];
   final minutes = [for (final s in ordered) estimateMinutes(s)];
   final avgMinutes = minutes.fold(0, (a, b) => a + b) / math.max(1, minutes.length);
   return _Week(
@@ -506,6 +513,11 @@ BlockPlan generateBlock(BlockInput input, {BlockDesign? design}) {
     chosenK = usable.split.templates.length;
     final before = {...targets};
     chosen = fitToTime(usable.split);
+    final paired = supersetExplanation(input.sessionMinutes);
+    if (chosen.sessions.any((s) => s.exercises.any((w) => w.superset)) &&
+        explanations.every((e) => e.text != paired)) {
+      explanations.add(Explanation(text: paired, ruleIds: ['T-PLN-08']));
+    }
     final trimmed = 'Volume was trimmed a little so every session fits in ${input.sessionMinutes} min.';
     if (!_sameTargets(before, targets) &&
         warnings.every((w) => w.code != WarningCode.timeTooShort) &&
@@ -839,6 +851,7 @@ PlannedSession _materialiseSession(
         restSeconds: rx.restSeconds,
         note: note,
         suggestedLoadKg: sug.load,
+        supersetWithNext: w.superset ? true : null,
         ruleIds: [...ruleIds, ...sug.ruleIds],
       ),
     );

@@ -290,6 +290,11 @@ PlannerDecision decidePlan(PlannerProfile p) {
     );
   } else {
     explanations.add(Explanation(text: budget.notes.join(' '), ruleIds: budget.ruleIds));
+  }
+  if (est.sessions.any((s) => s.hasSupersets)) {
+    explanations.add(Explanation(text: supersetExplanation(p.minutes), ruleIds: ['T-PLN-08']));
+  }
+  if (!strength) {
     if (relaxed && warnings.every((w) => w.code != WarningCode.timeTooShort)) {
       explanations.add(
         Explanation(

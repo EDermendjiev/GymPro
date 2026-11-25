@@ -14,4 +14,5 @@ export 'src/session.dart';
 export 'src/carryover.dart';
 export 'src/block.dart';
 export 'src/design.dart';
+export 'src/superset.dart';
 export 'src/generator.dart';

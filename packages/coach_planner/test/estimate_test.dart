@@ -97,4 +97,34 @@ void main() {
     expect((json['sessions'] as List), hasLength(2));
     expect(json['unmet'], isEmpty);
   });
+
+  test('a session over the limit pairs isolation slots as supersets until it fits', () {
+    final split = splitByKey('UL4')!;
+    final plain = estimateWeek(split, _all(14), strength: false);
+    final paired = estimateWeek(split, _all(14), strength: false, pairAbove: 50);
+    expect(plain.sessions.any((s) => s.hasSupersets), isFalse);
+    expect(paired.sessions.any((s) => s.hasSupersets), isTrue);
+    for (final (i, s) in paired.sessions.indexed) {
+      expect(s.minutes, lessThanOrEqualTo(plain.sessions[i].minutes));
+      // Pairing moves slots, it doesn't change the sets.
+      expect(s.muscleSets, plain.sessions[i].muscleSets);
+      for (final (j, slot) in s.slots.indexed) {
+        if (!slot.superset) continue;
+        final next = s.slots[j + 1];
+        expect(slot.info.category, Category.isolation);
+        expect(next.info.category, Category.isolation);
+        expect(next.superset, isFalse);
+        expect(
+          {
+            ...slot.info.primary,
+            ...slot.info.secondary,
+          }.intersection({...next.info.primary, ...next.info.secondary}),
+          isEmpty,
+        );
+      }
+    }
+    // A session already within the limit stays as it is.
+    final roomy = estimateWeek(split, _all(14), strength: false, pairAbove: 200);
+    expect(roomy.sessions.any((s) => s.hasSupersets), isFalse);
+  });
 }

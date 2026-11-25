@@ -6,6 +6,7 @@ import 'package:coach_progression/coach_progression.dart';
 
 import 'selection.dart';
 import 'split.dart';
+import 'superset.dart';
 
 enum WorkKind {
   normal('normal'),
@@ -33,6 +34,7 @@ class WorkExercise {
     required this.kind,
     required this.fixed,
     this.repsForCounting,
+    this.superset = false,
   });
 
   factory WorkExercise.fromJson(Map<String, dynamic> json) => WorkExercise(
@@ -42,6 +44,7 @@ class WorkExercise {
     kind: WorkKind.fromWire(json['kind'] as String),
     fixed: json['fixed'] as bool,
     repsForCounting: json['repsForCounting'] as int?,
+    superset: json['superset'] as bool? ?? false,
   );
 
   final ExerciseDef ex;
@@ -55,6 +58,9 @@ class WorkExercise {
   /// Fixed sets: only count if ≥ 4 reps.
   final int? repsForCounting;
 
+  /// Done as a superset with the next exercise of the session (T-PLN-08).
+  bool superset;
+
   Map<String, dynamic> toJson() => {
     'ex': ex.toJson(),
     'slotKey': slotKey,
@@ -62,6 +68,7 @@ class WorkExercise {
     'kind': kind.wire,
     'fixed': fixed,
     'repsForCounting': ?repsForCounting,
+    if (superset) 'superset': true,
   };
 
   /// A shallow copy with the given fields replaced, like an object spread. A null argument keeps the field.
@@ -72,6 +79,7 @@ class WorkExercise {
     WorkKind? kind,
     bool? fixed,
     int? repsForCounting,
+    bool? superset,
   }) => WorkExercise(
     ex: ex ?? this.ex,
     slotKey: slotKey ?? this.slotKey,
@@ -79,6 +87,7 @@ class WorkExercise {
     kind: kind ?? this.kind,
     fixed: fixed ?? this.fixed,
     repsForCounting: repsForCounting ?? this.repsForCounting,
+    superset: superset ?? this.superset,
   );
 }
 
@@ -143,16 +152,55 @@ double sessionMuscleSets(WorkSession s, MuscleId m) {
 double weeklyMuscleSets(List<WorkSession> sessions, MuscleId m) =>
     sessions.fold(0.0, (a, s) => a + sessionMuscleSets(s, m));
 
+int _workSeconds(WorkExercise w) =>
+    isCompound(w.ex.category) ? SESSION_TIME.workSecondsCompound : SESSION_TIME.workSecondsIsolation;
+
+int _restSeconds(WorkExercise w) => restFor(w.ex.category, strengthMain: w.kind != WorkKind.normal);
+
+/// Minutes for [s]: work and rest per set, a superset's paired rounds with one rest, plus the warm-up.
 int estimateMinutes(WorkSession s) {
   var secs = 0;
-  for (final w in s.exercises) {
-    final work = isCompound(w.ex.category)
-        ? SESSION_TIME.workSecondsCompound
-        : SESSION_TIME.workSecondsIsolation;
-    final rest = restFor(w.ex.category, strengthMain: w.kind != WorkKind.normal);
-    secs += w.sets * (work + rest);
+  final xs = s.exercises;
+  for (var i = 0; i < xs.length; i++) {
+    final w = xs[i];
+    if (w.superset && i + 1 < xs.length) {
+      final n = xs[++i];
+      secs += supersetSeconds(
+        setsA: w.sets,
+        workA: _workSeconds(w),
+        restA: _restSeconds(w),
+        setsB: n.sets,
+        workB: _workSeconds(n),
+        restB: _restSeconds(n),
+      );
+      continue;
+    }
+    secs += w.sets * (_workSeconds(w) + _restSeconds(w));
   }
   return jsRound(secs / 60 + SESSION_TIME.warmupMinutes);
+}
+
+/// The explanation for a block whose sessions use supersets to fit [minutes].
+String supersetExplanation(int minutes) =>
+    'Some isolation exercises are paired as supersets, one rest for each pair, so sessions fit in $minutes min.';
+
+/// [s] with supersets (T-PLN-08) when it runs over [minutes]: pairs of isolation exercises for different muscles,
+/// added until it fits. Main-lift work is never paired. Unchanged when it already fits.
+WorkSession supersetIfLong(WorkSession s, int minutes) {
+  final xs = s.exercises;
+  final items = <SupersetItem>[
+    for (final w in xs)
+      (
+        category: w.ex.category,
+        muscles: {for (final m in w.ex.muscles) m.muscle},
+        sets: w.sets,
+        free: w.kind == WorkKind.normal && !w.slotKey.startsWith('main_'),
+      ),
+  ];
+  WorkSession withPairs(List<(int, int)> pairs) =>
+      s.copyWith(exercises: [for (final (w, sup) in applySupersets(xs, pairs)) w.copyWith(superset: sup)]);
+  final pairs = pickSupersets(items, (p) => estimateMinutes(withPairs(p)) <= minutes);
+  return pairs.isEmpty ? s : withPairs(pairs);
 }
 
 bool _regionAllows(Region region, TrackedMuscle m) =>

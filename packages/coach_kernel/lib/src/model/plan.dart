@@ -494,6 +494,7 @@ class PlannedExercise extends Prescription {
     required this.slotKey,
     required this.position,
     this.originalExerciseId,
+    this.supersetWithNext,
     required super.sets,
     required super.repMin,
     required super.repMax,
@@ -511,6 +512,7 @@ class PlannedExercise extends Prescription {
     slotKey: json['slotKey'] as String,
     position: json['position'] as int,
     originalExerciseId: json['originalExerciseId'] == null ? null : json['originalExerciseId'] as String,
+    supersetWithNext: json['supersetWithNext'] == null ? null : json['supersetWithNext'] as bool,
     sets: json['sets'] as int,
     repMin: json['repMin'] as int,
     repMax: json['repMax'] as int,
@@ -530,6 +532,9 @@ class PlannedExercise extends Prescription {
   /// The engine's own choice when the user swapped this exercise for this session only (carry-over).
   String? originalExerciseId;
 
+  /// Done as a superset with the next exercise: one after the other, then one rest (T-PLN-08). Null: no superset.
+  bool? supersetWithNext;
+
   @override
   Map<String, dynamic> toJson() => {
     ...super.toJson(),
@@ -537,6 +542,7 @@ class PlannedExercise extends Prescription {
     'slotKey': slotKey,
     'position': position,
     'originalExerciseId': ?originalExerciseId,
+    'supersetWithNext': ?supersetWithNext,
   };
 
   /// A shallow copy with the given fields replaced, like an object spread. A null argument keeps the field.
@@ -546,6 +552,7 @@ class PlannedExercise extends Prescription {
     String? slotKey,
     int? position,
     String? originalExerciseId,
+    bool? supersetWithNext,
     int? sets,
     int? repMin,
     int? repMax,
@@ -561,6 +568,7 @@ class PlannedExercise extends Prescription {
     slotKey: slotKey ?? this.slotKey,
     position: position ?? this.position,
     originalExerciseId: originalExerciseId ?? this.originalExerciseId,
+    supersetWithNext: supersetWithNext ?? this.supersetWithNext,
     sets: sets ?? this.sets,
     repMin: repMin ?? this.repMin,
     repMax: repMax ?? this.repMax,

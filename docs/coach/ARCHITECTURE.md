@@ -625,6 +625,11 @@ days, muscle-group days, two- and three-lift strength days) live in
 - The design's targets replace `computeTargets` (null for strength keeps the
   phases' volume). The time check still trims when a week overruns.
 - Focus muscles' exercises go first in their sessions, after main-lift work.
+- A session that runs long pairs isolation exercises for different muscles as
+  supersets (`T-PLN-08`) until it fits, before the time check cuts sets. A
+  pair's rounds take one rest, the longer of the two. The planner's estimate
+  pairs the same way, so split scoring sees the time saved. The block marks
+  the first of a pair with `PlannedExercise.supersetWithNext`.
 - The design's explanations and warnings replace the generator's notes on
   volume and on the split.
 - A design the input can't follow (more sessions than available days, an
@@ -633,10 +638,11 @@ days, muscle-group days, two- and three-lift strength days) live in
 The seam is a named argument rather than fields on `BlockInput`, because
 `BlockInput` lives in `coach_kernel`, which can't depend on the training types.
 Without a design the output is unchanged: every `generateBlock` fixture stays
-byte-identical. Over 180 answer combinations (three goals, three levels, 2–6
-days, 30–90 min), week 1 fits the session length in 135 cases with the design
-against 108 without, and the generator never had to cut the planner's targets
-further (`coach_planner/test/design_test.dart`).
+byte-identical, and no superset is ever set. Over 180 answer combinations (three
+goals, three levels, 2–6 days, 30–90 min), week 1 fits the session length in
+141 cases with the design against 108 without; the rest carry a time warning.
+The generator never had to cut the planner's targets further
+(`coach_planner/test/design_test.dart`).
 
 ## Muscle and equipment mapping
 
@@ -786,12 +792,12 @@ German and Japanese.
 | `coach_recovery` | `packages/coach_recovery` | done, parity-proven (`coach-parity-v1`) |
 | `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
 | `coach_testkit` | `packages/coach_testkit` | done (dev only) |
-| `coach_planner` | `packages/coach_planner` | phases 1–2 done: profile, budget, split catalog, week estimate, scoring, `decidePlan`, `blockDesignFor` (the generator follows it); not yet wired into the app |
+| `coach_planner` | `packages/coach_planner` | phases 1–2 done: profile, budget, split catalog, week estimate with supersets, scoring, `decidePlan`, `blockDesignFor` (the generator follows it); not yet wired into the app |
 | Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
-| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–1 done; phase 2: the generator follows the design (task 6 done), supersets (task 7) next |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–2 done (decisions, the planner package, the generator follows the design, supersets); phase 3 (host wiring) next |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in

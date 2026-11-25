@@ -146,7 +146,14 @@ Candidate scoreSplit(
 ) {
   final strength = p.goal == Goal.strength;
   final lifts = p.strengthLifts ?? const [MainLift.squat, MainLift.bench, MainLift.deadlift];
-  final est = estimateWeek(split, targets, strength: strength, lifts: lifts, availableTags: p.availableTags);
+  final est = estimateWeek(
+    split,
+    targets,
+    strength: strength,
+    lifts: lifts,
+    availableTags: p.availableTags,
+    pairAbove: p.minutes,
+  );
   final failures = <Failure>{};
   final terms = <String, double>{};
 

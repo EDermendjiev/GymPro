@@ -11,7 +11,8 @@ import 'estimate.dart';
 ///
 /// The estimated week is the generator's starting week: the same slots at the same sets, and the extra exercises it
 /// added. So the generator doesn't rebuild the week from the templates' starting sets, which overruns short sessions.
-/// Main-lift slots are left to the generator, which sets their sets by the block kind.
+/// Main-lift slots are left to the generator, which sets their sets by the block kind. Sessions that run long pair
+/// isolation exercises as supersets, as the estimate did.
 BlockDesign blockDesignFor(PlannerDecision d) {
   final split = d.split;
   return BlockDesign(
@@ -31,6 +32,7 @@ BlockDesign blockDesignFor(PlannerDecision d) {
     focus: [...d.focus],
     explanations: [...d.explanations],
     warnings: [...d.warnings],
+    supersets: true,
   );
 }
 
