@@ -224,4 +224,18 @@ void main() {
     );
     expect(jsonDecode(jsonEncode(json)), json);
   });
+
+  test('a pinned split is kept when it fits, and ignored when it does not', () {
+    final free = decidePlan(_p());
+    final other = free.alternatives.first.split.key;
+    final kept = decidePlan(_p(), splitKey: other);
+    expect(kept.split.key, other);
+    expect(kept.alternatives, isEmpty);
+    // A split for another day count, or one that doesn't exist, leaves the choice free.
+    expect(decidePlan(_p(), splitKey: 'PPL6').split.key, free.split.key);
+    expect(decidePlan(_p(), splitKey: 'nope').split.key, free.split.key);
+    // Muscle-group days are never kept for a novice.
+    final novice = decidePlan(_p(status: Status.novice, days: 5), splitKey: 'BP5');
+    expect(novice.split.key, isNot('BP5'));
+  });
 }

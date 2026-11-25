@@ -3,6 +3,7 @@
 // or `Coach*` values come out. Package types never leave this layer by name.
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 import 'package:coach_nutrition/coach_nutrition.dart' as cn;
+import 'package:coach_planner/coach_planner.dart' as cpl;
 import 'package:coach_progression/coach_progression.dart' as cp;
 import 'package:coach_recovery/coach_recovery.dart' as cr;
 import 'package:coach_training/coach_training.dart' as ct;
@@ -108,14 +109,35 @@ abstract final class CoachFacade {
   // ---------- Plan ----------
 
   /// The input the block generator gets for [i], as JSON (the kernel's `BlockInput.toJson`). For checks and tests.
-  static Map<String, dynamic> blockInputJson(CoachPlanInputs i) => coachBlockInput(i).toJson();
+  static Map<String, dynamic> blockInputJson(CoachPlanInputs i) =>
+      coachBlockInput(i, decision: _decision(i, previousSplitKey: i.coach.block?.splitKey)).toJson();
 
   /// The input the plan designer gets for [i], as JSON (`PlannerProfile.toJson`). For checks and tests.
   static Map<String, dynamic> plannerInputJson(CoachPlanInputs i) => coachPlannerProfile(i).toJson();
 
-  /// A new block for [i]: the coach's data with the block in it, its routines and its week.
+  /// The plan designer's decision for [i] when the profile is a smart-plan one (built from the answers); null
+  /// otherwise, so a profile from before the planner keeps the generator's own split choice. [keepSplit] keeps the
+  /// running block's split when it still fits; [previousSplitKey] and [previousMedianTarget] are the current
+  /// block's, for a new block.
+  static cpl.PlannerDecision? _decision(
+    CoachPlanInputs i, {
+    String? keepSplit,
+    String? previousSplitKey,
+    double? previousMedianTarget,
+  }) {
+    if (i.coach.profile?.smartPlan != true) return null;
+    final p = coachPlannerProfile(i, previousSplitKey: previousSplitKey, previousMedianTarget: previousMedianTarget);
+    return cpl.decidePlan(p, splitKey: keepSplit);
+  }
+
+  static ck.BlockPlan _generate(ck.BlockInput input, cpl.PlannerDecision? decision) =>
+      ct.generateBlock(input, design: decision == null ? null : cpl.blockDesignFor(decision));
+
+  /// A new block for [i]: the coach's data with the block in it, its routines and its week. For a smart-plan
+  /// profile the plan designer chooses the split and the volume, preferring the current block's split.
   static CoachBuiltPlan buildPlan(CoachPlanInputs i) {
-    final block = ct.generateBlock(coachBlockInput(i));
+    final decision = _decision(i, previousSplitKey: i.coach.block?.splitKey);
+    final block = _generate(coachBlockInput(i, decision: decision), decision);
     return _built(i.coach.copyWith(block: block), block);
   }
 
@@ -127,6 +149,9 @@ abstract final class CoachFacade {
   ///
   /// With [blockKind] (a block transition) a new block of that kind is generated from [startsOn], after a heavy
   /// phase when [fromHeavyPhase], with the old block's selections as the previous block's.
+  ///
+  /// For a smart-plan profile the plan designer decides again: a running block keeps its split (while it still
+  /// fits the answers), a new one prefers it and starts from its volume.
   static CoachBuiltPlan regeneratePlan(
     CoachPlanInputs i, {
     required Map<String, List<String>> routineExercises,
@@ -148,15 +173,23 @@ abstract final class CoachFacade {
     // block's kind and weeks.
     final transition = blockKind != null;
     final running = !transition && ck.daysBetween(old.startsOn, today) < old.weeks * 7;
+    final previous = coachPreviousBlock(old, edits.selections, today);
+    final decision = _decision(
+      i.withCoach(coach),
+      keepSplit: running ? old.splitKey : null,
+      previousSplitKey: old.splitKey,
+      previousMedianTarget: running ? null : previous.medianTargetBeforeTrims,
+    );
     final input = coachBlockInput(
       i.withCoach(coach),
-      previous: coachPreviousBlock(old, edits.selections, today),
+      previous: previous,
       blockKind: transition ? ck.BlockKind.fromWire(blockKind) : running ? old.kind : null,
       startsOn: transition ? startsOn : running ? old.startsOn : null,
       materialiseFrom: transition ? null : ck.mondayOf(today),
       fromHeavyPhase: fromHeavyPhase,
+      decision: decision,
     );
-    final fresh = ct.generateBlock(input);
+    final fresh = _generate(input, decision);
     if (transition) return _built(coach.copyWith(block: fresh), fresh);
     final allowed = {for (final e in input.exercises) e.id}..removeAll(coach.disliked);
     final carried = ct.carryOverEdits(ct.CarryOverInput(

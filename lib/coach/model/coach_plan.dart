@@ -83,6 +83,7 @@ class CoachRoutineExercise {
     required this.restSeconds,
     required this.repMin,
     required this.repMax,
+    this.chainToNext = false,
   }) : sets = List.unmodifiable(sets);
 
   final String exerciseId;
@@ -92,6 +93,9 @@ class CoachRoutineExercise {
   /// The rep range of the exercise's working sets, for its Auto progression rule.
   final int repMin;
   final int repMax;
+
+  /// Done as a superset with the next exercise of the routine: chained to it.
+  final bool chainToNext;
 }
 
 /// One routine of the plan: one per session template of the block.

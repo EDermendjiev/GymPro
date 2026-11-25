@@ -155,15 +155,32 @@ Map<TrackedMuscle, double> _lower(Map<TrackedMuscle, double> t, List<TrackedMusc
 /// [EXTRA_TRIM_ROUNDS] rounds past the first one where any split fits; so a split the user prefers can still win at
 /// a set less. The best feasible candidate wins. If none ever fits, the best split that fails only on time is used
 /// with a warning.
-PlannerDecision decidePlan(PlannerProfile p) {
+///
+/// With [splitKey] (the running block's split, when it is regenerated), the plan keeps that split when it is one
+/// of the day counts above and fits; otherwise the choice is free as without it.
+PlannerDecision decidePlan(PlannerProfile p, {String? splitKey}) {
   if (p.days.isEmpty) throw ArgumentError('No training day picked');
+  final pinned = splitKey == null ? null : splitByKey(splitKey);
+  if (pinned != null) {
+    final kept = _decide(p, pinned);
+    if (kept != null) return kept;
+  }
+  return _decide(p, null)!;
+}
+
+/// The decision, choosing among every split, or only [pinned]; null when [pinned] is given and doesn't fit.
+PlannerDecision? _decide(PlannerProfile p, PlannerSplit? pinned) {
   final st = p.status;
   final status = st.status;
   final picked = p.days.length;
   final kMax = math.min(picked, MAX_LIFT_DAYS);
-  final ks = p.sessionPref == SessionPref.fewerLonger
+  var ks = p.sessionPref == SessionPref.fewerLonger
       ? [for (var k = kMax; k >= math.max(math.min(2, kMax), kMax - 2); k--) k]
       : [kMax];
+  if (pinned != null) {
+    if (!ks.contains(pinned.days)) return null;
+    ks = [pinned.days];
+  }
   final keep = status == Status.novice ? const <TrackedMuscle>[] : p.focus;
 
   final budgets = <int, Budget>{};
@@ -181,7 +198,9 @@ PlannerDecision decidePlan(PlannerProfile p) {
         if (next.entries.every((e) => targets[e.key] == e.value)) break;
         targets = next;
       }
-      final scored = [for (final s in splitsFor(k)) scoreSplit(s, p, status, targets)];
+      final scored = [
+        for (final s in pinned == null ? splitsFor(k) : [pinned]) scoreSplit(s, p, status, targets),
+      ];
       for (final c in scored) {
         if (k < kMax) c.terms['fewerDays'] = FEWER_DAYS_BONUS * (kMax - k);
         if (round > 0) c.terms['trim'] = -TRIM_PENALTY * round;
@@ -196,6 +215,7 @@ PlannerDecision decidePlan(PlannerProfile p) {
 
   final warnings = <Warning>[];
   final feasible = all.where((c) => c.feasible).toList()..sort(_rank);
+  if (pinned != null && feasible.isEmpty) return null;
   Candidate chosen;
   if (feasible.isNotEmpty) {
     chosen = feasible.first;

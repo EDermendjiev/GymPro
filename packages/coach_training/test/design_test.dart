@@ -101,6 +101,16 @@ void main() {
     for (final t in b.targets) {
       expect(t.target, targets[t.muscle], reason: t.muscle.wire);
     }
+    final withBase = generateBlock(
+      _input(),
+      design: BlockDesign(split: fb3, targets: targets, base: 9),
+    );
+    expect(withBase.targets.every((t) => t.base == 9), isTrue);
+    expect(
+      b.targets.every((t) => t.base == withBase.targets.first.base),
+      isFalse,
+      reason: 'without a base, the generator sets its own',
+    );
     // Fractional sets, as the generator counts them: target −0.5 … target +1.
     final sideDelts = [
       for (final s in _week0(b))

@@ -6,6 +6,7 @@
 // set, lifting priority, rep variation within the session). The history summary the generator wants (weeks off,
 // recent weekly volume) has no helper in the packages, so it is worked out here from the kernel's set counting.
 import 'package:coach_kernel/coach_kernel.dart' as ck;
+import 'package:coach_planner/coach_planner.dart' as cpl;
 
 import '../model/coach_plan.dart';
 import 'catalog_adapter.dart';
@@ -52,7 +53,9 @@ Map<String, ck.HasMuscles> coachMuscleIndex(CoachPlanInputs i) => {
 /// The input of the block generator.
 ///
 /// [previous], [blockKind], [startsOn] and [materialiseFrom] are set when a block is regenerated: the previous
-/// selections keep the exercises stable, and the block keeps its kind and its weeks.
+/// selections keep the exercises stable, and the block keeps its kind and its weeks. With the plan designer's
+/// [decision], its rep variation, specialisation, strength lifts, lifting days and known maxes go in as well (the
+/// split and the volume go in through its design, see `blockDesignFor`).
 ck.BlockInput coachBlockInput(
   CoachPlanInputs i, {
   ck.PreviousBlockSummary? previous,
@@ -60,6 +63,7 @@ ck.BlockInput coachBlockInput(
   String? startsOn,
   String? materialiseFrom,
   bool? fromHeavyPhase,
+  cpl.PlannerDecision? decision,
 }) {
   final today = coachIsoDay(i.today);
   final profile = i.coach.profile;
@@ -72,7 +76,7 @@ ck.BlockInput coachBlockInput(
     status: profile?.status ?? ck.Status.novice,
     availableDays: [...days],
     sessionMinutes: profile?.minutes ?? 60,
-    maxLiftDays: profile?.maxLiftDays,
+    maxLiftDays: decision?.liftDays ?? profile?.maxLiftDays,
     equipment: [...coachEquipment(i.equipment)],
     increments: coachIncrements(i.barbellStepKg),
     sports: [...i.coach.sports],
@@ -83,9 +87,17 @@ ck.BlockInput coachBlockInput(
       previousBlock: previous,
       recentAvgWeeklySets: _recentAvgWeeklySets(sets, coachMuscleIndex(i), today),
       weeksOff: _weeksOff(i, today),
+      e1rmSeeds: decision == null || decision.e1rmSeeds.isEmpty
+          ? null
+          : {
+              for (final e in decision.e1rmSeeds.entries)
+                for (final l in ck.MainLift.values)
+                  if (l.wire == e.key) l: e.value,
+            },
     ),
-    repVariation: ck.RepVariation.withinSession,
-    specialization: const [],
+    repVariation: decision?.repVariation ?? ck.RepVariation.withinSession,
+    specialization: [...?decision?.specialization],
+    strengthLifts: decision?.strengthLifts == null ? null : [...decision!.strengthLifts!],
     blockKind: blockKind,
     startsOn: startsOn,
     dislikedExerciseIds: i.coach.disliked.isEmpty ? null : [...i.coach.disliked],

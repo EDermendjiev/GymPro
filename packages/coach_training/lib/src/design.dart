@@ -72,6 +72,7 @@ class BlockDesign {
     this.templates = const {},
     this.week,
     this.targets,
+    this.base,
     this.focus = const [],
     this.explanations = const [],
     this.warnings = const [],
@@ -93,6 +94,7 @@ class BlockDesign {
             for (final e in (json['targets'] as Map<String, dynamic>).entries)
               MuscleId.trackedFromWire(e.key): (e.value as num).toDouble(),
           },
+    base: (json['base'] as num?)?.toDouble(),
     focus: [for (final x in (json['focus'] as List?) ?? const []) MuscleId.trackedFromWire(x as String)],
     explanations: [
       for (final x in (json['explanations'] as List?) ?? const [])
@@ -117,6 +119,10 @@ class BlockDesign {
   /// Weekly sets per tracked muscle. Null: the generator's own volume rules.
   final Map<TrackedMuscle, double>? targets;
 
+  /// The base weekly sets per muscle the targets came from (before per-muscle changes), for the block's targets.
+  /// Null: the generator's own base. A later block starts from it.
+  final double? base;
+
   /// Muscles whose exercises go first in their sessions, right after main-lift work.
   final List<TrackedMuscle> focus;
 
@@ -137,6 +143,7 @@ class BlockDesign {
     'templates': {for (final e in templates.entries) e.key: e.value.toJson()},
     if (week case final w?) 'week': [for (final s in w) s.toJson()],
     if (targets case final t?) 'targets': {for (final m in TRACKED_MUSCLES) m.wire: t[m]},
+    'base': ?base,
     'focus': [for (final m in focus) m.wire],
     'explanations': [for (final e in explanations) e.toJson()],
     'warnings': [for (final w in warnings) w.toJson()],

@@ -29,6 +29,7 @@ BlockDesign blockDesignFor(PlannerDecision d) {
         ),
     ],
     targets: d.targets == null ? null : {...d.targets!},
+    base: d.targets == null ? null : d.budget.base,
     focus: [...d.focus],
     explanations: [...d.explanations],
     warnings: [...d.warnings],

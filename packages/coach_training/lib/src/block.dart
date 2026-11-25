@@ -710,7 +710,7 @@ BlockPlan generateBlock(BlockInput input, {BlockDesign? design}) {
     liftDays: chosenK,
     engineVersion: ENGINE_VERSION,
     schedule: schedule,
-    targets: [for (final t in targetRes.targets) t.copyWith(target: targets[t.muscle])],
+    targets: [for (final t in targetRes.targets) t.copyWith(target: targets[t.muscle], base: usable?.base)],
     weeklyTargets: weeklyTargets,
     sessions: sessions,
     selections: lastSel,

@@ -648,6 +648,31 @@ goals, three levels, 2–6 days, 30–90 min), week 1 fits the session length in
 The generator never had to cut the planner's targets further
 (`coach_planner/test/design_test.dart`).
 
+### In the app
+
+A profile built from the answers (`coachApplyAnswers`: onboarding and Settings ›
+Coach › Build me a plan) is a `smartPlan` profile. For it, `CoachFacade`
+asks the designer first: `coachPlannerProfile` (the answers, age, sex, height,
+latest weight, activity, the place's equipment and the slot tags its exercises
+can fill, sports, injuries, accepted volume changes, the level the logs show)
+goes to `decidePlan`, and the block input takes the decision's rep variation,
+specialisation, strength lifts, lifting days and known maxes, while the design
+carries the split, the starting week and the volume.
+
+- **Build** (a new block): the choice is free, and the current block's split
+  gets the keep bonus.
+- **Regenerate a running block**: `decidePlan(splitKey: …)` keeps the block's
+  split while it still fits the answers, so the week doesn't change shape
+  mid-block. The design carries the planner's base volume, which the next
+  block starts from.
+- **Transition or a finished block**: the choice is free, starting from the old
+  block's volume.
+- A profile from before the planner (no `smartPlan`) keeps the generator's own
+  split choice, regenerations included, until the user builds the plan again.
+
+Supersets reach GymMane as chained exercises (`Routine.chained`), and routine
+names come from the planner's templates as well as the generator's.
+
 ## Muscle and equipment mapping
 
 The packages use 16 muscles and their own equipment names. GymMane uses 14
@@ -796,12 +821,12 @@ German and Japanese.
 | `coach_recovery` | `packages/coach_recovery` | done, parity-proven (`coach-parity-v1`) |
 | `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
 | `coach_testkit` | `packages/coach_testkit` | done (dev only) |
-| `coach_planner` | `packages/coach_planner` | phases 1–2 done: profile, budget, split catalog, week estimate with supersets, scoring, `decidePlan`, `blockDesignFor` (the generator follows it); not yet wired into the app |
+| `coach_planner` | `packages/coach_planner` | phases 1–3 done: profile, budget, split catalog, week estimate with supersets, scoring, `decidePlan` (with a kept split), `blockDesignFor` (the generator follows it); the app uses it for smart-plan profiles |
 | Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input, planner-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
-| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–2 done (decisions, the planner package, the generator follows the design, supersets); phase 3 (host wiring) next |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–3 done (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers); phase 4 (the new onboarding page and the plan preview) next |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in

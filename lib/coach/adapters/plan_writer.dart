@@ -4,8 +4,10 @@
 // One routine per session template of the block. Its exercises and planned sets are the ones of the template's first
 // session in the block; what a given day actually opens with comes from that day's session of the block, worked out
 // when the workout starts (CoachState.coachOpeningSets). A main lift that a strength session holds twice (the top
-// single and its back-off or work sets) is one exercise of the routine, its sets in the block's order.
+// single and its back-off or work sets) is one exercise of the routine, its sets in the block's order. An exercise the
+// block does as a superset with the next one is chained to it in the routine.
 import 'package:coach_kernel/coach_kernel.dart' as ck;
+import 'package:coach_planner/coach_planner.dart' as cpl;
 import 'package:coach_training/coach_training.dart' as ct;
 
 import '../../models/workout.dart';
@@ -36,7 +38,7 @@ ck.PlannedSession? coachFirstSession(ck.BlockPlan block, String templateKey) {
 List<CoachRoutinePlan> coachRoutinePlans(ck.BlockPlan block) => [
       for (final key in coachTemplates(block))
         if (coachFirstSession(block, key) case final s?)
-          CoachRoutinePlan(templateKey: key, title: ct.TEMPLATES[key]?.title ?? s.title, exercises: _exercises(s)),
+          CoachRoutinePlan(templateKey: key, title: cpl.templateFor(key)?.title ?? s.title, exercises: _exercises(s)),
     ];
 
 List<CoachRoutineExercise> _exercises(ck.PlannedSession s) {
@@ -61,6 +63,7 @@ List<CoachRoutineExercise> _exercises(ck.PlannedSession s) {
           restSeconds: working.restSeconds,
           repMin: working.repMin,
           repMax: working.repMax,
+          chainToNext: entries.last.supersetWithNext == true,
         );
       }(),
   ];

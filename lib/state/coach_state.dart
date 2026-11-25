@@ -298,7 +298,8 @@ mixin CoachState
   }
 
   /// Stores [a] as the coaching profile, switches on the progression and plan modules and builds the plan. Does
-  /// nothing while no goal is picked. Training days default to the weekly goal spread over the week.
+  /// nothing while no goal is picked. Training days default to the weekly goal spread over the week. The profile is a
+  /// smart-plan one: the plan designer shapes the plan from all the answers.
   void coachApplyAnswers(CoachAnswers a) {
     final goal = a.goal;
     if (goal == null) return;
@@ -312,6 +313,7 @@ mixin CoachState
             minutes: a.minutes,
             activity: profile.activity,
             keep: coach.profile,
+            answers: a,
           ),
         )
         .withModule(CoachModule.progression, true)
@@ -359,6 +361,12 @@ mixin CoachState
           progressRule(e.exerciseId).copyWith(kind: ProgressKind.auto, low: e.repMin, high: e.repMax),
         );
       }
+      routine.chained
+        ..clear()
+        ..addAll([
+          for (final e in r.exercises)
+            if (e.chainToNext) e.exerciseId,
+        ]);
       setRoutineGroup(id, t.coachRoutineGroup);
       ids[r.templateKey] = id;
     }
