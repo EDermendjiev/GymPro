@@ -136,7 +136,7 @@ abstract final class CoachFacade {
   /// A new block for [i]: the coach's data with the block in it, its routines and its week. For a smart-plan
   /// profile the plan designer chooses the split and the volume, preferring the current block's split.
   static CoachBuiltPlan buildPlan(CoachPlanInputs i) {
-    final decision = _decision(i, previousSplitKey: i.coach.block?.splitKey);
+    final decision = _decision(i, keepSplit: i.coach.profile?.splitKey, previousSplitKey: i.coach.block?.splitKey);
     final block = _generate(coachBlockInput(i, decision: decision), decision);
     return _built(i.coach.copyWith(block: block), block);
   }
@@ -176,7 +176,7 @@ abstract final class CoachFacade {
     final previous = coachPreviousBlock(old, edits.selections, today);
     final decision = _decision(
       i.withCoach(coach),
-      keepSplit: running ? old.splitKey : null,
+      keepSplit: running ? old.splitKey : i.coach.profile?.splitKey,
       previousSplitKey: old.splitKey,
       previousMedianTarget: running ? null : previous.medianTargetBeforeTrims,
     );
@@ -204,6 +204,79 @@ abstract final class CoachFacade {
 
   /// Training days for a weekly goal of [n] sessions, spread over the week (1 = Monday … 7 = Sunday).
   static List<int> spreadDays(int n) => coachSpreadDays(n);
+
+  /// [i] with the answers [a] in place of the coaching profile (and its pain areas in place of the injuries), as
+  /// building the plan would store them; null while no goal is picked.
+  static CoachPlanInputs? _withAnswers(CoachPlanInputs i, CoachAnswers a) {
+    final goal = a.goal;
+    if (goal == null) return null;
+    final days = a.days;
+    var coach = i.coach.copyWith(
+      profile: CoachProfile.answered(
+        goal: goal,
+        status: a.status ?? CoachStatus.novice,
+        days: days == null || days.isEmpty ? coachSpreadDays(i.weeklyGoal) : days,
+        minutes: a.minutes,
+        activity: i.activity ?? 1.375,
+        keep: i.coach.profile,
+        answers: a,
+      ),
+    );
+    if (a.pain case final pain?) coach = withPainAreas(coach, pain, coachIsoDay(i.today));
+    return i.withCoach(coach);
+  }
+
+  /// The plan the answers [a] would build for [i], without building it (the plan preview); null while no goal is
+  /// picked. With a split picked among the options, that split when it fits, and the coach's own pick among the
+  /// options.
+  static CoachPlanPreview? preview(CoachPlanInputs i, CoachAnswers a) {
+    final draft = _withAnswers(i, a);
+    if (draft == null) return null;
+    final p = coachPlannerProfile(draft, previousSplitKey: i.coach.block?.splitKey);
+    final free = cpl.decidePlan(p);
+    final picked = a.splitKey;
+    final chosen = picked == null || picked == free.split.key ? free : cpl.decidePlan(p, splitKey: picked);
+    final schedule = ct.placeSessions(ct.ScheduleInput(
+      availableDays: p.days,
+      templates: chosen.split.templates,
+      sports: p.sports,
+      goal: p.goal,
+      extraTemplates: cpl.blockDesignFor(chosen).templates,
+    ));
+    final weekly = chosen.estimate.weekly;
+    final split = chosen.split;
+    final reasons = ck.uniq([
+      for (final e in chosen.explanations)
+        if (e.text.startsWith('${split.name}:')) e.text,
+      for (final e in chosen.explanations.take(2)) e.text,
+    ]).take(3).toList();
+    return CoachPlanPreview(
+      splitKey: split.key,
+      splitName: split.name,
+      liftDays: chosen.liftDays,
+      minutes: ck.jsRound(chosen.estimate.avgMinutes),
+      week: {
+        for (final pl in schedule.placements) pl.weekday: cpl.templateFor(pl.templateKey)?.title ?? pl.templateKey,
+      },
+      weeklySets: {
+        for (final m in ck.TRACKED_MUSCLES)
+          ?CoachArea.fromWire(m.wire): ck.jsRound(chosen.targets?[m] ?? weekly[m]!),
+      },
+      reasons: reasons,
+      warnings: [for (final w in chosen.warnings) w.message],
+      options: [
+        if (chosen.split.key != free.split.key)
+          CoachPlanOption(splitKey: free.split.key, name: free.split.name, summary: null, recommended: true),
+        for (final alt in free.alternatives)
+          if (alt.split.key != chosen.split.key)
+            CoachPlanOption(splitKey: alt.split.key, name: alt.split.name, summary: alt.summary, recommended: false),
+      ],
+    );
+  }
+
+  /// An estimated one-rep max in kilograms from a set of [reps] at [kg], or null when the set says too little
+  /// (no load, or more than 12 reps).
+  static double? e1rm(double kg, int reps) => ck.e1rm(kg, reps);
 
   static CoachBuiltPlan _built(CoachData data, ck.BlockPlan block) =>
       CoachBuiltPlan(data: data, routines: coachRoutinePlans(block), week: coachWeek(block));
@@ -399,6 +472,11 @@ abstract final class CoachFacade {
       focus: [...?profile?.focus],
       lifts: profile?.strengthLifts == null ? null : [...profile!.strengthLifts!],
       knownLifts: {...?profile?.knownLifts},
+      pain: [
+        for (final e in injuryEntries(i.coach))
+          if (e.active && e.area != null) e.area!,
+      ],
+      splitKey: profile?.splitKey,
     )..statusFromLogs = fromLogs != null;
   }
 
@@ -710,6 +788,20 @@ abstract final class CoachFacade {
   static CoachData withInjuryHealed(CoachData coach, String id) => coach.copyWith(injuries: [
         for (final i in coach.injuries) i.id == id ? i.copyWith(status: ck.InjuryStatus.resolved) : i,
       ]);
+
+  /// [coach] with exactly [areas] hurting: a niggle for each area without an active injury, and the active injuries
+  /// of the areas left out healed. Injuries without an area are kept as they are.
+  static CoachData withPainAreas(CoachData coach, List<CoachArea> areas, String today) {
+    var out = coach;
+    final active = [for (final e in injuryEntries(coach)) if (e.active && e.area != null) e];
+    for (final e in active) {
+      if (!areas.contains(e.area)) out = withInjuryHealed(out, e.id);
+    }
+    for (final a in areas.toSet()) {
+      if (!active.any((e) => e.area == a)) out = withNewInjury(out, a, CoachInjurySeverity.niggle, today);
+    }
+    return out;
+  }
 
   // ---------- Nutrition ----------
 

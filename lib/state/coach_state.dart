@@ -278,10 +278,14 @@ mixin CoachState
         sex: profile.sex,
         heightCm: profile.heightCm,
         weightKg: nutritionWeightKg,
+        activity: profile.activity,
       );
 
   /// What the block generator gets for the current state, as JSON. For checks and tests.
   Map<String, dynamic> coachBlockInput() => CoachFacade.blockInputJson(_coachInputs());
+
+  /// The plan the answers [a] would build, without building it; null while no goal is picked.
+  CoachPlanPreview? coachPreview(CoachAnswers a) => CoachFacade.preview(_coachInputs(), a);
 
   /// What the plan designer gets for the current state, as JSON. For checks and tests.
   Map<String, dynamic> coachPlannerInput() => CoachFacade.plannerInputJson(_coachInputs());
@@ -304,6 +308,7 @@ mixin CoachState
     final goal = a.goal;
     if (goal == null) return;
     final days = a.days;
+    if (a.pain case final pain?) coach = CoachFacade.withPainAreas(coach, pain, _coachDay(coachClock()));
     coach = coach
         .copyWith(
           profile: CoachProfile.answered(

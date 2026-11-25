@@ -28,6 +28,7 @@ final class CoachProfile {
     List<CoachArea> focus = const [],
     List<CoachLift>? strengthLifts,
     Map<CoachLift, double> knownLifts = const {},
+    this.splitKey,
     Map<String, dynamic> extra = const {},
   })  : days = List.unmodifiable(days),
         focus = List.unmodifiable(focus.toSet().take(2)),
@@ -78,6 +79,7 @@ final class CoachProfile {
           for (final e in m.entries)
             if ((CoachLift.fromWire(e.key), e.value) case (final lift?, final num kg)) lift: kg.toDouble(),
       },
+      splitKey: json['splitKey'] is String ? json['splitKey'] as String : null,
       extra: {
         for (final e in json.entries)
           if (!_known.contains(e.key)) e.key: e.value,
@@ -113,6 +115,7 @@ final class CoachProfile {
         focus: answers?.focus ?? const [],
         strengthLifts: answers?.lifts,
         knownLifts: answers?.knownLifts ?? const {},
+        splitKey: answers?.splitKey,
         extra: keep?.extra ?? const {},
       );
 
@@ -137,6 +140,7 @@ final class CoachProfile {
     'focus',
     'strengthLifts',
     'knownLifts',
+    'splitKey',
   };
 
   final ck.Goal goal;
@@ -171,6 +175,10 @@ final class CoachProfile {
   /// Estimated one-rep maxes in kilograms, by lift.
   final Map<CoachLift, double> knownLifts;
 
+  /// The split the user picked among the plan's options, or null for the coach's choice. A build keeps it while it
+  /// fits the answers.
+  final String? splitKey;
+
   /// Keys this version does not know, kept as they were read.
   final Map<String, dynamic> extra;
 
@@ -190,6 +198,7 @@ final class CoachProfile {
         if (focus.isNotEmpty) 'focus': [for (final a in focus) a.wire],
         if (strengthLifts case final l?) 'strengthLifts': [for (final x in l) x.wire],
         if (knownLifts.isNotEmpty) 'knownLifts': {for (final e in knownLifts.entries) e.key.wire: e.value},
+        'splitKey': ?splitKey,
         for (final e in extra.entries) e.key: jsonCopy(e.value),
       };
 }

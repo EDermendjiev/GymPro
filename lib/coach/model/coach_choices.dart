@@ -144,6 +144,8 @@ class CoachAnswers {
     List<CoachArea>? focus,
     this.lifts,
     Map<CoachLift, double>? knownLifts,
+    this.pain,
+    this.splitKey,
   })  : focus = focus ?? [],
         knownLifts = knownLifts ?? {};
 
@@ -170,4 +172,11 @@ class CoachAnswers {
 
   /// Estimated one-rep maxes in kilograms the user entered, by lift.
   Map<CoachLift, double> knownLifts;
+
+  /// The areas that hurt now, or null to leave the recorded injuries as they are. When set, building the plan
+  /// records a niggle for each new area and marks the active injuries of areas left out as healed.
+  List<CoachArea>? pain;
+
+  /// The split the user picked among the plan's other options, or null for the coach's choice.
+  String? splitKey;
 }

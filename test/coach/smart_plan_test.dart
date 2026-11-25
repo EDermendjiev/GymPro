@@ -141,4 +141,64 @@ void main() {
     expect(singles, isNotEmpty);
     expect(singles.where((e) => e.suggestedLoadKg != null), isNotEmpty);
   });
+
+  group('preview', () {
+    test('nothing to preview without a goal', () {
+      expect(fit.coachPreview(CoachAnswers()), isNull);
+    });
+
+    test('the preview is the plan the answers build, without building it', () {
+      final a = _answers();
+      final pv = fit.coachPreview(a)!;
+      expect(fit.coach.block, isNull);
+      expect(pv.liftDays, 4);
+      expect(pv.week.keys.toSet(), {1, 2, 4, 5});
+      expect(pv.weeklySets, hasLength(ck.TRACKED_MUSCLES.length));
+      expect(pv.weeklySets.values.every((n) => n >= 4), isTrue);
+      expect(pv.reasons, isNotEmpty);
+      expect(pv.reasons.length, lessThanOrEqualTo(3));
+      expect(pv.reasons.first, startsWith('${pv.splitName}:'));
+      expect(pv.options, isNotEmpty);
+      expect(pv.options.any((o) => o.recommended), isFalse);
+      _apply(a);
+      expect(_block.splitKey, pv.splitKey);
+    });
+
+    test('picking another option builds that split, and later builds keep it', () {
+      final a = _answers();
+      final first = fit.coachPreview(a)!;
+      final other = first.options.first;
+      a.splitKey = other.splitKey;
+      final pv = fit.coachPreview(a)!;
+      expect(pv.splitKey, other.splitKey);
+      expect(pv.options.first.recommended, isTrue);
+      expect(pv.options.first.splitKey, first.splitKey);
+      _apply(a);
+      expect(_block.splitKey, other.splitKey);
+      expect(fit.coach.profile!.splitKey, other.splitKey);
+      fit.coachBuildPlan();
+      expect(_block.splitKey, other.splitKey);
+      expect(fit.coachPrefill().splitKey, other.splitKey);
+    });
+  });
+
+  test('pain areas become niggles, and areas left out heal', () {
+    final a = _answers()..pain = [CoachArea.quads, CoachArea.biceps];
+    _apply(a);
+    Set<CoachArea?> active() => {for (final i in fit.coachInjuries) if (i.active) i.area};
+    expect(active(), {CoachArea.quads, CoachArea.biceps});
+    expect(fit.coachInjuries.every((i) => i.severity == CoachInjurySeverity.niggle), isTrue);
+    final again = fit.coachPrefill();
+    expect(again.pain!.toSet(), {CoachArea.quads, CoachArea.biceps});
+    again.pain = [CoachArea.quads];
+    _apply(again);
+    expect(active(), {CoachArea.quads});
+    expect(fit.coachInjuries, hasLength(2), reason: 'healed, not deleted');
+  });
+
+  test('a set gives an estimated max', () {
+    expect(CoachFacade.e1rm(100, 5), closeTo(112.5, 0.01));
+    expect(CoachFacade.e1rm(100, 15), isNull);
+    expect(CoachFacade.e1rm(0, 5), isNull);
+  });
 }

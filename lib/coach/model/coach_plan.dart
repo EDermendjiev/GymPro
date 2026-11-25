@@ -5,6 +5,7 @@ import '../../models/exercise.dart';
 import '../../models/workout.dart';
 import 'coach_choices.dart';
 import 'coach_data.dart';
+import 'coach_recovery.dart';
 
 bool _never(String _) => false;
 
@@ -25,6 +26,7 @@ class CoachPlanInputs {
     this.sex,
     this.heightCm,
     this.weightKg,
+    this.activity,
   });
 
   final DateTime today;
@@ -56,6 +58,9 @@ class CoachPlanInputs {
   final double? heightCm;
   final double? weightKg;
 
+  /// The app profile's activity multiplier, or null when unknown.
+  final double? activity;
+
   /// The same inputs with [coach] in place of the coach's data.
   CoachPlanInputs withCoach(CoachData coach) => CoachPlanInputs(
         today: today,
@@ -72,6 +77,7 @@ class CoachPlanInputs {
         sex: sex,
         heightCm: heightCm,
         weightKg: weightKg,
+        activity: activity,
       );
 }
 
@@ -173,4 +179,61 @@ class CoachQuickSession {
 
   /// The app's muscles the session trains, in the order the coach picked them.
   final List<String> muscles;
+}
+
+/// Another split the plan preview offers.
+class CoachPlanOption {
+  CoachPlanOption({required this.splitKey, required this.name, required this.summary, required this.recommended});
+
+  final String splitKey;
+
+  /// The split's name, in English: it comes from the coach packages.
+  final String name;
+
+  /// One line on what it gives, in English; null for the coach's own pick (the screen says so in its own words).
+  final String? summary;
+
+  /// The coach's own pick for the answers.
+  final bool recommended;
+}
+
+/// The plan the answers would build, without building it: what the plan preview shows.
+class CoachPlanPreview {
+  CoachPlanPreview({
+    required this.splitKey,
+    required this.splitName,
+    required this.liftDays,
+    required this.minutes,
+    required Map<int, String> week,
+    required Map<CoachArea, int> weeklySets,
+    required List<String> reasons,
+    required List<String> warnings,
+    required List<CoachPlanOption> options,
+  })  : week = Map.unmodifiable(week),
+        weeklySets = Map.unmodifiable(weeklySets),
+        reasons = List.unmodifiable(reasons),
+        warnings = List.unmodifiable(warnings),
+        options = List.unmodifiable(options);
+
+  final String splitKey;
+
+  /// In English: it comes from the coach packages.
+  final String splitName;
+  final int liftDays;
+
+  /// About how long a session takes.
+  final int minutes;
+
+  /// Session title by weekday (1 = Monday … 7 = Sunday), in English.
+  final Map<int, String> week;
+
+  /// Weekly sets per muscle the plan gives, in the coach's muscle order.
+  final Map<CoachArea, int> weeklySets;
+
+  /// The main reasons for the plan, in English, most important first.
+  final List<String> reasons;
+  final List<String> warnings;
+
+  /// The other splits that fit the answers, the coach's own pick among them when the user chose another.
+  final List<CoachPlanOption> options;
 }

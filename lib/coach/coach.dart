@@ -11,7 +11,7 @@ library;
 export 'model/coach_choices.dart' show CoachAnswers, CoachBlockKind, CoachGoal, CoachLift, CoachSessionPref, CoachStatus, CoachStyle, CoachYears, coachSessionLengths;
 export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_nutrition.dart' show CoachNutritionPhase, CoachNutritionReview, CoachNutritionTargets;
-export 'model/coach_plan.dart' show CoachBlockSummary, CoachBuiltPlan, CoachOpeningSet, CoachPlanInputs, CoachQuickSession, CoachRoutineExercise, CoachRoutinePlan;
+export 'model/coach_plan.dart' show CoachBlockSummary, CoachBuiltPlan, CoachOpeningSet, CoachPlanInputs, CoachPlanOption, CoachPlanPreview, CoachQuickSession, CoachRoutineExercise, CoachRoutinePlan;
 export 'model/coach_profile.dart' show CoachProfile;
 export 'model/coach_recovery.dart' show CoachArea, CoachAutonomyTier, CoachCheckin, CoachInjuryEntry, CoachInjurySeverity, CoachProposal, CoachProposalKind, CoachProposalState, CoachReview, CoachSoreness, CoachSportChoice, CoachSportEntry, CoachSportIntensity;
 export 'model/coach_prompt.dart' show CoachCorrectionPrompt, CoachEffortPrompt, CoachPrompt;
