@@ -40,6 +40,8 @@ dependencies:
     path: packages/coach_recovery
   coach_nutrition:
     path: packages/coach_nutrition
+  coach_planner:
+    path: packages/coach_planner
   barcode: ^2.2.9
   zxing2: ^0.2.4
   app_settings: ^8.0.3

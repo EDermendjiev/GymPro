@@ -109,6 +109,7 @@ lib/coach/
   adapters/exposure_adapter.dart LoggedSession -> one exercise's ExerciseHistory (exposures per session)
   adapters/category_adapter.dart Exercise -> coach Category (annotated, else a guess)
   adapters/block_input_adapter.dart  app state -> BlockInput (profile, place, logs, weight step)
+  adapters/planner_input_adapter.dart  app state -> PlannerProfile (answers, body data, place's tags, logs)
   adapters/plan_writer.dart   BlockPlan -> Routine + weeklyPlan
   data/coach_meta.dart        generated: coaching attributes per GymMane exercise id
   policy/autonomy.dart        which proposals apply silently / with undo / on request
@@ -158,7 +159,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 
 | File | Seam | Status |
 |---|---|---|
-| `pubspec.yaml` | five path dependencies | done |
+| `pubspec.yaml` | six path dependencies (`coach_planner` added with the smart planner) | done |
 | `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachDefaultPicks`, `coachFocusMuscles`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`, `coachTick`, `coachLighten`, `coachShapeSession`, `coachMuscleSetsThisWeek`) | done |
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData`; `coachTick()` at the end of `loadFromStore` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
@@ -796,7 +797,7 @@ German and Japanese.
 | `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
 | `coach_testkit` | `packages/coach_testkit` | done (dev only) |
 | `coach_planner` | `packages/coach_planner` | phases 1–2 done: profile, budget, split catalog, week estimate with supersets, scoring, `decidePlan`, `blockDesignFor` (the generator follows it); not yet wired into the app |
-| Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
+| Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input, planner-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |

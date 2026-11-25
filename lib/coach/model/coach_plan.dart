@@ -21,6 +21,10 @@ class CoachPlanInputs {
     required this.weeklyGoal,
     this.skip = _never,
     this.bodyweight = _never,
+    this.age,
+    this.sex,
+    this.heightCm,
+    this.weightKg,
   });
 
   final DateTime today;
@@ -46,6 +50,12 @@ class CoachPlanInputs {
   /// Exercises done with the body alone.
   final bool Function(String exerciseId) bodyweight;
 
+  /// The app profile's body data, for the plan design; null when unknown. [sex] as the app names it.
+  final int? age;
+  final String? sex;
+  final double? heightCm;
+  final double? weightKg;
+
   /// The same inputs with [coach] in place of the coach's data.
   CoachPlanInputs withCoach(CoachData coach) => CoachPlanInputs(
         today: today,
@@ -58,6 +68,10 @@ class CoachPlanInputs {
         weeklyGoal: weeklyGoal,
         skip: skip,
         bodyweight: bodyweight,
+        age: age,
+        sex: sex,
+        heightCm: heightCm,
+        weightKg: weightKg,
       );
 }
 

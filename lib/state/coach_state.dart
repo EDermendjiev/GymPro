@@ -274,10 +274,17 @@ mixin CoachState
         weeklyGoal: profile.weeklyGoal,
         skip: (id) => modeOf(id).isNotEmpty,
         bodyweight: (id) => exerciseById(id)?.equipment == 'Bodyweight',
+        age: profile.age,
+        sex: profile.sex,
+        heightCm: profile.heightCm,
+        weightKg: nutritionWeightKg,
       );
 
   /// What the block generator gets for the current state, as JSON. For checks and tests.
   Map<String, dynamic> coachBlockInput() => CoachFacade.blockInputJson(_coachInputs());
+
+  /// What the plan designer gets for the current state, as JSON. For checks and tests.
+  Map<String, dynamic> coachPlannerInput() => CoachFacade.plannerInputJson(_coachInputs());
 
   /// Training days for a weekly goal of [n] sessions, spread over the week (1 = Monday … 7 = Sunday).
   List<int> coachSpreadDays(int n) => CoachFacade.spreadDays(n);

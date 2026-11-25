@@ -19,6 +19,7 @@ import 'adapters/history_adapter.dart';
 import 'adapters/muscle_map.dart';
 import 'adapters/nutrition_adapter.dart';
 import 'adapters/plan_writer.dart';
+import 'adapters/planner_input_adapter.dart';
 import 'adapters/review_adapter.dart';
 import 'model/coach_choices.dart';
 import 'model/coach_data.dart';
@@ -108,6 +109,9 @@ abstract final class CoachFacade {
 
   /// The input the block generator gets for [i], as JSON (the kernel's `BlockInput.toJson`). For checks and tests.
   static Map<String, dynamic> blockInputJson(CoachPlanInputs i) => coachBlockInput(i).toJson();
+
+  /// The input the plan designer gets for [i], as JSON (`PlannerProfile.toJson`). For checks and tests.
+  static Map<String, dynamic> plannerInputJson(CoachPlanInputs i) => coachPlannerProfile(i).toJson();
 
   /// A new block for [i]: the coach's data with the block in it, its routines and its week.
   static CoachBuiltPlan buildPlan(CoachPlanInputs i) {
@@ -350,22 +354,7 @@ abstract final class CoachFacade {
   /// the last eight weeks; the profile's goal, session length and plan-design answers.
   static CoachAnswers prefill(CoachPlanInputs i) {
     final profile = i.coach.profile;
-    final today = coachIsoDay(i.today);
-    final sets = coachSets(i.sessions, since: '0000-01-01', skip: i.skip, bodyweight: i.bodyweight);
-    final mains = {
-      for (final e in coachPlanLibrary(i.exercises, archived: const {}))
-        if (e.isMainLift) e.id,
-    };
-    final anchors = <String>{
-      for (final s in sets)
-        if (mains.contains(s.exerciseId)) s.exerciseId,
-      for (final s in i.sessions)
-        for (final e in s.exercises.where((e) => !i.skip(e.id)).take(1)) e.id,
-    };
-    final inferred = cp.inferTrainingStatus(
-      cp.TrainingStatusInput(sets: sets, today: today, anchorExerciseIds: [...anchors]),
-    );
-    final fromLogs = inferred.status;
+    final fromLogs = coachLogStatus(i);
     return CoachAnswers(
       goal: profile?.coachGoal,
       status: fromLogs == null ? profile?.coachStatus : CoachStatus.fromWire(fromLogs.wire),

@@ -159,6 +159,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  coach_planner:
+    dependency: "direct main"
+    description:
+      path: "packages/coach_planner"
+      relative: true
+    source: path
+    version: "1.0.0"
   coach_progression:
     dependency: "direct main"
     description:
