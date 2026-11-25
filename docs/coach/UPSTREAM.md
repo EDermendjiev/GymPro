@@ -54,7 +54,7 @@ merges the new upstream code into `coach`.
 
    ```bash
    (cd packages/sync && dart pub get && dart test)
-   for p in coach_kernel coach_progression coach_training coach_recovery coach_nutrition; do
+   for p in coach_kernel coach_progression coach_training coach_recovery coach_nutrition coach_planner; do
      if [ -d "packages/$p" ]; then
        (cd "packages/$p" && dart pub get && dart analyze --fatal-warnings && dart test) || break
      fi

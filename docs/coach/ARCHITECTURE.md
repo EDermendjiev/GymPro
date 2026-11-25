@@ -74,6 +74,7 @@ own tests run with `dart test`.
 | `coach_training` | Block generation: split choice, volume targets, day placement, exercise selection, set distribution, strength phases, sport trims, carry-over of user edits, one-off session generator | kernel, progression |
 | `coach_recovery` | Weekly review, fatigue flags, plateau detection, plan proposals, proposal validation and application (plan diffs) | kernel, progression, training |
 | `coach_nutrition` | Calorie and macro targets, weigh-in trend, nutrition review | kernel |
+| `coach_planner` | Plan design from the user's answers: training status from logs, self-report and years, weekly volume from the time budget, split choice from a catalog of splits with the reasons and alternatives (in progress) | kernel, progression, training |
 | `coach_testkit` (dev only) | Fixture loader and JSON diff used by the five packages' tests | nothing |
 
 Dependency rules:
@@ -82,7 +83,7 @@ Dependency rules:
   a package never depends on a package that depends on it.
 - `coach_kernel` depends on nothing. Every other coach package depends on it.
 - `coach_nutrition` shares only the kernel with the training packages.
-- `coach_testkit` is a dev dependency of the five packages. The app does not
+- `coach_testkit` is a dev dependency of the other coach packages. The app does not
   depend on it and it is not shipped.
 - No package depends on Flutter or on the app.
 - The packages contain no exercise catalog. The host passes exercises in as
@@ -720,6 +721,7 @@ German and Japanese.
 | `coach_recovery` | `packages/coach_recovery` | done, parity-proven (`coach-parity-v1`) |
 | `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
 | `coach_testkit` | `packages/coach_testkit` | done (dev only) |
+| `coach_planner` | `packages/coach_planner` | in progress (smart planner phase 1) |
 | Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 

@@ -62,7 +62,7 @@ jobs:
 
       - name: Coach packages
         run: |
-          for p in coach_testkit coach_kernel coach_progression coach_training coach_recovery coach_nutrition; do
+          for p in coach_testkit coach_kernel coach_progression coach_training coach_recovery coach_nutrition coach_planner; do
             (cd "packages/$p" && dart pub get && dart analyze --fatal-warnings && dart test) || exit 1
           done
 
