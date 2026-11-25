@@ -167,7 +167,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/state/workout_state.dart` | `_nextPlan`, `toggleSet`, `nextWhy` and `_warmupFor` each ask the seam first; `_nextPlan` lets Auto fall back to Linear while the progression module is off; `_openingSetsRaw` asks the seam first (handing it the planned sets, by which the coach knows the routine); `startFocusWorkout` and `_defaultPicks` ask the seam first; `finishSession` calls `coachTick()` after a workout is saved; `_beginSession` lets the coach shape a coach routine's workout (`coachShapeSession`) and `_lighten` asks the seam first (`coachLighten`) | done |
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
-| `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's two pages appended to the `PageView` list; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
+| `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's pages (`coachOnboardingPageCount`, four since the smart planner) appended to the `PageView` list, numbered from `_last - coachOnboardingPageCount + 1`; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
 | `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card in the phone layout, and as a card of the desktop layout's flow after the day's card while it has something to show (`coachShowsHomeSlot`); the week ahead (`CoachWeekAhead`: the routines planned for the next six days, or the next rotation steps) right after the slot, in both layouts, while anything is planned ahead | done |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
@@ -648,6 +648,27 @@ goals, three levels, 2–6 days, 30–90 min), week 1 fits the session length in
 The generator never had to cut the planner's targets further
 (`coach_planner/test/design_test.dart`).
 
+### The questions and the preview
+
+Onboarding has four coach pages: the goal; the level, years of training and
+session length; "Shape your plan" (style, fewer/longer or more/shorter
+sessions, up to two focus muscles, pain areas, and for the strength goal the
+main lifts and a recent set per lift, turned into an estimated max); then the
+plan preview before Start. Everything on the shape page starts on "Pick for
+me" or empty, so tapping straight through still works. Muscle-group days are
+offered only to advanced lifters. Focus muscles and pain areas are chips of
+the coach's muscle names, as in the injury sheet, not the body map: the map
+has one "shoulders" area where the plan needs front, side and rear delts.
+
+Settings › Coach › Build me a plan asks the same questions in one sheet,
+prefilled from the profile, the active injuries and the logs, then shows the
+same preview before building. The preview (`CoachFacade.preview`) decides the
+plan without building it: split, the week as the block would place it, sets per
+muscle, up to three reasons, warnings and the other options. Picking an option
+stores its split on the profile (`splitKey`), and a build keeps it while it
+fits; changing any answer clears the pick. Pain areas become niggles; an area
+deselected in the sheet heals its active injury.
+
 ### In the app
 
 A profile built from the answers (`coachApplyAnswers`: onboarding and Settings ›
@@ -826,7 +847,7 @@ German and Japanese.
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
-| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–3 done (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers); phase 4 (the new onboarding page and the plan preview) next |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–4 done (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers, the plan questions and preview in onboarding and Settings); phase 5 (goal extras) next |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in

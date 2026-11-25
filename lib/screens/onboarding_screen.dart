@@ -218,7 +218,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   _goalStep(gc),
                   _placeStep(gc),
                   if (_slow) _speedStep(gc),
-                  ...coachOnboardingPages(first: _last - 1, frame: (s, title, why, child) => _step(gc, step: s, title: title, why: why, child: child), skip: _finish), // coach-seam
+                  ...coachOnboardingPages(first: _last - coachOnboardingPageCount + 1, frame: (s, title, why, child) => _step(gc, step: s, title: title, why: why, child: child), skip: _finish), // coach-seam
                 ])
                   RepaintBoundary(child: page),
               ],

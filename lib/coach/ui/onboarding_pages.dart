@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// The coach's questions: the goal, then the experience and the session length. Onboarding shows them as two pages
-// of its own (the weekly-goal page before them already gave the days per week); Settings › Coach shows them in one
-// sheet, prefilled from the logs, with the training days as well.
+// The coach's questions: the goal; the experience, years of training and session length; what shapes the plan;
+// then the plan preview. Onboarding shows them as four pages of its own (the weekly-goal page before them already
+// gave the days per week); Settings › Coach shows them in one sheet, prefilled from the profile and the logs, with
+// the training days as well, and the preview after it.
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
@@ -12,20 +13,29 @@ import '../../theme/app_theme.dart';
 import '../../widgets/glass.dart';
 import '../../widgets/ui_kit.dart';
 import '../model/coach_choices.dart';
+import 'plan_questions.dart';
 
 /// How many pages [coachOnboardingPages] adds to onboarding.
-const int coachOnboardingPageCount = 2;
+const int coachOnboardingPageCount = 4;
 
 /// Draws one onboarding page in onboarding's own style: its step label, title, reason and content.
 typedef CoachPageFrame = Widget Function(int step, String title, String why, Widget child);
 
-/// The coach's two onboarding pages, numbered from [first]. The answers go to `fit.coachDraft` and are used when
-/// onboarding ends. "Just log workouts" on the goal page clears the goal and ends onboarding at once with [skip],
-/// so no coach module is switched on.
+/// The coach's onboarding pages, numbered from [first]. The answers go to `fit.coachDraft` and are used when
+/// onboarding ends; the last page previews the plan they build. "Just log workouts" on the goal page clears the
+/// goal and ends onboarding at once with [skip], so no coach module is switched on.
 List<Widget> coachOnboardingPages({required int first, required CoachPageFrame frame, required VoidCallback skip}) => [
       _GoalPage(step: first, frame: frame, skip: skip),
       _LevelPage(step: first + 1, frame: frame),
+      _ShapePage(step: first + 2, frame: frame),
+      _PreviewPage(step: first + 3, frame: frame),
     ];
+
+/// After a question changes, the split picked among the preview's options no longer applies.
+void _answered(CoachAnswers a, VoidCallback rebuild) {
+  a.splitKey = null;
+  rebuild();
+}
 
 /// The goals the questions offer. The sports themselves are entered in Settings › Coach or from the Home hint.
 const List<CoachGoal> _goals = CoachGoal.values;
@@ -93,7 +103,7 @@ class _GoalPageState extends State<_GoalPage> {
       t.coachOnbGoalTitle,
       t.coachOnbGoalWhy,
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        CoachGoalChoices(answers: a, onChanged: () => setState(() {})),
+        CoachGoalChoices(answers: a, onChanged: () => _answered(a, () => setState(() {}))),
         const SizedBox(height: 14),
         Center(
           child: GestureDetector(
@@ -129,7 +139,7 @@ class _LevelPageState extends State<_LevelPage> {
   @override
   Widget build(BuildContext context) {
     final a = fit.coachDraft;
-    void changed() => setState(() {});
+    void changed() => _answered(a, () => setState(() {}));
     return widget.frame(
       widget.step,
       t.coachOnbLevelTitle,
@@ -137,12 +147,59 @@ class _LevelPageState extends State<_LevelPage> {
       Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         CoachLevelChoices(answers: a, onChanged: changed),
         const SizedBox(height: 20),
+        _label(context.gc, t.coachYears),
+        const SizedBox(height: 10),
+        CoachYearsChips(answers: a, onChanged: changed),
+        const SizedBox(height: 20),
         _label(context.gc, t.coachSessionLength),
         const SizedBox(height: 10),
         CoachLengthChips(answers: a, onChanged: changed),
       ]),
     );
   }
+}
+
+class _ShapePage extends StatefulWidget {
+  const _ShapePage({required this.step, required this.frame});
+
+  final int step;
+  final CoachPageFrame frame;
+
+  @override
+  State<_ShapePage> createState() => _ShapePageState();
+}
+
+class _ShapePageState extends State<_ShapePage> {
+  @override
+  Widget build(BuildContext context) {
+    final a = fit.coachDraft;
+    return widget.frame(
+      widget.step,
+      t.coachOnbShapeTitle,
+      t.coachOnbShapeWhy,
+      CoachShapeQuestions(answers: a, onChanged: () => _answered(a, () => setState(() {}))),
+    );
+  }
+}
+
+class _PreviewPage extends StatefulWidget {
+  const _PreviewPage({required this.step, required this.frame});
+
+  final int step;
+  final CoachPageFrame frame;
+
+  @override
+  State<_PreviewPage> createState() => _PreviewPageState();
+}
+
+class _PreviewPageState extends State<_PreviewPage> {
+  @override
+  Widget build(BuildContext context) => widget.frame(
+        widget.step,
+        t.coachOnbPreviewTitle,
+        t.coachOnbPreviewWhy,
+        CoachPlanPreviewView(answers: fit.coachDraft, onChanged: () => setState(() {})),
+      );
 }
 
 Widget _label(GymColors gc, String text) => Padding(
@@ -313,10 +370,11 @@ class _DayChips extends StatelessWidget {
 
 /// "Build me a plan" from Settings › Coach: the same questions in one sheet, prefilled from the profile and the
 /// logs (the status the logs show once there are eight weeks of them, the weekdays trained on most), with the
-/// training days. Building switches on the progression and plan modules.
+/// training days; then the plan preview. Building switches on the progression and plan modules.
 Future<void> showCoachPlanSheet(BuildContext context) {
   final a = fit.coachPrefill();
   a.days ??= fit.coachSpreadDays(fit.profile.weeklyGoal);
+  var preview = false;
   return showAppSheet<void>(
     context: context,
     backgroundColor: Colors.transparent,
@@ -324,7 +382,7 @@ Future<void> showCoachPlanSheet(BuildContext context) {
     builder: (sheet) => StatefulBuilder(
       builder: (context, setSheet) {
         final gc = context.gc;
-        void changed() => setSheet(() {});
+        void changed() => _answered(a, () => setSheet(() {}));
         final ready = a.goal != null && (a.days?.isNotEmpty ?? false);
         return ConstrainedBox(
           constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height * 0.9),
@@ -338,8 +396,33 @@ Future<void> showCoachPlanSheet(BuildContext context) {
                 children: [
                   const SheetHandle(),
                   const SizedBox(height: 16),
-                  SheetTitle(t.coachBuildPlan),
+                  SheetTitle(preview ? t.coachOnbPreviewTitle : t.coachBuildPlan),
                   const SizedBox(height: 14),
+                  if (preview) ...[
+                    CoachPlanPreviewView(answers: a, onChanged: () => setSheet(() {})),
+                    const SizedBox(height: 22),
+                    PrimaryButton(
+                      key: const ValueKey('coach-build-plan'),
+                      label: t.coachBuildPlanGo,
+                      onTap: () {
+                        fit.coachApplyAnswers(a);
+                        Navigator.of(sheet).pop();
+                      },
+                    ),
+                    const SizedBox(height: 6),
+                    Center(
+                      child: GestureDetector(
+                        key: const ValueKey('coach-change-answers'),
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => setSheet(() => preview = false),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                          child: Text(t.coachChangeAnswers,
+                              style: AppTheme.f(13, weight: FontWeight.w700, color: gc.textSecondary)),
+                        ),
+                      ),
+                    ),
+                  ] else ...[
                   _label(gc, t.coachOnbGoalTitle),
                   const SizedBox(height: 10),
                   CoachGoalChoices(answers: a, onChanged: changed),
@@ -348,6 +431,10 @@ Future<void> showCoachPlanSheet(BuildContext context) {
                   const SizedBox(height: 10),
                   CoachLevelChoices(answers: a, onChanged: changed),
                   const SizedBox(height: 18),
+                  _label(gc, t.coachYears),
+                  const SizedBox(height: 10),
+                  CoachYearsChips(answers: a, onChanged: changed),
+                  const SizedBox(height: 18),
                   _label(gc, t.coachTrainingDays),
                   const SizedBox(height: 10),
                   _DayChips(answers: a, onChanged: changed),
@@ -355,18 +442,19 @@ Future<void> showCoachPlanSheet(BuildContext context) {
                   _label(gc, t.coachSessionLength),
                   const SizedBox(height: 10),
                   CoachLengthChips(answers: a, onChanged: changed),
+                  const SizedBox(height: 18),
+                  CoachShapeQuestions(answers: a, onChanged: changed),
                   const SizedBox(height: 22),
                   PrimaryButton(
-                    key: const ValueKey('coach-build-plan'),
-                    label: t.coachBuildPlanGo,
+                    key: const ValueKey('coach-see-plan'),
+                    label: t.coachSeePlan,
                     bg: ready ? null : gc.bgRaised2,
                     fg: ready ? null : gc.textTertiary,
                     onTap: () {
-                      if (!ready) return;
-                      fit.coachApplyAnswers(a);
-                      Navigator.of(sheet).pop();
+                      if (ready) setSheet(() => preview = true);
                     },
                   ),
+                  ],
                 ],
               ),
             ),

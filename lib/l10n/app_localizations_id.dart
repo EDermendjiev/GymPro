@@ -8468,6 +8468,129 @@ class AppLocalizationsId extends AppLocalizations {
   String get coachHomeHintDismiss => 'Dismiss';
 
   @override
+  String get coachYears => 'Years of consistent training';
+
+  @override
+  String get coachYearsUnderOne => 'Under 1';
+
+  @override
+  String get coachYearsOneToThree => '1–3';
+
+  @override
+  String get coachYearsThreeToFive => '3–5';
+
+  @override
+  String get coachYearsFivePlus => '5+';
+
+  @override
+  String get coachOnbShapeTitle => 'Shape your plan';
+
+  @override
+  String get coachOnbShapeWhy =>
+      'All optional. Leave anything on Pick for me and the coach decides from your answers.';
+
+  @override
+  String get coachStyle => 'Training style';
+
+  @override
+  String get coachPickForMe => 'Pick for me';
+
+  @override
+  String get coachStyleFullBody => 'Full body';
+
+  @override
+  String get coachStyleUpperLower => 'Upper / Lower';
+
+  @override
+  String get coachStylePushPullLegs => 'Push / Pull / Legs';
+
+  @override
+  String get coachStyleBodyPart => 'Body part';
+
+  @override
+  String get coachSessions => 'Sessions';
+
+  @override
+  String get coachSessionsFewerLonger => 'Fewer, longer';
+
+  @override
+  String get coachSessionsMoreShorter => 'More, shorter';
+
+  @override
+  String get coachFocus => 'Muscles to bring up';
+
+  @override
+  String get coachFocusHint => 'Up to two. They get more sets and go first in their sessions.';
+
+  @override
+  String get coachPain => 'Anything that hurts?';
+
+  @override
+  String get coachPainHint => 'The plan avoids loading these areas heavily.';
+
+  @override
+  String get coachLifts => 'Main lifts to put first';
+
+  @override
+  String get coachLiftSquat => 'Squat';
+
+  @override
+  String get coachLiftBench => 'Bench press';
+
+  @override
+  String get coachLiftDeadlift => 'Deadlift';
+
+  @override
+  String get coachLiftOhp => 'Overhead press';
+
+  @override
+  String get coachKnownLifts => 'I know my best lifts';
+
+  @override
+  String get coachKnownLiftsHint => 'A recent hard set for each: weight × reps. Week 1 loads start from it.';
+
+  @override
+  String get coachRepsShort => 'reps';
+
+  @override
+  String get coachOnbPreviewTitle => 'Your plan';
+
+  @override
+  String get coachOnbPreviewWhy => 'Built from your answers. Change it any time in Settings › Coach.';
+
+  @override
+  String get coachPreviewNoGoal => 'Pick a goal to see your plan.';
+
+  @override
+  String coachPreviewSession(int n) {
+    return 'About $n min a session';
+  }
+
+  @override
+  String get coachPreviewWeek => 'Your week';
+
+  @override
+  String get coachPreviewVolume => 'Sets per muscle a week';
+
+  @override
+  String get coachPreviewWhy => 'Why this plan';
+
+  @override
+  String get coachPreviewOptions => 'See other options';
+
+  @override
+  String get coachPreviewHideOptions => 'Hide other options';
+
+  @override
+  String get coachPreviewRecommended => 'The coach\'s pick';
+
+  @override
+  String get coachSeePlan => 'See my plan';
+
+  @override
+  String get coachChangeAnswers => 'Change answers';
+
+  @override
   String get wearSyncAllow => 'Izinkan Bluetooth';
 
   @override

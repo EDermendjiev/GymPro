@@ -15104,6 +15104,246 @@ abstract class AppLocalizations {
   /// **'Dismiss'**
   String get coachHomeHintDismiss;
 
+  /// No description provided for @coachYears.
+  ///
+  /// In en, this message translates to:
+  /// **'Years of consistent training'**
+  String get coachYears;
+
+  /// No description provided for @coachYearsUnderOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Under 1'**
+  String get coachYearsUnderOne;
+
+  /// No description provided for @coachYearsOneToThree.
+  ///
+  /// In en, this message translates to:
+  /// **'1–3'**
+  String get coachYearsOneToThree;
+
+  /// No description provided for @coachYearsThreeToFive.
+  ///
+  /// In en, this message translates to:
+  /// **'3–5'**
+  String get coachYearsThreeToFive;
+
+  /// No description provided for @coachYearsFivePlus.
+  ///
+  /// In en, this message translates to:
+  /// **'5+'**
+  String get coachYearsFivePlus;
+
+  /// No description provided for @coachOnbShapeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shape your plan'**
+  String get coachOnbShapeTitle;
+
+  /// No description provided for @coachOnbShapeWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'All optional. Leave anything on Pick for me and the coach decides from your answers.'**
+  String get coachOnbShapeWhy;
+
+  /// No description provided for @coachStyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Training style'**
+  String get coachStyle;
+
+  /// No description provided for @coachPickForMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick for me'**
+  String get coachPickForMe;
+
+  /// No description provided for @coachStyleFullBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Full body'**
+  String get coachStyleFullBody;
+
+  /// No description provided for @coachStyleUpperLower.
+  ///
+  /// In en, this message translates to:
+  /// **'Upper / Lower'**
+  String get coachStyleUpperLower;
+
+  /// No description provided for @coachStylePushPullLegs.
+  ///
+  /// In en, this message translates to:
+  /// **'Push / Pull / Legs'**
+  String get coachStylePushPullLegs;
+
+  /// No description provided for @coachStyleBodyPart.
+  ///
+  /// In en, this message translates to:
+  /// **'Body part'**
+  String get coachStyleBodyPart;
+
+  /// No description provided for @coachSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions'**
+  String get coachSessions;
+
+  /// No description provided for @coachSessionsFewerLonger.
+  ///
+  /// In en, this message translates to:
+  /// **'Fewer, longer'**
+  String get coachSessionsFewerLonger;
+
+  /// No description provided for @coachSessionsMoreShorter.
+  ///
+  /// In en, this message translates to:
+  /// **'More, shorter'**
+  String get coachSessionsMoreShorter;
+
+  /// No description provided for @coachFocus.
+  ///
+  /// In en, this message translates to:
+  /// **'Muscles to bring up'**
+  String get coachFocus;
+
+  /// No description provided for @coachFocusHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to two. They get more sets and go first in their sessions.'**
+  String get coachFocusHint;
+
+  /// No description provided for @coachPain.
+  ///
+  /// In en, this message translates to:
+  /// **'Anything that hurts?'**
+  String get coachPain;
+
+  /// No description provided for @coachPainHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The plan avoids loading these areas heavily.'**
+  String get coachPainHint;
+
+  /// No description provided for @coachLifts.
+  ///
+  /// In en, this message translates to:
+  /// **'Main lifts to put first'**
+  String get coachLifts;
+
+  /// No description provided for @coachLiftSquat.
+  ///
+  /// In en, this message translates to:
+  /// **'Squat'**
+  String get coachLiftSquat;
+
+  /// No description provided for @coachLiftBench.
+  ///
+  /// In en, this message translates to:
+  /// **'Bench press'**
+  String get coachLiftBench;
+
+  /// No description provided for @coachLiftDeadlift.
+  ///
+  /// In en, this message translates to:
+  /// **'Deadlift'**
+  String get coachLiftDeadlift;
+
+  /// No description provided for @coachLiftOhp.
+  ///
+  /// In en, this message translates to:
+  /// **'Overhead press'**
+  String get coachLiftOhp;
+
+  /// No description provided for @coachKnownLifts.
+  ///
+  /// In en, this message translates to:
+  /// **'I know my best lifts'**
+  String get coachKnownLifts;
+
+  /// No description provided for @coachKnownLiftsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A recent hard set for each: weight × reps. Week 1 loads start from it.'**
+  String get coachKnownLiftsHint;
+
+  /// No description provided for @coachRepsShort.
+  ///
+  /// In en, this message translates to:
+  /// **'reps'**
+  String get coachRepsShort;
+
+  /// No description provided for @coachOnbPreviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan'**
+  String get coachOnbPreviewTitle;
+
+  /// No description provided for @coachOnbPreviewWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Built from your answers. Change it any time in Settings › Coach.'**
+  String get coachOnbPreviewWhy;
+
+  /// No description provided for @coachPreviewNoGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a goal to see your plan.'**
+  String get coachPreviewNoGoal;
+
+  /// No description provided for @coachPreviewSession.
+  ///
+  /// In en, this message translates to:
+  /// **'About {n} min a session'**
+  String coachPreviewSession(int n);
+
+  /// No description provided for @coachPreviewWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Your week'**
+  String get coachPreviewWeek;
+
+  /// No description provided for @coachPreviewVolume.
+  ///
+  /// In en, this message translates to:
+  /// **'Sets per muscle a week'**
+  String get coachPreviewVolume;
+
+  /// No description provided for @coachPreviewWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why this plan'**
+  String get coachPreviewWhy;
+
+  /// No description provided for @coachPreviewOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'See other options'**
+  String get coachPreviewOptions;
+
+  /// No description provided for @coachPreviewHideOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide other options'**
+  String get coachPreviewHideOptions;
+
+  /// No description provided for @coachPreviewRecommended.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach\'s pick'**
+  String get coachPreviewRecommended;
+
+  /// No description provided for @coachSeePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'See my plan'**
+  String get coachSeePlan;
+
+  /// No description provided for @coachChangeAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'Change answers'**
+  String get coachChangeAnswers;
+
   /// No description provided for @wearSyncAllow.
   ///
   /// In en, this message translates to:

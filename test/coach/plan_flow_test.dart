@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// Phase 4 exit: a fresh install, onboarding with the four choices (goal, experience, days and length, place), Home
-// shows today's generated session, and starting it opens the block's sets. Also: "Just log workouts", the Home
+// Phase 4 exit: a fresh install, onboarding with the four choices (goal, experience, days and length, place), the
+// plan questions and the plan preview, Home shows today's generated session, and starting it opens the block's sets. Also: "Just log workouts", the Home
 // card's "Why this plan", the train screen's length chips and Settings › Coach › "Build me a plan".
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -73,7 +73,15 @@ void main() {
     await _tap(tester, find.text(titleCase(t.next)));
     expect(find.text(t.coachOnbLevelTitle), findsOneWidget);
     await _tap(tester, find.byKey(const ValueKey('coach-level-novice')));
+    await _tap(tester, find.byKey(const ValueKey('coach-years-under_one')));
     await _tap(tester, find.byKey(const ValueKey('coach-length-45')));
+    await _tap(tester, find.text(titleCase(t.next)));
+    expect(find.text(t.coachOnbShapeTitle), findsOneWidget);
+    await _tap(tester, find.byKey(const ValueKey('coach-focus-glutes')));
+    await _tap(tester, find.text(titleCase(t.next)));
+    expect(find.text(t.coachOnbPreviewTitle), findsOneWidget);
+    final shown = fit.coachPreview(fit.coachDraft)!;
+    expect(find.text(shown.splitName), findsOneWidget);
     await _tap(tester, find.text(titleCase(t.welcomeStart)));
 
     expect(fit.onboarded, isTrue);
@@ -81,6 +89,10 @@ void main() {
     final p = fit.coach.profile!;
     expect((p.coachGoal, p.coachStatus, p.minutes), (CoachGoal.leanGain, CoachStatus.novice, 45));
     expect(p.days, [1, 3, 5]);
+    expect(p.smartPlan, isTrue);
+    expect(p.years, CoachYears.underOne);
+    expect(p.focus, [CoachArea.glutes]);
+    expect(fit.coach.block!.splitKey, shown.splitKey);
     final coachRoutines = [for (final id in fit.coach.routineIds.values) fit.routineById(id)!];
     expect(coachRoutines, isNotEmpty);
     expect(coachRoutines.every((r) => r.group == t.coachRoutineGroup), isTrue);
@@ -163,8 +175,16 @@ void main() {
     await _tap(tester, find.byKey(const ValueKey('coach-build-plan-row')));
     expect(find.text(t.coachOnbGoalTitle.toUpperCase()), findsOneWidget);
     await _tap(tester, find.byKey(const ValueKey('coach-goal-fat_loss')));
+    await _tap(tester, find.byKey(const ValueKey('coach-style-full_body')));
+    await _tap(tester, find.byKey(const ValueKey('coach-see-plan')));
+    expect(find.byKey(const ValueKey('coach-preview-split')), findsOneWidget);
+    // Back to the questions and forward again keeps the answers.
+    await _tap(tester, find.byKey(const ValueKey('coach-change-answers')));
+    expect(find.byKey(const ValueKey('coach-see-plan')), findsOneWidget);
+    await _tap(tester, find.byKey(const ValueKey('coach-see-plan')));
     await _tap(tester, find.byKey(const ValueKey('coach-build-plan')));
     expect(fit.coach.profile!.coachGoal, CoachGoal.fatLoss);
+    expect(fit.coach.profile!.style, CoachStyle.fullBody);
     expect(fit.coach.isOn(CoachModule.plan), isTrue);
     expect(fit.coach.routineIds, isNotEmpty);
   });
@@ -200,13 +220,27 @@ void main() {
           padding: const EdgeInsets.all(20),
           child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [Text(title), Text(why), child]),
         );
+    // Every optional question shows: the strength goal's lifts and maxes, and muscle-group days for advanced.
+    fit.coachDraft = CoachAnswers(goal: CoachGoal.strength, status: CoachStatus.advanced, focus: [CoachArea.sideDelts]);
     for (final page in coachOnboardingPages(first: 7, frame: frame, skip: () {})) {
       await tester.pumpWidget(MaterialApp(theme: AppTheme.dark, home: Scaffold(body: page)));
       await tester.pumpAndSettle();
     }
+    // The preview, with its other options opened when it has any.
+    expect(find.byKey(const ValueKey('coach-preview-split')), findsOneWidget);
+    final options = find.byKey(const ValueKey('coach-preview-options'));
+    if (options.evaluate().isNotEmpty) await _tap(tester, options);
     await tester.pumpWidget(MaterialApp(theme: AppTheme.dark, home: const Scaffold(body: CoachSettings())));
     await _tap(tester, find.byKey(const ValueKey('coach-build-plan-row')));
     await _tap(tester, find.byKey(const ValueKey('coach-length-90')));
+    await _tap(tester, find.byKey(const ValueKey('coach-level-advanced')));
+    await _tap(tester, find.byKey(const ValueKey('coach-goal-strength')));
+    expect(find.byKey(const ValueKey('coach-style-body_part')), findsOneWidget);
+    await tester.enterText(find.byKey(const ValueKey('coach-known-squat-kg')), '140');
+    await tester.enterText(find.byKey(const ValueKey('coach-known-squat-reps')), '5');
+    await _tap(tester, find.byKey(const ValueKey('coach-see-plan')));
+    expect(find.byKey(const ValueKey('coach-preview-split')), findsOneWidget);
+    if (options.evaluate().isNotEmpty) await _tap(tester, options);
     expect(tester.takeException(), isNull);
   });
 
