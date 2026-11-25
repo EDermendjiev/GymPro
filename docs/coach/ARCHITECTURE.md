@@ -724,8 +724,25 @@ German and Japanese.
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | phase 0 done: decisions taken (see [Decisions](#decisions)); phases 1–7 not started |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in
 [BASELINE.md](BASELINE.md), and these documents. The Status column of the
 [seams table](#seams) tracks the seams one by one.
+
+## Decisions
+
+### 2026-11-25 · Smart planner, phase 0
+
+Today the split follows almost only from days per week and session length,
+so most onboardings end in an Upper/Lower plan. The smart planner chooses the
+split, volume, rep variation and focus from all the onboarding answers. The
+owner took these decisions before work started:
+
+| # | Question | Decision |
+|---|---|---|
+| 1 | May the engine packages change? | Yes. The packages are no longer frozen; they are edited like any other code. `coach_training` gets optional `split` and `targets` overrides on `BlockInput`. When they are null the output is unchanged, so the existing fixtures stay green. The new planning rules go in a new pure package, `coach_planner`, which depends on kernel, progression and training. |
+| 2 | Which training days does the plan use? | All the days the user picks. The generator no longer looks for the fewest days that fit. It drops a day only when the user prefers fewer, longer sessions or a day can't hold useful work. |
+| 3 | How does onboarding change? | A new optional page, "Shape your plan" (training style, fewer/longer or more/shorter sessions, focus muscles, pain areas, main lifts for the strength goal). Every question defaults to "Pick for me". A plan preview comes before Start, with the main reasons for the plan and the alternatives. Settings › Coach › "Build me a plan" uses the same questions and preview. `coachOnboardingPageCount` goes from 2 to 3, so no new seam is needed. |
+| 4 | What happens to existing users? | Their current block stays as it is until they tap "Rebuild my plan". Nothing is regenerated on update. |
