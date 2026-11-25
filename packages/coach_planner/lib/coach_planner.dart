@@ -6,4 +6,7 @@ library;
 export 'src/budget.dart';
 export 'src/catalog.dart';
 export 'src/constants.dart';
+export 'src/decide.dart';
+export 'src/estimate.dart';
 export 'src/profile.dart';
+export 'src/score.dart';
