@@ -54,7 +54,7 @@ final _generated = RegExp(r'^lib/l10n/app_localizations(_[a-z]+)?\.dart$');
 
 /// The coach's own files: everything in them is coach code, so they need no markers.
 const _ownPrefixes = ['lib/coach/', 'test/coach/', 'docs/coach/', 'packages/coach_', 'dev/'];
-const _ownFiles = {'lib/state/coach_state.dart'};
+const _ownFiles = {'lib/state/coach_state.dart', 'CLAUDE.md'};
 
 const _marker = 'coach-seam';
 
