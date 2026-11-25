@@ -16,6 +16,7 @@ class ScheduleInput {
     required this.sports,
     required this.goal,
     this.liftingTime,
+    this.extraTemplates,
   });
 
   factory ScheduleInput.fromJson(Map<String, dynamic> json) => ScheduleInput(
@@ -35,6 +36,9 @@ class ScheduleInput {
 
   /// Usual lifting time; null = unknown.
   final TimeOfDay? liftingTime;
+
+  /// Templates [templates] may name beyond [TEMPLATES] (a designed block's). Not part of the JSON.
+  final Map<String, Template>? extraTemplates;
 
   Map<String, dynamic> toJson() => {
     'availableDays': [...availableDays],
@@ -78,18 +82,22 @@ SportOrder? sportBeforeLifting(TimeOfDay? sportTime, TimeOfDay? liftingTime) {
       : null;
 }
 
-/// Score one candidate placement. Lower is better.
+Template _template(String key, Map<String, Template>? extra) => (extra?[key] ?? TEMPLATES[key])!;
+
+/// Score one candidate placement. Lower is better. [extraTemplates]: templates beyond [TEMPLATES] the placements
+/// may name.
 ScheduleResult scorePlacement(
   List<DayPlacement> placements,
   List<UserSport> sports,
   Goal goal, [
   TimeOfDay? liftingTime,
+  Map<String, Template>? extraTemplates,
 ]) {
   final penalties = <SchedulePenalty>[];
   void add(String rule, num points, String detail) =>
       penalties.add(SchedulePenalty(rule: rule, points: points.toDouble(), detail: detail));
   final byDay = {for (final p in placements) p.weekday: p};
-  Region region(DayPlacement p) => TEMPLATES[p.templateKey]!.region;
+  Region region(DayPlacement p) => _template(p.templateKey, extraTemplates).region;
 
   for (final p in placements) {
     final r = region(p);
@@ -136,9 +144,9 @@ ScheduleResult scorePlacement(
         same ? 'Back-to-back sessions for the same body region' : 'Back-to-back lifting days',
       );
       if (goal == Goal.strength) {
-        final t = TEMPLATES[p.templateKey]!;
+        final t = _template(p.templateKey, extraTemplates);
         final mainHere = t.slots.where((s) => s.mainLift != null).firstOrNull?.mainLift;
-        final prevT = TEMPLATES[prev.templateKey]!;
+        final prevT = _template(prev.templateKey, extraTemplates);
         final prevMain = prevT.slots.where((s) => s.mainLift != null).firstOrNull?.mainLift;
         if (mainHere != null && same && prevMain != mainHere) {
           add('T-SCH-05', 3, 'Heavy work for the same muscles the day before ${mainHere.wire}');
@@ -188,7 +196,13 @@ ScheduleResult placeSessions(ScheduleInput input) {
       final placements = [
         for (var i = 0; i < combo.length; i++) DayPlacement(weekday: combo[i], templateKey: order[i]),
       ];
-      final res = scorePlacement(placements, input.sports, input.goal, input.liftingTime);
+      final res = scorePlacement(
+        placements,
+        input.sports,
+        input.goal,
+        input.liftingTime,
+        input.extraTemplates,
+      );
       final tie = [...combo, rot];
       if (best == null ||
           res.score < best.score - 1e-9 ||
@@ -208,9 +222,15 @@ bool _lexLess(List<int> a, List<int> b) {
   return a.length < b.length;
 }
 
-/// Warnings when the user moves a session manually (Week view).
-List<String> moveWarnings(String templateKey, int weekday, List<UserSport> sports) {
-  final region = TEMPLATES[templateKey]?.region ?? Region.full;
+/// Warnings when the user moves a session manually (Week view). [extraTemplates]: templates beyond [TEMPLATES]
+/// (a designed block's).
+List<String> moveWarnings(
+  String templateKey,
+  int weekday,
+  List<UserSport> sports, {
+  Map<String, Template>? extraTemplates,
+}) {
+  final region = (extraTemplates?[templateKey] ?? TEMPLATES[templateKey])?.region ?? Region.full;
   final out = <String>[];
   if (!loadsLower(region)) return out;
   for (final s in sportsOnDay(sports, _nextDay(weekday))) {

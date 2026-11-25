@@ -353,3 +353,16 @@ WorkSession orderSession(WorkSession s) {
 
   return s.copyWith(exercises: stableSorted(s.exercises, (a, b) => tier(a) - tier(b)));
 }
+
+/// [orderSession], then exercises with a [focus] muscle as a primary one move up to right after the main-lift
+/// work, keeping their order (T-SEL-05).
+WorkSession orderSessionWithFocus(WorkSession s, List<TrackedMuscle> focus) {
+  final ordered = orderSession(s);
+  if (focus.isEmpty) return ordered;
+  int rank(WorkExercise w) {
+    if (w.kind != WorkKind.normal || w.slotKey.startsWith('main_')) return 0;
+    return focus.any((m) => isPrimary(w.ex, m)) ? 1 : 2;
+  }
+
+  return ordered.copyWith(exercises: stableSorted(ordered.exercises, (a, b) => rank(a) - rank(b)));
+}

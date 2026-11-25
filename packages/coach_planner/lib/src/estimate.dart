@@ -37,6 +37,7 @@ class EstSlot {
     required this.sets,
     required this.main,
     required this.extra,
+    this.muscle,
   });
 
   final String key;
@@ -50,6 +51,9 @@ class EstSlot {
 
   /// Added for a muscle the template's own slots could not cover.
   final bool extra;
+
+  /// For an extra exercise: the muscle it was added for.
+  final TrackedMuscle? muscle;
 
   TagInfo get info => TAG_INFO[tag]!;
 
@@ -299,6 +303,7 @@ WeekEstimate estimateWeek(
       sets: SESSION_TIME.minSetsPerExercise,
       main: false,
       extra: true,
+      muscle: m,
     );
     day.slots.add(slot);
     count(slot, slot.sets);
