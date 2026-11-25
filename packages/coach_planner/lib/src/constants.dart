@@ -32,3 +32,14 @@ const double FOCUS_EXTRA_INTERMEDIATE = 3;
 
 /// Most lifting days a plan uses; a seventh day is always a rest day (T-SCH-02).
 const int MAX_LIFT_DAYS = 6;
+
+/// T-PLN-09 (heuristic): fatigue flagged by the weekly check in [flaggedWeeks] of the last [weeks] weeks starts the
+/// next block [cut] sets per muscle lower.
+const FATIGUE_CARRY = (weeks: 4, flaggedWeeks: 2, cut: 2.0);
+
+/// N-ACT-01: the daily step minimum, the extra steps for about 100 kcal, the largest raise over the user's usual
+/// count, the rounding of a target and the logged days a usual count needs.
+const STEPS = (minimum: 7000, per100Kcal: 2500, maxRaise: 0.5, roundTo: 500, baselineDays: 7);
+
+/// N-ACT-02: most cardio sessions a week, and the minutes of one (heuristic).
+const CARDIO = (maxSessions: 3, minutes: 30);

@@ -67,6 +67,17 @@ Budget weeklyBudget(PlannerProfile p, int liftDays) {
   if (prev != null) {
     base = math.min(prev, cap);
     notes.add('Starts from your previous block: ${jsNumber(base)} sets per muscle a week.');
+    final checks = p.recoveryChecks;
+    final recent = checks.sublist(math.max(0, checks.length - FATIGUE_CARRY.weeks));
+    final flagged = recent.where((yes) => yes >= DELOAD.yesThreshold).length;
+    if (flagged >= FATIGUE_CARRY.flaggedWeeks) {
+      base = math.max(VOLUME.minEffective, base - FATIGUE_CARRY.cut);
+      ruleIds.add('T-PLN-09');
+      notes.add(
+        'Your weekly recovery check showed fatigue in $flagged of the last ${recent.length} weeks, so this block '
+        'starts lower: ${jsNumber(base)} sets per muscle a week.',
+      );
+    }
   } else {
     base = math.min(
       cap,

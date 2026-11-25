@@ -204,13 +204,13 @@ All coach data is stored under one key, `coach`, in the existing state blob.
                "priority": "lifting", "lifestyle": "lightly_active", "maxLiftDays": null,
                /* written only when set: */ "smartPlan": true, "style": "upper_lower",
                "sessionPref": "fewer_longer", "years": "one_to_three", "focus": ["glutes"],
-               "strengthLifts": ["squat", "bench"], "knownLifts": { "squat": 140 } },
+               "strengthLifts": ["squat", "bench"], "knownLifts": { "squat": 140 }, "cardio": 2 },
   "sports": [],  "injuries": [],  "disliked": [],
   "soreness": { "2026-11-12": { "hamstrings": "sore" } },
   "block": { /* BlockPlan.toJson(): kind, startsOn, weeks, splitKey, targets, weeklyTargets, sessions, selections */ },
   "routineIds": { "upper_a": "r1731…", "lower_a": "r1731…" },
   "proposals": [ { "id": "…", "kind": "standard_deload", "state": "pending|applied|dismissed", "payload": {}, "undo": {} } ],
-  "review": { "lastWeekStart": "2026-11-09", "previousYesCount": 0 },
+  "review": { "lastWeekStart": "2026-11-09", "previousYesCount": 0, "checks": { "2026-11-02": 0, "2026-11-09": 2 } },
   "nutrition": { "phase": "gain", "multiplier": 1.65, "kcal": 2990, "lastAdjustOn": null }
 }
 ```
@@ -219,13 +219,13 @@ All coach data is stored under one key, `coach`, in the existing state blob.
 |---|---|
 | `v` | Version of this shape |
 | `on` | The four module switches |
-| `profile` | The user's coaching profile: goal, training status, training days, session length, priority, lifestyle. A `smartPlan` profile also holds the plan-design answers (style, session preference, years of training, up to two focus muscles, strength lifts, known one-rep maxes); its plan comes from the planner. Those keys are written only when set, so a profile from before the planner reads and writes back unchanged, and an older build keeps them through `extra`. A value that can't be read falls back to its default |
+| `profile` | The user's coaching profile: goal, training status, training days, session length, priority, lifestyle. A `smartPlan` profile also holds the plan-design answers (style, session preference, years of training, up to two focus muscles, strength lifts, known one-rep maxes, cardio sessions a week); its plan comes from the planner. Those keys are written only when set, so a profile from before the planner reads and writes back unchanged, and an older build keeps them through `extra`. A value that can't be read falls back to its default |
 | `sports`, `injuries`, `disliked` | Lists the block generator takes into account |
 | `soreness` | Soreness reports, by date and muscle |
 | `block` | The current generated block, as written by `BlockPlan.toJson()` |
 | `routineIds` | The GymMane routine each block session was written to |
 | `proposals` | Proposals with their state and the data needed to undo them |
-| `review` | Bookkeeping for the weekly and weigh-in reviews, the "Ask me before any change" switch, accumulated target adjustments |
+| `review` | Bookkeeping for the weekly and weigh-in reviews (`checks`: each week's recovery "yes" count, the last 12 weeks), the "Ask me before any change" switch, accumulated target adjustments |
 | `nutrition` | The picked nutrition phase and the weigh-in review's adjustments (see [Weigh-in review](#weigh-in-review)) |
 
 Rules for this key:
@@ -694,6 +694,32 @@ carries the split, the starting week and the volume.
 Supersets reach GymMane as chained exercises (`Routine.chained`), and routine
 names come from the planner's templates as well as the generator's.
 
+### Goal extras
+
+- **Fatigue into the next block** (`T-PLN-09`, heuristic). Each weekly review
+  stores its "yes" count under `coach.review.checks`. A new block from a
+  transition gets the counts of the ending block's weeks
+  (`PlannerProfile.recoveryChecks`); when two or more of the last four weeks
+  had a deload-level count, `weeklyBudget` starts the new block 2 sets per
+  muscle lower than the old one (never below the minimum). A single flagged
+  week changes nothing: its deload proposal already covered it. Builds and
+  regenerations of a running block ignore the checks.
+- **Daily steps** (`N-ACT-01`). For fat loss and recomposition,
+  `dailyStepTarget` aims for the usual count + 2,500 (fat loss) or the usual
+  count (recomposition), at least 7,000, and never more than half again the
+  usual count at once. The usual count is the average of the days with steps
+  in the 14 days before today, once there are 7 of them; without it the target
+  is 7,000.
+- **Cardio** (`N-ACT-02`). For the same goals the shape page asks for 0–3
+  low-impact sessions a week (profile `cardio`). `placeCardio` puts them on days
+  without lifting or a hard sport session, never the day before a lower-body
+  day (or a leg-heavy sport day), preferably not the day before a full-body
+  day, spread over the week, and leaves one day fully free. The days follow the
+  block's schedule, so they're worked out when shown, not stored.
+- Both show on the week-ahead card on Home (a steps line, with today's count
+  when steps are tracked, and "Easy cardio" on the rest days that have it) and
+  the cardio days on the plan preview's week strip.
+
 ## Muscle and equipment mapping
 
 The packages use 16 muscles and their own equipment names. GymMane uses 14
@@ -842,12 +868,12 @@ German and Japanese.
 | `coach_recovery` | `packages/coach_recovery` | done, parity-proven (`coach-parity-v1`) |
 | `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
 | `coach_testkit` | `packages/coach_testkit` | done (dev only) |
-| `coach_planner` | `packages/coach_planner` | phases 1–3 done: profile, budget, split catalog, week estimate with supersets, scoring, `decidePlan` (with a kept split), `blockDesignFor` (the generator follows it); the app uses it for smart-plan profiles |
+| `coach_planner` | `packages/coach_planner` | done: profile, budget (with the fatigue carry), split catalog, week estimate with supersets, scoring, `decidePlan` (with a kept split), `blockDesignFor` (the generator follows it), goal extras (steps, cardio days); the app uses it for smart-plan profiles |
 | Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input, planner-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
-| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–4 done (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers, the plan questions and preview in onboarding and Settings); phase 5 (goal extras) next |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–4 done (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers, the plan questions and preview in onboarding and Settings, goal extras: steps, cardio and fatigue into the next block) |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in

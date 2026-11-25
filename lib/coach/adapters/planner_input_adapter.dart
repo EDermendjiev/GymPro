@@ -51,9 +51,27 @@ ck.Sex _sex(String? sex) => switch (sex) {
       _ => ck.Sex.unspecified,
     };
 
+/// The "yes" counts of the weekly recovery checks of the weeks from [since] (an ISO Monday) on, oldest first, as kept
+/// under `coach.review.checks` (week start → count). Entries the coach cannot read are left out.
+List<int> coachRecoveryChecks(Map<String, dynamic> review, {required String since}) {
+  final raw = review['checks'];
+  if (raw is! Map) return const [];
+  final weeks = [
+    for (final e in raw.entries)
+      if (e.key is String && e.value is int && (e.key as String).compareTo(since) >= 0) (e.key as String, e.value as int),
+  ]..sort((a, b) => a.$1.compareTo(b.$1));
+  return [for (final w in weeks) w.$2];
+}
+
 /// The plan designer's input for [i]. [previousSplitKey] and [previousMedianTarget] come from the current block when
-/// there is one, so a new block prefers its split and starts from its volume.
-cpl.PlannerProfile coachPlannerProfile(CoachPlanInputs i, {String? previousSplitKey, double? previousMedianTarget}) {
+/// there is one, so a new block prefers its split and starts from its volume. With [checksSince] (the ending block's
+/// first day), the weekly recovery checks from then on go with it, so fatigue in that block starts the next one lower.
+cpl.PlannerProfile coachPlannerProfile(
+  CoachPlanInputs i, {
+  String? previousSplitKey,
+  double? previousMedianTarget,
+  String? checksSince,
+}) {
   final profile = i.coach.profile;
   final tracked = {for (final m in ck.TRACKED_MUSCLES) m.wire: m};
   return cpl.PlannerProfile(
@@ -85,5 +103,6 @@ cpl.PlannerProfile coachPlannerProfile(CoachPlanInputs i, {String? previousSplit
     targetAdjustments: coachTargetAdjustments(i.coach.review),
     previousMedianTarget: previousMedianTarget,
     previousSplitKey: previousSplitKey,
+    recoveryChecks: checksSince == null ? const [] : coachRecoveryChecks(i.coach.review, since: checksSince),
   );
 }

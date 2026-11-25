@@ -17,6 +17,7 @@ PlannerProfile _p({
   List<UserSport> sports = const [],
   double? previous,
   Map<TrackedMuscle, double>? adjustments,
+  List<int> checks = const [],
 }) => PlannerProfile(
   goal: goal,
   priority: priority,
@@ -29,6 +30,7 @@ PlannerProfile _p({
   sports: sports,
   previousMedianTarget: previous,
   targetAdjustments: adjustments,
+  recoveryChecks: checks,
 );
 
 double _base(Status s, int days, int minutes) =>
@@ -166,5 +168,31 @@ void main() {
     final json = weeklyBudget(_p(), 4).toJson();
     expect((json['targets'] as Map).keys, [for (final m in TRACKED_MUSCLES) m.wire]);
     expect(json['tier'], 'low');
+  });
+
+  group('fatigue from the weekly checks (T-PLN-09)', () {
+    test('two flagged weeks of the last four start the next block 2 sets lower', () {
+      final b = weeklyBudget(_p(previous: 12, checks: [0, 2, 1, 3]), 4);
+      expect(b.base, 10);
+      expect(b.ruleIds, contains('T-PLN-09'));
+      expect(b.notes.last, contains('2 of the last 4 weeks'));
+    });
+
+    test('one flagged week, or flags older than four weeks, change nothing', () {
+      expect(weeklyBudget(_p(previous: 12, checks: [0, 2, 0, 1]), 4).base, 12);
+      expect(weeklyBudget(_p(previous: 12, checks: [3, 3, 0, 0, 1, 0]), 4).base, 12);
+    });
+
+    test('only a new block from a previous one is affected, and never below the minimum', () {
+      final first = weeklyBudget(_p(checks: [2, 2, 2]), 4);
+      expect(first.ruleIds, isNot(contains('T-PLN-09')));
+      expect(weeklyBudget(_p(previous: 5, checks: [2, 2]), 4).base, 4);
+    });
+
+    test('the checks round-trip through JSON', () {
+      final p = _p(previous: 12, checks: [1, 2]);
+      expect(PlannerProfile.fromJson(p.toJson()).recoveryChecks, [1, 2]);
+      expect(_p().toJson().containsKey('recoveryChecks'), isFalse);
+    });
   });
 }

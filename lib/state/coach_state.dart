@@ -4,7 +4,16 @@
 part of 'fit_state.dart';
 
 mixin CoachState
-    on FitCore, LibraryState, SettingsState, PlacesState, StatsState, HealthState, NutritionState, RoutinesState {
+    on
+        FitCore,
+        LibraryState,
+        SettingsState,
+        PlacesState,
+        StatsState,
+        StepsState,
+        HealthState,
+        NutritionState,
+        RoutinesState {
   /// Everything the coach keeps. Stored under the `coach` key, and left out entirely while it is empty.
   CoachData coach = CoachData.empty();
 
@@ -657,14 +666,36 @@ mixin CoachState
       previousYesCount: previous is int ? previous : null,
       lastInference: inference is String ? inference : null,
     );
+    // Each week's count is kept for a while: a new block starts lower after a block with repeated fatigue.
+    final checks = review['checks'];
+    final kept = <String, int>{
+      if (checks is Map)
+        for (final e in checks.entries)
+          if (e.key is String && e.value is int) e.key as String: e.value as int,
+      week: r.yesCount,
+    };
+    final keys = kept.keys.toList()..sort();
     coach = coach.copyWith(review: {
       ...coach.review,
       'lastWeekStart': week,
       'previousYesCount': r.yesCount,
       'lastInference': r.inference,
+      'checks': {for (final k in keys.skip(keys.length > _coachChecksKept ? keys.length - _coachChecksKept : 0)) k: kept[k]},
     });
     _coachAddProposals(r.proposals);
   }
+
+  /// Weekly recovery checks kept under `coach.review.checks`: enough for a block and the weeks before it.
+  static const _coachChecksKept = 12;
+
+  /// The daily step target while the plan module is on and the goal is fat loss or recomposition; null otherwise.
+  /// It follows the user's usual count once a week of steps is logged.
+  int? get coachStepTarget => coach.isOn(CoachModule.plan)
+      ? CoachFacade.stepTarget(coach, baseline: CoachFacade.stepBaseline(stepsByDay, coachClock()))
+      : null;
+
+  /// The weekdays (1 = Monday … 7 = Sunday) for low-impact cardio while the plan module is on; empty otherwise.
+  List<int> get coachCardioDays => coach.isOn(CoachModule.plan) ? CoachFacade.cardioDays(coach) : const [];
 
   void _coachWeighInReview() {
     final today = coachClock();

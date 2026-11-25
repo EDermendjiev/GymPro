@@ -8,7 +8,8 @@ import 'coach_recovery.dart';
 import 'json_util.dart';
 
 /// Goal, training status, training days, session length, priority and lifestyle, and the answers that shape a
-/// designed plan (style, session preference, years of training, focus muscles, strength lifts and known maxes).
+/// designed plan (style, session preference, years of training, focus muscles, strength lifts, known maxes and
+/// cardio sessions).
 ///
 /// Keys this version does not know are kept in [extra] and written back unchanged, so a profile written by a
 /// newer version of the app survives a round trip through an older one.
@@ -29,8 +30,10 @@ final class CoachProfile {
     List<CoachLift>? strengthLifts,
     Map<CoachLift, double> knownLifts = const {},
     this.splitKey,
+    int cardio = 0,
     Map<String, dynamic> extra = const {},
-  })  : days = List.unmodifiable(days),
+  })  : cardio = cardio.clamp(0, 3),
+        days = List.unmodifiable(days),
         focus = List.unmodifiable(focus.toSet().take(2)),
         strengthLifts = strengthLifts == null ? null : List.unmodifiable(strengthLifts),
         knownLifts = Map.unmodifiable(knownLifts),
@@ -80,6 +83,7 @@ final class CoachProfile {
             if ((CoachLift.fromWire(e.key), e.value) case (final lift?, final num kg)) lift: kg.toDouble(),
       },
       splitKey: json['splitKey'] is String ? json['splitKey'] as String : null,
+      cardio: json['cardio'] is int ? json['cardio'] as int : 0,
       extra: {
         for (final e in json.entries)
           if (!_known.contains(e.key)) e.key: e.value,
@@ -116,6 +120,7 @@ final class CoachProfile {
         strengthLifts: answers?.lifts,
         knownLifts: answers?.knownLifts ?? const {},
         splitKey: answers?.splitKey,
+        cardio: answers?.cardio ?? 0,
         extra: keep?.extra ?? const {},
       );
 
@@ -141,6 +146,7 @@ final class CoachProfile {
     'strengthLifts',
     'knownLifts',
     'splitKey',
+    'cardio',
   };
 
   final ck.Goal goal;
@@ -179,6 +185,9 @@ final class CoachProfile {
   /// fits the answers.
   final String? splitKey;
 
+  /// Low-impact cardio sessions a week (0–3) for fat loss and recomposition, placed on rest days.
+  final int cardio;
+
   /// Keys this version does not know, kept as they were read.
   final Map<String, dynamic> extra;
 
@@ -199,6 +208,7 @@ final class CoachProfile {
         if (strengthLifts case final l?) 'strengthLifts': [for (final x in l) x.wire],
         if (knownLifts.isNotEmpty) 'knownLifts': {for (final e in knownLifts.entries) e.key.wire: e.value},
         'splitKey': ?splitKey,
+        if (cardio > 0) 'cardio': cardio,
         for (final e in extra.entries) e.key: jsonCopy(e.value),
       };
 }

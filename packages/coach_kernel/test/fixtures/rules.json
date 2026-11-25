@@ -39,6 +39,7 @@
      "T-PLN-06",
      "T-PLN-07",
      "T-PLN-08",
+     "T-PLN-09",
      "T-SEL-01",
      "T-SEL-02",
      "T-SEL-03",
@@ -112,7 +113,9 @@
      "N-ADJ-03",
      "N-ADJ-04",
      "N-ADJ-05",
-     "N-ADJ-06"
+     "N-ADJ-06",
+     "N-ACT-01",
+     "N-ACT-02"
     ],
     "bases": [
      "evidence",
@@ -580,6 +583,20 @@
      "summary": "When a session runs long, isolation exercises for different muscles are paired as supersets, one rest for each pair, before any sets are cut."
     },
     "why": "When a session runs long, isolation exercises for different muscles are paired as supersets, one rest for each pair, before any sets are cut."
+   }
+  },
+  {
+   "name": "T-PLN-09",
+   "input": {
+    "id": "T-PLN-09"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-09",
+     "basis": "heuristic",
+     "summary": "When the weekly recovery check flagged fatigue in two or more of the last four weeks, the next block starts 2 sets per muscle lower."
+    },
+    "why": "When the weekly recovery check flagged fatigue in two or more of the last four weeks, the next block starts 2 sets per muscle lower."
    }
   },
   {
@@ -1616,6 +1633,34 @@
      "summary": "At maintenance, if weight drifts more than 0.25% per week over 3 weeks, adjust by 100–150 kcal."
     },
     "why": "At maintenance, if weight drifts more than 0.25% per week over 3 weeks, adjust by 100–150 kcal."
+   }
+  },
+  {
+   "name": "N-ACT-01",
+   "input": {
+    "id": "N-ACT-01"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ACT-01",
+     "basis": "evidence",
+     "summary": "While losing fat or recomposing, walk at least about 7,000 steps a day. About 2,500 extra steps burn roughly 100 kcal; raise your daily count by no more than half at a time."
+    },
+    "why": "While losing fat or recomposing, walk at least about 7,000 steps a day. About 2,500 extra steps burn roughly 100 kcal; raise your daily count by no more than half at a time."
+   }
+  },
+  {
+   "name": "N-ACT-02",
+   "input": {
+    "id": "N-ACT-02"
+   },
+   "output": {
+    "rule": {
+     "id": "N-ACT-02",
+     "basis": "evidence",
+     "summary": "Cardio is optional and comes second to lifting: keep it low-impact, on days without lifting and not the day before a leg day. Hard intervals count as hard training."
+    },
+    "why": "Cardio is optional and comes second to lifting: keep it low-impact, on days without lifting and not the day before a leg day. Hard intervals count as hard training."
    }
   },
   {

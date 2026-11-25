@@ -146,6 +146,7 @@ class CoachAnswers {
     Map<CoachLift, double>? knownLifts,
     this.pain,
     this.splitKey,
+    this.cardio = 0,
   })  : focus = focus ?? [],
         knownLifts = knownLifts ?? {};
 
@@ -179,4 +180,7 @@ class CoachAnswers {
 
   /// The split the user picked among the plan's other options, or null for the coach's choice.
   String? splitKey;
+
+  /// Low-impact cardio sessions a week (0–3), asked for fat loss and recomposition.
+  int cardio;
 }

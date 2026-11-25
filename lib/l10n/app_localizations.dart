@@ -15344,6 +15344,60 @@ abstract class AppLocalizations {
   /// **'Change answers'**
   String get coachChangeAnswers;
 
+  /// No description provided for @coachCardio.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardio on rest days'**
+  String get coachCardio;
+
+  /// No description provided for @coachCardioHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional. Low-impact, about 30 minutes, never the day before legs.'**
+  String get coachCardioHint;
+
+  /// No description provided for @coachCardioNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get coachCardioNone;
+
+  /// No description provided for @coachCardioPerWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'{n}× a week'**
+  String coachCardioPerWeek(int n);
+
+  /// No description provided for @coachCardioDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Easy cardio · {minutes} min'**
+  String coachCardioDay(int minutes);
+
+  /// No description provided for @coachCardioKinds.
+  ///
+  /// In en, this message translates to:
+  /// **'Bike or incline walk'**
+  String get coachCardioKinds;
+
+  /// No description provided for @coachStepsDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily steps'**
+  String get coachStepsDaily;
+
+  /// No description provided for @coachStepsTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'About {steps} a day'**
+  String coachStepsTarget(String steps);
+
+  /// No description provided for @coachStepsProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {target} today'**
+  String coachStepsProgress(String done, String target);
+
   /// No description provided for @wearSyncAllow.
   ///
   /// In en, this message translates to:

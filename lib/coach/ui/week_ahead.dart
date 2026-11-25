@@ -2,6 +2,7 @@
 // The week ahead on the Home screen, under the day's card: the routines planned for the next six days (a fixed
 // week), or the steps that follow in the rotation. Once the day's session is done, the day's card only says so;
 // this card keeps the rest of the plan in view. Tapping a routine opens it, "See all" opens the weekly plan.
+// For fat loss and recomposition it also shows the daily step target and the rest days with easy cardio.
 // Draws nothing when no routine is planned ahead.
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
@@ -14,9 +15,11 @@ import '../../theme/app_theme.dart';
 import '../../widgets/day_off_sheet.dart';
 import '../../widgets/svg_icon.dart';
 import '../../widgets/ui_kit.dart';
+import '../facade.dart';
 
-/// One line of the card: a day (or a rotation step) and what is planned for it. [routine] is null on a rest day.
-typedef CoachWeekAheadRow = ({String day, String? date, Routine? routine, String? dayOff});
+/// One line of the card: a day (or a rotation step) and what is planned for it. [routine] is null on a rest day;
+/// [cardio] marks a rest day with easy cardio.
+typedef CoachWeekAheadRow = ({String day, String? date, Routine? routine, String? dayOff, bool cardio});
 
 /// The lines the card shows, in order. Empty when nothing is planned ahead, which hides the card.
 List<CoachWeekAheadRow> coachWeekAheadRows() {
@@ -24,6 +27,7 @@ List<CoachWeekAheadRow> coachWeekAheadRows() {
   final start = DateTime(now.year, now.month, now.day);
   if (fit.rotating) return _rotationRows(start);
   final rows = <CoachWeekAheadRow>[];
+  final cardio = fit.coachCardioDays;
   for (var d = 1; d <= 6; d++) {
     final day = shiftDays(start, d);
     final planned = fit.routinesOn(day);
@@ -31,10 +35,16 @@ List<CoachWeekAheadRow> coachWeekAheadRows() {
     final date = t.shortDate(day);
     final off = fit.dayOffOn(day);
     if (planned.isEmpty) {
-      rows.add((day: label, date: date, routine: null, dayOff: off));
+      rows.add((day: label, date: date, routine: null, dayOff: off, cardio: off == null && cardio.contains(day.weekday)));
     } else {
       for (final (i, r) in planned.indexed) {
-        rows.add((day: i == 0 ? label : '', date: i == 0 ? date : null, routine: r, dayOff: i == 0 ? off : null));
+        rows.add((
+          day: i == 0 ? label : '',
+          date: i == 0 ? date : null,
+          routine: r,
+          dayOff: i == 0 ? off : null,
+          cardio: false,
+        ));
       }
     }
   }
@@ -53,9 +63,9 @@ List<CoachWeekAheadRow> _rotationRows(DateTime today) {
     final id = steps[(first + k) % steps.length];
     final label = k == 0 ? t.liveNext : '${k + 1}';
     if (RoutinesState.isRestStep(id)) {
-      rows.add((day: label, date: null, routine: null, dayOff: null));
+      rows.add((day: label, date: null, routine: null, dayOff: null, cardio: false));
     } else if (fit.routineById(id) case final r?) {
-      rows.add((day: label, date: null, routine: r, dayOff: null));
+      rows.add((day: label, date: null, routine: r, dayOff: null, cardio: false));
     }
   }
   return rows.any((r) => r.routine != null) ? rows : const [];
@@ -82,7 +92,10 @@ class CoachWeekAhead extends StatelessWidget {
           radius: 22,
           borderColor: Colors.transparent,
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-          child: Column(children: [for (final r in rows) _row(gc, r)]),
+          child: Column(children: [
+            if (fit.coachStepTarget case final steps?) _steps(gc, steps),
+            for (final r in rows) _row(gc, r),
+          ]),
         ),
       ]),
     );
@@ -118,12 +131,39 @@ class CoachWeekAhead extends StatelessWidget {
         ),
       );
 
+  /// The daily step target, with today's count when steps are tracked.
+  Widget _steps(GymColors gc, int target) => Padding(
+        key: const ValueKey('coach-week-ahead-steps'),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+        child: Row(children: [
+          SizedBox(
+            width: 78,
+            child: Text(t.coachStepsDaily,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: AppTheme.f(13.5, weight: FontWeight.w700, color: gc.text)),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+                fit.stepsOn
+                    ? t.coachStepsProgress(groupedInt(fit.stepsToday), groupedInt(target))
+                    : t.coachStepsTarget(groupedInt(target)),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTheme.f(14.5, weight: FontWeight.w600, color: gc.text)),
+          ),
+          const SizedBox(width: 8),
+          Icon(PhosphorIconsFill.sneakerMove, size: 15, color: gc.sage),
+        ]),
+      );
+
   Widget _row(GymColors gc, CoachWeekAheadRow row) {
     final r = row.routine;
     final rest = r == null;
     final off = row.dayOff;
     final content = Padding(
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: rest ? 7 : 11),
+      padding: EdgeInsets.symmetric(horizontal: 14, vertical: rest && !row.cardio ? 7 : 11),
       child: Row(children: [
         SizedBox(
           width: 78,
@@ -142,11 +182,22 @@ class CoachWeekAhead extends StatelessWidget {
         const SizedBox(width: 10),
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
-            Text(rest ? t.restDayShort : fit.routineTitle(r),
+            Text(
+                row.cardio
+                    ? t.coachCardioDay(CoachFacade.cardioMinutes)
+                    : rest
+                        ? t.restDayShort
+                        : fit.routineTitle(r),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTheme.f(14.5,
-                    weight: rest ? FontWeight.w500 : FontWeight.w600, color: rest ? gc.textTertiary : gc.text)),
+                    weight: rest && !row.cardio ? FontWeight.w500 : FontWeight.w600,
+                    color: rest && !row.cardio ? gc.textTertiary : gc.text)),
+            if (row.cardio)
+              Text(t.coachCardioKinds,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTheme.f(12, weight: FontWeight.w500, color: gc.textSecondary)),
             if (!rest)
               // The coach's block and week are the same all week; the day's card already names them.
               Text(t.exerciseCount(r.exerciseIds.length),
@@ -160,7 +211,7 @@ class CoachWeekAhead extends StatelessWidget {
           Icon(dayOffIcon(off), size: 15, color: gc.textSecondary),
         ] else if (rest) ...[
           const SizedBox(width: 8),
-          Icon(PhosphorIconsFill.bed, size: 14, color: gc.sage),
+          Icon(row.cardio ? PhosphorIconsFill.personSimpleBike : PhosphorIconsFill.bed, size: 14, color: gc.sage),
         ],
         if (!rest) ...[
           const SizedBox(width: 8),

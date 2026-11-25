@@ -118,15 +118,17 @@ abstract final class CoachFacade {
   /// The plan designer's decision for [i] when the profile is a smart-plan one (built from the answers); null
   /// otherwise, so a profile from before the planner keeps the generator's own split choice. [keepSplit] keeps the
   /// running block's split when it still fits; [previousSplitKey] and [previousMedianTarget] are the current
-  /// block's, for a new block.
+  /// block's, for a new block, and [checksSince] its first day, for its weekly recovery checks.
   static cpl.PlannerDecision? _decision(
     CoachPlanInputs i, {
     String? keepSplit,
     String? previousSplitKey,
     double? previousMedianTarget,
+    String? checksSince,
   }) {
     if (i.coach.profile?.smartPlan != true) return null;
-    final p = coachPlannerProfile(i, previousSplitKey: previousSplitKey, previousMedianTarget: previousMedianTarget);
+    final p = coachPlannerProfile(i,
+        previousSplitKey: previousSplitKey, previousMedianTarget: previousMedianTarget, checksSince: checksSince);
     return cpl.decidePlan(p, splitKey: keepSplit);
   }
 
@@ -179,6 +181,7 @@ abstract final class CoachFacade {
       keepSplit: running ? old.splitKey : i.coach.profile?.splitKey,
       previousSplitKey: old.splitKey,
       previousMedianTarget: running ? null : previous.medianTargetBeforeTrims,
+      checksSince: running ? null : old.startsOn,
     );
     final input = coachBlockInput(
       i.withCoach(coach),
@@ -204,6 +207,50 @@ abstract final class CoachFacade {
 
   /// Training days for a weekly goal of [n] sessions, spread over the week (1 = Monday … 7 = Sunday).
   static List<int> spreadDays(int n) => coachSpreadDays(n);
+
+  // ---------- Goal extras ----------
+
+  /// Minutes of one low-impact cardio session.
+  static int get cardioMinutes => cpl.CARDIO.minutes;
+
+  /// The region of each lifting day of [placements]; a day with two sessions takes the one hardest on the legs.
+  static Map<int, ct.Region> _regions(Iterable<ck.DayPlacement> placements) {
+    int rank(ct.Region r) => switch (r) { ct.Region.lower => 2, ct.Region.full => 1, _ => 0 };
+    final out = <int, ct.Region>{};
+    for (final pl in placements) {
+      final r = cpl.templateFor(pl.templateKey)?.region ?? ct.Region.full;
+      if (out[pl.weekday] case final had? when rank(had) >= rank(r)) continue;
+      out[pl.weekday] = r;
+    }
+    return out;
+  }
+
+  /// The weekdays (1 = Monday … 7 = Sunday) for the coaching profile's low-impact cardio sessions: days without
+  /// lifting and without a hard sport session, never the day before a leg day. Empty without a block, without
+  /// cardio sessions, or for a goal other than fat loss and recomposition.
+  static List<int> cardioDays(CoachData coach) {
+    final profile = coach.profile;
+    final block = coach.block;
+    if (profile == null || block == null || profile.cardio == 0 || !cpl.hasGoalExtras(profile.goal)) return const [];
+    return cpl.placeCardio(profile.cardio, lifting: _regions(block.schedule.placements), sports: coach.sports);
+  }
+
+  /// The daily step target for the coaching profile's goal, or null for a goal without one (only fat loss and
+  /// recomposition have one). [baseline] is the user's usual daily count, or null when unknown.
+  static int? stepTarget(CoachData coach, {double? baseline}) {
+    final goal = coach.profile?.goal;
+    return goal == null ? null : cpl.dailyStepTarget(goal, baseline: baseline)?.steps;
+  }
+
+  /// The user's usual daily steps from [byDay] (steps by ISO day): the average of the days with steps in the
+  /// 14 days before [today], or null with fewer than 7 such days.
+  static double? stepBaseline(Map<String, int> byDay, DateTime today) {
+    final counts = [
+      for (var d = 1; d <= 14; d++) byDay[coachIsoDay(DateTime(today.year, today.month, today.day - d))] ?? 0,
+    ].where((n) => n > 0).toList();
+    if (counts.length < cpl.STEPS.baselineDays) return null;
+    return counts.reduce((a, b) => a + b) / counts.length;
+  }
 
   /// [i] with the answers [a] in place of the coaching profile (and its pain areas in place of the injuries), as
   /// building the plan would store them; null while no goal is picked.
@@ -263,6 +310,9 @@ abstract final class CoachFacade {
           ?CoachArea.fromWire(m.wire): ck.jsRound(chosen.targets?[m] ?? weekly[m]!),
       },
       reasons: reasons,
+      cardioDays: cpl.hasGoalExtras(p.goal)
+          ? cpl.placeCardio(a.cardio, lifting: _regions(schedule.placements), sports: p.sports)
+          : const [],
       warnings: [for (final w in chosen.warnings) w.message],
       options: [
         if (chosen.split.key != free.split.key)
@@ -477,6 +527,7 @@ abstract final class CoachFacade {
           if (e.active && e.area != null) e.area!,
       ],
       splitKey: profile?.splitKey,
+      cardio: profile?.cardio ?? 0,
     )..statusFromLogs = fromLogs != null;
   }
 

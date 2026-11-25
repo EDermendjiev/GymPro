@@ -207,9 +207,11 @@ class CoachPlanPreview {
     required Map<int, String> week,
     required Map<CoachArea, int> weeklySets,
     required List<String> reasons,
+    List<int> cardioDays = const [],
     required List<String> warnings,
     required List<CoachPlanOption> options,
   })  : week = Map.unmodifiable(week),
+        cardioDays = List.unmodifiable(cardioDays),
         weeklySets = Map.unmodifiable(weeklySets),
         reasons = List.unmodifiable(reasons),
         warnings = List.unmodifiable(warnings),
@@ -232,6 +234,9 @@ class CoachPlanPreview {
 
   /// The main reasons for the plan, in English, most important first.
   final List<String> reasons;
+
+  /// Weekdays for low-impact cardio (fat loss and recomposition with cardio sessions asked for), sorted.
+  final List<int> cardioDays;
   final List<String> warnings;
 
   /// The other splits that fit the answers, the coach's own pick among them when the user chose another.

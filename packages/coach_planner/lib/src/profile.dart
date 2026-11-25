@@ -185,7 +185,9 @@ class PlannerProfile {
     Map<TrackedMuscle, double>? targetAdjustments,
     this.previousMedianTarget,
     this.previousSplitKey,
-  }) : days = List.unmodifiable(
+    List<int> recoveryChecks = const [],
+  }) : recoveryChecks = List.unmodifiable(recoveryChecks),
+       days = List.unmodifiable(
          {
            for (final d in days)
              if (d >= 1 && d <= 7) d,
@@ -240,6 +242,7 @@ class PlannerProfile {
           },
     previousMedianTarget: (json['previousMedianTarget'] as num?)?.toDouble(),
     previousSplitKey: json['previousSplitKey'] as String?,
+    recoveryChecks: _list(json['recoveryChecks'], (x) => x as int),
   );
 
   final Goal goal;
@@ -293,6 +296,9 @@ class PlannerProfile {
   /// The split of the current block, or null; a rebuild prefers to keep it.
   final String? previousSplitKey;
 
+  /// The "yes" counts of the weekly recovery checks during the previous block, oldest first; empty when unknown.
+  final List<int> recoveryChecks;
+
   /// The training status the planner works with.
   ResolvedStatus get status => resolveStatus(fromLogs: logStatus, answered: answeredStatus, years: years);
 
@@ -337,5 +343,6 @@ class PlannerProfile {
       'targetAdjustments': {for (final e in t.entries) e.key.wire: e.value},
     'previousMedianTarget': ?previousMedianTarget,
     'previousSplitKey': ?previousSplitKey,
+    if (recoveryChecks.isNotEmpty) 'recoveryChecks': [...recoveryChecks],
   };
 }

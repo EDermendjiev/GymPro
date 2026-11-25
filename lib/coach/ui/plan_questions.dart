@@ -196,6 +196,22 @@ class CoachShapeQuestions extends StatelessWidget {
             a.pain = next;
             onChanged();
           }),
+      if (a.goal == CoachGoal.fatLoss || a.goal == CoachGoal.recomp) ...[
+        const SizedBox(height: 18),
+        coachQuestionLabel(gc, t.coachCardio),
+        _hint(gc, t.coachCardioHint),
+        const SizedBox(height: 10),
+        _pills<int>(gc,
+            keyPrefix: 'coach-cardio',
+            values: const [0, 1, 2, 3],
+            id: (n) => '$n',
+            label: (n) => n == 0 ? t.coachCardioNone : t.coachCardioPerWeek(n),
+            on: (n) => a.cardio == n,
+            onTap: (n) {
+              a.cardio = n;
+              onChanged();
+            }),
+      ],
       if (a.goal == CoachGoal.strength) ...[
         const SizedBox(height: 18),
         coachQuestionLabel(gc, t.coachLifts),
@@ -355,13 +371,20 @@ class _CoachPlanPreviewViewState extends State<CoachPlanPreviewView> {
         Text(t.coachPreviewSession(pv.minutes),
             style: AppTheme.f(12.5, weight: FontWeight.w600, color: gc.textSecondary)),
         const SizedBox(height: 14),
-        _WeekStrip(week: pv.week),
+        _WeekStrip(week: pv.week, cardio: pv.cardioDays),
         const SizedBox(height: 10),
         for (final e in (pv.week.entries.toList()..sort((a, b) => a.key - b.key)))
           Padding(
             padding: const EdgeInsets.only(top: 4),
             child: Text('${t.weekdayShort(e.key)} · ${e.value}',
                 style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textSecondary)),
+          ),
+        for (final d in pv.cardioDays)
+          Padding(
+            key: ValueKey('coach-preview-cardio-$d'),
+            padding: const EdgeInsets.only(top: 4),
+            child: Text('${t.weekdayShort(d)} · ${t.coachCardioDay(CoachFacade.cardioMinutes)}',
+                style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.sage)),
           ),
       ]),
       const SizedBox(height: 14),
@@ -473,11 +496,12 @@ Widget _line(GymColors gc, IconData icon, Color color, String text) => Padding(
       ]),
     );
 
-/// Monday to Sunday, the lifting days filled.
+/// Monday to Sunday, the lifting days filled, the cardio days tinted.
 class _WeekStrip extends StatelessWidget {
-  const _WeekStrip({required this.week});
+  const _WeekStrip({required this.week, this.cardio = const []});
 
   final Map<int, String> week;
+  final List<int> cardio;
 
   @override
   Widget build(BuildContext context) {
@@ -492,7 +516,11 @@ class _WeekStrip extends StatelessWidget {
               height: 34,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: week.containsKey(d) ? gc.ember : gc.bgRaised2,
+                color: week.containsKey(d)
+                    ? gc.ember
+                    : cardio.contains(d)
+                        ? gc.sage.withValues(alpha: 0.28)
+                        : gc.bgRaised2,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(t.weekdayShort(d),

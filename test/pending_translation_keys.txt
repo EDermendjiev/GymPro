@@ -225,3 +225,12 @@ coachPreviewHideOptions
 coachPreviewRecommended
 coachSeePlan
 coachChangeAnswers
+coachCardio
+coachCardioHint
+coachCardioNone
+coachCardioPerWeek
+coachCardioDay
+coachCardioKinds
+coachStepsDaily
+coachStepsTarget
+coachStepsProgress

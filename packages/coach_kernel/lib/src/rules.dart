@@ -206,6 +206,11 @@ const List<RuleDef> RULE_LIST = [
     RuleBasis.evidence,
     'When a session runs long, isolation exercises for different muscles are paired as supersets, one rest for each pair, before any sets are cut.',
   ),
+  RuleDef(
+    'T-PLN-09',
+    RuleBasis.heuristic,
+    'When the weekly recovery check flagged fatigue in two or more of the last four weeks, the next block starts 2 sets per muscle lower.',
+  ),
   // Exercise selection
   RuleDef(
     'T-SEL-01',
@@ -569,6 +574,16 @@ const List<RuleDef> RULE_LIST = [
     'N-ADJ-06',
     RuleBasis.heuristic,
     'At maintenance, if weight drifts more than 0.25% per week over 3 weeks, adjust by 100–150 kcal.',
+  ),
+  RuleDef(
+    'N-ACT-01',
+    RuleBasis.evidence,
+    'While losing fat or recomposing, walk at least about 7,000 steps a day. About 2,500 extra steps burn roughly 100 kcal; raise your daily count by no more than half at a time.',
+  ),
+  RuleDef(
+    'N-ACT-02',
+    RuleBasis.evidence,
+    'Cardio is optional and comes second to lifting: keep it low-impact, on days without lifting and not the day before a leg day. Hard intervals count as hard training.',
   ),
 ];
 

@@ -8766,6 +8766,41 @@ class AppLocalizationsIt extends AppLocalizations {
   String get coachChangeAnswers => 'Change answers';
 
   @override
+  String get coachCardio => 'Cardio on rest days';
+
+  @override
+  String get coachCardioHint => 'Optional. Low-impact, about 30 minutes, never the day before legs.';
+
+  @override
+  String get coachCardioNone => 'None';
+
+  @override
+  String coachCardioPerWeek(int n) {
+    return '$n× a week';
+  }
+
+  @override
+  String coachCardioDay(int minutes) {
+    return 'Easy cardio · $minutes min';
+  }
+
+  @override
+  String get coachCardioKinds => 'Bike or incline walk';
+
+  @override
+  String get coachStepsDaily => 'Daily steps';
+
+  @override
+  String coachStepsTarget(String steps) {
+    return 'About $steps a day';
+  }
+
+  @override
+  String coachStepsProgress(String done, String target) {
+    return '$done of $target today';
+  }
+
+  @override
   String get wearSyncAllow => 'Consenti Bluetooth';
 
   @override
