@@ -3,4 +3,6 @@
 /// block generator takes, with the reasons for each.
 library;
 
+export 'src/budget.dart';
+export 'src/constants.dart';
 export 'src/profile.dart';

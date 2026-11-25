@@ -165,6 +165,42 @@ const List<RuleDef> RULE_LIST = [
     RuleBasis.evidence,
     'Lower-body sessions are the most draining, so when leg volume is high, spread it over more days.',
   ),
+  // Plan design
+  RuleDef(
+    'T-PLN-01',
+    RuleBasis.evidence,
+    'The plan uses the days you can keep up week after week; a schedule you can follow beats one that looks better on paper.',
+  ),
+  RuleDef(
+    'T-PLN-02',
+    RuleBasis.evidence,
+    'Weekly sets per muscle follow the time you have: about 4-8 for up to 2.5 h of lifting a week, 9-12 for 3-4.5 h, 13-16 for 5-6.5 h and 17-20 for 7-8.5 h.',
+  ),
+  RuleDef(
+    'T-PLN-03',
+    RuleBasis.evidence,
+    'Among the splits for your days, the plan keeps every muscle at a workable frequency, no muscle above about 11 sets in a session and sessions within your time, then weighs your preferences.',
+  ),
+  RuleDef(
+    'T-PLN-04',
+    RuleBasis.evidence,
+    'Muscles you want to bring up get more sets and more frequency; advanced lifters do this in phases while other muscles run lower volume.',
+  ),
+  RuleDef(
+    'T-PLN-05',
+    RuleBasis.evidence,
+    'Novices vary reps within each session, intermediates between sessions, advanced lifters from week to week.',
+  ),
+  RuleDef(
+    'T-PLN-06',
+    RuleBasis.heuristic,
+    'From about 50, volume starts a little lower, heavy leg work favours supported and machine variations, and hard leg days get more time between them.',
+  ),
+  RuleDef(
+    'T-PLN-07',
+    RuleBasis.heuristic,
+    'The training style you prefer and the split you already use weigh in the choice, because a plan you enjoy is a plan you keep.',
+  ),
   // Exercise selection
   RuleDef(
     'T-SEL-01',

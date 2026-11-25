@@ -31,6 +31,13 @@
      "T-SCH-06",
      "T-SPL-01",
      "T-SPL-02",
+     "T-PLN-01",
+     "T-PLN-02",
+     "T-PLN-03",
+     "T-PLN-04",
+     "T-PLN-05",
+     "T-PLN-06",
+     "T-PLN-07",
      "T-SEL-01",
      "T-SEL-02",
      "T-SEL-03",
@@ -460,6 +467,104 @@
      "summary": "Lower-body sessions are the most draining, so when leg volume is high, spread it over more days."
     },
     "why": "Lower-body sessions are the most draining, so when leg volume is high, spread it over more days."
+   }
+  },
+  {
+   "name": "T-PLN-01",
+   "input": {
+    "id": "T-PLN-01"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-01",
+     "basis": "evidence",
+     "summary": "The plan uses the days you can keep up week after week; a schedule you can follow beats one that looks better on paper."
+    },
+    "why": "The plan uses the days you can keep up week after week; a schedule you can follow beats one that looks better on paper."
+   }
+  },
+  {
+   "name": "T-PLN-02",
+   "input": {
+    "id": "T-PLN-02"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-02",
+     "basis": "evidence",
+     "summary": "Weekly sets per muscle follow the time you have: about 4-8 for up to 2.5 h of lifting a week, 9-12 for 3-4.5 h, 13-16 for 5-6.5 h and 17-20 for 7-8.5 h."
+    },
+    "why": "Weekly sets per muscle follow the time you have: about 4-8 for up to 2.5 h of lifting a week, 9-12 for 3-4.5 h, 13-16 for 5-6.5 h and 17-20 for 7-8.5 h."
+   }
+  },
+  {
+   "name": "T-PLN-03",
+   "input": {
+    "id": "T-PLN-03"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-03",
+     "basis": "evidence",
+     "summary": "Among the splits for your days, the plan keeps every muscle at a workable frequency, no muscle above about 11 sets in a session and sessions within your time, then weighs your preferences."
+    },
+    "why": "Among the splits for your days, the plan keeps every muscle at a workable frequency, no muscle above about 11 sets in a session and sessions within your time, then weighs your preferences."
+   }
+  },
+  {
+   "name": "T-PLN-04",
+   "input": {
+    "id": "T-PLN-04"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-04",
+     "basis": "evidence",
+     "summary": "Muscles you want to bring up get more sets and more frequency; advanced lifters do this in phases while other muscles run lower volume."
+    },
+    "why": "Muscles you want to bring up get more sets and more frequency; advanced lifters do this in phases while other muscles run lower volume."
+   }
+  },
+  {
+   "name": "T-PLN-05",
+   "input": {
+    "id": "T-PLN-05"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-05",
+     "basis": "evidence",
+     "summary": "Novices vary reps within each session, intermediates between sessions, advanced lifters from week to week."
+    },
+    "why": "Novices vary reps within each session, intermediates between sessions, advanced lifters from week to week."
+   }
+  },
+  {
+   "name": "T-PLN-06",
+   "input": {
+    "id": "T-PLN-06"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-06",
+     "basis": "heuristic",
+     "summary": "From about 50, volume starts a little lower, heavy leg work favours supported and machine variations, and hard leg days get more time between them."
+    },
+    "why": "From about 50, volume starts a little lower, heavy leg work favours supported and machine variations, and hard leg days get more time between them."
+   }
+  },
+  {
+   "name": "T-PLN-07",
+   "input": {
+    "id": "T-PLN-07"
+   },
+   "output": {
+    "rule": {
+     "id": "T-PLN-07",
+     "basis": "heuristic",
+     "summary": "The training style you prefer and the split you already use weigh in the choice, because a plan you enjoy is a plan you keep."
+    },
+    "why": "The training style you prefer and the split you already use weigh in the choice, because a plan you enjoy is a plan you keep."
    }
   },
   {
