@@ -74,7 +74,7 @@ own tests run with `dart test`.
 | `coach_training` | Block generation: split choice, volume targets, day placement, exercise selection, set distribution, strength phases, sport trims, carry-over of user edits, one-off session generator | kernel, progression |
 | `coach_recovery` | Weekly review, fatigue flags, plateau detection, plan proposals, proposal validation and application (plan diffs) | kernel, progression, training |
 | `coach_nutrition` | Calorie and macro targets, weigh-in trend, nutrition review | kernel |
-| `coach_planner` | Plan design from the user's answers: training status from logs, self-report and years, weekly volume from the time budget, split choice from a catalog of splits with the reasons and alternatives (in progress) | kernel, progression, training |
+| `coach_planner` | Plan design from the user's answers: training status from logs, answer and years, weekly volume from the time budget, split choice from a catalog of splits, rep variation, with the reasons and alternatives | kernel, progression, training |
 | `coach_testkit` (dev only) | Fixture loader and JSON diff used by the five packages' tests | nothing |
 
 Dependency rules:
@@ -573,6 +573,44 @@ them and clears the "set by hand" flag, so the coach's goals are in force
 again, rest days included (rest-day goals are dropped too). It writes the existing fields from
 `CoachState`, so it needs no seam.
 
+## Plan design (`coach_planner`)
+
+`decidePlan(PlannerProfile)` turns the user's answers into a `PlannerDecision`
+for the block generator. It works in five steps:
+
+1. **Status.** The logs set the level when they show one. Otherwise the
+   user's answer counts, except that "advanced" with fewer than three years of
+   training is planned as intermediate. Without an answer the years decide.
+2. **Days.** Every picked day is a lifting day, at most six. A user who prefers
+   fewer, longer sessions may get up to two days fewer.
+3. **Volume.** Weekly lifting time sets a tier of sets per muscle (`T-PLN-02`).
+   Status places the start within the tier and caps it. Age, the goal, sport
+   priority and sports lower it. Focus muscles get extra sets (intermediate) or
+   a specialisation (advanced). Sport trims, accepted adjustments, the floor
+   and the caps work as in `computeTargets`. With no focus and the same base,
+   the targets equal the generator's (`budget_test.dart`).
+4. **Split.** Every split in `PLANNER_SPLITS` for that day count is estimated
+   (`estimateWeek`: sets per slot, extra exercises, trimming, minutes) and
+   scored (`scoreSplit`).
+   - Hard limits rule a split out: status, goal, main lifts at least 1.5×
+     a week for strength, unfillable slots, unmet targets, frequency for the
+     volume, about 11 sets per muscle per session, session length.
+   - Weighted terms rank the rest: style, status fit, frequency, focus, time
+     use, leg-day recovery and sports, variety, keeping the current split.
+   - When nothing fits, every target except the focus muscles drops one set
+     per round. Each round costs a little score, and three more rounds are
+     tried past the first fit, so a preferred style can win at a set less.
+5. **Rep variation.** Novices vary reps within the session. Intermediates
+   vary between A and B days when most muscles get both. Advanced lifters
+   vary from week to week.
+
+The decision carries the split, targets (null for strength, whose phases set
+volume), rep variation, specialisation, strength lifts and estimate seeds, the
+explanations and warnings with their rule IDs, and up to three alternatives.
+The planner's own session templates (more full-body days, second push and pull
+days, muscle-group days, two- and three-lift strength days) live in
+`PLANNER_TEMPLATES`, beside the generator's `TEMPLATES`.
+
 ## Muscle and equipment mapping
 
 The packages use 16 muscles and their own equipment names. GymMane uses 14
@@ -721,12 +759,12 @@ German and Japanese.
 | `coach_recovery` | `packages/coach_recovery` | done, parity-proven (`coach-parity-v1`) |
 | `coach_nutrition` | `packages/coach_nutrition` | done, parity-proven (`coach-parity-v1`) |
 | `coach_testkit` | `packages/coach_testkit` | done (dev only) |
-| `coach_planner` | `packages/coach_planner` | in progress (smart planner phase 1) |
+| `coach_planner` | `packages/coach_planner` | phase 1 done: profile, budget, split catalog, week estimate, scoring, `decidePlan`; not yet wired into the app |
 | Adapter layer | `lib/coach/` | done: muscle, equipment, history, exposure, category, catalog, block-input and plan-writer adapters, persisted model, review and check-in adapters, the autonomy policy, progression, plan, recovery and nutrition entry points of `CoachFacade` |
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
-| Smart planner | `packages/coach_planner`, `lib/coach/` | phase 0 done: decisions taken (see [Decisions](#decisions)); phases 1–7 not started |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–1 done (decisions, the planner package); phase 2 (generator overrides) next |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in
