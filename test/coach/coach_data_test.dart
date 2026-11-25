@@ -4,8 +4,10 @@ import 'dart:io';
 
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gymmane/coach/model/coach_choices.dart';
 import 'package:gymmane/coach/model/coach_data.dart';
 import 'package:gymmane/coach/model/coach_profile.dart';
+import 'package:gymmane/coach/model/coach_recovery.dart';
 
 Map<String, dynamic> _full() =>
     (jsonDecode(File('test/coach/data/coach_full.json').readAsStringSync()) as Map).cast<String, dynamic>();
@@ -191,6 +193,100 @@ void main() {
       final c = CoachData.empty().copyWith(profile: p);
       expect(CoachData.fromJson(jsonDecode(jsonEncode(c.toJson())) as Map<String, dynamic>).profile!.toJson(),
           p.toJson());
+    });
+
+    test('the plan-design answers round trip as typed fields', () {
+      final p = CoachProfile(
+        goal: ck.Goal.strength,
+        status: ck.Status.advanced,
+        days: const [1, 2, 4, 5],
+        minutes: 75,
+        priority: ck.Priority.lifting,
+        lifestyle: ck.Lifestyle.active,
+        smartPlan: true,
+        style: CoachStyle.upperLower,
+        sessionPref: CoachSessionPref.fewerLonger,
+        years: CoachYears.threeToFive,
+        focus: const [CoachArea.glutes, CoachArea.sideDelts],
+        strengthLifts: const [CoachLift.squat, CoachLift.bench],
+        knownLifts: const {CoachLift.squat: 140, CoachLift.bench: 100},
+      );
+      final json = jsonDecode(jsonEncode(p.toJson())) as Map<String, dynamic>;
+      expect(json['style'], 'upper_lower');
+      expect(json['focus'], ['glutes', 'side_delts']);
+      expect(json['knownLifts'], {'squat': 140.0, 'bench': 100.0});
+      final back = CoachProfile.fromJson(json);
+      expect(back.smartPlan, isTrue);
+      expect(back.style, CoachStyle.upperLower);
+      expect(back.sessionPref, CoachSessionPref.fewerLonger);
+      expect(back.years, CoachYears.threeToFive);
+      expect(back.focus, [CoachArea.glutes, CoachArea.sideDelts]);
+      expect(back.strengthLifts, [CoachLift.squat, CoachLift.bench]);
+      expect(back.knownLifts, {CoachLift.squat: 140.0, CoachLift.bench: 100.0});
+      expect(back.extra, isEmpty);
+      expect(back.toJson(), p.toJson());
+    });
+
+    test('a profile from before the planner reads with the defaults and writes back unchanged', () {
+      final old = {
+        'goal': 'lean_gain',
+        'status': 'novice',
+        'days': [1, 3, 5],
+        'minutes': 60,
+        'priority': 'lifting',
+        'lifestyle': 'lightly_active',
+        'maxLiftDays': null,
+      };
+      final p = CoachProfile.fromJson(old);
+      expect(p.smartPlan, isFalse);
+      expect(p.style, CoachStyle.auto);
+      expect(p.focus, isEmpty);
+      expect(p.strengthLifts, isNull);
+      expect(p.toJson(), old);
+    });
+
+    test('answers it cannot read fall back to their defaults, and a newer build\'s keys are kept', () {
+      final p = CoachProfile.fromJson({
+        'goal': 'lean_gain',
+        'status': 'novice',
+        'days': [1, 3, 5],
+        'minutes': 60,
+        'priority': 'lifting',
+        'lifestyle': 'lightly_active',
+        'smartPlan': true,
+        'style': 'circus',
+        'focus': ['glutes', 'wings', 3],
+        'knownLifts': {'squat': 'heavy', 'bench': 90},
+        'cardioPref': 'cycling',
+      });
+      expect(p.style, CoachStyle.auto);
+      expect(p.focus, [CoachArea.glutes]);
+      expect(p.knownLifts, {CoachLift.bench: 90.0});
+      expect(p.extra, {'cardioPref': 'cycling'});
+      expect(p.toJson()['cardioPref'], 'cycling');
+    });
+
+    test('answered profiles are smart-plan profiles only when built from the answers', () {
+      final plain = CoachProfile.answered(
+          goal: CoachGoal.leanGain, status: CoachStatus.novice, days: const [1, 3], minutes: 45, activity: 1.375);
+      expect(plain.smartPlan, isFalse);
+      final a = CoachAnswers(
+        goal: CoachGoal.leanGain,
+        style: CoachStyle.fullBody,
+        years: CoachYears.underOne,
+        focus: [CoachArea.chest, CoachArea.back, CoachArea.biceps],
+      );
+      final smart = CoachProfile.answered(
+          goal: CoachGoal.leanGain,
+          status: CoachStatus.novice,
+          days: const [1, 3],
+          minutes: 45,
+          activity: 1.375,
+          answers: a);
+      expect(smart.smartPlan, isTrue);
+      expect(smart.style, CoachStyle.fullBody);
+      expect(smart.years, CoachYears.underOne);
+      expect(smart.focus, [CoachArea.chest, CoachArea.back], reason: 'at most two');
     });
   });
 }

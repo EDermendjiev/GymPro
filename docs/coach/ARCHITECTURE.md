@@ -98,7 +98,7 @@ lib/coach/
   coach.dart                  barrel; the only coach file screens and state import
   facade.dart                 CoachFacade: GymMane types in, GymMane or Coach* types out
   model/coach_data.dart       everything persisted under the "coach" key
-  model/coach_profile.dart    goal, status, days, minutes, priority, lifestyle
+  model/coach_profile.dart    goal, status, days, minutes, priority, lifestyle, plan-design answers
   model/coach_targets.dart    host values the progression module answers with (CoachRx, CoachSessionTarget, …)
   model/coach_choices.dart    host enums the screens can name (CoachGoal, CoachStatus, CoachBlockKind), CoachAnswers
   model/coach_plan.dart       host values of the plan module (CoachPlanInputs, CoachBuiltPlan, CoachOpeningSet, …)
@@ -200,7 +200,10 @@ All coach data is stored under one key, `coach`, in the existing state blob.
   "v": 1,
   "on": { "progression": true, "plan": true, "recovery": true, "nutrition": false },
   "profile": { "goal": "lean_gain", "status": "intermediate", "days": [1,2,4,5], "minutes": 60,
-               "priority": "lifting", "lifestyle": "lightly_active", "maxLiftDays": null },
+               "priority": "lifting", "lifestyle": "lightly_active", "maxLiftDays": null,
+               /* written only when set: */ "smartPlan": true, "style": "upper_lower",
+               "sessionPref": "fewer_longer", "years": "one_to_three", "focus": ["glutes"],
+               "strengthLifts": ["squat", "bench"], "knownLifts": { "squat": 140 } },
   "sports": [],  "injuries": [],  "disliked": [],
   "soreness": { "2026-11-12": { "hamstrings": "sore" } },
   "block": { /* BlockPlan.toJson(): kind, startsOn, weeks, splitKey, targets, weeklyTargets, sessions, selections */ },
@@ -215,7 +218,7 @@ All coach data is stored under one key, `coach`, in the existing state blob.
 |---|---|
 | `v` | Version of this shape |
 | `on` | The four module switches |
-| `profile` | The user's coaching profile: goal, training status, training days, session length, priority, lifestyle |
+| `profile` | The user's coaching profile: goal, training status, training days, session length, priority, lifestyle. A `smartPlan` profile also holds the plan-design answers (style, session preference, years of training, up to two focus muscles, strength lifts, known one-rep maxes); its plan comes from the planner. Those keys are written only when set, so a profile from before the planner reads and writes back unchanged, and an older build keeps them through `extra`. A value that can't be read falls back to its default |
 | `sports`, `injuries`, `disliked` | Lists the block generator takes into account |
 | `soreness` | Soreness reports, by date and muscle |
 | `block` | The current generated block, as written by `BlockPlan.toJson()` |

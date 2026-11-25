@@ -347,7 +347,7 @@ abstract final class CoachFacade {
 
   /// The answers to prefill the plan questions with for someone who already has logs (Task 4.8): the training
   /// status the logs show once there are eight weeks of them, else the profile's; the weekdays trained on most over
-  /// the last eight weeks; the profile's goal and session length.
+  /// the last eight weeks; the profile's goal, session length and plan-design answers.
   static CoachAnswers prefill(CoachPlanInputs i) {
     final profile = i.coach.profile;
     final today = coachIsoDay(i.today);
@@ -371,6 +371,12 @@ abstract final class CoachFacade {
       status: fromLogs == null ? profile?.coachStatus : CoachStatus.fromWire(fromLogs.wire),
       minutes: profile?.minutes ?? 60,
       days: _daysFromLogs(i),
+      style: profile?.style ?? CoachStyle.auto,
+      sessionPref: profile?.sessionPref ?? CoachSessionPref.auto,
+      years: profile?.years,
+      focus: [...?profile?.focus],
+      lifts: profile?.strengthLifts == null ? null : [...profile!.strengthLifts!],
+      knownLifts: {...?profile?.knownLifts},
     )..statusFromLogs = fromLogs != null;
   }
 

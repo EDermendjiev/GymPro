@@ -8,7 +8,7 @@
 //  - a coach package is never re-exported.
 library;
 
-export 'model/coach_choices.dart' show CoachAnswers, CoachBlockKind, CoachGoal, CoachStatus, coachSessionLengths;
+export 'model/coach_choices.dart' show CoachAnswers, CoachBlockKind, CoachGoal, CoachLift, CoachSessionPref, CoachStatus, CoachStyle, CoachYears, coachSessionLengths;
 export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_nutrition.dart' show CoachNutritionPhase, CoachNutritionReview, CoachNutritionTargets;
 export 'model/coach_plan.dart' show CoachBlockSummary, CoachBuiltPlan, CoachOpeningSet, CoachPlanInputs, CoachQuickSession, CoachRoutineExercise, CoachRoutinePlan;
