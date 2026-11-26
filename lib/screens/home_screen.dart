@@ -536,7 +536,7 @@ class HomeScreen extends StatelessWidget {
                         height: 52,
                         bg: done || rest != null ? gc.bgRaised2 : null,
                         fg: done || rest != null ? gc.text : null,
-                        onTap: next != null
+                        onTap: next != null || (rest != null && fit.coachLogsSports) // coach-seam
                             ? () => showStartSheet(context)
                             : isRoutine
                                 ? () => fit.startRoutine(routine)
@@ -614,6 +614,8 @@ class HomeScreen extends StatelessWidget {
               ),
               child: done
                   ? Center(child: SvgPathIcon(Ic.checkBold, size: 13, color: gc.onEmber))
+                  : fit.coachSportLogsOn(date).isNotEmpty // coach-seam
+                      ? Icon(PhosphorIconsRegular.soccerBall, size: 15, color: gc.brass) // coach-seam
                   : off != null
                       ? Icon(dayOffIcon(off), size: 15, color: gc.textSecondary)
                       : fit.restOn(date)

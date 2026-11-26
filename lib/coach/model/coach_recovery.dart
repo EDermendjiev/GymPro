@@ -238,6 +238,39 @@ final class CoachSportEntry {
   final int minutes;
 }
 
+/// One sport session played on a given day, outside (or on top of) the weekly sports: a game someone invited the
+/// user to, a match moved to another day. Stored under `coach.sportLogs`.
+final class CoachSportLog {
+  const CoachSportLog({
+    required this.id,
+    required this.day,
+    required this.sportId,
+    required this.intensity,
+    required this.minutes,
+  });
+
+  /// Reads one stored entry, or null when it does not fit.
+  static CoachSportLog? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final id = raw['id'], day = raw['day'], sport = raw['sportId'], minutes = raw['minutes'];
+    final intensity = CoachSportIntensity.fromWire(raw['intensity']);
+    if (id is! String || day is! String || sport is! String || minutes is! int || intensity == null) return null;
+    if (!RegExp(r'^\d{4}-\d{2}-\d{2}$').hasMatch(day)) return null;
+    return CoachSportLog(id: id, day: day, sportId: sport, intensity: intensity, minutes: minutes);
+  }
+
+  final String id;
+
+  /// The day it was played, as `YYYY-MM-DD`.
+  final String day;
+  final String sportId;
+  final CoachSportIntensity intensity;
+  final int minutes;
+
+  Map<String, dynamic> toJson() =>
+      {'id': id, 'day': day, 'sportId': sportId, 'intensity': intensity.name, 'minutes': minutes};
+}
+
 /// One injury, as the injury sheet shows it.
 final class CoachInjuryEntry {
   const CoachInjuryEntry({

@@ -8555,6 +8555,25 @@ class AppLocalizationsHi extends AppLocalizations {
   String get coachIntensityMatch => 'Match';
 
   @override
+  String get coachSportSession => 'Sport session';
+
+  @override
+  String get coachSportSessionLog => 'Log a sport session';
+
+  @override
+  String get coachSportSessionHint =>
+      'A game or match on any day. Quick workouts the day before and after leave the muscles it works for last.';
+
+  @override
+  String get coachSportSessionWhich => 'Sport';
+
+  @override
+  String get coachSportSessionSave => 'Log session';
+
+  @override
+  String get coachSportSessionLogged => 'On this day';
+
+  @override
   String get coachInjuries => 'Injuries';
 
   @override

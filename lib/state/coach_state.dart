@@ -835,6 +835,27 @@ mixin CoachState
     _coachAfterSettingsChange();
   }
 
+  /// Whether sport sessions can be logged for a day: any coach module is on.
+  bool get coachLogsSports => CoachModule.values.any(coach.isOn);
+
+  /// The sport sessions logged for [day]; none while no coach module is on.
+  List<CoachSportLog> coachSportLogsOn(DateTime day) =>
+      coachLogsSports ? CoachFacade.sportLogsOn(coach, day) : const [];
+
+  /// Logs a session of [sportId] for [day].
+  void logCoachSport(DateTime day, String sportId, CoachSportIntensity intensity, int minutes) {
+    coach = CoachFacade.withSportLogged(coach, day, sportId, intensity, minutes);
+    _persist();
+    notifyListeners();
+  }
+
+  /// Removes the logged sport session [id].
+  void removeCoachSportLog(String id) {
+    coach = CoachFacade.withoutSportLog(coach, id);
+    _persist();
+    notifyListeners();
+  }
+
   /// The user's injuries, healed ones included.
   List<CoachInjuryEntry> get coachInjuries => CoachFacade.injuryEntries(coach);
 

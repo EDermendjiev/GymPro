@@ -418,7 +418,8 @@ abstract final class CoachFacade {
   }
 
   /// A quick workout of about [minutes] for [i], from the muscles furthest behind this week's targets of the
-  /// block (skipping painful and sore muscles, and putting the ones trained hard in the last 48 hours last).
+  /// block (skipping painful and sore muscles, and putting last the ones trained hard in the last 48 hours and the
+  /// ones a sport works the day before, the day itself or the day after: a weekly sport or a logged session).
   /// [focus] limits it to some of the app's muscles. Null without a block.
   static CoachQuickSession? quickSession(CoachPlanInputs i, {required int minutes, List<String>? focus}) {
     final block = i.coach.block;
@@ -433,7 +434,6 @@ abstract final class CoachFacade {
     // The logs' timestamps carry no zone and the kernel reads them as UTC, so "now" is given the same way.
     final utcNow = DateTime.utc(now.year, now.month, now.day, now.hour, now.minute, now.second);
     final sore = ct.checkinSoreness(_checkins(i.coach).take(3).toList(), today);
-    final near = {ck.isoWeekday(today), ck.isoWeekday(ck.addDays(today, -1)), ck.isoWeekday(ck.addDays(today, 1))};
     final equipment = [...coachEquipment(i.equipment)];
     final increments = coachIncrements(i.barbellStepKg);
     final g = ct.generateSession(ct.GeneratorInput(
@@ -454,10 +454,7 @@ abstract final class CoachFacade {
       recentPain: sore.pain,
       recentSore: sore.sore,
       trainedLast48h: ct.trainedLast48h(sets, index, utcNow, today),
-      sportStressed: ck.uniq([
-        for (final s in i.coach.sports)
-          if (s.weekdays.any(near.contains)) ...s.musclesStressed,
-      ]),
+      sportStressed: _sportStressed(i.coach, today),
       sets: sets,
       disliked: [...i.coach.disliked],
     ));
@@ -802,6 +799,49 @@ abstract final class CoachFacade {
     }
     return coach.copyWith(sports: out);
   }
+
+  /// The app's muscles a sport works on the day before [today], [today] itself or the day after: a weekly sport on
+  /// one of those weekdays, or a session logged for one of those dates. A quick workout puts them last.
+  static List<String> sportMusclesNear(CoachData coach, DateTime today) =>
+      ck.uniq([for (final m in _sportStressed(coach, coachIsoDay(today))) ?hostMuscle(m)]);
+
+  static List<ck.MuscleId> _sportStressed(CoachData coach, String today) {
+    final days = {today, ck.addDays(today, -1), ck.addDays(today, 1)};
+    final weekdays = {for (final d in days) ck.isoWeekday(d)};
+    return ck.uniq([
+      for (final s in coach.sports)
+        if (s.weekdays.any(weekdays.contains)) ...s.musclesStressed,
+      for (final l in coach.sportLogs)
+        if (days.contains(l.day)) ...?_sportSeed(l.sportId)?.muscles,
+    ]);
+  }
+
+  static ct.SportSeed? _sportSeed(String id) => ct.SPORT_SEEDS.where((s) => s.id == id).firstOrNull;
+
+  /// The sport sessions logged for [day] in [coach], in the order they were logged.
+  static List<CoachSportLog> sportLogsOn(CoachData coach, DateTime day) {
+    final iso = coachIsoDay(day);
+    return [for (final l in coach.sportLogs) if (l.day == iso) l];
+  }
+
+  /// [coach] with a session of [sportId] logged for [day]. Its id is the day and a number not yet used that day.
+  static CoachData withSportLogged(
+      CoachData coach, DateTime day, String sportId, CoachSportIntensity intensity, int minutes) {
+    final iso = coachIsoDay(day);
+    final used = {for (final l in coach.sportLogs) l.id};
+    var n = 1;
+    while (used.contains('$iso#$n')) {
+      n++;
+    }
+    return coach.copyWith(sportLogs: [
+      ...coach.sportLogs,
+      CoachSportLog(id: '$iso#$n', day: iso, sportId: sportId, intensity: intensity, minutes: minutes),
+    ]);
+  }
+
+  /// [coach] without the logged sport session [id].
+  static CoachData withoutSportLog(CoachData coach, String id) =>
+      coach.copyWith(sportLogs: [for (final l in coach.sportLogs) if (l.id != id) l]);
 
   /// The injuries in [coach], as the injury sheet shows them.
   static List<CoachInjuryEntry> injuryEntries(CoachData coach) => [

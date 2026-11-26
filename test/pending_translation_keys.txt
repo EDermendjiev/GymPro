@@ -162,3 +162,9 @@ coachCardioKinds
 coachStepsDaily
 coachStepsTarget
 coachStepsProgress
+coachSportSession
+coachSportSessionLog
+coachSportSessionHint
+coachSportSessionWhich
+coachSportSessionSave
+coachSportSessionLogged

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../app/desktop.dart';
+import '../coach/coach.dart'; // coach-seam
 import '../l10n/l10n.dart';
 import '../models/progress_shot.dart';
 import '../models/exercise.dart' show exerciseName;
@@ -2250,9 +2251,9 @@ class _DaySheet extends StatelessWidget {
             Text(t.longDate(date),
                 style: AppTheme.d(20, weight: FontWeight.w700, color: gc.text)),
             const SizedBox(height: 14),
-            if (s == null)
+            if (s == null && fit.coachSportLogsOn(date).isEmpty) // coach-seam
               Text(t.restDay, style: AppTheme.s(14, color: gc.textSecondary))
-            else ...[
+            else if (s != null) ...[ // coach-seam
               Row(children: [
                 Expanded(child: _stat(gc, t.exercisesCaps, '${s.exercises}')),
                 const SizedBox(width: 10),
@@ -2281,6 +2282,7 @@ class _DaySheet extends StatelessWidget {
                 const SizedBox(height: 6),
               ],
             ],
+            CoachDaySports(date: date), // coach-seam
             if (!fit.isSessionActive && !_isFuture) ...[
               const SizedBox(height: 14),
               GhostButton(

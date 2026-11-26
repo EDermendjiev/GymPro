@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
+import '../coach/coach.dart'; // coach-seam
 import '../l10n/l10n.dart';
 import '../state/fit_state.dart';
 import 'glass.dart';
@@ -48,6 +49,7 @@ void showDayOffSheet(BuildContext context, DateTime day) {
               selected: checked,
               onTap: () => pick(() => fit.setCheckedIn(day, !checked)),
             ),
+          ...coachDayOffSportItems(sheet, day), // coach-seam
           for (final r in StatsState.dayOffReasons)
             OptionItem(
               dayOffLabel(r),

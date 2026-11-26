@@ -14,7 +14,7 @@ import '../../widgets/ui_kit.dart';
 import '../model/coach_recovery.dart';
 import 'soreness_sheet.dart';
 
-String _intensityLabel(CoachSportIntensity i) => switch (i) {
+String coachIntensityLabel(CoachSportIntensity i) => switch (i) {
       CoachSportIntensity.light => t.coachIntensityLight,
       CoachSportIntensity.moderate => t.coachIntensityModerate,
       CoachSportIntensity.hard => t.coachIntensityHard,
@@ -27,9 +27,9 @@ String _severityLabel(CoachInjurySeverity s) => switch (s) {
       CoachInjurySeverity.injury => t.coachSeverityInjury,
     };
 
-const List<int> _sportLengths = [30, 45, 60, 90, 120];
+const List<int> coachSportLengths = [30, 45, 60, 90, 120];
 
-Widget _sheet(BuildContext sheet, List<Widget> children) => ConstrainedBox(
+Widget coachSheet(BuildContext sheet, List<Widget> children) => ConstrainedBox(
       constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(sheet).height * 0.88),
       child: Container(
         decoration: sheetDecoration(sheet.gc),
@@ -44,13 +44,13 @@ Widget _sheet(BuildContext sheet, List<Widget> children) => ConstrainedBox(
       ),
     );
 
-Widget _label(BuildContext context, String text) => Padding(
+Widget coachSheetLabel(BuildContext context, String text) => Padding(
       padding: const EdgeInsets.only(top: 14, bottom: 8),
       child: Text(text.toUpperCase(),
           style: AppTheme.f(10.5, weight: FontWeight.w700, color: context.gc.textTertiary, letterSpacing: 1.2)),
     );
 
-Widget _row(BuildContext context, String title, String subtitle, String action, VoidCallback onTap, Key key) {
+Widget coachSheetRow(BuildContext context, String title, String subtitle, String action, VoidCallback onTap, Key key) {
   final gc = context.gc;
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 7),
@@ -98,7 +98,7 @@ class _SportsSheetState extends State<_SportsSheet> {
     final mine = fit.coachSports;
     final gc = context.gc;
     String days(List<int> d) => d.map(t.weekdayShort).join(' ');
-    return _sheet(context, [
+    return coachSheet(context, [
       SheetTitle(t.coachSports, subtitle: t.coachSportsHint),
       const SizedBox(height: 8),
       if (mine.isEmpty)
@@ -107,15 +107,15 @@ class _SportsSheetState extends State<_SportsSheet> {
           child: Text(t.coachSportsNone, style: AppTheme.f(13, weight: FontWeight.w500, color: gc.textSecondary)),
         ),
       for (final (i, s) in mine.indexed)
-        _row(
+        coachSheetRow(
           context,
           names[s.sportId] ?? s.sportId,
-          [days(s.weekdays), _intensityLabel(s.intensity), t.coachMinutes(s.minutes)].join(' · '),
+          [days(s.weekdays), coachIntensityLabel(s.intensity), t.coachMinutes(s.minutes)].join(' · '),
           t.coachRemove,
           () => setState(() => fit.setCoachSports([...mine]..removeAt(i))),
           ValueKey('coach-sport-remove-${s.sportId}'),
         ),
-      _label(context, t.coachSportAdd),
+      coachSheetLabel(context, t.coachSportAdd),
       coachChoiceRow<String>(
         context,
         keyPrefix: 'coach-sport',
@@ -127,7 +127,7 @@ class _SportsSheetState extends State<_SportsSheet> {
           _minutes = choices.firstWhere((c) => c.id == id).defaultMinutes;
         }),
       ),
-      _label(context, t.coachSportDays),
+      coachSheetLabel(context, t.coachSportDays),
       Wrap(spacing: 8, runSpacing: 8, children: [
         for (var d = 1; d <= 7; d++)
           Pill(
@@ -141,20 +141,20 @@ class _SportsSheetState extends State<_SportsSheet> {
             fontSize: 12,
           ),
       ]),
-      _label(context, t.coachSportIntensity),
+      coachSheetLabel(context, t.coachSportIntensity),
       coachChoiceRow<CoachSportIntensity>(
         context,
         keyPrefix: 'coach-sport-intensity',
         values: CoachSportIntensity.values,
         selected: _intensity,
-        label: _intensityLabel,
+        label: coachIntensityLabel,
         onTap: (i) => setState(() => _intensity = i),
       ),
-      _label(context, t.coachSportLength),
+      coachSheetLabel(context, t.coachSportLength),
       coachChoiceRow<int>(
         context,
         keyPrefix: 'coach-sport-minutes',
-        values: {..._sportLengths, _minutes}.toList()..sort(),
+        values: {...coachSportLengths, _minutes}.toList()..sort(),
         selected: _minutes,
         label: t.coachMinutes,
         onTap: (m) => setState(() => _minutes = m),
@@ -207,7 +207,7 @@ class _InjurySheetState extends State<_InjurySheet> {
   Widget build(BuildContext context) {
     final gc = context.gc;
     final active = [for (final i in fit.coachInjuries) if (i.active) i];
-    return _sheet(context, [
+    return coachSheet(context, [
       SheetTitle(t.coachInjuries, subtitle: t.coachInjuriesHint),
       const SizedBox(height: 8),
       if (active.isEmpty)
@@ -216,7 +216,7 @@ class _InjurySheetState extends State<_InjurySheet> {
           child: Text(t.coachInjuriesNone, style: AppTheme.f(13, weight: FontWeight.w500, color: gc.textSecondary)),
         ),
       for (final i in active)
-        _row(
+        coachSheetRow(
           context,
           i.area == null ? i.label : coachAreaLabel(i.area!),
           _severityLabel(i.severity),
@@ -224,8 +224,8 @@ class _InjurySheetState extends State<_InjurySheet> {
           () => setState(() => fit.healCoachInjury(i.id)),
           ValueKey('coach-injury-heal-${i.id}'),
         ),
-      _label(context, t.coachInjuryAdd),
-      _label(context, t.coachInjuryArea),
+      coachSheetLabel(context, t.coachInjuryAdd),
+      coachSheetLabel(context, t.coachInjuryArea),
       coachChoiceRow<CoachArea>(
         context,
         keyPrefix: 'coach-injury-area',
@@ -234,7 +234,7 @@ class _InjurySheetState extends State<_InjurySheet> {
         label: coachAreaLabel,
         onTap: (a) => setState(() => _area = a),
       ),
-      _label(context, t.coachInjurySeverity),
+      coachSheetLabel(context, t.coachInjurySeverity),
       coachChoiceRow<CoachInjurySeverity>(
         context,
         keyPrefix: 'coach-injury-severity',

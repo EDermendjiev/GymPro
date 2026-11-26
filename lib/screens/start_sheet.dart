@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
+import '../coach/coach.dart'; // coach-seam
 import '../l10n/l10n.dart';
 import '../models/workout.dart';
 import '../state/fit_state.dart';
@@ -74,6 +75,7 @@ class StartSheet extends StatelessWidget {
                   const SizedBox(height: 8),
                   _option(context, gc, PhosphorIconsRegular.person, t.chooseFocusOption,
                       () => fit.startWorkout(null, day)),
+                  CoachLogSportOption(day: day), // coach-seam
                 ],
               ),
             ),

@@ -13,7 +13,7 @@ export 'model/coach_data.dart' show CoachData, CoachModule;
 export 'model/coach_nutrition.dart' show CoachNutritionPhase, CoachNutritionReview, CoachNutritionTargets;
 export 'model/coach_plan.dart' show CoachBlockSummary, CoachBuiltPlan, CoachOpeningSet, CoachPlanInputs, CoachPlanOption, CoachPlanPreview, CoachQuickSession, CoachRoutineExercise, CoachRoutinePlan;
 export 'model/coach_profile.dart' show CoachProfile;
-export 'model/coach_recovery.dart' show CoachArea, CoachAutonomyTier, CoachCheckin, CoachInjuryEntry, CoachInjurySeverity, CoachProposal, CoachProposalKind, CoachProposalState, CoachReview, CoachSoreness, CoachSportChoice, CoachSportEntry, CoachSportIntensity;
+export 'model/coach_recovery.dart' show CoachArea, CoachAutonomyTier, CoachCheckin, CoachInjuryEntry, CoachInjurySeverity, CoachProposal, CoachProposalKind, CoachProposalState, CoachReview, CoachSoreness, CoachSportChoice, CoachSportEntry, CoachSportIntensity, CoachSportLog;
 export 'model/coach_prompt.dart' show CoachCorrectionPrompt, CoachEffortPrompt, CoachPrompt;
 export 'model/coach_targets.dart' show CoachRx, CoachSessionTarget, CoachSetTarget, CoachWarmupSet;
 export 'facade.dart' show CoachFacade;
@@ -25,6 +25,7 @@ export 'ui/coach_settings.dart' show CoachSettings, CoachSettingsRow, coachSetti
 export 'ui/onboarding_pages.dart' show CoachGoalChoices, CoachLengthChips, CoachLevelChoices, CoachPageFrame, coachOnboardingPageCount, coachOnboardingPages;
 export 'ui/proposal_card.dart' show CoachHomeSlot, CoachProposalCard;
 export 'ui/recovery_sheets.dart' show CoachHomeHint, coachShowInjurySheet, coachShowSportsSheet;
+export 'ui/sport_log.dart' show CoachDaySports, CoachLogSportOption, coachDayOffSportItems, coachShowSportLogSheet;
 export 'ui/soreness_sheet.dart' show CoachSorenessRow, coachAreaLabel, coachShowSorenessSheet;
 export 'ui/plan_ui.dart' show CoachPlanWhy, CoachQuickMinutes, coachBlockKindLabel;
 export 'ui/week_ahead.dart' show CoachWeekAhead, CoachWeekAheadRow, coachWeekAheadRows;

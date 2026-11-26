@@ -9,6 +9,7 @@
 import 'package:coach_kernel/coach_kernel.dart' as ck;
 
 import 'coach_profile.dart';
+import 'coach_recovery.dart';
 import 'json_util.dart';
 
 /// The coach modules, each with its own switch.
@@ -32,6 +33,7 @@ final class CoachData {
     required Set<CoachModule> on,
     required this.profile,
     required List<ck.UserSport> sports,
+    required List<CoachSportLog> sportLogs,
     required List<ck.Injury> injuries,
     required List<String> disliked,
     required Map<String, dynamic> soreness,
@@ -44,6 +46,7 @@ final class CoachData {
     required Map<String, dynamic> extra,
   })  : _on = Set.unmodifiable(on),
         sports = List.unmodifiable(sports),
+        sportLogs = List.unmodifiable(sportLogs),
         injuries = List.unmodifiable(injuries),
         disliked = List.unmodifiable(disliked),
         soreness = Map.unmodifiable(soreness),
@@ -60,6 +63,7 @@ final class CoachData {
         on: const {},
         profile: null,
         sports: const [],
+        sportLogs: const [],
         injuries: const [],
         disliked: const [],
         soreness: const {},
@@ -104,6 +108,10 @@ final class CoachData {
       profile: typed('profile', (v) => CoachProfile.fromJson(v as Map<String, dynamic>)),
       sports: typed('sports', (v) => [for (final x in v as List) ck.UserSport.fromJson(x as Map<String, dynamic>)]) ??
           const [],
+      sportLogs: [
+        if (json['sportLogs'] is List)
+          for (final l in json['sportLogs'] as List) ?CoachSportLog.fromJson(l),
+      ],
       injuries:
           typed('injuries', (v) => [for (final x in v as List) ck.Injury.fromJson(x as Map<String, dynamic>)]) ??
               const [],
@@ -138,6 +146,7 @@ final class CoachData {
     'on',
     'profile',
     'sports',
+    'sportLogs',
     'injuries',
     'disliked',
     'soreness',
@@ -153,6 +162,9 @@ final class CoachData {
   final Set<CoachModule> _on;
   final CoachProfile? profile;
   final List<ck.UserSport> sports;
+
+  /// Sport sessions played on a given day, outside the weekly sports.
+  final List<CoachSportLog> sportLogs;
   final List<ck.Injury> injuries;
 
   /// Exercise ids the user does not want the plan to pick.
@@ -190,6 +202,7 @@ final class CoachData {
       !CoachModule.values.any(isOn) &&
       profile == null &&
       sports.isEmpty &&
+      sportLogs.isEmpty &&
       injuries.isEmpty &&
       disliked.isEmpty &&
       soreness.isEmpty &&
@@ -232,6 +245,7 @@ final class CoachData {
   CoachData copyWith({
     CoachProfile? profile,
     List<ck.UserSport>? sports,
+    List<CoachSportLog>? sportLogs,
     List<ck.Injury>? injuries,
     List<String>? disliked,
     Map<String, dynamic>? soreness,
@@ -252,6 +266,7 @@ final class CoachData {
     return _copy(
       profile: profile,
       sports: sports,
+      sportLogs: sportLogs,
       injuries: injuries,
       disliked: disliked,
       soreness: soreness,
@@ -271,6 +286,7 @@ final class CoachData {
     Set<CoachModule>? on,
     CoachProfile? profile,
     List<ck.UserSport>? sports,
+    List<CoachSportLog>? sportLogs,
     List<ck.Injury>? injuries,
     List<String>? disliked,
     Map<String, dynamic>? soreness,
@@ -286,6 +302,7 @@ final class CoachData {
         on: on ?? _on,
         profile: profile ?? this.profile,
         sports: sports ?? this.sports,
+        sportLogs: sportLogs ?? this.sportLogs,
         injuries: injuries ?? this.injuries,
         disliked: disliked ?? this.disliked,
         soreness: soreness ?? this.soreness,
@@ -306,6 +323,7 @@ final class CoachData {
         },
         if (profile != null) 'profile': profile!.toJson(),
         if (sports.isNotEmpty) 'sports': [for (final s in sports) s.toJson()],
+        if (sportLogs.isNotEmpty) 'sportLogs': [for (final l in sportLogs) l.toJson()],
         if (injuries.isNotEmpty) 'injuries': [for (final i in injuries) i.toJson()],
         if (disliked.isNotEmpty) 'disliked': [...disliked],
         if (soreness.isNotEmpty) 'soreness': jsonCopy(soreness),

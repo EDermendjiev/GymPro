@@ -168,7 +168,10 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's pages (`coachOnboardingPageCount`, four since the smart planner) appended to the `PageView` list, numbered from `_last - coachOnboardingPageCount + 1`; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
-| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card in the phone layout, and as a card of the desktop layout's flow after the day's card while it has something to show (`coachShowsHomeSlot`); the week ahead (`CoachWeekAhead`: the routines planned for the next six days, or the next rotation steps) right after the slot, in both layouts, while anything is planned ahead | done |
+| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card in the phone layout, and as a card of the desktop layout's flow after the day's card while it has something to show (`coachShowsHomeSlot`); the week ahead (`CoachWeekAhead`: the routines planned for the next six days, or the next rotation steps) right after the slot, in both layouts, while anything is planned ahead; in the week strip, a ball on a day with a logged sport session (two lines); "Train anyway" on a rotation's rest day opens the start sheet too while sport sessions can be logged | done |
+| `lib/screens/start_sheet.dart` | import of the barrel; "Log a sport session" (`CoachLogSportOption`) after the start options | done |
+| `lib/widgets/day_off_sheet.dart` | import of the barrel; the "Sport session" line (`coachDayOffSportItems`) after "I trained" | done |
+| `lib/screens/progress_screen.dart` | import of the barrel; in the day sheet, "Rest day" only without a logged sport session (two lines), and the logged sport sessions (`CoachDaySports`) above "Log a workout" | done |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
 | `lib/state/stats_state.dart` | `muscleSetsThisWeek` asks `coachMuscleSetsThisWeek` first; `muscleHeatThisWeek` asks `coachWeeklySetTarget` per muscle before the app's own per-muscle goal (`_heat`) | done |
@@ -206,6 +209,7 @@ All coach data is stored under one key, `coach`, in the existing state blob.
                "sessionPref": "fewer_longer", "years": "one_to_three", "focus": ["glutes"],
                "strengthLifts": ["squat", "bench"], "knownLifts": { "squat": 140 }, "cardio": 2 },
   "sports": [],  "injuries": [],  "disliked": [],
+  "sportLogs": [ { "id": "2026-11-26#1", "day": "2026-11-26", "sportId": "football", "intensity": "match", "minutes": 90 } ],
   "soreness": { "2026-11-12": { "hamstrings": "sore" } },
   "block": { /* BlockPlan.toJson(): kind, startsOn, weeks, splitKey, targets, weeklyTargets, sessions, selections */ },
   "routineIds": { "upper_a": "r1731…", "lower_a": "r1731…" },
@@ -221,6 +225,7 @@ All coach data is stored under one key, `coach`, in the existing state blob.
 | `on` | The four module switches |
 | `profile` | The user's coaching profile: goal, training status, training days, session length, priority, lifestyle. A `smartPlan` profile also holds the plan-design answers (style, session preference, years of training, up to two focus muscles, strength lifts, known one-rep maxes, cardio sessions a week); its plan comes from the planner. Those keys are written only when set, so a profile from before the planner reads and writes back unchanged, and an older build keeps them through `extra`. A value that can't be read falls back to its default |
 | `sports`, `injuries`, `disliked` | Lists the block generator takes into account |
+| `sportLogs` | Sport sessions logged for one day, outside the weekly sports. Read entry by entry: one that cannot be read is dropped |
 | `soreness` | Soreness reports, by date and muscle |
 | `block` | The current generated block, as written by `BlockPlan.toJson()` |
 | `routineIds` | The GymMane routine each block session was written to |
@@ -467,6 +472,15 @@ Two sheets (`lib/coach/ui/recovery_sheets.dart`), reachable from Settings › Co
 
 Either change generates the plan again while the plan module is on (`coachRegenerate`). Onboarding now offers
 the "Support my sport" goal too.
+
+Sport sessions on a given day (`lib/coach/ui/sport_log.dart`): a game on a rest day, a match moved to another
+day. The sport sheet logs one for a date (sport, how hard, length; the user's own sports come first, with their
+usual intensity and length) and removes the ones logged that day. It opens from the start sheet ("Train anyway",
+and "Log a workout" on a past day), from the week strip's day sheet (any day, future ones included) and from the
+day summary, which lists them. They are stored in `coach.sportLogs` and shown as a ball in the week strip. They do
+not count as training days for the weekly goal and do not change the plan; quick workouts on the day before, the
+day itself and the day after put the muscles the sport works last, as for a weekly sport on a near weekday. All of
+it shows while any coach module is on.
 
 ### Volume targets
 

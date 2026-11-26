@@ -15044,6 +15044,42 @@ abstract class AppLocalizations {
   /// **'Match'**
   String get coachIntensityMatch;
 
+  /// No description provided for @coachSportSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Sport session'**
+  String get coachSportSession;
+
+  /// No description provided for @coachSportSessionLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Log a sport session'**
+  String get coachSportSessionLog;
+
+  /// No description provided for @coachSportSessionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A game or match on any day. Quick workouts the day before and after leave the muscles it works for last.'**
+  String get coachSportSessionHint;
+
+  /// No description provided for @coachSportSessionWhich.
+  ///
+  /// In en, this message translates to:
+  /// **'Sport'**
+  String get coachSportSessionWhich;
+
+  /// No description provided for @coachSportSessionSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Log session'**
+  String get coachSportSessionSave;
+
+  /// No description provided for @coachSportSessionLogged.
+  ///
+  /// In en, this message translates to:
+  /// **'On this day'**
+  String get coachSportSessionLogged;
+
   /// No description provided for @coachInjuries.
   ///
   /// In en, this message translates to:

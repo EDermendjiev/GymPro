@@ -28,7 +28,10 @@ const _expected = <String, int>{
   // startFocusWorkout, _defaultPicks, coachTick after a workout is saved, _beginSession shapes, _lighten asks first
   'lib/state/workout_state.dart': 11,
   'lib/screens/onboarding_screen.dart': 4, // import of the barrel, page count, the coach's pages, finish
-  'lib/screens/home_screen.dart': 7, // import of the barrel, block and week in the subtitle, "Why this plan", the coach's slot and the week ahead (phone and desktop)
+  'lib/screens/home_screen.dart': 10, // import of the barrel, block and week in the subtitle, "Why this plan", the coach's slot and the week ahead (phone and desktop), the sport ball in the week strip (two), "Train anyway" opens the start sheet
+  'lib/screens/start_sheet.dart': 2, // import of the barrel, "Log a sport session"
+  'lib/widgets/day_off_sheet.dart': 2, // import of the barrel, the sport session line
+  'lib/screens/progress_screen.dart': 4, // import of the barrel, "Rest day" without a sport session (two), the day's sport sessions
   'lib/screens/train_screen.dart': 2, // import of the barrel, quick-workout length chips
   'lib/screens/session_screen.dart': 4, // import of the barrel, the coach's requests taken in build, target line, soreness row
   'lib/state/nutrition_state.dart': 1, // suggestedGoals asks first
