@@ -873,7 +873,7 @@ German and Japanese.
 | `CoachState` mixin | `lib/state/coach_state.dart` | module switches and persistence; progression module (Phase 3); plan module (Phase 4); recovery module (Phase 5); nutrition goals, phase and weigh-in review (Phase 6) |
 
 | Release hardening | `test/coach/` | upstream v2.3.0 merged; an upstream backup restores with the coach off (`upgrade_test.dart`); timings on a three-year history (`performance_test.dart`, numbers in [BASELINE.md](BASELINE.md)); English-only strings (`translations_test.dart`) |
-| Smart planner | `packages/coach_planner`, `lib/coach/` | phases 0–4 done (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers, the plan questions and preview in onboarding and Settings, goal extras: steps, cardio and fatigue into the next block) |
+| Smart planner | `packages/coach_planner`, `lib/coach/` | done, released in gympro-v1.2.0 (decisions, the planner package, the generator follows the design, supersets, the app uses it for profiles built from the answers, the plan questions and preview in onboarding and Settings, goal extras: steps, cardio and fatigue into the next block) |
 
 Besides the modules there are the attribution credit in the About screen and
 README, the CI workflow for the `coach` branch, the upstream baseline in
