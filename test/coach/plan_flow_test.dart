@@ -114,7 +114,8 @@ void main() {
       expect(find.textContaining(fit.routineTitle(next)), findsWidgets);
       routine = next;
       fit.startRoutine(next);
-      await tester.pumpAndSettle();
+      // The open workout animates without end (its clock), so it never settles: pump a fixed time, as above.
+      await tester.pump(const Duration(milliseconds: 600));
     }
 
     // The workout opens with the block's sets for this week.
