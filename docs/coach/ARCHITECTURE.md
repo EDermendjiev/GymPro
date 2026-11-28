@@ -160,7 +160,7 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | File | Seam | Status |
 |---|---|---|
 | `pubspec.yaml` | six path dependencies (`coach_planner` added with the smart planner) | done |
-| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachDefaultPicks`, `coachFocusMuscles`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`, `coachTick`, `coachLighten`, `coachShapeSession`, `coachMuscleSetsThisWeek`) | done |
+| `lib/state/fit_core.dart` | block of no-op virtual methods (`coachNextPlan`, `coachOpeningSets`, `coachDefaultPicks`, `coachFocusMuscles`, `coachSetLogged`, `coachWarmupSets`, `coachTargetLabel`, `coachWhy`, `coachWeeklySetTarget`, `coachDeloadWeek`, `coachNutritionGoals`, `coachTick`, `coachLighten`, `coachShapeSession`, `coachMuscleSetsThisWeek`, `coachSportDay`) | done |
 | `lib/state/fit_state.dart` | import of `lib/coach/coach.dart`, `part`, mixin in the `with` list, one line each in `loadFromStore`, `toJson`, `applyBackup`, `resetAllData`; `coachTick()` at the end of `loadFromStore` | done |
 | `packages/sync/lib/sync.dart` | `coach` merges atomically (newest wins) | done |
 | `lib/models/progression.dart` | `ProgressKind.auto` appended at the end of the enum | done |
@@ -168,13 +168,14 @@ move the code into `lib/coach/` or add a row to this table in the same change.
 | `lib/widgets/progression_sheet.dart` | "Auto" option: its name, its hint, offered only while the progression module is on (or already chosen), and choosing it stores the coach's rep range | done |
 | `lib/screens/session_screen.dart` | import of the barrel; `build` hands the coach's one-shot requests (first-set correction toast with Undo, the effort question) to `coachSessionPrompts`; the coach's target line (`CoachTargetLine`, which opens the why-sheet) right under `_nextRow`; on the workout summary, the soreness row (`CoachSorenessRow`) under the check-in card | done |
 | `lib/screens/onboarding_screen.dart` | import of the barrel; the coach's pages (`coachOnboardingPageCount`, four since the smart planner) appended to the `PageView` list, numbered from `_last - coachOnboardingPageCount + 1`; the page count; `_finish` hands the answers to `coachFinishOnboarding` | done |
-| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card in the phone layout, and as a card of the desktop layout's flow after the day's card while it has something to show (`coachShowsHomeSlot`); the week ahead (`CoachWeekAhead`: the routines planned for the next six days, or the next rotation steps) right after the slot, in both layouts, while anything is planned ahead; in the week strip, a ball on a day with a logged sport session (two lines); "Train anyway" on a rotation's rest day opens the start sheet too while sport sessions can be logged | done |
+| `lib/screens/home_screen.dart` | import of the barrel; the block and its week in the hero card's subtitle; "Why this plan" under it (`CoachPlanWhy`); the coach's slot (`CoachHomeSlot`: proposals, notes, hints, the soreness row) under the day's card in the phone layout, and as a card of the desktop layout's flow after the day's card while it has something to show (`coachShowsHomeSlot`); the week ahead (`CoachWeekAhead`: the routines planned for the next six days, or the next rotation steps) right after the slot, in both layouts, while anything is planned ahead; in the week strip, a ball on a day with a logged sport session, on the done color once the day has come (four lines); "Train anyway" on a rotation's rest day opens the start sheet too while sport sessions can be logged | done |
 | `lib/screens/start_sheet.dart` | import of the barrel; "Log a sport session" (`CoachLogSportOption`) after the start options | done |
 | `lib/widgets/day_off_sheet.dart` | import of the barrel; the "Sport session" line (`coachDayOffSportItems`) after "I trained" | done |
 | `lib/screens/progress_screen.dart` | import of the barrel; in the day sheet, "Rest day" only without a logged sport session (two lines), and the logged sport sessions (`CoachDaySports`) above "Log a workout" | done |
 | `lib/screens/train_screen.dart` | import of the barrel; the quick-workout length chips (`CoachQuickMinutes`) above the review list | done |
 | `lib/state/settings_state.dart` | `deloadWeek` asks the seam first | done |
-| `lib/state/stats_state.dart` | `muscleSetsThisWeek` asks `coachMuscleSetsThisWeek` first; `muscleHeatThisWeek` asks `coachWeeklySetTarget` per muscle before the app's own per-muscle goal (`_heat`) | done |
+| `lib/state/stats_state.dart` | `muscleSetsThisWeek` asks `coachMuscleSetsThisWeek` first; `muscleHeatThisWeek` asks `coachWeeklySetTarget` per muscle before the app's own per-muscle goal (`_heat`); `daysDoneThisWeek` also counts a day with a logged sport session (`coachSportDay`) | done |
+| `lib/services/home_widget_bridge.dart` | the widget's week marks a day with a logged sport session done (`coachSportDay`) | done |
 | `lib/state/nutrition_state.dart` | `suggestedGoals` asks the seam first | done |
 | `lib/screens/nutrition_screen.dart`, `lib/screens/nutrition/settings.dart` | import of the barrel (for its part `nutrition/settings.dart`); the coach's goals card (`CoachGoalsCard`) under the goals sheet's title | done |
 | `lib/screens/settings_screen.dart` | "Coach" category: import of the barrel, the category, its title, its place in the Home group, its section | done |
@@ -477,8 +478,10 @@ Sport sessions on a given day (`lib/coach/ui/sport_log.dart`): a game on a rest 
 day. The sport sheet logs one for a date (sport, how hard, length; the user's own sports come first, with their
 usual intensity and length) and removes the ones logged that day. It opens from the start sheet ("Train anyway",
 and "Log a workout" on a past day), from the week strip's day sheet (any day, future ones included) and from the
-day summary, which lists them. They are stored in `coach.sportLogs` and shown as a ball in the week strip. They do
-not count as training days for the weekly goal and do not change the plan; quick workouts on the day before, the
+day summary, which lists them. They are stored in `coach.sportLogs` and shown as a ball in the week strip. A day with one counts toward the weekly goal
+once it has come (`coachSportDay`: the Home ring, the progress screen, the home widget, the watch), once however
+many sessions it holds and not twice with a workout. Only the count changes: the day is not "done" for the day's
+plan, so a routine planned for it still waits. They do not change the plan; quick workouts on the day before, the
 day itself and the day after put the muscles the sport works last, as for a weekly sport on a near weekday. All of
 it shows while any coach module is on.
 

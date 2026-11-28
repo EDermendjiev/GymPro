@@ -832,7 +832,7 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
 
   int get weeklyTarget => profile.weeklyGoal <= 0 ? 4 : profile.weeklyGoal;
 
-  int get daysDoneThisWeek => [for (var i = 0; i < 7; i++) isDayDone(i)].where((d) => d).length;
+  int get daysDoneThisWeek => [for (var i = 0; i < 7; i++) isDayDone(i) || coachSportDay(_dateForWeekday(i))].where((d) => d).length; // coach-seam
 
   int get goalPct => ((daysDoneThisWeek / weeklyTarget) * 100).round().clamp(0, 100);
 

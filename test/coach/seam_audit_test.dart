@@ -28,7 +28,8 @@ const _expected = <String, int>{
   // startFocusWorkout, _defaultPicks, coachTick after a workout is saved, _beginSession shapes, _lighten asks first
   'lib/state/workout_state.dart': 11,
   'lib/screens/onboarding_screen.dart': 4, // import of the barrel, page count, the coach's pages, finish
-  'lib/screens/home_screen.dart': 10, // import of the barrel, block and week in the subtitle, "Why this plan", the coach's slot and the week ahead (phone and desktop), the sport ball in the week strip (two), "Train anyway" opens the start sheet
+  'lib/screens/home_screen.dart': 12, // import of the barrel, block and week in the subtitle, "Why this plan", the coach's slot and the week ahead (phone and desktop), the sport day in the week strip (four), "Train anyway" opens the start sheet
+  'lib/services/home_widget_bridge.dart': 1, // a sport day is a done day on the widget's week
   'lib/screens/start_sheet.dart': 2, // import of the barrel, "Log a sport session"
   'lib/widgets/day_off_sheet.dart': 2, // import of the barrel, the sport session line
   'lib/screens/progress_screen.dart': 4, // import of the barrel, "Rest day" without a sport session (two), the day's sport sessions
@@ -36,7 +37,7 @@ const _expected = <String, int>{
   'lib/screens/session_screen.dart': 4, // import of the barrel, the coach's requests taken in build, target line, soreness row
   'lib/state/nutrition_state.dart': 1, // suggestedGoals asks first
   'lib/state/settings_state.dart': 1, // deloadWeek asks first
-  'lib/state/stats_state.dart': 2, // this week's sets and each muscle's weekly target ask first
+  'lib/state/stats_state.dart': 3, // this week's sets and each muscle's weekly target ask first, a sport day counts toward the weekly goal
   'lib/screens/nutrition_screen.dart': 1, // import of the barrel, for its part nutrition/settings.dart
   'lib/screens/nutrition/settings.dart': 1, // the coach's card in the goals sheet
 };

@@ -842,6 +842,15 @@ mixin CoachState
   List<CoachSportLog> coachSportLogsOn(DateTime day) =>
       coachLogsSports ? CoachFacade.sportLogsOn(coach, day) : const [];
 
+  /// Whether [day] counts toward the weekly goal for a sport session logged on it: one is logged, and the day is
+  /// not in the future (a match planned for Saturday counts once Saturday comes).
+  @override
+  bool coachSportDay(DateTime day) {
+    final now = coachClock();
+    return !DateTime(day.year, day.month, day.day).isAfter(DateTime(now.year, now.month, now.day)) &&
+        coachSportLogsOn(day).isNotEmpty;
+  }
+
   /// Logs a session of [sportId] for [day].
   void logCoachSport(DateTime day, String sportId, CoachSportIntensity intensity, int minutes) {
     coach = CoachFacade.withSportLogged(coach, day, sportId, intensity, minutes);

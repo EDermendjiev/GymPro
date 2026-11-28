@@ -58,6 +58,7 @@ abstract class FitCore extends ChangeNotifier {
   bool coachLighten(WorkoutSession s) => false;
   void coachShapeSession(WorkoutSession s) {}
   Map<String, double>? coachMuscleSetsThisWeek() => null;
+  bool coachSportDay(DateTime day) => false;
 
   String route = 'home';
   final List<String> _routeStack = [];

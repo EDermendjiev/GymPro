@@ -576,6 +576,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _weekDay(BuildContext context, GymColors gc, int i) {
     final done = fit.isDayDone(i) && !fit.isDayPartial(i);
+    final sport = fit.coachSportLogsOn(fit.dateForWeekday(i)).isNotEmpty, sportDone = !done && fit.coachSportDay(fit.dateForWeekday(i)); // coach-seam
     final isToday = i == fit.todayIndex;
     final isFuture = i > fit.todayIndex;
     final date = fit.dateForWeekday(i);
@@ -608,14 +609,14 @@ class HomeScreen extends StatelessWidget {
               width: 32,
               height: 32,
               decoration: BoxDecoration(
-                color: done ? gc.ember : gc.bgRaised2,
+                color: done || sportDone ? gc.ember : gc.bgRaised2, // coach-seam
                 shape: BoxShape.circle,
                 border: isToday && !done ? Border.all(color: gc.ember, width: 2) : null,
               ),
               child: done
                   ? Center(child: SvgPathIcon(Ic.checkBold, size: 13, color: gc.onEmber))
-                  : fit.coachSportLogsOn(date).isNotEmpty // coach-seam
-                      ? Icon(PhosphorIconsRegular.soccerBall, size: 15, color: gc.brass) // coach-seam
+                  : sport // coach-seam
+                      ? Icon(PhosphorIconsRegular.soccerBall, size: 15, color: sportDone ? gc.onEmber : gc.brass) // coach-seam
                   : off != null
                       ? Icon(dayOffIcon(off), size: 15, color: gc.textSecondary)
                       : fit.restOn(date)

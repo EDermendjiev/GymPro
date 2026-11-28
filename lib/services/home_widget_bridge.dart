@@ -88,7 +88,7 @@ class HomeWidgetBridge {
       final todaySize = _ios ? const Size(155, 155) : const Size(120, 120);
       const weekSize = Size(320, 150);
       const musclesSize = Size(320, 220);
-      final week = [for (var i = 0; i < 7; i++) fit.isDayDone(i) && !fit.isDayPartial(i)];
+      final week = [for (var i = 0; i < 7; i++) (fit.isDayDone(i) || fit.coachSportDay(fit.dateForWeekday(i))) && !fit.isDayPartial(i)]; // coach-seam
       final levels = fit.heatmapWeeksFor(26);
       final heat = fit.muscleHeatOver(bodyDays);
       final plannedToday = fit.todayRoutine != null;

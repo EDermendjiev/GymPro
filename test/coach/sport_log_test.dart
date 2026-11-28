@@ -98,6 +98,27 @@ void main() {
     expect(near(_monday), containsAll(['quads', 'hamstrings']));
   });
 
+  test("a sport day counts once toward the weekly goal, once it has come, and leaves the day's plan alone", () {
+    fit.coachClock = DateTime.now;
+    _plan();
+    final today = fit.dateForWeekday(fit.todayIndex);
+    final before = fit.daysDoneThisWeek;
+    final planDone = fit.todayPlanDone;
+    fit.logCoachSport(today, 'football', CoachSportIntensity.match, 90);
+    fit.logCoachSport(today, 'running', CoachSportIntensity.light, 30);
+    expect(fit.daysDoneThisWeek, before + 1, reason: 'two sessions on one day are one day');
+    expect(fit.coachSportDay(today), isTrue);
+    expect(fit.todayPlanDone, planDone, reason: "today's routine still waits");
+    fit.setCheckedIn(today, true);
+    expect(fit.daysDoneThisWeek, before + 1, reason: 'a checked-in sport day is still one day');
+    if (fit.todayIndex < 6) {
+      final tomorrow = fit.dateForWeekday(fit.todayIndex + 1);
+      fit.logCoachSport(tomorrow, 'football', CoachSportIntensity.match, 90);
+      expect(fit.coachSportDay(tomorrow), isFalse);
+      expect(fit.daysDoneThisWeek, before + 1, reason: 'a planned match counts once its day comes');
+    }
+  });
+
   testWidgets('"Log a sport session" in the start sheet logs one for today at phone width', (tester) async {
     _plan();
     fit.setCoachSports([
