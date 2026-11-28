@@ -88,8 +88,21 @@ jobs:
             echo "signed=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # The build number comes from the tag (gympro-vX.Y.Z -> X*10000 + Y*100 + Z), not from pubspec.yaml, which
+      # follows upstream and does not move with every GymPro release. A newer tag is then always a newer
+      # versionCode, so the phone takes it as an update.
       - name: Build split APKs
-        run: flutter build apk --release --split-per-abi --split-debug-info=build/symbols
+        env:
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          v="${TAG#gympro-v}"
+          IFS=. read -r major minor patch <<< "$v"
+          if ! [[ "$major" =~ ^[0-9]+$ && "$minor" =~ ^[0-9]+$ && "$patch" =~ ^[0-9]+$ ]]; then
+            echo "Tag $TAG is not gympro-vX.Y.Z"; exit 1
+          fi
+          build=$(( major * 10000 + minor * 100 + patch ))
+          echo "Build number $build from $TAG"
+          flutter build apk --release --split-per-abi --split-debug-info=build/symbols --build-number=$build
 
       - name: Rename APKs
         run: |

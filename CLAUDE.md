@@ -45,6 +45,7 @@ Keep the credit "Based on GymMane by InlitX" (see `CREDITS.md`, `test/coach/cred
 ## Releases
 - Push a `gympro-v<x.y.z>` tag on `coach`. `.github/workflows/coach-release.yml` builds per-ABI APKs signed with the KEYSTORE_* repo secrets.
 - Phones update only from release-workflow APKs (per-ABI versionCode). Never hand the owner a local universal build as an update.
+- The release workflow sets the build number from the tag (`gympro-vX.Y.Z` → X·10000 + Y·100 + Z), not from `pubspec.yaml`, so every newer tag updates the phone.
 - The signing key lives outside the repo. Never regenerate it.
 
 ## How to work here (keep it cheap)
