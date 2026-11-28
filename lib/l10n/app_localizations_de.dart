@@ -8047,70 +8047,71 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get foodAiRow => 'Fill in with an AI';
+  String get foodAiRow => 'Mit KI ausfüllen';
 
   @override
-  String get foodAiRowHint => 'From a label, a screenshot or a link';
+  String get foodAiRowHint => 'Anhand eines Etiketts, Screenshots oder Links';
 
   @override
-  String get foodAiTitle => 'Food with AI';
+  String get foodAiTitle => 'Lebensmittel mit KI';
 
   @override
   String get foodAiHow =>
-      'Copy the request and paste it into any chatbot together with a photo of the nutrition label, a screenshot of the product or a link to it. Then paste its answer here.';
+      'Kopiere die Anfrage und füge sie zusammen mit einem Foto der Nährwerttabelle, einem Screenshot des Produkts oder einem Link dazu in einen beliebigen Chatbot ein. Füge anschließend dessen Antwort hier ein.';
 
   @override
-  String get foodAiCheck => 'The form fills itself in. Check the values against the label before saving.';
+  String get foodAiCheck =>
+      'Das Formular wird automatisch ausgefüllt. Vergleiche die Werte vor dem Speichern mit dem Etikett.';
 
   @override
-  String get foodAiFill => 'Fill in the food';
+  String get foodAiFill => 'Lebensmittel eintragen';
 
   @override
-  String get foodAiFilled => 'Food filled in';
+  String get foodAiFilled => 'Lebensmittel eingetragen';
 
   @override
-  String get foodAiFilledHint => 'Check the values before saving';
+  String get foodAiFilledHint => 'Überprüfe die Werte vor dem Speichern';
 
   @override
-  String get fastAdd => 'Add a past fast';
+  String get fastAdd => 'Vergangenes Fasten hinzufügen';
 
   @override
-  String get fastAddTitle => 'Add a fast';
+  String get fastAddTitle => 'Fasten hinzufügen';
 
   @override
-  String get fastEditTitle => 'Edit fast';
+  String get fastEditTitle => 'Fasten bearbeiten';
 
   @override
-  String get fastStartRow => 'Start';
+  String get fastStartRow => 'Beginn';
 
   @override
-  String get fastEndRow => 'End';
+  String get fastEndRow => 'Ende';
 
   @override
-  String get fastEndedAt => 'When did you end it?';
+  String get fastEndedAt => 'Wann hast du das Fasten beendet?';
 
   @override
   String fastLasted(String time) {
-    return 'Lasted $time';
+    return 'Dauer: $time';
   }
 
   @override
-  String get fastErrFuture => 'The end can\'t be later than now';
+  String get fastErrFuture => 'Das Ende darf nicht in der Zukunft liegen';
 
   @override
-  String get fastErrOrder => 'The end has to come after the start';
+  String get fastErrOrder => 'Das Ende muss nach dem Beginn liegen';
 
   @override
-  String get fastErrShort => 'A fast lasts at least 10 minutes';
+  String get fastErrShort => 'Eine Fastenzeit dauert mindestens 10 Minuten';
 
   @override
-  String get fastErrOverlap => 'It overlaps another fast';
+  String get fastErrOverlap => 'Die Fastenzeit überschneidet sich mit einer anderen';
 
   @override
-  String get fastSaved => 'Fast saved';
+  String get fastSaved => 'Fastenzeit gespeichert';
 
   @override
-  String get fastAdjust => 'Adjust';
+  String get fastAdjust => 'Anpassen';
 
   @override
   String get keepCounting => 'Weiterzählen';
@@ -8939,22 +8940,22 @@ class AppLocalizationsDe extends AppLocalizations {
       'Beta: noch nicht auf jeder Uhr getestet. Wenn es nicht klappt, sag es uns auf GitHub.';
 
   @override
-  String get mineralsTracker => 'Iron and potassium';
+  String get mineralsTracker => 'Eisen und Kalium';
 
   @override
-  String get ironLabel => 'Iron';
+  String get ironLabel => 'Eisen';
 
   @override
-  String get potassiumLabel => 'Potassium';
+  String get potassiumLabel => 'Kalium';
 
   @override
   String mineralsCoverage(int known, int total) {
-    return '$known of $total foods today have iron and potassium';
+    return 'Für $known von $total Lebensmitteln sind heute Eisen- und Kaliumwerte vorhanden';
   }
 
   @override
   String get mineralsHint =>
-      'Few foods in the list come with iron and potassium, so the total only counts the ones that do. Add them to your own foods or with the AI.';
+      'Nur für wenige Lebensmittel in der Liste sind Eisen- und Kaliumwerte hinterlegt. Deshalb werden bei der Gesamtsumme nur diese berücksichtigt. Ergänze die Werte bei deinen eigenen Lebensmitteln oder mithilfe der KI.';
 
   @override
   String get qsRow => 'Kacheln in den Schnelleinstellungen';
@@ -9174,17 +9175,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get breathDone => 'Fertig';
 
   @override
-  String get mealAiNoData => 'The AI answered in words, with no data';
+  String get mealAiNoData => 'Die KI hat nur Text statt Daten ausgegeben';
 
   @override
   String get mealAiNoDataHint =>
-      'Paste the whole request again. Some assistants refuse when they can’t see the photo or the meal isn’t clear: describe it in one sentence.';
+      'Füge die gesamte Anfrage erneut ein. Manche Assistenten lehnen die Antwort ab, wenn sie das Foto nicht sehen können oder die Mahlzeit unklar ist. Beschreibe sie in einem Satz.';
 
   @override
-  String get mealAiCutOff => 'The answer got cut off';
+  String get mealAiCutOff => 'Die Antwort wurde abgeschnitten';
 
   @override
-  String get mealAiCutOffHint => 'Ask it to send the rest, or to answer with fewer foods.';
+  String get mealAiCutOffHint =>
+      'Bitte die KI, den Rest zu senden oder mit weniger Lebensmitteln zu antworten.';
 
   @override
   String get recoveryGoal => 'Ziel';
@@ -9444,64 +9446,64 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ramadanIftar => 'Iftar';
 
   @override
-  String get ramadanMode => 'Ramadan mode';
+  String get ramadanMode => 'Ramadan-Modus';
 
   @override
   String get ramadanModeHint =>
-      'Fast from suhoor to iftar every day, count your fasts and the days to make up. Breakfast and dinner become Suhoor and Iftar.';
+      'Faste jeden Tag von Suhoor bis Iftar und erfasse deine Fastentage sowie die nachzuholenden Tage. Frühstück und Abendessen werden zu Suhoor und Iftar.';
 
   @override
-  String get ramadanTimesHint => 'Use your city\'s times and adjust them every few days.';
+  String get ramadanTimesHint => 'Verwende die Zeiten deiner Stadt und passe sie alle paar Tage an.';
 
   @override
   String ramadanDay(int n) {
-    return 'Ramadan · day $n';
+    return 'Ramadan · Tag $n';
   }
 
   @override
-  String get ramadanUntilIftar => 'Until iftar';
+  String get ramadanUntilIftar => 'Bis zum Iftar';
 
   @override
-  String get ramadanEatWindow => 'You can eat';
+  String get ramadanEatWindow => 'Du kannst essen';
 
   @override
   String ramadanIftarAt(String time) {
-    return 'Iftar at $time';
+    return 'Iftar um $time';
   }
 
   @override
   String ramadanSuhoorUntil(String time) {
-    return 'Suhoor until $time';
+    return 'Suhoor bis $time';
   }
 
   @override
-  String get ramadanSkippedToday => 'Not fasting today';
+  String get ramadanSkippedToday => 'Heute nicht gefastet';
 
   @override
-  String get ramadanSkippedHint => 'It counts as a day to make up';
+  String get ramadanSkippedHint => 'Wird als nachzuholender Tag gezählt';
 
   @override
   String ramadanFasted(int n) {
-    String _temp0 = intl.Intl.pluralLogic(n, locale: localeName, other: '$n fasts', one: '1 fast');
+    String _temp0 = intl.Intl.pluralLogic(n, locale: localeName, other: '$n Fastentage', one: '1 Fastentag');
     return '$_temp0';
   }
 
   @override
   String ramadanOwed(int n) {
-    return '$n to make up';
+    return '$n Tage nachzuholen';
   }
 
   @override
-  String get ramadanSkip => 'Not fasting today';
+  String get ramadanSkip => 'Heute nicht fasten';
 
   @override
-  String get ramadanSkipUndo => 'Fasting today';
+  String get ramadanSkipUndo => 'Heute fasten';
 
   @override
-  String get ramadanRestart => 'Start a new Ramadan';
+  String get ramadanRestart => 'Neuen Ramadan beginnen';
 
   @override
-  String get ramadanRestartBody => 'Your fasts and days to make up go back to zero.';
+  String get ramadanRestartBody => 'Deine Fastentage und nachzuholenden Tage werden auf null zurückgesetzt.';
 
   @override
   String get trendFullView => 'Vollansicht';
@@ -9684,68 +9686,68 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get suppProgressTitle => 'Supplement streak';
+  String get suppProgressTitle => 'Supplement-Serie';
 
   @override
-  String get suppProgressAll => 'All supplements';
+  String get suppProgressAll => 'Alle Supplements';
 
   @override
-  String get suppStreakNow => 'Streak';
+  String get suppStreakNow => 'Aktuelle Serie';
 
   @override
-  String get suppStreakBest => 'Best streak';
+  String get suppStreakBest => 'Längste Serie';
 
   @override
-  String get suppThisMonth => 'This month';
+  String get suppThisMonth => 'Diesen Monat';
 
   @override
   String suppDaysN(int n) {
-    String _temp0 = intl.Intl.pluralLogic(n, locale: localeName, other: '$n days', one: '1 day');
+    String _temp0 = intl.Intl.pluralLogic(n, locale: localeName, other: '$n Tage', one: '1 Tag');
     return '$_temp0';
   }
 
   @override
-  String get suppLegendAll => 'All taken';
+  String get suppLegendAll => 'Alle eingenommen';
 
   @override
-  String get suppLegendSome => 'Some';
+  String get suppLegendSome => 'Teilweise eingenommen';
 
   @override
-  String get suppLegendNone => 'Missed';
+  String get suppLegendNone => 'Nicht eingenommen';
 
   @override
-  String get suppEachOne => 'Each one, last 30 days';
+  String get suppEachOne => 'Einzeln, letzte 30 Tage';
 
   @override
-  String get suppSince => 'Taking it since';
+  String get suppSince => 'Einnahme seit';
 
   @override
-  String get suppTotalTakes => 'Times taken';
+  String get suppTotalTakes => 'Anzahl der Einnahmen';
 
   @override
-  String get suppLast30 => 'Last 30 days';
+  String get suppLast30 => 'Letzte 30 Tage';
 
   @override
-  String get suppNotDueYet => 'Nothing due yet';
+  String get suppNotDueYet => 'Noch keine Einnahme fällig';
 
   @override
-  String get scanRow => 'Scan a barcode';
+  String get scanRow => 'Barcode scannen';
 
   @override
-  String get scanRowHint => 'With GymMane Scanner';
+  String get scanRowHint => 'Mit GymMane Scanner';
 
   @override
   String get scannerTitle => 'GymMane Scanner';
 
   @override
-  String get scannerKicker => 'Community app · not part of GymMane';
+  String get scannerKicker => 'Community-App · nicht Teil von GymMane';
 
   @override
-  String get scannerBody => 'Scan a barcode and it sends you the food, ready to check.';
+  String get scannerBody => 'Scanne einen Barcode, um die Lebensmitteldaten abzurufen und zu überprüfen.';
 
   @override
-  String get scannerBody2 => 'It looks products up online, so it lives in its own app.';
+  String get scannerBody2 => 'Die App sucht online nach Produkten und ist deshalb eine eigenständige App.';
 
   @override
-  String get scannerGet => 'Get GymMane Scanner';
+  String get scannerGet => 'GymMane Scanner herunterladen';
 }

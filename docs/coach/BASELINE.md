@@ -171,6 +171,23 @@ backup read and written again now also carries upstream's new `hz` and
 `recovery` keys, which upstream always writes; `test/coach/upgrade_test.dart`
 allows exactly those two.
 
+## Upstream merge: GymMane 6fe0c2d (2026-11-28)
+
+`upstream/main` moved from `de325c9` to `6fe0c2d` (5 commits, no new tag,
+`pubspec.yaml` still 2.5.0+16). `main` was fast-forwarded to it and merged
+into `coach`, following [UPSTREAM.md](UPSTREAM.md).
+
+| Check | Result |
+| --- | --- |
+| Conflicts | none (upstream touched `lib/l10n/app_de.arb` and `lib/screens/routine_edit_screen.dart`, neither a seam); `lib/l10n/app_localizations_de.dart` regenerated |
+| `flutter analyze --no-fatal-infos` | No issues found |
+| `flutter test` | 1752 passed, 0 failed, 3 skipped |
+| Package tests (`dart test`) | `sync` 6, `coach_testkit` 203, `coach_kernel` 660, `coach_progression` 400, `coach_training` 2910, `coach_recovery` 983, `coach_nutrition` 410, `coach_planner` 84; all passed |
+| `test/coach/seam_audit_test.dart` | passed, no seam added or moved |
+
+Upstream adds about 70 German strings and redraws the group rows of the
+routine editor as cards.
+
 ## Performance (2026-11-16)
 
 No phone was attached, so these are **desktop numbers**: `flutter test` (Dart VM,
